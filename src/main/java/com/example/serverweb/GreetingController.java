@@ -13,7 +13,7 @@ public class GreetingController {
         model.addAttribute("name", name);
         return "index";
     }
-    @GetMapping("/about")
+/*    @GetMapping("/about")
     public String about(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "about";
@@ -37,6 +37,6 @@ public class GreetingController {
     public String pricing(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
         return "pricing";
-    }
+    }*/
 
 }
