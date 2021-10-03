@@ -22,6 +22,6 @@ public class ApplicationTest {
     @Test
     public void homepageShouldReturnDefaultMessage() throws Exception {
         assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
-                String.class)).contains("Our Services");
+                String.class)).contains("Home");
     }
 }

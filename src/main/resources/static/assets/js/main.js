@@ -1,114 +1,316 @@
-(function($) {
-  
-  "use strict";  
-
-  $(window).on('load', function() {
-
-  /*Page Loader active
-  ========================================================*/
-  $('#preloader').fadeOut();
-
-  // Sticky Nav
-    $(window).on('scroll', function() {
-        if ($(window).scrollTop() > 50) {
-            $('.scrolling-navbar').addClass('top-nav-collapse');
-        } else {
-            $('.scrolling-navbar').removeClass('top-nav-collapse');
-        }
-    });
-
-    // one page navigation 
-    $('.navbar-nav').onePageNav({
-      currentClass: 'active'
-    });
-
-    /* Auto Close Responsive Navbar on Click
-    ========================================================*/
-    function close_toggle() {
-        if ($(window).width() <= 768) {
-            $('.navbar-collapse a').on('click', function () {
-                $('.navbar-collapse').collapse('hide');
-            });
-        }
-        else {
-            $('.navbar .navbar-inverse a').off('click');
-        }
-    }
-    close_toggle();
-    $(window).resize(close_toggle);
-
-    /* WOW Scroll Spy
-    ========================================================*/
-     var wow = new WOW({
-      //disabled for mobile
-        mobile: false
-    });
-
-    wow.init();
-
-    /* 
-    CounterUp
-    ========================================================================== */
-    $('.counter').counterUp({
-      time: 500
-    });  
+$(function() {
     
-
-     /* Testimonials Carousel 
-    ========================================================*/
-    var owl = $("#testimonials");
-      owl.owlCarousel({
-        loop: true,
-        nav: false,
-        dots: true,
-        center: true,
-        margin: 15,
-        slideSpeed: 1000,
-        stopOnHover: true,
-        autoPlay: true,
-        responsiveClass: true,
-        responsiveRefreshRate: true,
-        responsive : {
-            0 : {
-                items: 1
-            },
-            768 : {
-                items: 2
-            },
-            960 : {
-                items: 3
-            },
-            1200 : {
-                items: 3
-            },
-            1920 : {
-                items: 3
+    "use strict";
+    
+    //===== Prealoder
+    
+    $(window).on('load', function(event) {
+        $('.preloader').delay(500).fadeOut(500);
+    });
+    
+    
+    //===== Sticky
+    
+    $(window).on('scroll', function(event) {    
+        var scroll = $(window).scrollTop();
+        if (scroll < 10) {
+            $(".navbar-area").removeClass("sticky");
+        } else{
+            $(".navbar-area").addClass("sticky");
+        }
+    });
+    
+    
+    //===== close navbar-collapse when a  clicked
+    
+    $(".navbar-nav a").on('click', function () {
+        $(".navbar-collapse").removeClass("show");
+    });
+    
+    
+    //===== Mobile Menu
+    
+    $(".navbar-toggler").on('click', function(){
+        $(this).toggleClass("active");
+    });
+    
+    $(".navbar-nav a").on('click', function() {
+        $(".navbar-toggler").removeClass('active');
+    });
+    
+    var subMenu = $(".sub-menu-bar .navbar-nav .sub-menu");
+    
+    if(subMenu.length) {
+        subMenu.parent('li').children('a').append(function () {
+            return '<button class="sub-nav-toggler"> <span></span> </button>';
+        });
+        
+        var subMenuToggler = $(".sub-menu-bar .navbar-nav .sub-nav-toggler");
+        
+        subMenuToggler.on('click', function() {
+            $(this).parent().parent().children(".sub-menu").slideToggle();
+            return false
+        });
+        
+    }
+    
+    
+    //===== Counter Up
+    
+    $('.counter').counterUp({
+        delay: 10,
+        time: 3000
+    });
+    
+    
+    //===== Isotope Project 1
+    
+    $('.container').imagesLoaded(function () {
+        var $grid = $('.grid').isotope({
+        // options
+            transitionDuration: '1s',
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            masonry: {
+                
             }
+            
+        });
+        
+        // filter items on button click
+        $('.project-menu ul').on( 'click', 'li', function() {
+          var filterValue = $(this).attr('data-filter');
+          $grid.isotope({ filter: filterValue });
+        });
+        
+        //for menu active class
+        $('.project-menu ul li').on('click', function (event) {
+            $(this).siblings('.active').removeClass('active');
+            $(this).addClass('active');
+            event.preventDefault();
+        });
+    });
+    
+    
+    //====== Magnific Popup
+    
+    $('.video-popup').magnificPopup({
+        type: 'iframe'
+        // other options
+    });
+    
+    
+    //===== Magnific Popup
+    
+    $('.image-popup').magnificPopup({
+      type: 'image',
+      gallery:{
+        enabled:true
+      }
+    });
+    
+    
+    //===== Back to top
+    
+    // Show or hide the sticky footer button
+    $(window).on('scroll', function(event) {
+        if($(this).scrollTop() > 600){
+            $('.back-to-top').fadeIn(200)
+        } else{
+            $('.back-to-top').fadeOut(200)
         }
-      });  
-      
-
-
-    /* Back Top Link active
-    ========================================================*/
-      var offset = 200;
-      var duration = 500;
-      $(window).scroll(function() {
-        if ($(this).scrollTop() > offset) {
-          $('.back-to-top').fadeIn(400);
-        } else {
-          $('.back-to-top').fadeOut(400);
-        }
-      });
-
-      $('.back-to-top').on('click',function(event) {
+    });
+    
+    
+    //Animate the scroll to yop
+    $('.back-to-top').on('click', function(event) {
         event.preventDefault();
+        
         $('html, body').animate({
-          scrollTop: 0
-        }, 600);
-        return false;
-      });
+            scrollTop: 0,
+        }, 1500);
+    });
+    
+    
+    //=====  services progress
 
-  });      
-
-}(jQuery));
+    
+    if($('.our-services-progress').length){
+        $('.our-services-progress').appear(function(){
+            Circles.create({
+                id: 'circles-1',
+                radius: 50,
+                value: 95,
+                maxValue: 100,
+                width: 3,
+                text: function(value){return value + '%';},
+                colors: ['#f0f0f0', '#f14836'],
+                duration: 1000,
+                wrpClass: 'circles-wrp',
+                textClass: 'circles-text',
+                styleWrapper: true,
+                styleText: true,
+            });
+        });
+    }
+    
+    if($('.our-services-progress').length){
+        $('.our-services-progress').appear(function(){
+            Circles.create({
+                id: 'circles-2',
+                radius: 50,
+                value: 85,
+                maxValue: 100,
+                width: 3,
+                text: function(value){return value + '%';},
+                colors: ['#f0f0f0', '#f14836'],
+                duration: 1000,
+                wrpClass: 'circles-wrp',
+                textClass: 'circles-text',
+                styleWrapper: true,
+                styleText: true,
+            });
+        });
+    }
+    
+    if($('.our-services-progress').length){
+        $('.our-services-progress').appear(function(){
+            Circles.create({
+                id: 'circles-3',
+                radius: 50,
+                value: 75,
+                maxValue: 100,
+                width: 3,
+                text: function(value){return value + '%';},
+                colors: ['#f0f0f0', '#f14836'],
+                duration: 1000,
+                wrpClass: 'circles-wrp',
+                textClass: 'circles-text',
+                styleWrapper: true,
+                styleText: true,
+            });
+        });
+    }
+    
+    if($('.our-services-progress').length){
+        $('.our-services-progress').appear(function(){
+            Circles.create({
+                id: 'circles-4',
+                radius: 50,
+                value: 70,
+                maxValue: 100,
+                width: 3,
+                text: function(value){return value + '%';},
+                colors: ['#f0f0f0', '#f14836'],
+                duration: 1000,
+                wrpClass: 'circles-wrp',
+                textClass: 'circles-text',
+                styleWrapper: true,
+                styleText: true,
+            });
+        });
+    }
+   
+    
+    //===== slick Testimonial
+    
+    $('.testimonial-active').slick({
+        dots: false,
+        arrows: true,
+        prevArrow: '<span class="prev"><i class="lni-arrow-left"></i></span>',
+        nextArrow: '<span class="next"><i class="lni-arrow-right"></i></span>',
+        infinite: true,
+//        autoplay: true,
+        autoplaySpeed: 5000,
+        speed: 800,
+        slidesToShow: 1,
+    });
+    
+    
+    //=====  slick Team
+    
+    $('.team-active').slick({
+        autoplay: true,
+        infinite: true,
+        arrows: false,
+        dots: false,
+        speed: 800,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 992,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 576,
+              settings: {
+                slidesToShow: 1,
+              }
+            }
+        ]
+    });
+    
+    
+    //=====  slick testimonial active 2
+    
+    $('.testimonial-active-2').slick({
+        autoplay: true,
+        infinite: true,
+        arrows: false,
+        dots: true,
+        speed: 800,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 992,
+              settings: {
+                slidesToShow: 1,
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+              }
+            },
+            {
+              breakpoint: 576,
+              settings: {
+                slidesToShow: 1,
+              }
+            }
+        ]
+    });
+    
+    
+    //=====  WOW active
+    
+    new WOW().init();
+    
+    
+    
+    
+    
+});
