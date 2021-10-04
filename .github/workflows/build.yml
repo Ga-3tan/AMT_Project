@@ -38,6 +38,10 @@ jobs:
       #Clean Install
       - name: Clean Install
         run : mvn clean install
+      #Connect To AWS
+      - name: Connect To AWS
+        run: sudo chmod 700 AMT-* &&
+             ssh -L 8082:10.0.1.11:22 -L 8081:10.0.1.11:8080 AMTECH@16.170.194.237 -i "${{ secrets.SSH_PRIVATE_KEY }}"
       #Deploy File To Server
       - name: deploy file to server
         uses: wlixcc/SFTP-Deploy-Action@v1.0
