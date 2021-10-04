@@ -9,18 +9,16 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>ServerWeb</artifactId>
+    <artifactId>AMTECH</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ServerWeb</name>
-    <description>ServerWeb</description>
+    <packaging>war</packaging>
+    <name>AMTECH</name>
+    <description>AMTECH</description>
     <properties>
         <java.version>11</java.version>
+        <start-class>com.example.amtech.ServingWebContentApplication</start-class>
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -28,18 +26,22 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>amtech</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
