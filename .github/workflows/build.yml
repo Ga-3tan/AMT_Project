@@ -8,7 +8,7 @@ on:
     branches:
       - main
       - S0-002_FB_base_project
-      - S0-003_FB_test_ci
+      - S0-004_FB_autodeploySFTP
 jobs:
   #Test's job
   tests:
