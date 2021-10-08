@@ -39,16 +39,18 @@ jobs:
       - name: Clean Install
         run : mvn clean install
       #Connect To AWS
-      - name: Connect To AWS
-        run: sudo chmod 700 AMT-* &&
-             ssh -L 8082:10.0.1.11:22 -L 8081:10.0.1.11:8080 AMTECH@16.170.194.237 -i "${{ secrets.SSH_PRIVATE_KEY }}"
+      - name: Connect To DMZ
+        run: ssh -L 8082:10.0.1.11:22 -L 8081:10.0.1.11:8080 AMTECH@16.170.194.237 -i "${{ secrets.SSH_DMZ_KEY }}"
+      #Connect To AWS
+      - name: Connect To SERVER
+        run: ssh admin@localhost -p 8082 -i "${{ secrets.SSH_SERVER_KEY }}"
       #Deploy File To Server
       - name: deploy file to server
         uses: wlixcc/SFTP-Deploy-Action@v1.0
         with:
           username: 'root'
           server: '${{ secrets.SERVER_IP }}'
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh_private_key: ${{ secrets.SSH_SERVER_KEY }}
           local_path: './target/*.war'
           remote_path: '/var/lib/tomcat9/webapps/'
           args: '-o ConnectTimeout=5'
