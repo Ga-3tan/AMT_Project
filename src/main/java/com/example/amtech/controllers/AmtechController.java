@@ -1,36 +1,36 @@
 package com.example.amtech.controllers;
 
-import com.example.amtech.models.Amtech;
-import com.example.amtech.repository.AmtechRepository;
+import com.example.amtech.models.Product;
+import com.example.amtech.models.ProductService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.List;
 
+@Slf4j
 @RestController
+@RequestMapping("/amtech")
 public class AmtechController {
 
     @Autowired
-    AmtechRepository amtechRepository;
+    ProductService productService;
 
-    @RequestMapping("/amtech")
-    public String index() {
+    @GetMapping("/")
+    public String welcome() {
         return "Welcome to AMTech";
     }
 
-    @GetMapping("/amtech/{id}")
-    public Optional<Amtech> getProduct(@PathVariable String id) {
-        if (amtechRepository.existsById(id)) {
-            return amtechRepository.findById(id);
-        }
-        else {
-            return Optional.empty();
-        }
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable String id) {
+        log.info("returning the product with id : " + id);
+        return productService.getProduct(id).orElse(null);
     }
 
-
-    @GetMapping("/hello")
-    public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return String.format("Hello %s!", name);
+    @GetMapping("/all")
+    public List<Product> getAllProducts() {
+        log.info("returning all products from /all");
+        return productService.getProducts();
     }
+
 }

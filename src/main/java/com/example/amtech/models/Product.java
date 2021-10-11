@@ -11,7 +11,7 @@ import org.springframework.data.couchbase.core.mapping.Field;
 @Builder
 @AllArgsConstructor
 @Document
-public class Amtech {
+public class Product {
 
     @Id
     final String id;
@@ -20,5 +20,5 @@ public class Amtech {
     String name;
 
     @Field
-    String owner;
+    String description;
 }
