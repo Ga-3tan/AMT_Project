@@ -7,8 +7,7 @@ on:
   push:
     branches:
       - main
-      - S0-002_FB_base_project
-      - S0-003_FB_test_ci
+      - Sprint_0
 jobs:
   #Test's job
   tests:

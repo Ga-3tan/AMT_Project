@@ -11,7 +11,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/amtech")
-public class AmtechController {
+public class DBController {
 
     @Autowired
     ProductService productService;
