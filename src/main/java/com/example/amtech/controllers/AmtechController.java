@@ -27,6 +27,7 @@ public class AmtechController {
         return productService.getProduct(id).orElse(null);
     }
 
+    // TODO: fix empty list
     @GetMapping("/all")
     public List<Product> getAllProducts() {
         log.info("returning all products from /all");

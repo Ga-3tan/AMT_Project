@@ -10,7 +10,7 @@ public class DBConfig extends AbstractCouchbaseConfiguration {
 
     @Override
     public String getConnectionString() {
-        return "couchbase://127.0.0.1"; // on peut peut-être spécifier le chemin du bucket / collection ici
+        return "couchbase://127.0.0.1";
     }
 
     @Override
@@ -32,7 +32,4 @@ public class DBConfig extends AbstractCouchbaseConfiguration {
     protected boolean autoIndexCreation() {
         return true;
     }
-
-    // essayer de préciser la collection
-    // voir si on peut faire une requête sur une collection autre que default
 }
