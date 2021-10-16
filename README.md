@@ -165,19 +165,11 @@ Once done, use the following command to finish the hot fix branch:
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- CONTACT -->
 
 ## Contact
 
 Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3tan/AMT_Project)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
@@ -195,3 +187,6 @@ Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3ta
 [product-screenshot]: images/screenshot.png
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
