@@ -11,7 +11,7 @@
 
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
   </a>
 
 
@@ -60,13 +60,9 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 ### Built With
 
@@ -75,14 +71,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [AWS](https://https://aws.amazon.com/)
 * [FreeMarker](https://https://freemarker.apache.org/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- GETTING STARTED -->
 
 ## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
@@ -100,24 +91,15 @@ To get a local copy up and running follow these simple example steps.
    ```
 
 ### Please use Git Flow :
-#### Introduction
+
 Gitflow is an alternative Git branching model that involves the use of feature branches and multiple primary branches.
 
-The idea of Gitflow is to use two branches to record the history of the project instead of one main branch. The main branch stores the official release history, and the develop branch serves as an integration branch for features.
-
-Under this model, developers create a branch for each new feature and delay merging it to the main trunk branch until the feature is complete. When merging in main branch, all commits are tagged with a version number.
+The flow is composed by one main branch and one developpment (sprint) branch. The sprint branch is merged to the main at every end of sprint. During developpment you should create some feature branch from the developpment branch to add new features.
 
 ![Gitflow Model](./images/git-flow-model.svg)
 
 #### Initialization
-After installing GitFlow, the first step is to create a develop branch. A developer can simply create an empty branch and push it to the server using following commands:
-   ```sh
-   git branch develop
-   git push -u origin develop
-   ```
-_Note: As mentioned above, this branch is used for the history of the project. Also, one can set freely a different branch name._
-
-Then, using ```git flow init``` will set this branch as the develop branch in Gitflow model.
+After installing GitFlow (you should already have it with Git by default), you can use ```git flow init``` to set the sprint branch as the develop branch in Gitflow model.
 
 ![Gitflow init](./images/git-flow-init.png)
 
@@ -172,18 +154,10 @@ Once done, use the following command to finish the hot fix branch:
    ```sh
    git flow hotfix finish hotfix_branch
    ```
+
+<p align="right">(<a href="#top">back to top</a>)</p><br />
+
 ---
-
-
-2. Fork the Project
-3. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-4. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-5. Push to the Branch (`git push origin feature/AmazingFeature`)
-6. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- LICENSE -->
 
