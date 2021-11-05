@@ -10,12 +10,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-@EnableMongoRepositories
 @SpringBootApplication
+@EnableMongoRepositories(basePackageClasses = ProductRepository.class)
 public class ServingWebContentApplication extends SpringBootServletInitializer implements CommandLineRunner {
-
-    @Autowired
-    ProductRepository productRepo;
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
@@ -25,8 +22,11 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
         SpringApplication.run(ServingWebContentApplication.class, args);
     }
 
+    // to remove when done
+    @Autowired
+    ProductService productService;
+
     public void run(String... args) {
-        ProductService productService = new ProductService(productRepo);
 
         // Clean up any previous data
         productService.deleteAllProduct(); // Doesn't delete the collection
@@ -35,7 +35,16 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
         productService.createGroceryItems();
 
         System.out.println("\n----------------SHOW ALL PRODUCT ITEMS---------------------------\n");
-        productService.showAllProducts();
+        productService.getAllProducts().forEach(System.out::println);
+
+        System.out.println("\n----------------SHOW PRODUCT ID=1---------------------------\n");
+        System.out.println(productService.getById("1"));
+
+        System.out.println("\n----------------SHOW PRODUCT COUNT---------------------------\n");
+        System.out.println(productService.count());
+
+        System.out.println("\n----------------SHOW PRODUCT OF CPU CAT---------------------------\n");
+        productService.getProductsByCategory("cpu").forEach(System.out::println);
     }
 
 }
