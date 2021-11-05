@@ -1,37 +1,41 @@
 package com.example.amtech.models;
 
-import com.example.amtech.repository.AmtechRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.amtech.repository.ProductRepository;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
-@Service
 public class ProductService {
 
-    @Autowired
-    AmtechRepository amtechRepository;
+    private final ProductRepository productRepo;
 
-    //save new product in the couchbase
-    public void save(final Product e) {
-        amtechRepository.save(e);
+    public ProductService(ProductRepository productRepo) {
+        this.productRepo = productRepo;
     }
 
-    //get all product from the couchbase
-    public List<Product> getProducts() {
-        final Iterable<Product> productIterable = amtechRepository.findAll();
-        return StreamSupport.stream(productIterable.spliterator(), false).collect(Collectors.toList());
+    // CRUD operations
+    public void deleteAllProduct() {
+        productRepo.deleteAll(); // Doesn't delete the collection
     }
 
-    //get product by id from the couchbase
-    public Optional<Product> getProduct(final String id) {
-        if (amtechRepository.existsById(id)) {
-            return amtechRepository.findById(id);
-        } else {
-            return Optional.empty();
-        }
+    //CREATE
+    public void createGroceryItems() {
+        System.out.println("Data creation started...");
+
+        productRepo.save(new Product("1", "/img.png", "prod1", "Try to create product 1", 5.5, 10, false, 0, new String[]{"high-tech", "cpu"}));
+        productRepo.save(new Product("2", "/img.png", "prod2", "Try to create product 1", 2.5, 1, false, 0, new String[]{"gpu", "lol"}));
+        productRepo.save(new Product("3", "/img.png", "prod3", "Try to create product 1", 5, 4, true, 0.5, new String[]{"NaN"}));
+
+        System.out.println("Data creation complete...");
+    }
+
+    // READ
+    List<Product> itemList = new ArrayList<>();
+    // 1. Show all the data
+    public void showAllProducts() {
+
+        itemList = productRepo.findAll();
+
+        itemList.forEach(item -> System.out.println(item.toString()));
     }
 }
