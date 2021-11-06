@@ -1,656 +1,818 @@
 <!doctype html>
-<html class="no-js" lang="en">
-
+<html class="no-js" lang="zxx">
+    
+<!-- about-us32:04-->
 <head>
     <meta charset="utf-8">
-
-    <!--====== Title ======-->
-    <title>DigiMark - Digital Marketing and SEO Agency Template | About</title>
-
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>AMTECH</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-
-    <!--====== Magnific Popup CSS ======-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        
-    <!--====== Slick CSS ======-->
-    <link rel="stylesheet" href="assets/css/slick.css">
-        
-    <!--====== Font Awesome CSS ======-->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        
-    <!--====== Line Icons CSS ======-->
-    <link rel="stylesheet" href="assets/css/LineIcons.css">
-        
-    <!--====== Animate CSS ======-->
-    <link rel="stylesheet" href="assets/css/animate.css">
-        
-    <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    
-    <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="assets/css/default.css">
-    
-    <!--====== Style CSS ======-->
-    <link rel="stylesheet" href="assets/css/style.css">
-
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/favicon.png}">
+    <!-- Material Design Iconic Font-V2.2.0 -->
+    <link rel="stylesheet" th:href="@{/css/material-design-iconic-font.min.css}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+    <!-- Font Awesome Stars-->
+    <link rel="stylesheet" th:href="@{/css/fontawesome-stars.css}">
+    <!-- Meanmenu CSS -->
+    <link rel="stylesheet" th:href="@{/css/meanmenu.css}">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" th:href="@{/css/slick.css}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" th:href="@{/css/animate.css}">
+    <!-- Jquery-ui CSS -->
+    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+    <!-- Venobox CSS -->
+    <link rel="stylesheet" th:href="@{/css/venobox.css}">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <!-- Bootstrap V4.1.3 Fremwork CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- Helper CSS -->
+    <link rel="stylesheet" th:href="@{/css/helper.css}">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <!-- Modernizr js -->
+    <script th:src="@{/js/vendor/modernizr-2.8.3.min.js}"></script>
 </head>
-
-<body>
-    <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-
-
-    <!--====== PRELOADER PART START ======-->
-
-    <div class="preloader">
-        <div class="loader">
-            <div class="ytp-spinner">
-                <div class="ytp-spinner-container">
-                    <div class="ytp-spinner-rotator">
-                        <div class="ytp-spinner-left">
-                            <div class="ytp-spinner-circle"></div>
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+            <header>
+                <!-- Begin Header Top Area -->
+                <div class="header-top">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Begin Header Top Left Area -->
+                            <div class="col-lg-3 col-md-4">
+                                <div class="header-top-left">
+                                    <ul class="phone-wrap">
+                                        <li><span>Telephone:</span><a href="#">(+41) 123 45 67</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Header Top Left Area End Here -->
+                            <!-- Begin Header Top Right Area -->
+                            <div class="col-lg-9 col-md-8">
+                                <div class="header-top-right">
+                                    <ul class="ht-menu">
+                                        <!-- Begin Currency Area -->
+                                        <li>
+                                            <span class="currency-selector-wrapper">Currency :</span>
+                                            <div class="ht-currency-trigger"><span>CHF .-</span></div>
+                                            <div class="currency ht-currency">
+                                                <ul class="ht-setting-list">
+                                                    <li><a href="#">EUR €</a></li>
+                                                    <li class="active"><a href="#">CHF .-</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <!-- Currency Area End Here -->
+                                        <!-- Begin Language Area -->
+                                        <li>
+                                            <span class="language-selector-wrapper">Language :</span>
+                                            <div class="ht-language-trigger"><span>English</span></div>
+                                            <div class="language ht-language">
+                                                <ul class="ht-setting-list">
+                                                    <li class="active"><a href="#"><img th:src="@{/images/menu/flag-icon/en_flag.jpg}" alt="">English</a></li>
+                                                    <li><a href="#"><img th:src="@{/images/menu/flag-icon/fr_flag.jpg}" alt="">Français</a></li>
+                                                    <li><a href="#"><img th:src="@{/images/menu/flag-icon/it_flag.jpg}" alt="">Italiano</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <!-- Language Area End Here -->
+                                        <!-- Begin Login Area -->
+                                        <li>
+                                            <a href="/login" class=" login language-selector-wrapper">Login</a>
+                                        </li>
+                                        <!-- Login Area End Here -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Header Top Right Area End Here -->
                         </div>
-                        <div class="ytp-spinner-right">
-                            <div class="ytp-spinner-circle"></div>
+                    </div>
+                </div>
+                <!-- Header Top Area End Here -->
+                <!-- Begin Header Middle Area -->
+                <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Begin Header Logo Area -->
+                            <div class="col-lg-3">
+                                <div class="logo pb-sm-30 pb-xs-30">
+                                    <a href="/">
+                                        <img  th:src="@{/images/logo.png}" alt="">
+                                    </a> 
+                                </div>
+                            </div>
+                            <!-- Header Logo Area End Here -->
+                            <!-- Begin Header Middle Right Area -->
+                            <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+                                <!-- Begin Header Middle Searchbox Area -->
+                                <form action="#" class="hm-searchbox">
+                                    <select class="nice-select select-search-category">
+                                        <option value="0">All</option>                         
+                                        <option value="10">Laptops</option>                     
+                                        <option value="17">- -  Prime Video</option>                    
+                                        <option value="20">- - - -  All Videos</option>                     
+                                        <option value="21">- - - -  Blouses</option>                        
+                                        <option value="22">- - - -  Evening Dresses</option>                
+                                        <option value="23">- - - -  Summer Dresses</option>                     
+                                        <option value="24">- - - -  T-shirts</option>                       
+                                        <option value="25">- - - -  Rent or Buy</option>                        
+                                        <option value="26">- - - -  Your Watchlist</option>                     
+                                        <option value="27">- - - -  Watch Anywhere</option>                     
+                                        <option value="28">- - - -  Getting Started</option>         
+                                        <option value="18">- - - -  Computers</option>                      
+                                        <option value="29">- - - -  More to Explore</option>         
+                                        <option value="30">- - - -  TV &amp; Video</option>                     
+                                        <option value="31">- - - -  Audio &amp; Theater</option>               
+                                        <option value="32">- - - -  Camera, Photo </option>
+                                        <option value="33">- - - -  Cell Phones</option>                        
+                                        <option value="34">- - - -  Headphones</option>                     
+                                        <option value="35">- - - -  Video Games</option>                        
+                                        <option value="36">- - - -  Wireless Speakers</option>            
+                                        <option value="19">- - - -  Electronics</option>                        
+                                        <option value="37">- - - -  Amazon Home</option>                        
+                                        <option value="38">- - - -  Kitchen &amp; Dining</option>           
+                                        <option value="39">- - - -  Furniture</option>                      
+                                        <option value="40">- - - -  Bed &amp; Bath</option>                     
+                                        <option value="41">- - - -  Appliances</option>                 
+                                        <option value="11">TV &amp; Audio</option>                  
+                                        <option value="42">- -  Chamcham</option>                        
+                                        <option value="45">- - - -  Office</option>                     
+                                        <option value="47">- - - -  Gaming</option>                 
+                                        <option value="48">- - - -  Chromebook</option>                     
+                                        <option value="49">- - - -  Refurbished</option>                    
+                                        <option value="50">- - - -  Touchscreen</option>                        
+                                        <option value="51">- - - -  Ultrabooks</option>                     
+                                        <option value="52">- - - -  Blouses</option>                        
+                                        <option value="43">- -  Meito</option>                        
+                                        <option value="53">- - - -  Hard Drives</option>                        
+                                        <option value="54">- - - -  Graphic Cards</option>                      
+                                        <option value="55">- - - -  Processors (CPU)</option>  
+                                        <option value="56">- - - -  Memory</option>                     
+                                        <option value="57">- - - -  Motherboards</option>                       
+                                        <option value="58">- - - -  Fans &amp; Cooling</option> 
+                                        <option value="59">- - - -  CD/DVD Drives</option>                      
+                                        <option value="44">- -  Sony Bravia</option>                        
+                                        <option value="60">- - - -  Sound Cards</option>                        
+                                        <option value="61">- - - -  Cases &amp; Towers</option>   
+                                        <option value="62">- - - -  Casual Dresses</option>                     
+                                        <option value="63">- - - -  Evening Dresses</option>       
+                                        <option value="64">- - - -  T-shirts</option>                       
+                                        <option value="65">- - - -  Tops</option>                                 
+                                        <option value="12">Smartphone</option>                  
+                                        <option value="66">- -  Camera Accessories</option>                     
+                                        <option value="68">- - - -  Octa Core</option>                      
+                                        <option value="69">- - - -  Quad Core</option>                  
+                                        <option value="70">- - - -  Dual Core</option>                      
+                                        <option value="71">- - - -  7.0 Screen</option>                     
+                                        <option value="72">- - - -  9.0 Screen</option>                     
+                                        <option value="73">- - - -  Bags &amp; Cases</option>                   
+                                        <option value="67">- -  XailStation</option>                     
+                                        <option value="74">- - - -  Batteries</option>                      
+                                        <option value="75">- - - -  Microphones</option>                        
+                                        <option value="76">- - - -  Stabilizers</option>                        
+                                        <option value="77">- - - -  Video Tapes</option>                        
+                                        <option value="78">- - - -  Memory Card Readers</option> 
+                                        <option value="79">- - - -  Tripods</option>           
+                                        <option value="13">Cameras</option>                          
+                                        <option value="14">headphone</option>                                
+                                        <option value="15">Smartwatch</option>                           
+                                        <option value="16">Accessories</option>
+                                    </select>
+                                    <input type="text" placeholder="Enter your search key ...">
+                                    <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                                </form>
+                                <!-- Header Middle Searchbox Area End Here -->
+                                <!-- Begin Header Middle Right Area -->
+                                <div class="header-middle-right">
+                                    <ul class="hm-menu">
+                                        <!-- Begin Header Middle Wishlist Area -->
+                                        <li class="hm-wishlist">
+                                            <a href="#">
+                                                <span class="cart-item-count wishlist-item-count">0</span>
+                                                <i class="fa fa-heart-o"></i>
+                                            </a>
+                                        </li>
+                                        <!-- Header Middle Wishlist Area End Here -->
+                                        <!-- Begin Header Mini Cart Area -->
+                                        <li class="hm-minicart">
+                                            <div class="hm-minicart-trigger">
+                                                <span class="item-icon"></span>
+                                                <span class="item-text">0.-
+                                                    <span class="cart-item-count">0</span>
+                                                </span>
+                                            </div>
+                                            <span></span>
+                                            <div class="minicart">
+                                                <ul class="minicart-product-list">
+                                                    <li>
+                                                        <a href="/product" class="minicart-product-image">
+                                                            <img th:src="@{/images/product/small-size/3.jpg}" alt="cart products">
+                                                        </a>
+                                                        <div class="minicart-product-details">
+                                                            <h6><a href="/product">Aenean eu tristique</a></h6>
+                                                            <span>£80 x 1</span>
+                                                        </div>
+                                                        <button class="close">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/product" class="minicart-product-image">
+                                                            <img th:src="@{/images/product/small-size/4.jpg}" alt="cart products">
+                                                        </a>
+                                                        <div class="minicart-product-details">
+                                                            <h6><a href="/product">Aenean eu tristique</a></h6>
+                                                            <span>£80 x 1</span>
+                                                        </div>
+                                                        <button class="close">
+                                                            <i class="fa fa-close"></i>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                                <p class="minicart-total">SUBTOTAL: <span>£160</span></p>
+                                                <div class="minicart-button">
+                                                    <a href="/shopping-cart" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                        <span>Shopping Cart</span>
+                                                    </a>
+                                                    <a href="/checkout" class="li-button li-button-fullwidth li-button-sm">
+                                                        <span>Checkout</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- Header Mini Cart Area End Here -->
+                                    </ul>
+                                </div>
+                                <!-- Header Middle Right Area End Here -->
+                            </div>
+                            <!-- Header Middle Right Area End Here -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Header Middle Area End Here -->
+                <!-- Begin Header Bottom Area -->
+                <div class="header-bottom header-sticky d-none d-lg-block">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Begin Header Bottom Menu Area -->
+                                <div class="hb-menu hb-menu-2 d-xl-block">
+                                    <nav>
+                                        <ul>
+                                            <li class="dropdown-holder"><a href="/">Home</a></li>
+                                            <li class="megamenu-static-holder"><a href="/">Pages</a>
+                                                <ul class="megamenu hb-megamenu">
+                                                    <li><a href="#">Categories</a>
+                                                        <ul>
+                                                            <li><a href="#">Category 1</a></li>
+                                                            <li><a href="#">Category 2</a></li>
+                                                            <li><a href="#">Category 3</a></li>
+                                                            <li><a href="#">Category 4</a></li>
+                                                            <li><a href="#">Category 5</a></li>
+                                                            <li><a href="#">Category 6</a></li>
+                                                            <li><a href="#">Category 7</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="blog-details-left-sidebar.html">Categories 2</a>
+                                                        <ul>
+                                                            <li><a href="#">Category 1</a></li>
+                                                            <li><a href="#">Category 2</a></li>
+                                                            <li><a href="#">Category 3</a></li>
+                                                            <li><a href="#">Category 4</a></li>
+                                                            <li><a href="#">Category 5</a></li>
+                                                            <li><a href="#">Category 6</a></li>
+                                                            <li><a href="#">Category 7</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="/">Account</a>
+                                                        <ul>
+                                                            <li><a href="/login">My Account</a></li>
+                                                            <li><a href="/checkout">Checkout</a></li>
+                                                            <li><a href="/shopping-cart">Shopping Cart</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="/">Other Info</a>
+                                                        <ul>
+                                                            <li><a href="/contact">Contact</a></li>
+                                                            <li><a href="/about">About Us</a></li>
+                                                            <li><a href="/error">404 Error</a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a id="about" href="/about">About Us</a></li>
+                                            <li><a id="contact" style="content: none!important;" href="/contact">Contact</a></li>
+                                            <!-- Begin Header Bottom Menu Information Area -->
+                                            <li class="hb-info f-right p-0 d-sm-none d-lg-block">
+                                                <span>1400 Yverdon, HEIG-VD, CH</span>
+                                            </li>
+                                            <!-- Header Bottom Menu Information Area End Here -->
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <!-- Header Bottom Menu Area End Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Header Bottom Area End Here -->
+                <!-- Begin Mobile Menu Area -->
+                <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+                    <div class="container"> 
+                        <div class="row">
+                            <div class="mobile-menu">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mobile Menu Area End Here -->
+            </header>
+            <!-- Header Area End Here -->
+            <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li class="active">About Us</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- about wrapper start -->
+            <div class="about-us-wrapper pt-60 pb-40">
+                <div class="container">
+                    <div class="row">
+                        <!-- About Text Start -->
+                        <div class="col-lg-6 order-last order-lg-first">
+                            <div class="about-text-wrap">
+                                <h2><span>Provide Best</span>Product For You</h2>
+                                <p>We provide the best Beard oile all over the world. We are the worldd best store in indi for Beard Oil. You can buy our product without any hegitation because they truste us and buy our product without any hagitation because they belive and always happy buy our product.</p>
+                                <p>Some of our customer say’s that they trust us and buy our product without any hagitation because they belive us and always happy to buy our product.</p>
+                                <p>We provide the beshat they trusted us and buy our product without any hagitation because they belive us and always happy to buy.</p>
+                            </div>
+                        </div>
+                        <!-- About Text End -->
+                        <!-- About Image Start -->
+                        <div class="col-lg-5 col-md-10">
+                            <div class="about-image-wrap">
+                                <img class="img-full" th:src="@{/images/product/large-size/13.jpg}" alt="About Us" />
+                            </div>
+                        </div>
+                        <!-- About Image End -->
+                    </div>
+                </div>
+            </div>
+            <!-- about wrapper end -->
+            <!-- Begin Counterup Area -->
+            <div class="counterup-area">
+                <div class="container-fluid p-0">
+                    <div class="row no-gutters">
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Begin Limupa Counter Area -->
+                            <div class="limupa-counter white-smoke-bg">
+                                <div class="container">
+                                    <div class="counter-img">
+                                        <img th:src="@{/images/about-us/icon/1.png}" alt="">
+                                    </div>
+                                    <div class="counter-info">
+                                        <div class="counter-number">
+                                            <h3 class="counter">2169</h3>
+                                        </div>
+                                        <div class="counter-text">
+                                            <span>HAPPY CUSTOMERS</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Begin limupa Counter Area -->
+                            <div class="limupa-counter gray-bg">
+                                <div class="counter-img">
+                                    <img th:src="@{/images/about-us/icon/2.png}" alt="">
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-number">
+                                        <h3 class="counter">869</h3>
+                                    </div>
+                                    <div class="counter-text">
+                                        <span>AWARDS WINNED</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Begin limupa Counter Area -->
+                            <div class="limupa-counter white-smoke-bg">
+                                <div class="counter-img">
+                                    <img th:src="@{/images/about-us/icon/3.png}" alt="">
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-number">
+                                        <h3 class="counter">689</h3>
+                                    </div>
+                                    <div class="counter-text">
+                                        <span>HOURS WORKED</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <!-- Begin limupa Counter Area -->
+                            <div class="limupa-counter gray-bg">
+                                <div class="counter-img">
+                                    <img th:src="@{/images/about-us/icon/4.png}" alt="">
+                                </div>
+                                <div class="counter-info">
+                                    <div class="counter-number">
+                                        <h3 class="counter">2169</h3>
+                                    </div>
+                                    <div class="counter-text">
+                                        <span>COMPLETE PROJECTS</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- limupa Counter Area End Here -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!--====== PRELOADER PART ENDS ======-->
-
-    <!--====== HEADER PART START ======-->
-
-    <header class="header-area">
-        <div class="navbar-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="/index">
-                                <img src="assets/images/logo.png" alt="Logo">
-                            </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
-
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul class="navbar-nav m-auto">
-                                    <li class="nav-item active">
-                                        <a href="/">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/about">About </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/services">Services</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#">Page</a>
-
-                                        <ul class="sub-menu">
-                                            <li><a href="/about">About</a></li>
-                                            <li><a href="/services">Services</a></li>
-                                            <li><a href="/pricing">Pricing</a></li>
-                                            <li><a href="/team">Team</a></li>
-                                            <li><a href="/sign-in">Sing In</a></li>
-                                            <li><a href="/sign-up">Sing Up</a></li>
-                                            <li><a href="/404-error">404 Error</a></li>
-                                        </ul> <!-- sub menu -->
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/contact">Contact</a>
-                                    </li>
-                                </ul>
-                            </div> <!-- navbar collapse -->
-
-                            <div class="navbar-user">
-                                <ul>
-                                    <li><a class="login" href="/sign-in">Login</a></li>
-                                    <li><a href="/sign-up">Sign Up</a></li>
-                                </ul>
+            <!-- Counterup Area End Here -->
+            <!-- team area wrapper start -->
+            <div class="team-area pt-60 pt-sm-44">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="li-section-title capitalize mb-25">
+                                <h2><span>our team</span></h2>
                             </div>
-                        </nav> <!-- navbar -->
+                        </div>
+                    </div> <!-- section title end -->
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="team-member mb-60 mb-sm-30 mb-xs-30">
+                                <div class="team-thumb">
+                                    <img th:src="@{/images/team/1.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Jonathan Scott</h3>
+                                    <p>IT Expert</p>
+                                    <a href="#">info@example.com</a>
+                                    <div class="team-social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="team-member mb-60 mb-sm-30 mb-xs-30">
+                                <div class="team-thumb">
+                                    <img th:src="@{/images/team/2.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Oliver Bastin</h3>
+                                    <p>Web Designer</p>
+                                    <a href="#">info@example.com</a>
+                                    <div class="team-social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="team-member mb-30 mb-sm-60">
+                                <div class="team-thumb">
+                                    <img th:src="@{/images/team/3.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Erik Jonson</h3>
+                                    <p>Web Developer</p>
+                                    <a href="#">info@example.com</a>
+                                    <div class="team-social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="team-member mb-30 mb-sm-60 mb-xs-60">
+                                <div class="team-thumb">
+                                    <img th:src="@{/images/team/4.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Maria Mandy</h3>
+                                    <p>Marketing officer</p>
+                                    <a href="#">info@example.com</a>
+                                    <div class="team-social">
+                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
                     </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- navbar area -->
-
-        <div class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-1.jpg)">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <h3 class="page-title"><b>A Digital</b> Generative Our <span>About.</span></h3>
-                        </div> <!-- page banner content -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- page banner -->
-    </header>
-
-    <!--====== HEADER PART ENDS ======-->
-
-    <!--====== ABOUT PART START ======-->
-
-    <section class="about-area-2 pt-70 pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about-image-2 text-center mt-50 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="assets/images/about-2.jpg" alt="about">
-                    </div> <!-- about image -->
                 </div>
-                <div class="col-lg-6">
-                    <div class="about-content-2 mt-45 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <div class="section-title">
-                            <h6 class="sub-title">About</h6>
-                            <h4 class="title">Hire us <br> let us <span>make it <br> happen.</span></h4>
-                        </div> <!-- section title -->
-                        <ul class="about-line">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <p class="text">
-                            Duis et metus et massa tempus lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ultricies, orci molestie blandit interdum. <br> <br> ipsum ante pellentesque nisl, eget mollis turpis quam nec eros. ultricies, orci molestie blandit interdum.
-                        </p>
-                        <div class="about-counter pt-60">
+            </div>
+            <!-- team area wrapper end -->
+            <!-- Begin Footer Area -->
+            <div class="footer">
+                <!-- Begin Footer Static Top Area -->
+                <div class="footer-static-top">
+                    <div class="container">
+                        <!-- Begin Footer Shipping Area -->
+                        <div class="footer-shipping pt-60 pb-55 pb-xs-25">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="single-counter counter-color-4 mt-30 d-flex">
-                                        <div class="counter-shape">
-                                            <span class="shape-1"></span>
-                                            <span class="shape-2"></span>
+                                <!-- Begin Li's Shipping Inner Box Area -->
+                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                                    <div class="li-shipping-inner-box">
+                                        <div class="shipping-icon">
+                                            <img th:src="@{/images/shipping-icon/1.png}" alt="Shipping Icon">
                                         </div>
-                                        <div class="counter-content media-body">
-                                            <span class="counter-count"><span class="counter">35</span>%</span>
-                                            <p class="text">Conversion Increase</p>
+                                        <div class="shipping-text">
+                                            <h2>Free Delivery</h2>
+                                            <p>And free returns. See checkout for delivery dates.</p>
                                         </div>
-                                    </div> <!-- single counter -->
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="single-counter counter-color-5 mt-30 d-flex">
-                                        <div class="counter-shape">
-                                            <span class="shape-1"></span>
-                                            <span class="shape-2"></span>
+                                <!-- Li's Shipping Inner Box Area End Here -->
+                                <!-- Begin Li's Shipping Inner Box Area -->
+                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                                    <div class="li-shipping-inner-box">
+                                        <div class="shipping-icon">
+                                            <img th:src="@{/images/shipping-icon/2.png}" alt="Shipping Icon">
                                         </div>
-                                        <div class="counter-content media-body">
-                                            <span class="counter-count"><span class="counter">100</span>%</span>
-                                            <p class="text">Satisfaction</p>
+                                        <div class="shipping-text">
+                                            <h2>Safe Payment</h2>
+                                            <p>Pay with the world's most popular and secure payment methods.</p>
                                         </div>
-                                    </div> <!-- single counter -->
+                                    </div>
                                 </div>
-                            </div> <!-- row -->
-                        </div> <!-- about counter -->
-                    </div> <!-- about content -->
-                </div> <!-- about image -->
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== ABOUT PART ENDS ======-->
-
-<section class="gallery-area pt-115">
-<div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <div class="about-title text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <h2 class="welcome">You are using free lite version of DigiMark</h2>
-                        <h3 class="title">Please purchase full version to get all pages and features</h3></br>
-                        <a class="main-btn" href="http://rebrand.ly/digimark-gg" rel="nofollow">Purchase Now</a>
-                    </div>
-
-                </div>
-            </div>
-    </section>
-
-    <!--====== PRICING PART START ======-->
-
-    <section class="pricing-area-2 pt-115">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-8 col-sm-9">
-                    <div class="section-title text-center pb-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h6 class="sub-title">Pricing Table</h6>
-                        <h4 class="title">We Giving Best Pricing <span>For Your Business.</span></h4>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing-2 text-center mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <div class="pricing-price">
-                            <span class="price"><b>50</b>/m.<span class="symbol">$</span></span>
-                        </div>
-                        <div class="pricing-title mt-20">
-                            <span class="btn">20% Off</span>
-                            <h4 class="title">Basic</h4>
-                        </div>
-                        <div class="pricing-list pt-20">
-                            <ul>
-                                <li>Full Access</li>
-                                <li>Unlimited Bandwidth</li>
-                                <li>50 gb Space</li>
-                                <li>1 Month Support</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn pt-70">
-                            <a class="main-btn main-btn-2" href="#">Sign Up Now !</a>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing-2 text-center pricing-active mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <div class="pricing-price">
-                            <span class="price"><b>69</b>/m.<span class="symbol">$</span></span>
-                        </div>
-                        <div class="pricing-title mt-20">
-                            <span class="btn">Special</span>
-                            <h4 class="title">Standard</h4>
-                        </div>
-                        <div class="pricing-list pt-20">
-                            <ul>
-                                <li>Full Access</li>
-                                <li>Unlimited Bandwidth</li>
-                                <li>50 gb Space</li>
-                                <li>1 Month Support</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn pt-70">
-                            <a class="main-btn" href="#">Sign Up Now !</a>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing-2 text-center mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="1.1s">
-                        <div class="pricing-price">
-                            <span class="price"><b>99</b>/m.<span class="symbol">$</span></span>
-                        </div>
-                        <div class="pricing-title mt-20">
-                            <span class="btn">New</span>
-                            <h4 class="title">Premium</h4>
-                        </div>
-                        <div class="pricing-list pt-20">
-                            <ul>
-                                <li>Full Access</li>
-                                <li>Unlimited Bandwidth</li>
-                                <li>50 gb Space</li>
-                                <li>1 Month Support</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn pt-70">
-                            <a class="main-btn main-btn-2" href="#">Sign Up Now !</a>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== PRICING PART ENDS ======-->
-
-    <!--====== FAQ PART START ======-->
-
-    <section class="faq-area pt-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="faq-content mt-45 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                        <div class="section-title">
-                            <h6 class="sub-title">Pricing Table</h6>
-                            <h4 class="title">Frequently Asked <span>Question <br> Our Fema Website?</span></h4>
-                        </div> <!-- section title -->
-                        <div class="faq-accordion">
-                            <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                        <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Efficient Blood Test Management</a>
-                                    </div>
-
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
+                                <!-- Li's Shipping Inner Box Area End Here -->
+                                <!-- Begin Li's Shipping Inner Box Area -->
+                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                                    <div class="li-shipping-inner-box">
+                                        <div class="shipping-icon">
+                                            <img th:src="@{/images/shipping-icon/3.png}" alt="Shipping Icon">
                                         </div>
-                                    </div> 
-                                </div> <!-- card -->
-                                <div class="card">
-                                    <div class="card-header" id="headingTwo">
-                                        <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">what hidden charge choose your pricing plan?</a>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
+                                        <div class="shipping-text">
+                                            <h2>Shop with Confidence</h2>
+                                            <p>Our Buyer Protection covers your purchasefrom click to delivery.</p>
                                         </div>
                                     </div>
-                                </div> <!-- card -->
-                                <div class="card">
-                                    <div class="card-header" id="headingThree">
-                                        <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">What Working With Application Core Features?</a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
+                                </div>
+                                <!-- Li's Shipping Inner Box Area End Here -->
+                                <!-- Begin Li's Shipping Inner Box Area -->
+                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                                    <div class="li-shipping-inner-box">
+                                        <div class="shipping-icon">
+                                            <img th:src="@{/images/shipping-icon/4.png}" alt="Shipping Icon">
+                                        </div>
+                                        <div class="shipping-text">
+                                            <h2>24/7 Help Center</h2>
+                                            <p>Have a question? Call a Specialist or chat online.</p>
                                         </div>
                                     </div>
-                                </div> <!-- card -->
-                                <div class="card">
-                                    <div class="card-header" id="headingFore">
-                                        <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFore" aria-expanded="false" aria-controls="collapseFore">Watch intro the video how to use it?</a>
-                                    </div>
-                                    <div id="collapseFore" class="collapse" aria-labelledby="headingFore" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- card -->
-                                <div class="card">
-                                    <div class="card-header" id="headingFive">
-                                        <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">What industries do you specialize in?</a>
-                                    </div>
-                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- card -->
+                                </div>
+                                <!-- Li's Shipping Inner Box Area End Here -->
                             </div>
-                        </div> <!-- faq accordion -->
-                    </div> <!-- faq content -->
-                </div>
-                <div class="col-lg-7">
-                    <div class="faq-image mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <img src="assets/images/faq.jpg" alt="faq">
-                    </div> <!-- faq image -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== FAQ PART ENDS ======-->
-
-    <!--====== TESTIMONIAL PART START ======-->
-
-    <section class="testimonial-area pt-70 pb-120">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-xl-5 col-lg-6">
-                    <div class="testimonial-left-content mt-45 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                        <div class="section-title">
-                            <h6 class="sub-title">Testimonials</h6>
-                            <h4 class="title">What Client Says, About Us</h4>
-                        </div> <!-- section title -->
-                        <ul class="testimonial-line">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <p class="text">Duis et metus et massa tempus lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ultricies, orci molestie blandit interdum. <br> <br> ipsum ante pellentesque nisl, eget mollis turpis quam nec eros. ultricies, orci molestie blandit interdum.</p>
-                    </div> <!-- testimonial left content -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-right-content mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <div class="quota">
-                            <i class="lni-quotation"></i>
                         </div>
-                        <div class="testimonial-content-wrapper testimonial-active">
-                            <div class="single-testimonial">
-                                <div class="testimonial-text">
-                                    <p class="text">“Praesent scelerisque, odio eu fermentum malesuada, nisi arcu volutpat nisl, sit amet convallis nunc turp.”</p>
-                                </div>
-                                <div class="testimonial-author d-sm-flex justify-content-between">
-                                    <div class="author-info d-flex align-items-center">
-                                        <div class="author-image">
-                                            <img src="assets/images/author-1.jpg" alt="author">
-                                        </div>
-                                        <div class="author-name media-body">
-                                            <h5 class="name">Mr. Jems Bond</h5>
-                                            <span class="sub-title">CEO Mbuild Firm</span>
-                                        </div>
+                        <!-- Footer Shipping Area End Here -->
+                    </div>
+                </div>
+                <!-- Footer Static Top Area End Here -->
+                <!-- Begin Footer Static Middle Area -->
+                <div class="footer-static-middle">
+                    <div class="container">
+                        <div class="footer-logo-wrap pt-50 pb-35">
+                            <div class="row">
+                                <!-- Begin Footer Logo Area -->
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="footer-logo">
+                                        <img th:src="@{/images/logo.png}" alt="Footer Logo">
+                                        <p class="info">
+                                            AMTECH is a company that deals with the sale of high quality technological products.
+                                        </p>
                                     </div>
-                                    <div class="author-review">
-                                        <ul class="star">
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
+                                    <ul class="des">
+                                        <li>
+                                            <span>Address: </span>
+                                            6688Princess Road, London, Greater London BAS 23JK, UK
+                                        </li>
+                                        <li>
+                                            <span>Phone: </span>
+                                            <a href="#">(+123) 123 321 345</a>
+                                        </li>
+                                        <li>
+                                            <span>Email: </span>
+                                            <a href="mailto://info@yourdomain.com">info@yourdomain.com</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Footer Logo Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-2 col-md-3 col-sm-6">
+                                    <div class="footer-block">
+                                        <h3 class="footer-block-title">Product</h3>
+                                        <ul>
+                                            <li><a href="#">Prices drop</a></li>
+                                            <li><a href="#">New products</a></li>
+                                            <li><a href="#">Best sales</a></li>
+                                            <li><a href="#">Contact us</a></li>
                                         </ul>
-                                        <span class="review">( 7 Reviews )</span>
                                     </div>
                                 </div>
-                            </div> <!-- single testimonial -->
-                            <div class="single-testimonial">
-                                <div class="testimonial-text">
-                                    <p class="text">“Praesent scelerisque, odio eu fermentum malesuada, nisi arcu volutpat nisl, sit amet convallis nunc turp.”</p>
-                                </div>
-                                <div class="testimonial-author d-sm-flex justify-content-between">
-                                    <div class="author-info d-flex align-items-center">
-                                        <div class="author-image">
-                                            <img src="assets/images/author-2.jpg" alt="author">
-                                        </div>
-                                        <div class="author-name media-body">
-                                            <h5 class="name">Mr. Jems Bond</h5>
-                                            <span class="sub-title">CEO Mbuild Firm</span>
-                                        </div>
-                                    </div>
-                                    <div class="author-review">
-                                        <ul class="star">
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
+                                <!-- Footer Block Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-2 col-md-3 col-sm-6">
+                                    <div class="footer-block">
+                                        <h3 class="footer-block-title">Our company</h3>
+                                        <ul>
+                                            <li><a href="#">Delivery</a></li>
+                                            <li><a href="#">Legal Notice</a></li>
+                                            <li><a href="#">About us</a></li>
+                                            <li><a href="#">Contact us</a></li>
                                         </ul>
-                                        <span class="review">( 7 Reviews )</span>
                                     </div>
                                 </div>
-                            </div> <!-- single testimonial -->
-                            <div class="single-testimonial">
-                                <div class="testimonial-text">
-                                    <p class="text">“Praesent scelerisque, odio eu fermentum malesuada, nisi arcu volutpat nisl, sit amet convallis nunc turp.”</p>
-                                </div>
-                                <div class="testimonial-author d-sm-flex justify-content-between">
-                                    <div class="author-info d-flex align-items-center">
-                                        <div class="author-image">
-                                            <img src="assets/images/author-3.jpg" alt="author">
-                                        </div>
-                                        <div class="author-name media-body">
-                                            <h5 class="name">Mr. Jems Bond</h5>
-                                            <span class="sub-title">CEO Mbuild Firm</span>
-                                        </div>
-                                    </div>
-                                    <div class="author-review">
-                                        <ul class="star">
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
+                                <!-- Footer Block Area End Here -->
+                                <!-- Begin Footer Block Area -->
+                                <div class="col-lg-4">
+                                    <div class="footer-block">
+                                        <h3 class="footer-block-title">Follow Us</h3>
+                                        <ul class="social-link">
+                                            <li class="twitter">
+                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="rss">
+                                                <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
+                                                    <i class="fa fa-rss"></i>
+                                                </a>
+                                            </li>
+                                            <li class="google-plus">
+                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                            <li class="facebook">
+                                                <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="youtube">
+                                                <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
+                                                    <i class="fa fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                            <li class="instagram">
+                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                    <i class="fa fa-instagram"></i>
+                                                </a>
+                                            </li>
                                         </ul>
-                                        <span class="review">( 7 Reviews )</span>
                                     </div>
+                                    <!-- Begin Footer Newsletter Area -->
+                                    <div class="footer-newsletter">
+                                        <h4>Sign up to newsletter</h4>
+                                        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
+                                           <div id="mc_embed_signup_scroll">
+                                              <div id="mc-form" class="mc-form subscribe-form form-group" >
+                                                <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email" />
+                                                <button  class="btn" id="mc-submit">Subscribe</button>
+                                              </div>
+                                           </div>
+                                        </form>
+                                    </div>
+                                    <!-- Footer Newsletter Area End Here -->
                                 </div>
-                            </div> <!-- single testimonial -->
-                        </div> <!-- testimonial content wrapper -->
-                    </div> <!-- testimonial right content -->
+                                <!-- Footer Block Area End Here -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== TESTIMONIAL PART ENDS ======-->
-    
-    <!--====== NEWSLATTER PART START ======-->
-    
-    <section class="newsletter-area bg_cover pt-115 pb-120" style="background-image: url(assets/images/newsletter-bg.jpg)">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="newsletter-wrapper">
-                        <div class="section-title text-center wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
-                            <h6 class="sub-title">NEWSLETTER</h6>
-                            <h4 class="title">Get only new and unique <span>update from this newsletter.</span></h4>
-                        </div> <!-- section title -->
-                        <div class="newsletter-form wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                            <form action="#">
-                                <input type="text" placeholder="Enter your Email .......">
-                                <button class="main-btn">Subscribe</button>
-                            </form>
-                        </div> <!-- newsletter form -->
-                    </div> <!-- newsletter wrapper -->
+                <!-- Footer Static Middle Area End Here -->
+                <!-- Begin Footer Static Bottom Area -->
+                <div class="footer-static-bottom pt-55 pb-55">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <!-- Begin Footer Links Area -->
+                                <div class="footer-links">
+                                    <ul>
+                                        <li><a href="#">Online Shopping</a></li>
+                                        <li><a href="#">Promotions</a></li>
+                                        <li><a href="#">My Orders</a></li>
+                                        <li><a href="#">Help</a></li>
+                                        <li><a href="#">Our Stores</a></li>
+                                        <li><a href="#">Shipping</a></li>
+                                        <li><a href="#">Payments</a></li>
+                                        <li><a href="#">Warantee</a></li>
+                                        <li><a href="#">Refunds</a></li>
+                                        <li><a href="#">Checkout</a></li>
+                                        <li><a href="#">Discount</a></li>
+                                        <li><a href="#">Refunds</a></li>
+                                        <li><a href="#">Policy Shipping</a></li>
+                                    </ul>
+                                </div>
+                                <!-- Footer Links Area End Here -->
+                                <!-- Begin Footer Payment Area -->
+                                <div class="copyright text-center">
+                                    <a href="#">
+                                        <img th:src="@{/images/payment/1.png}" alt="">
+                                    </a>
+                                </div>
+                                <!-- Footer Payment Area End Here -->
+                                <!-- Begin Copyright Area -->
+                                <div class="copyright text-center pt-25">
+                                    <span><a target="_blank" href="#">Copyright © AMTECH</a></span>
+                                </div>
+                                <!-- Copyright Area End Here -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-    
-    <!--====== NEWSLATTER PART ENDS ======-->
-
-    <!--====== FOOTER PART START ======-->
-
-    <footer class="footer-area bg_cover" style="background-image: url(assets/images/footer-bg.jpg)">
-        <div class="container">
-            <div class="footer-widget pt-30 pb-70">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 order-sm-1 order-lg-1">
-                        <div class="footer-about pt-40">
-                            <a href="#">
-                                <img src="assets/images/logo.png" alt="Logo">
-                            </a>
-                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, repudiandae! Totam, nemo sed? Provident.</p>
-                        </div> <!-- footer about -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-3 order-lg-2">
-                        <div class="footer-link pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">Services</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Seo Services</a></li>
-                                <li><a href="#">Virtual Marketing</a></li>
-                                <li><a href="#">Web Analytics</a></li>
-                                <li><a href="#">Web Development</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-4 order-lg-3">
-                        <div class="footer-link pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">About Us</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Overview</a></li>
-                                <li><a href="#">Why us</a></li>
-                                <li><a href="#">Awards & Recognitions</a></li>
-                                <li><a href="#">Team</a></li>
-                                <li><a href="#">Client Reviews</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-2 order-lg-4">
-                        <div class="footer-contact pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">Client Reviews</h5>
-                            </div>
-                            <div class="contact pt-10">
-                                <p class="text">Dumbo dika, Mirpur-12 <br> R-9/A B-C Dhaka.</p>
-                                <p class="text">clinexmex0011@gmail.com</p>
-                                <p class="text">+99 000 555 66 22</p>
-
-                                <ul class="social mt-40">
-                                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-twitter"></i></a></li>
-                                    <li><a href="#"><i class="lni-instagram-original"></i></a></li>
-                                    <li><a href="#"><i class="lni-linkedin"></i></a></li>
-                                </ul>
-                            </div> <!-- contact -->
-                        </div> <!-- footer contact -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- footer widget -->
-            <div class="footer-copyright text-center">
-                <p class="text">© 2022 Crafted by <a href="https://uideck.com" rel="nofollow">UIdeck</a> All Rights Reserved.</p>
+                <!-- Footer Static Bottom Area End Here -->
             </div>
-        </div> <!-- container -->
-    </footer>
-
-    <!--====== FOOTER PART ENDS ======-->
-
-    <!--====== BACK TOP TOP PART START ======-->
-
-    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
-
-    <!--====== BACK TOP TOP PART ENDS ======-->
-
-    <!--====== PART START ======-->
-
-    <!--
-    <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-">
-                    
-                </div>
-            </div>
+            <!-- Footer Area End Here -->
         </div>
-    </section>
--->
+        <!-- Body Wrapper End Here -->
+        <!-- jQuery-V1.12.4 -->
+    <script th:src="@{/js/vendor/jquery-1.12.4.min.js}"></script>
+    <!-- Popper js -->
+    <script th:src="@{/js/vendor/popper.min.js}"></script>
+    <!-- Bootstrap V4.1.3 Fremwork js -->
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <!-- Ajax Mail js -->
+    <script th:src="@{/js/ajax-mail.js}"></script>
+    <!-- Meanmenu js -->
+    <script th:src="@{/js/jquery.meanmenu.min.js}"></script>
+    <!-- Wow.min js -->
+    <script th:src="@{/js/wow.min.js}"></script>
+    <!-- Slick Carousel js -->
+    <script th:src="@{/js/slick.min.js}"></script>
+    <!-- Owl Carousel-2 js -->
+    <script th:src="@{/js/owl.carousel.min.js}"></script>
+    <!-- Magnific popup js -->
+    <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+    <!-- Isotope js -->
+    <script th:src="@{/js/isotope.pkgd.min.js}"></script>
+    <!-- Imagesloaded js -->
+    <script th:src="@{/js/imagesloaded.pkgd.min.js}"></script>
+    <!-- Mixitup js -->
+    <script th:src="@{/js/jquery.mixitup.min.js}"></script>
+    <!-- Countdown -->
+    <script th:src="@{/js/jquery.countdown.min.js}"></script>
+    <!-- Counterup -->
+    <script th:src="@{/js/jquery.counterup.min.js}"></script>
+    <!-- Waypoints -->
+    <script th:src="@{/js/waypoints.min.js}"></script>
+    <!-- Barrating -->
+    <script th:src="@{/js/jquery.barrating.min.js}"></script>
+    <!-- Jquery-ui -->
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
+    <!-- Venobox -->
+    <script th:src="@{/js/venobox.min.js}"></script>
+    <!-- Nice Select js -->
+    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
+    <!-- ScrollUp js -->
+    <script th:src="@{/js/scrollUp.min.js}"></script>
+    <!-- Main/Activator js -->
+    <script th:src="@{/js/main.js}"></script>
+    </body>
 
-    <!--====== PART ENDS ======-->
-
-    <!-- row -->
-
-
-    <!--====== Jquery js ======-->
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    
-    <!--====== Bootstrap js ======-->
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    
-    <!--====== Plugins js ======-->
-    <script src="assets/js/plugins.js"></script>
-    
-    <!--====== Slick js ======-->
-    <script src="assets/js/slick.min.js"></script>
-    
-    <!--====== Ajax Contact js ======-->
-    <script src="assets/js/ajax-contact.js"></script>
-    
-    <!--====== Isotope js ======-->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    
-    <!--====== Magnific Popup js ======-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    
-    <!--====== Counter Up js ======-->
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    
-    <!--====== Circles js ======-->
-    <script src="assets/js/circles.min.js"></script>
-    
-    <!--====== Appear js ======-->
-    <script src="assets/js/jquery.appear.min.js"></script>
-    
-    <!--====== WOW js ======-->
-    <script src="assets/js/wow.min.js"></script>
-    
-    <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
+<!-- about-us32:14-->
 </html>

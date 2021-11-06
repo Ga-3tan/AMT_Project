@@ -18,9 +18,15 @@ public class ProductServiceTest {
     @Test
     @Order(1)
     public void it_should_create_Data() {
-        prodServ.createProduct("1", "/img.png", "prod1", "Try to create product 1", 5.5, 10, false, 0, new String[]{"high-tech", "cpu"});
-        prodServ.createProduct("2", "/img.png", "prod2", "Try to create product 1", 2.5, 1, false, 0, new String[]{"cpu", "lol"});
-        prodServ.createProduct("3", "/img.png", "prod3", "Try to create product 1", 5, 4, true, 0.5, new String[]{"NaN"});
+        prodServ.createProduct("1", "/img.png", "prod1", "Try to create product 1", 5.5, 10,1, false, 0, new String[]{"high-tech", "cpu"});
+        prodServ.createProduct("2", "/img.png", "prod2", "Try to create product 1", 2.5, 1,2, false, 0, new String[]{"headphones"});
+        prodServ.createProduct("3", "/img.png", "prod3", "Try to create product 1", 5, 4,3, true, 0.5, new String[]{"NaN"});
+        prodServ.createProduct("4", "/img.png", "prod1", "Try to create product 1", 5.5, 10,3, false, 0, new String[]{"high-tech", "cpu"});
+        prodServ.createProduct("5", "/img.png", "prod2", "Try to create product 1", 2.5, 1,5, false, 0, new String[]{"cpu", "keyboards"});
+        prodServ.createProduct("6", "/img.png", "prod3", "Try to create product 1", 5, 4, 3,true, 0.5, new String[]{"NaN"});
+        prodServ.createProduct("7", "/img.png", "prod1", "Try to create product 1", 5.5, 10, 4,false, 0, new String[]{"high-tech", "cpu"});
+        prodServ.createProduct("8", "/img.png", "prod2", "Try to create product 1", 2.5, 1, 4,false, 0, new String[]{"tv", "lol"});
+        prodServ.createProduct("9", "/img.png", "prod3", "Try to create product 1", 5, 4, 2,true, 0.5, new String[]{"NaN"});
         assertThat(prodServ.count()).isEqualTo(3);
     }
 
@@ -73,11 +79,11 @@ public class ProductServiceTest {
         prodServ.getAllProducts().forEach(product -> actual.append(product).append("\n"));
         assertThat(actual.toString()).isEqualTo(expected);
     }
-
+/*
     @Test
     @Order(7)
     public void it_should_cleanDB() {
         prodServ.deleteAllProduct();
         assertThat(prodServ.count()).isEqualTo(0);
-    }
+    }*/
 }

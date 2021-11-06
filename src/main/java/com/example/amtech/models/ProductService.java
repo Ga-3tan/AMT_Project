@@ -19,8 +19,8 @@ public class ProductService {
     // CRUD operations
 
     //CREATE
-    public void createProduct(String id, String img, String name, String description, double price, int quantity, boolean sale, double salePercentage, String[] category) {
-        productRepo.save(new Product(id, img, name, description, price, quantity, sale, salePercentage, category));
+    public void createProduct(String id, String img, String name, String description, double price, int quantity, int rating, boolean sale, double salePercentage, String[] category) {
+        productRepo.save(new Product(id, img, name, description, price, quantity, rating, sale, salePercentage, category));
     }
 
     // READ

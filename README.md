@@ -69,7 +69,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * [Spring](https://spring.io/)
 * [Couchease](https://couchbase.com/)
 * [AWS](https://https://aws.amazon.com/)
-* [FreeMarker](https://https://freemarker.apache.org/)
+* [Thymeleaf](https://www.thymeleaf.org/)
 
 <!-- GETTING STARTED -->
 

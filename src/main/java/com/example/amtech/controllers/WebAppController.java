@@ -9,56 +9,38 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class WebAppController {
 
     @GetMapping("/")
-    public String homepage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String homepage(Model model) {
         return "index";
     }
 
     @GetMapping("/about")
-    public String about(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String about(Model model) {
         return "about";
     }
 
     @GetMapping("/contact")
-    public String contact(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String contact(Model model) {
         return "contact";
     }
 
-    @GetMapping("/pricing")
-    public String pricing(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "pricing";
+    @GetMapping("/checkout")
+    public String checkout(Model model) {
+        return "checkout";
     }
 
-    @GetMapping("/services")
-    public String services(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "services";
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
     }
 
-    @GetMapping("/sign-in")
-    public String signIn(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "sign-in";
+
+    @GetMapping("/shopping-cart")
+    public String cart(Model model) {
+        return "shopping-cart";
     }
 
-    @GetMapping("/sign-up")
-    public String signUp(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "sign-up";
-    }
-
-    @GetMapping("/team")
-    public String team(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "team";
-    }
-
-    @GetMapping("/404-error")
-    public String error(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "404-error";
+    @GetMapping("/error")
+    public String error(Model model) {
+        return "error";
     }
 }
