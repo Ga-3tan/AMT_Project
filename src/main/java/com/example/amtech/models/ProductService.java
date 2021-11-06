@@ -1,5 +1,6 @@
 package com.example.amtech.models;
 
+import com.example.amtech.repository.CustomProductRepository;
 import com.example.amtech.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,17 +13,14 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepo;
 
+    @Autowired
+    private CustomProductRepository customProductRepo;
+
     // CRUD operations
 
     //CREATE
-    public void createGroceryItems() {
-        System.out.println("Data creation started...");
-
-        productRepo.save(new Product("1", "/img.png", "prod1", "Try to create product 1", 5.5, 10, false, 0, new String[]{"high-tech", "cpu"}));
-        productRepo.save(new Product("2", "/img.png", "prod2", "Try to create product 1", 2.5, 1, false, 0, new String[]{"cpu", "lol"}));
-        productRepo.save(new Product("3", "/img.png", "prod3", "Try to create product 1", 5, 4, true, 0.5, new String[]{"NaN"}));
-
-        System.out.println("Data creation complete...");
+    public void createProduct(String id, String img, String name, String description, double price, int quantity, boolean sale, double salePercentage, String[] category) {
+        productRepo.save(new Product(id, img, name, description, price, quantity, sale, salePercentage, category));
     }
 
     // READ
@@ -43,9 +41,16 @@ public class ProductService {
     }
 
     //UPDATE
+    public boolean updateProductQuantity(String id, int newQuantity) {
+        return customProductRepo.updateProductQuantity(id, newQuantity);
+    }
 
     //DELETE
     public void deleteAllProduct() {
         productRepo.deleteAll(); // Doesn't delete the collection
+    }
+
+    public void deleteById(String id) {
+        productRepo.deleteById(id);
     }
 }

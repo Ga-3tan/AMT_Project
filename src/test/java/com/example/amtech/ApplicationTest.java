@@ -1,7 +1,6 @@
 package com.example.amtech;
 
 import org.junit.jupiter.api.Test;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
@@ -23,6 +22,6 @@ public class ApplicationTest {
     public void homepageShouldReturnDefaultMessage() throws Exception {
 /*        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/",
                 String.class)).contains("Home");*/
-          assertThat(true);
+          assertThat(restTemplate).isNotNull();
     }
 }
