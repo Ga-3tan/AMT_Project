@@ -1,24 +1,23 @@
 package com.example.amtech.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.couchbase.core.mapping.Document;
-import org.springframework.data.couchbase.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Builder
 @AllArgsConstructor
-@Document
+@Document(collection = "products")
 public class Product {
-
     @Id
-    final String id;
-
-    @Field
-    String name;
-
-    @Field
-    String description;
+    private final String id;
+    private String img;
+    private String name;
+    private String description;
+//    private Object productDetails;
+    private double price;
+    private int quantity;
+    private boolean sale;
+    private double salePercentage;
+    private String[] category;
 }

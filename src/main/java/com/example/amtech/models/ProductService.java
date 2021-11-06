@@ -1,37 +1,56 @@
 package com.example.amtech.models;
 
-import com.example.amtech.repository.AmtechRepository;
+import com.example.amtech.repository.CustomProductRepository;
+import com.example.amtech.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 public class ProductService {
 
     @Autowired
-    AmtechRepository amtechRepository;
+    private ProductRepository productRepo;
 
-    //save new product in the couchbase
-    public void save(final Product e) {
-        amtechRepository.save(e);
+    @Autowired
+    private CustomProductRepository customProductRepo;
+
+    // CRUD operations
+
+    //CREATE
+    public void createProduct(String id, String img, String name, String description, double price, int quantity, boolean sale, double salePercentage, String[] category) {
+        productRepo.save(new Product(id, img, name, description, price, quantity, sale, salePercentage, category));
     }
 
-    //get all product from the couchbase
-    public List<Product> getProducts() {
-        final Iterable<Product> productIterable = amtechRepository.findAll();
-        return StreamSupport.stream(productIterable.spliterator(), false).collect(Collectors.toList());
+    // READ
+    public List<Product> getAllProducts() {
+        return productRepo.findAll();
     }
 
-    //get product by id from the couchbase
-    public Optional<Product> getProduct(final String id) {
-        if (amtechRepository.existsById(id)) {
-            return amtechRepository.findById(id);
-        } else {
-            return Optional.empty();
-        }
+    public Product getById(String id) {
+        return productRepo.findById(id).orElse(null);
+    }
+
+    public List<Product> getProductsByCategory(String category) {
+        return productRepo.allFromCategory(category);
+    }
+
+    public long count() {
+        return productRepo.count();
+    }
+
+    //UPDATE
+    public boolean updateProductQuantity(String id, int newQuantity) {
+        return customProductRepo.updateProductQuantity(id, newQuantity);
+    }
+
+    //DELETE
+    public void deleteAllProduct() {
+        productRepo.deleteAll(); // Doesn't delete the collection
+    }
+
+    public void deleteById(String id) {
+        productRepo.deleteById(id);
     }
 }
