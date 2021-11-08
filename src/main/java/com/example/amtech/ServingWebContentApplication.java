@@ -8,7 +8,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
-@EnableMongoRepositories(basePackageClasses = ProductRepository.class)
+@EnableMongoRepositories
 public class ServingWebContentApplication extends SpringBootServletInitializer {
 
     @Override
