@@ -2,6 +2,7 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.models.Product;
 import com.example.amtech.models.ProductService;
+import com.example.amtech.models.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,9 @@ public class CategoryController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ShoppingCart shoppingCart;
+
     @GetMapping("/category")
     public String shop(Model model) {
         List<Product> products = this.productService.getAllProducts();
@@ -25,7 +29,6 @@ public class CategoryController {
 
         return "shop";
     }
-
 
     @GetMapping("/category/{categoryName}")
     public String shop(@PathVariable String categoryName, Model model) {
