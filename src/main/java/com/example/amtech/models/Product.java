@@ -2,7 +2,6 @@ package com.example.amtech.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,7 +14,6 @@ public class Product {
     private String img;
     private String name;
     private String description;
-//    private Object productDetails;
     private double price;
     private int quantity;
     private int rating;
