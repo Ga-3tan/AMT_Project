@@ -1,19 +1,28 @@
 package com.example.amtech.models;
 
 import lombok.Data;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @Component
 public class ShoppingCart {
-    private List<Product> products = new ArrayList<>();
+    private Map<Product, Integer> products = new HashMap<>();
 
     public void addToCart(Product p) {
-        products.add(p);
+        Integer qty = products.get(p);
+        if (qty == null) qty = 0;
+        products.put(p, ++qty);
+    }
+
+    public double getTotal() {
+        return getProducts()
+                .keySet()
+                .stream()
+                .map(p -> p.getPrice() * getProducts().get(p))
+                .reduce(0., Double::sum);
     }
 }

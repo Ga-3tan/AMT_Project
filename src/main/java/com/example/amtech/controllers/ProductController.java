@@ -1,11 +1,13 @@
 package com.example.amtech.controllers;
 
+import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.ProductService;
 import com.example.amtech.models.ShoppingCart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
@@ -13,9 +15,6 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
-
-    @Autowired
-    private ShoppingCart shoppingCart;
 
     @GetMapping("/product/{id}")
     public String product(@PathVariable String id, Model model) {

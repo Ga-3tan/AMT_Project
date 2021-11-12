@@ -1,5 +1,6 @@
 package com.example.amtech.controllers;
 
+import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Product;
 import com.example.amtech.models.ShoppingCart;
 import org.springframework.stereotype.Controller;
@@ -14,12 +15,8 @@ public class ShoppingCartController {
 
     @GetMapping("/shopping-cart")
     public String product(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        if (shoppingCart != null) {
-            shoppingCart.addToCart(new Product("1", "/img.png", "prod1", "Try to create product 1", 5.5, 10,1, false, 0, new String[]{"high-tech", "cpu"}));
-            model.addAttribute("cart", shoppingCart);
-        } else {
-            model.addAttribute("cart", new ShoppingCart());
-        }
+        shoppingCart.addToCart(new Product("1", "1.jpg", "prod1", "Try to create product 1", 5.5, 10,1, false, 0, new String[]{"high-tech", "cpu"}));
+        model.addAttribute("cart", shoppingCart);
         return "shopping-cart";
     }
 
