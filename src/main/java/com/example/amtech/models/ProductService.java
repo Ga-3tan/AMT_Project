@@ -2,18 +2,17 @@ package com.example.amtech.models;
 
 import com.example.amtech.repository.CustomProductRepository;
 import com.example.amtech.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class ProductService {
 
-    @Autowired
     private ProductRepository productRepo;
 
-    @Autowired
     private CustomProductRepository customProductRepo;
 
     // CRUD operations
