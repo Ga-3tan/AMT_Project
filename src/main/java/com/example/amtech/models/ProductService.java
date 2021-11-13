@@ -18,8 +18,9 @@ public class ProductService {
     // CRUD operations
 
     //CREATE
-    public void createProduct(String id, String img, String name, String description, double price, int quantity, int rating, boolean sale, double salePercentage, String[] category) {
-        productRepo.save(new Product(id, img, name, description, price, quantity, rating, sale, salePercentage, category));
+    public String createProduct(String id, String img, String name, String description, double price, int quantity, int rating, boolean sale, double salePercentage, String[] category) {
+        Product p = productRepo.save(new Product(id, img, name, description, price, quantity, rating, sale, salePercentage, category));
+        return p.getId();
     }
 
     // READ
@@ -32,7 +33,7 @@ public class ProductService {
     }
 
     public List<Product> getProductsByCategory(String category) {
-        return productRepo.allFromCategory(category);
+        return productRepo.allProductsFromCategory(category);
     }
 
     public long count() {

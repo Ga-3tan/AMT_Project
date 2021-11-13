@@ -12,5 +12,5 @@ public interface ProductRepository extends MongoRepository<Product, String> {
     Product findProductByName(String name);
 
     @Query("{category:'?0'}")
-    List<Product> allFromCategory(String category);
+    List<Product> allProductsFromCategory(String category);
 }
