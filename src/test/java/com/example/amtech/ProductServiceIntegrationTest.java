@@ -15,11 +15,11 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@ContextConfiguration(initializers = {ProductServiceTest.Initializer.class})
+@ContextConfiguration(initializers = {ProductServiceIntegrationTest.Initializer.class})
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Testcontainers
-public class ProductServiceTest {
+public class ProductServiceIntegrationTest {
 
     @Container
     public static MongoDBContainer mongo = new MongoDBContainer("mongo");
@@ -30,7 +30,8 @@ public class ProductServiceTest {
     @Test
     @Order(1)
     public void it_should_create_Data() {
-        prodServ.createProduct("1", "/img.png", "testProd1", "Try to create product 1", 5.5, 10,1, false, 0, new String[]{"high-tech", "cpu"});
+        String id = prodServ.createProduct("1", "/img.png", "testProd1", "Try to create product 1", 5.5, 10,1, false, 0, new String[]{"high-tech", "cpu"});
+        assertThat(id).isEqualTo("1");
         prodServ.createProduct("2", "/img.png", "testProd2", "Try to create product 1", 2.5, 1,2, false, 0, new String[]{"cpu", "composant"});
         prodServ.createProduct("3", "/img.png", "testProd3", "Try to create product 1", 5, 4,3, true, 0.5, new String[]{"NaN"});
         assertThat(prodServ.count()).isEqualTo(3);
@@ -93,11 +94,10 @@ public class ProductServiceTest {
         assertThat(prodServ.count()).isEqualTo(0);
     }
 
-    static class Initializer
-            implements ApplicationContextInitializer<ConfigurableApplicationContext> {
+    static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
         public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
             TestPropertyValues.of(
-                    "spring.data.mongodb.uri=mongodb://root:example@localhost:27017/amtech",
+                    "spring.data.mongodb.uri=mongodb://root:example@localhost:27017/testAmtech",
                     "spring.data.mongodb.database=testAmtech"
             ).applyTo(configurableApplicationContext.getEnvironment());
         }
