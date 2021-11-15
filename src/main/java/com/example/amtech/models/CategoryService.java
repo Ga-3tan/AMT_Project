@@ -38,7 +38,7 @@ public class CategoryService {
     }
 
     // READ
-    public List<Category> getAllProducts() {
+    public List<Category> getAllCategories() {
         return categoryRepo.findAll();
     }
 

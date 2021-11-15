@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @AllArgsConstructor
@@ -62,4 +63,27 @@ public class InsertController {
         categoryService.createCategory(category);
         return "insert-category";
     }
+
+    @GetMapping("/update-quantity/{id}")
+    public String updateQuantity(@PathVariable String id, Model model) {
+        System.out.println(productService.getById(id));//TODO DEBUG
+        model.addAttribute("product", productService.getById(id));
+        return "update-quantity";
+    }
+
+    @PostMapping("/update-quantity/{id}")
+    public String updateQuantityPost(@ModelAttribute Product product, BindingResult bindingResult, Model model) {
+        model.addAttribute("product", product);
+
+        // If an error occurs when parsing from post method
+        if(bindingResult.hasErrors()){
+            System.out.println("There was a error "+bindingResult);
+            return "error";
+        }
+
+        System.out.println(product);//TODO DEBUG
+        productService.updateProductQuantity(product.getId(), product.getQuantity());
+        return "update-quantity";
+    }
+
 }
