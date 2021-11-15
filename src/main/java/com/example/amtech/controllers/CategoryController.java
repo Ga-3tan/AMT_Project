@@ -13,18 +13,16 @@ import java.util.List;
 
 
 @Controller
-public class CategoryController {
+public class CategoryController extends SessionController {
 
     @Autowired
     private ProductService productService;
 
-    @Autowired
-    private ShoppingCart shoppingCart;
-
     @GetMapping("/category")
-    public String shop(Model model) {
+    public String shop(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         List<Product> products = this.productService.getAllProducts();
 
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         model.addAttribute("products", products);
         model.addAttribute("categoryName", "All categories");
 
@@ -32,9 +30,10 @@ public class CategoryController {
     }
 
     @GetMapping("/category/{categoryName}")
-    public String shop(@PathVariable String categoryName, Model model) {
+    public String shop(@PathVariable String categoryName, Model model, @ModelAttribute ShoppingCart shoppingCart) {
         List<Product> products = this.productService.getProductsByCategory(categoryName);
 
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         model.addAttribute("products", products);
         model.addAttribute("categoryName", categoryName);
 

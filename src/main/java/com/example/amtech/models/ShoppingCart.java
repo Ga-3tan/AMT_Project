@@ -8,6 +8,7 @@ import java.util.Map;
 @Data
 @Component
 public class ShoppingCart {
+    public static final String ATTR_NAME = "cart";
     private Map<Product, Integer> products = new HashMap<>();
 
     public void addToCart(Product p) {

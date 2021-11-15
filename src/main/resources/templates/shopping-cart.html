@@ -103,8 +103,9 @@
                                         <li class="hm-minicart">
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
-                                                <span class="item-text">0.-
-                                                    <span class="cart-item-count">0</span>
+                                                <span class="item-text" th:inline="text">
+                                                    [[${cart.getTotal()} + ' .-']]
+                                                    <span class="cart-item-count" th:text="${cart.getProducts().size()}"></span>
                                                 </span>
                                             </div>
                                             <span></span>
@@ -122,7 +123,7 @@
                                                 </ul>
                                                 <p class="minicart-total">SUBTOTAL: <span th:text="${cart.getTotal()}"></span></p>
                                                 <div class="minicart-button">
-                                                    <a href="/categoryping-cart" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                    <a href="/shopping-cart" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>Shopping Cart</span>
                                                     </a>
                                                     <a href="/checkout" class="li-button li-button-fullwidth li-button-sm">
@@ -220,7 +221,7 @@
                                                         <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                     </div>
                                                 </td>
-                                                <td class="product-subtotal"><span class="amount" th:text="${product.price * cart.getProducts().get(product)}"></span></td>
+                                                <td id="total_price_box" class="product-subtotal"><span class="amount" th:text="${product.price * cart.getProducts().get(product)}"></span></td>
                                             </tr>
                                         </tbody>
                                     </table>
