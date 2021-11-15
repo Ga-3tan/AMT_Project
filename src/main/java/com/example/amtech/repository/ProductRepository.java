@@ -11,6 +11,6 @@ public interface ProductRepository extends MongoRepository<Product, String> {
     @Query("{name:'?0'}")
     Product findProductByName(String name);
 
-    @Query(value="{category:'?0'}")
+    @Query(value="{category:'?0'}") // todo retirer "value="
     List<Product> allFromCategory(String category);
 }
