@@ -1,17 +1,17 @@
 package com.example.amtech.models;
 
 import com.example.amtech.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class CategoryService {
 
-    @Autowired
     private CategoryRepository categoryRepo;
 
     // CRUD operations
@@ -20,6 +20,7 @@ public class CategoryService {
     public void createCategory(String id, String name) {
         categoryRepo.save(new Category(id, name));
     }
+    public void createCategory(Category category) {categoryRepo.save(category);}
 
     // TODO for testing only, remove after
     public void createAllCategories() {

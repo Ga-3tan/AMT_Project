@@ -2,14 +2,13 @@ package com.example.amtech.models;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
 @Component
 public class ShoppingCart {
+    public static final String ATTR_NAME = "cart";
     private Map<Product, Integer> products = new HashMap<>();
 
     public void addToCart(Product p) {

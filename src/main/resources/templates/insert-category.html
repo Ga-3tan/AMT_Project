@@ -1,0 +1,65 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<!-- login-register31:27-->
+<head th:replace="fragments/head :: head"></head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Begin Body Wrapper -->
+<div class="body-wrapper">
+
+  <!-- Begin Li's Breadcrumb Area -->
+  <div class="breadcrumb-area">
+    <div class="container">
+      <div class="breadcrumb-content">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li class="active">Insert</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- Li's Breadcrumb Area End Here -->
+  <!-- Begin Insert Content Area -->
+  <div class="page-section mb-60">
+    <div class="container">
+
+      <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
+        <form action="#" th:action="@{/insert-category}" th:object="${category}" method="post">
+          <div class="login-form">
+            <h4 class="login-title">Insert new category</h4>
+            <div class="row">
+              <div class="col-md-6 col-12 mb-20">
+                <label>Name</label>
+                <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name">
+              </div>
+              <div class="col-12">
+                <button type="submit" class="register-button mt-2">Register</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Insert Content Area End Here -->
+<script>
+  function preview() {
+    frame.src = URL.createObjectURL(event.target.files[0]);
+  }
+  function clearImage() {
+    document.getElementById('formFile').value = null;
+    frame.src = "";
+  }
+</script>
+</div>
+<!-- Body Wrapper End Here -->
+<div th:replace="fragments/scripts :: scripts"></div>
+</body>
+
+<!-- login-register31:27-->
+</html>
