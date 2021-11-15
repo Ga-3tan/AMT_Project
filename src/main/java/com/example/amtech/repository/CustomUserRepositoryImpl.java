@@ -23,10 +23,7 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
     public ShoppingCart getShoppingCartFromUserById(String id) {
         Query query = new Query(Criteria.where("id").is(id));
         query.fields().include("shoppingCart");
-        ShoppingCart shoppingCart = mongoTemplate.findOne(query, ShoppingCart.class);
-//        User user = mongoTemplate.findOne(query, User.class);
-//        return user.getShoppingCart();
-
-        return shoppingCart;
+        User user = mongoTemplate.findOne(query, User.class);
+        return user.getShoppingCart();
     }
 }
