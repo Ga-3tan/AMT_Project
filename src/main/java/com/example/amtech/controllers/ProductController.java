@@ -21,7 +21,7 @@ public class ProductController extends SessionController {
     @GetMapping("/product/{id}")
     public String product(@PathVariable String id, Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-        model.addAttribute("product",productService.getById(id));
+        model.addAttribute("product", productService.getById(id));
         return "product";
     }
 }
