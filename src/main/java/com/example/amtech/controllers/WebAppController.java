@@ -32,7 +32,6 @@ public class WebAppController {
         return "login";
     }
 
-
     @GetMapping("/shopping-cart")
     public String cart(Model model) {
         return "shopping-cart";

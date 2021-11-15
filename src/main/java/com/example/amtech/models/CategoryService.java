@@ -20,6 +20,7 @@ public class CategoryService {
     public void createCategory(String id, String name) {
         categoryRepo.save(new Category(id, name));
     }
+    public void createCategory(Category category) {categoryRepo.save(category);}
 
     // TODO for testing only, remove after
     public void createAllCategories() {
