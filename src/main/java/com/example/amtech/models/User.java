@@ -9,10 +9,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @Document(collection = "users")
 @ToString
 public class User {
+
+    public User(String id, String firstname, String lastname, String email) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+        this.shoppingCart = new ShoppingCart();
+    }
+
     @Id
     private final String id;
     private String firstname;
