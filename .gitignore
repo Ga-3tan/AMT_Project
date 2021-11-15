@@ -76,3 +76,4 @@ target
 src/main/webapp/META-INF
 .idea
 *.iml
+/src/main/resources/db-local/dockervolume/mongodb/
