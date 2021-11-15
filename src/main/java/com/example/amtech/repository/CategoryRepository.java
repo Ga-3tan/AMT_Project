@@ -1,7 +1,6 @@
 package com.example.amtech.repository;
 
 import com.example.amtech.models.Category;
-import com.example.amtech.models.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 

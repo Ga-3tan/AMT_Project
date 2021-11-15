@@ -22,6 +22,10 @@ public class ProductService {
         Product p = productRepo.save(new Product(id, img, name, description, price, quantity, rating, sale, salePercentage, category));
         return p.getId();
     }
+    public String createProduct(Product product) {
+        Product p = productRepo.save(product);
+        return p.getId();
+    }
 
     // READ
     public List<Product> getAllProducts() {
