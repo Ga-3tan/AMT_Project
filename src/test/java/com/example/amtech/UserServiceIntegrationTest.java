@@ -1,10 +1,8 @@
 package com.example.amtech;
 
-import com.example.amtech.models.ProductService;
 import com.example.amtech.models.ShoppingCart;
+import com.example.amtech.models.User;
 import com.example.amtech.models.UserService;
-import com.example.amtech.repository.CustomUserRepository;
-import com.example.amtech.repository.UserRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,13 +32,21 @@ public class UserServiceIntegrationTest {
     @Test
     @Order(1)
     public void it_should_create_User() {
-        String id = userServ.createUser("1", "Gaetan", "Zwig", "gaetan.zwig@email.com");
+        String id = userServ.createUser("1", "Zwig", "guest");
         assertThat(id).isEqualTo("1");
         //assertThat(userServ.count()).isEqualTo(3);
     }
-
     @Test
     @Order(2)
+    public void it_should_get_User_by_ID_or_username() {
+        User user1 = userServ.getUserById("1");
+        User user2 = userServ.getUserByUsername("Zwig");
+        assertThat(user1.getId()).isEqualTo("1");
+        assertThat(user2.getUsername()).isEqualTo("Zwig");
+    }
+
+    @Test
+    @Order(3)
     public void it_should_get_User_ShoppingCart() {
         ShoppingCart shoppingCart = userServ.getUserShoppingCart("1");
         System.out.println("Shopping Cart : " + shoppingCart);

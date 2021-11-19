@@ -16,8 +16,8 @@ public class UserService {
     // CRUD operations
 
     // CREATE
-    public String createUser(String id, String firstname, String lastname, String email) {
-        User user1 = new User(id, firstname, lastname, email);
+    public String createUser(String id, String username, String role) {
+        User user1 = new User(id, username, role);
         System.out.println(user1);
         User user = userRepo.save(user1);
         return user.getId();
@@ -28,8 +28,8 @@ public class UserService {
         return userRepo.findUserById(id);
     }
 
-    public User getUserByEmail(String email) {
-        return userRepo.findUserByEmail(email);
+    public User getUserByUsername(String username) {
+        return userRepo.findUserByUsername(username);
     }
 
     public ShoppingCart getUserShoppingCart(String id) {
