@@ -250,8 +250,6 @@
                                         <ul class="rating rating-with-review-item">
                                             <li th:if="${product.rating != 0}" th:each="i: ${#numbers.sequence(1, product.rating)}" ><i class="fa fa-star-o"></i></li>
                                             <li th:if="${product.rating != 5}" th:each="i: ${#numbers.sequence(1, 5 - product.rating)}"class="no-star"><i class="fa fa-star-o"></i></li>
-                                            <li class="review-item"><a href="#">Read Review</a></li>
-                                            <li class="review-item"><a href="#">Write Review</a></li>
                                         </ul>
                                     </div>
                                     <div class="price-box pt-20">
@@ -263,6 +261,7 @@
                                         </p>
                                     </div>
                                     <div class="single-add-to-cart">
+                                        <div class="review-item"><a th:href="@{'/update-quantity/'+${product.id}}">Update quantity</a></div>
                                         <p>
                                             <span>Stock: [[${product.quantity}]]</span>
                                         </p>
