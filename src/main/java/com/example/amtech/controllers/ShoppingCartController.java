@@ -22,15 +22,23 @@ public class ShoppingCartController extends SessionController {
 
     @GetMapping("/shopping-cart")
     public String shoppingCart(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        shoppingCart.addToCart(productService.getAllProducts().get(0));
-        shoppingCart.addToCart(productService.getAllProducts().get(1));
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "shopping-cart";
     }
 
     @RequestMapping(value="/shopping-cart", method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String postShoppingCart(Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
+        if (formData.get("update_cart") != null) {
+            updateShoppingCart(shoppingCart, formData);
+        } else if (formData.get("empty_cart") != null) {
+            shoppingCart.emptyCart();
+        }
 
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        return "shopping-cart";
+    }
+
+    private void updateShoppingCart(ShoppingCart shoppingCart, MultiValueMap<String, String> formData) {
         // Updates all products values
         Iterator<String> prodIds = formData.get("form_product_id").iterator();
         Iterator<String> prodQty = formData.get("form_product_quantity").iterator();
@@ -45,28 +53,5 @@ public class ShoppingCartController extends SessionController {
                 else shoppingCart.getProducts().put(p, newQty);
             }
         }
-
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-        return "shopping-cart";
-    }
-
-    @RequestMapping(value="/shopping-cart-remove", method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String postreRemoveProductShoppingCart(Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
-
-
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-        return "shopping-cart";
-    }
-
-    private void updateShoppingCart() {
-
-    }
-
-    private void emptyShoppingCart() {
-
-    }
-
-    private void sfefeShoppingCart() {
-
     }
 }

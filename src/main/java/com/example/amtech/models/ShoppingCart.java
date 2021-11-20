@@ -21,6 +21,10 @@ public class ShoppingCart {
         products.remove(p);
     }
 
+    public void emptyCart() {
+        products.clear();
+    }
+
     public double getTotal() {
         return getProducts()
                 .keySet()
