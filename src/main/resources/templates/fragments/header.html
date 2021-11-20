@@ -65,7 +65,7 @@
                                             </a>
                                             <div class="minicart-product-details">
                                                 <h6><a th:href="@{'/product/' + ${product.id}}" th:text="${product.name}"></a></h6>
-                                                <span th:text="${product.price} + ' x ' + ${cart.getProducts().get(product)}"></span>
+                                                <span th:text="${product.price} + ' x ' + ${cart.getProductQuantity(product)}"></span>
                                             </div>
                                         </li>
                                     </ul>

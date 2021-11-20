@@ -11,10 +11,15 @@ public class ShoppingCart {
     public static final String ATTR_NAME = "cart";
     private Map<Product, Integer> products = new HashMap<>();
 
-    public void addToCart(Product p) {
+    public void setProduct(Product p, int quantity) {
+        // Removes product if qty = 0
+        if (quantity <= 0) products.remove(p);
+        else products.put(p, quantity);
+    }
+
+    public int getProductQuantity(Product p) {
         Integer qty = products.get(p);
-        if (qty == null) qty = 0;
-        products.put(p, ++qty);
+        return qty == null ? 0 : qty;
     }
 
     public void remove(Product p) {

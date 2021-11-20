@@ -17,7 +17,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <form id="shopping_cart_form" action="/shopping-cart" method="post">
+                            <form action="/shopping-cart" method="post">
                                 <div class="table-content table-responsive">
                                     <table class="table">
                                         <thead>
@@ -38,12 +38,12 @@
                                                 <td class="quantity">
                                                     <label>Quantity</label>
                                                     <div class="cart-plus-minus">
-                                                        <input name="form_product_quantity" class="cart-plus-minus-box" th:value="${cart.getProducts().get(product)}" type="text">
+                                                        <input name="form_product_quantity" class="cart-plus-minus-box" th:value="${cart.getProductQuantity(product)}" type="text">
                                                         <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                         <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                     </div>
                                                 </td>
-                                                <td id="total_price_box" class="product-subtotal"><span class="amount" th:text="${product.price * cart.getProducts().get(product)}"></span></td>
+                                                <td id="total_price_box" class="product-subtotal"><span class="amount" th:text="${product.price * cart.getProductQuantity(product)}"></span></td>
                                             </tr>
                                         </tbody>
                                     </table>

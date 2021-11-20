@@ -12,7 +12,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Iterator;
-import java.util.List;
 
 @AllArgsConstructor
 @Controller
@@ -47,10 +46,7 @@ public class ShoppingCartController extends SessionController {
             Product p = productService.getById(prodIds.next());
             if (p != null) {
                 int newQty = Integer.parseInt(prodQty.next());
-
-                // Removes product if qty = 0
-                if (newQty <= 0) shoppingCart.remove(p);
-                else shoppingCart.getProducts().put(p, newQty);
+                shoppingCart.setProduct(p, newQty);
             }
         }
     }

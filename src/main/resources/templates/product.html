@@ -72,16 +72,16 @@
                                         </p>
                                     </div>
                                     <div class="single-add-to-cart">
-                                        <form action="#" class="cart-quantity">
+                                        <form class="cart-quantity" th:action="'/product/' + ${product.id}" method="post">
                                             <div class="quantity">
                                                 <label>Quantity</label>
                                                 <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" value="1" type="text">
+                                                    <input class="cart-plus-minus-box" name="product_quantity" th:value="${shoppingCart.getProductQuantity(product)}" type="text">
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
                                             </div>
-                                            <button class="add-to-cart" type="submit">Add to cart</button>
+                                            <button name="add_product" class="add-to-cart" type="submit">Add to cart</button>
                                         </form>
                                     </div>
                                     <div class="product-additional-info">
