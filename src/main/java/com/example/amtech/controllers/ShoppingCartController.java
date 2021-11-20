@@ -11,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
+import java.util.List;
+
 @AllArgsConstructor
 @Controller
 public class ShoppingCartController extends SessionController {
@@ -20,6 +23,7 @@ public class ShoppingCartController extends SessionController {
     @GetMapping("/shopping-cart")
     public String shoppingCart(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         shoppingCart.addToCart(productService.getAllProducts().get(0));
+        shoppingCart.addToCart(productService.getAllProducts().get(1));
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "shopping-cart";
     }
@@ -27,9 +31,29 @@ public class ShoppingCartController extends SessionController {
     @RequestMapping(value="/shopping-cart", method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String postShoppingCart(Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
 
-        int quantity = Integer.parseInt(formData.get("form_product_quantity").get(0));
-        Product p = productService.getAllProducts().get(0);
-        shoppingCart.getProducts().put(p, quantity);
+        // Updates all products values
+        Iterator<String> prodIds = formData.get("form_product_id").iterator();
+        Iterator<String> prodQty = formData.get("form_product_quantity").iterator();
+
+        while (prodIds.hasNext()) {
+            Product p = productService.getById(prodIds.next());
+            if (p != null) {
+                int newQty = Integer.parseInt(prodQty.next());
+
+                // Removes product if qty = 0
+                if (newQty <= 0) shoppingCart.remove(p);
+                else shoppingCart.getProducts().put(p, newQty);
+            }
+        }
+
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        return "shopping-cart";
+    }
+
+    @RequestMapping(value="/shopping-cart-remove", method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String postreRemoveProductShoppingCart(Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
+
+
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "shopping-cart";
     }

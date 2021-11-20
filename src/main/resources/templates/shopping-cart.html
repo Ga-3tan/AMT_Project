@@ -17,12 +17,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <form action="/shopping-cart" method="post">
+                            <form id="shopping_cart_form" action="/shopping-cart" method="post">
                                 <div class="table-content table-responsive">
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th class="li-product-remove">remove</th>
                                                 <th class="li-product-thumbnail">images</th>
                                                 <th class="cart-product-name">Product</th>
                                                 <th class="li-product-price">Unit Price</th>
@@ -32,7 +31,7 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="product: ${cart.getProducts().keySet()}">
-                                                <td class="li-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                                                <input name="form_product_id" type="hidden" th:value="${product.id}" >
                                                 <td class="li-product-thumbnail"><a href="#"><img th:src="@{/images/product/small-size/{img}(img=${product.img})}" alt="Product Image"></a></td>
                                                 <td class="li-product-name"><a href="#" th:text="${product.name}"></a></td>
                                                 <td class="li-product-price"><span class="amount" th:text="${product.price}"></span></td>
@@ -53,8 +52,8 @@
                                     <div class="col-12">
                                         <div class="coupon-all">
                                             <div class="coupon">
-                                                <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                                <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
+                                                <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text" disabled>
+                                                <input class="button" name="apply_coupon" value="Apply coupon" type="submit" disabled>
                                             </div>
                                             <div class="coupon2">
                                                 <input class="button" name="update_cart" value="Update cart" type="submit">
@@ -68,8 +67,7 @@
                                         <div class="cart-page-total">
                                             <h2>Cart totals</h2>
                                             <ul>
-                                                <li>Subtotal <span>$130.00</span></li>
-                                                <li>Total <span>$130.00</span></li>
+                                                <li>Total <span th:text="${cart.getTotal()}"></span></li>
                                             </ul>
                                             <a href="#">Proceed to checkout</a>
                                         </div>
