@@ -35,7 +35,7 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
 
         System.out.println("-------------CREATE PRODUCT ITEMS-------------------------------\n");
         System.out.println(productService.createProduct("1", "/img.png", "testProd1", "Try to create product 1", 5.5, 10,1, false, 0, new String[]{"high-tech", "cpu"}));
-        System.out.println(productService.createProduct("2", "/img.png", "testProd2", "Try to create product 1", 2.5, 1,2, false, 0, new String[]{"cpu", "composant"}));
+        System.out.println(productService.createProduct("2", "/img.png", "testProd2", "Try to create product 1", 2.5, 0,2, false, 0, new String[]{"cpu", "composant"}));
         System.out.println(productService.createProduct("3", "/img.png", "testProd3", "Try to create product 1", 5, 4,3, true, 0.5, new String[]{"NaN"}));
 
         System.out.println("\n----------------SHOW ALL PRODUCT ITEMS---------------------------\n");
