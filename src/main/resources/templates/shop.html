@@ -65,8 +65,13 @@
                                                             </div>
                                                             <div class="add-actions">
                                                                 <ul class="add-actions-link">
-                                                                    <li class="add-cart active"><a
-                                                                            href="/shopping-cart">Add to cart</a></li>
+                                                                    <li class="add-cart active">
+                                                                        <form th:action="'/product/' + ${product.id}" method="post">
+                                                                            <input name="product_quantity" th:value="${cart.getProductQuantity(product) + 1}" hidden>
+                                                                            <input name="add_product" hidden>
+                                                                            <input class="quick-view-btn" name="add_product" value="Add to cart" type="submit" style="none">
+                                                                        </form>
+                                                                    </li>
                                                                     <li><a href="#" title="quick view"
                                                                            class="quick-view-btn" data-toggle="modal"
                                                                            data-target="#exampleModalCenter"><i
