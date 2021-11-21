@@ -34,7 +34,7 @@
                                                     <div class="single-product-wrap">
                                                         <div class="product-image">
                                                             <a th:href="@{'/product/'+ ${product.id}}">
-                                                                <img th:src="@{/images/product/large-size/1.jpg}"
+                                                                <img th:src="@{'/images/product/large-size/'+ ${product.img}}"
                                                                      alt="Li's Product Image">
                                                             </a>
                                                             <span class="sticker">New</span>
@@ -83,6 +83,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <h1 th:if="${products.size() == 0}" style="margin-left: 20px;margin-top: 20px">No Products avalaible</h1>
                                             </div>
                                         </div>
                                     </div>
