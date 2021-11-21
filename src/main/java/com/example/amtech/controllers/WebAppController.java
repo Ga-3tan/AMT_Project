@@ -1,44 +1,54 @@
 package com.example.amtech.controllers;
 
+import com.example.amtech.controllers.utils.SessionController;
+import com.example.amtech.models.CategoryService;
+import com.example.amtech.models.ShoppingCart;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-public class WebAppController {
+public class WebAppController extends SessionController {
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping("/")
-    public String homepage(Model model) {
+    public String homepage(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "index";
     }
 
     @GetMapping("/about")
-    public String about(Model model) {
+    public String about(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "about";
     }
 
     @GetMapping("/contact")
-    public String contact(Model model) {
+    public String contact(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "contact";
     }
 
     @GetMapping("/checkout")
-    public String checkout(Model model) {
+    public String checkout(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "checkout";
     }
 
     @GetMapping("/login")
-    public String login(Model model) {
+    public String login(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "login";
     }
 
-    @GetMapping("/shopping-cart")
-    public String cart(Model model) {
-        return "shopping-cart";
-    }
-
     @GetMapping("/error")
-    public String error(Model model) {
+    public String error(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "error";
     }
 }
