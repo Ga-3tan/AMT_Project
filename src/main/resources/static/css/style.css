@@ -1768,7 +1768,7 @@ textarea:focus {
 		color: #ffffff;
 }
 
-.hb-menu nav > ul > li > a::after {
+/*.hb-menu nav > ul > li > a::after {
 	content: "\f107";
 	position: absolute;
 	top: 8px;
@@ -1777,8 +1777,11 @@ textarea:focus {
 	font-size: 18px;
 	transition: all 0.3s ease-in-out;
 	color: #242424;
-}
+}*/
 .hb-menu nav > ul > li:nth-child(1) > a::after {
+	content: none;
+}
+.hb-menu nav > ul > li:nth-child(2) > a::after {
 	content: none;
 }
 .hb-menu nav > ul > li:nth-child(3) > a::after {
@@ -5447,8 +5450,6 @@ span.required {
 .login:hover {
 	color: #fed700!important;
 }
-
-
 /*----------------------------------------------------------------------------------------------------*/
 /*------------------------------------------> The End <-----------------------------------------------*/
 /*----------------------------------------------------------------------------------------------------*/

@@ -52,25 +52,13 @@
                   <input th:field="*{rating}" class="mb-0" type="text" placeholder="Enter The Rating">
                 </div>
                 <div class="col-md-6 mb-20">
-                  <label>Sale</label>
-                  <input th:field="*{sale}" class="mb-0" type="text" placeholder="Enter The Sale">
-                </div>
-                <div class="col-md-6 mb-20">
                   <label>Sale Percentage</label>
                   <input th:field="*{salePercentage}" class="mb-0" type="text" placeholder="Enter The Sale Percentage">
                 </div>
                 <div class="col-md-12 mb-30">
                   <label>Category</label>
                   <select th:field="*{category}" style="height: 85%;" class="form-select" multiple aria-label="multiple select example">
-                    <option value="1">Category1</option>
-                    <option value="2">Category2</option>
-                    <option value="3">Category3</option>
-                    <option value="4">Category4</option>
-                    <option value="5">Category5</option>
-                    <option value="6">Category6</option>
-                    <option value="7">Category7</option>
-                    <option value="8">Category8</option>
-                    <option value="9">Category9</option>
+                    <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"> </option>
                   </select>
                 </div>
                 <div class="col-md-12 mb-20">

@@ -34,33 +34,26 @@
                                                     <div class="single-product-wrap">
                                                         <div class="product-image">
                                                             <a th:href="@{'/product/'+ ${product.id}}">
-                                                                <img th:src="@{'/images/product/large-size/'+ ${product.img}}"
-                                                                     alt="Li's Product Image">
+                                                                <img th:if="${product.img}" th:src="@{'/images/product/large-size/'+ ${product.img}}" alt="Li's Product Image">
+                                                                <img th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="product image">
                                                             </a>
                                                             <span class="sticker">New</span>
                                                         </div>
                                                         <div class="product_desc">
                                                             <div class="product_desc_info">
                                                                 <div class="product-review">
-                                                                    <h5 class="manufacturer">
-                                                                        <a th:href="@{'/product/'+ ${product.id}}">Graphic Corner</a>
-                                                                    </h5>
-                                                                    <div class="rating-box">
-                                                                        <ul class="rating">
-                                                                            <li><i class="fa fa-star-o"></i></li>
-                                                                            <li><i class="fa fa-star-o"></i></li>
-                                                                            <li><i class="fa fa-star-o"></i></li>
-                                                                            <li class="no-star"><i
-                                                                                    class="fa fa-star-o"></i></li>
-                                                                            <li class="no-star"><i
-                                                                                    class="fa fa-star-o"></i></li>
-                                                                        </ul>
-                                                                    </div>
+
                                                                 </div>
                                                                 <h4><a class="product_name" th:href="@{'/product/'+ ${product.id}}"
                                                                        th:text="${product.name}"></a></h4>
                                                                 <div class="price-box">
                                                                     <span th:text="${product.price}+'.–' " class="new-price"></span>
+                                                                </div>
+                                                                <div class="rating-box">
+                                                                    <ul class="rating" style="margin-top: 5px">
+                                                                        <li th:if="${product.rating != 0}" th:each="i: ${#numbers.sequence(1, product.rating)}" ><i class="fa fa-star-o"></i></li>
+                                                                        <li th:if="${product.rating != 5}" th:each="i: ${#numbers.sequence(1, 5 - product.rating)}"class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                    </ul>
                                                                 </div>
                                                             </div>
                                                             <div class="add-actions">
@@ -98,11 +91,9 @@
                                     <h2 th:text="${categoryName}"></h2>
                                 </div>
                                 <!-- category-sub-menu start -->
-                                <div class="category-sub-menu">
+                                <div th:if="${categoryName == 'All categories'}" class="category-sub-menu">
                                     <ul>
-                                        <li><a href="#">Videos</a></li>
-                                        <li><a href="#">Computer</a></li>
-                                        <li><a href="#">Marco</a></li>
+                                        <li th:each="category : ${categories}"><a style="text-transform: capitalize" th:href="@{'/category/'+ ${category.name}}">[[${category.name}]]</a></li>
                                     </ul>
                                 </div>
                                 <!-- category-sub-menu end -->

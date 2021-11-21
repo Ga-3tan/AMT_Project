@@ -23,12 +23,12 @@ public class InsertController {
     @GetMapping("/insert-product")
     public String insertProduct(Model model) {
         model.addAttribute("product", new Product());
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "insert-product";
     }
 
     @PostMapping("/insert-product")
     public String insertProductPost(@ModelAttribute Product product, BindingResult bindingResult, Model model) {
-        product.setImg("images/product/small-size/1.jpg");
         model.addAttribute("product", product);
 
         // If an error occurs when parsing from post method
@@ -39,7 +39,7 @@ public class InsertController {
 
         System.out.println(product);//TODO DEBUG
         productService.createProduct(product);
-        return "insert-product";
+        return "redirect:/category";
     }
 
     @GetMapping("/insert-category")

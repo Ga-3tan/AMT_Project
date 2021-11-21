@@ -25,8 +25,10 @@
                                 </div>
                                 <div id="cate-toggle" class="category-menu-list">
                                     <ul>
+                                        <li ><a href="/category">All Categories</a></li>
                                         <li th:each="category : ${categories}"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
-                                        <li class="rx-child"><a href="/category/tablets">Mobile & Tablets</a></li>
+                                        <li class="rx-child"><a href="#">Other categories</a></li>
+                                        <li class="rx-child"><a href="#">Other categories</a></li>
                                         <li class="rx-parent">
                                             <a class="rx-default">More Categories</a>
                                             <a class="rx-show">Less Categories</a>

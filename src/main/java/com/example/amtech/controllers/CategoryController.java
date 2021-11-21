@@ -1,6 +1,7 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
+import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.Product;
 import com.example.amtech.models.ProductService;
 import com.example.amtech.models.ShoppingCart;
@@ -19,6 +20,7 @@ import java.util.List;
 public class CategoryController extends SessionController {
 
     private ProductService productService;
+    private CategoryService categoryService;
 
     @GetMapping("/category")
     public String shop(Model model, @ModelAttribute ShoppingCart shoppingCart) {
@@ -27,6 +29,7 @@ public class CategoryController extends SessionController {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         model.addAttribute("products", products);
         model.addAttribute("categoryName", "All categories");
+        model.addAttribute("categories", categoryService.getAllCategories());
 
         return "shop";
     }

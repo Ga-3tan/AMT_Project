@@ -32,7 +32,7 @@
                                         <tbody>
                                             <tr th:each="product: ${cart.getProducts().keySet()}">
                                                 <input name="form_product_id" type="hidden" th:value="${product.id}" >
-                                                <td class="li-product-thumbnail"><a href="#"><img th:src="@{/images/product/small-size/{img}(img=${product.img})}" alt="Product Image"></a></td>
+                                                <td class="li-product-thumbnail"><a href="#"><img style="width: 90px" th:src="@{/images/product/large-size/{img}(img=${product.img})}" alt="Product Image"></a></td>
                                                 <td class="li-product-name"><a href="#" th:text="${product.name}"></a></td>
                                                 <td class="li-product-price"><span class="amount" th:text="${product.price}"></span></td>
                                                 <td class="quantity">

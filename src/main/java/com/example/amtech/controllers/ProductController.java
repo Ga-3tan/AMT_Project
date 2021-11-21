@@ -22,6 +22,7 @@ public class ProductController extends SessionController {
     public String product(@PathVariable String id, Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         model.addAttribute("product", productService.getById(id));
+        model.addAttribute("products", productService.getAllProducts());
         return "product";
     }
 
