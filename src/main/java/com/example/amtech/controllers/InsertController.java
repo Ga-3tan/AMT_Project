@@ -29,13 +29,19 @@ public class InsertController {
     }
 
     @PostMapping("/insert-product")
-    public String insertProductPost(@ModelAttribute Product product, BindingResult bindingResult, Model model) {
+    public String insertProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         model.addAttribute("product", product);
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
             System.out.println("There was a error "+bindingResult);
-            return "error";
+            return "insert-product";
+        }
+
+        Product p = (Product) bindingResult.getTarget();
+        if(productService.getByName(p.getName()) != null) {
+            model.addAttribute("error", "Product already exists");
+            return "insert-product";
         }
 
         System.out.println(product);//TODO DEBUG
