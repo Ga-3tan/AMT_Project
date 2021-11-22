@@ -36,6 +36,10 @@ public class ProductService {
         return productRepo.findById(id).orElse(null);
     }
 
+    public Product getByName(String name) {
+        return productRepo.findProductByName(name);
+    }
+
     public List<Product> getProductsByCategory(String category) {
         return productRepo.allProductsFromCategory(category);
     }
