@@ -56,7 +56,7 @@
       <div class="breadcrumb-content">
         <ul>
           <li><a href="/">Home</a></li>
-          <li class="active">Update quantity</li>
+          <li class="active">Update product</li>
         </ul>
       </div>
     </div>
@@ -67,13 +67,39 @@
     <div class="container">
 
       <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
-        <form action="#" th:action="@{'/update-quantity/' + ${id}}" th:object="${product}" method="post">
+        <form action="#" th:action="@{'/update-product/' + ${id}}" th:object="${product}" method="post">
           <div class="login-form">
-            <h4 class="login-title">Insert new quantity</h4>
+            <h4 class="login-title">Update product</h4>
             <div class="row">
               <div class="col-md-6 col-12 mb-20">
+                <label>Name</label>
+                <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name">
+              </div>
+              <div class="col-md-6 col-12 mb-20">
+                <label>Price</label>
+                <input  th:field="*{price}" class="mb-0" type="text" placeholder="Enter The Price">
+              </div>
+              <div class="col-md-12 mb-20">
+                <label for="exampleFormControlTextarea1" class="form-label">description</label>
+                <textarea th:field="*{description}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <div class="col-md-6 col-12 mb-20">
                 <label>Quantity</label>
-                <input th:field="*{quantity}" class="mb-0" type="number" placeholder="Enter quantity">
+                <input th:field="*{quantity}" class="mb-0" type="text" placeholder="Enter The Quantity">
+              </div>
+              <div class="col-md-6 col-12 mb-20">
+                <label>Rating</label>
+                <input th:field="*{rating}" class="mb-0" type="text" placeholder="Enter The Rating">
+              </div>
+              <div class="col-md-6 mb-20">
+                <label>Sale Percentage</label>
+                <input th:field="*{salePercentage}" class="mb-0" type="text" placeholder="Enter The Sale Percentage">
+              </div>
+              <div class="col-md-12 mb-30">
+                <label>Category</label>
+                <select th:field="*{category}" style="height: 85%;" class="form-select" multiple aria-label="multiple select example">
+                  <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"> </option>
+                </select>
               </div>
               <div class="col-12">
                 <button type="submit" class="register-button mt-2">Update</button>
