@@ -85,42 +85,20 @@
                             <!-- shop-products-wrapper end -->
                         </div>
                         <div class="col-lg-3 order-2 order-lg-1">
-                            <!--sidebar-categores-box start  -->
+                            <!--sidebar-categories-box start  -->
                             <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
                                 <div class="sidebar-title">
                                     <h2 th:text="${categoryName}"></h2>
                                 </div>
                                 <!-- category-sub-menu start -->
-                                <div th:if="${categoryName == 'All categories'}" class="category-sub-menu">
+                                <div class="category-sub-menu">
                                     <ul>
                                         <li th:each="category : ${categories}"><a style="text-transform: capitalize" th:href="@{'/category/'+ ${category.name}}">[[${category.name}]]</a></li>
                                     </ul>
                                 </div>
                                 <!-- category-sub-menu end -->
                             </div>
-                            <!--sidebar-categores-box end  -->
-                            <!--sidebar-categores-box start  -->
-                            <div class="sidebar-categores-box">
-                                <div class="sidebar-title">
-                                    <h2>Filter By</h2>
-                                </div>
-                                <!-- filter-sub-area start -->
-                                <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                                    <h5 class="filter-sub-titel">Categories</h5>
-                                    <div class="categori-checkbox">
-                                        <form action="#">
-                                            <ul>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">Graphic Corner</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">Studio Design</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">Studio</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">Design</a></li>
-                                            </ul>
-                                        </form>
-                                    </div>
-                                 </div>
-                                <!-- filter-sub-area end -->
-                            </div>
-                            <!--sidebar-categores-box end  -->
+                            <!--sidebar-categories-box end  -->
                             </div>
                         </div>
                     </div>

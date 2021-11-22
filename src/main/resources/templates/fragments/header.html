@@ -100,6 +100,15 @@
                         <nav>
                             <ul>
                                 <li class="dropdown-holder"><a href="/">Home</a></li>
+                                <li class="megamenu-static-holder"><a href="/category">Category</a>
+                                    <ul class="megamenu hb-megamenu">
+                                        <li><a href="/category">Categories</a>
+                                            <ul>
+                                                <li th:each="category : ${categories}"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li><a id="about" href="/about">About Us</a></li>
                                 <li><a id="contact" style="content: none!important;" href="/contact">Contact</a></li>
                                 <!-- Begin Header Bottom Menu Information Area -->

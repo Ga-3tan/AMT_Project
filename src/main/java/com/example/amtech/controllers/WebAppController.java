@@ -25,30 +25,35 @@ public class WebAppController extends SessionController {
     @GetMapping("/about")
     public String about(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "about";
     }
 
     @GetMapping("/contact")
     public String contact(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "contact";
     }
 
     @GetMapping("/checkout")
     public String checkout(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "checkout";
     }
 
     @GetMapping("/login")
     public String login(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "login";
     }
 
     @GetMapping("/error")
     public String error(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "error";
     }
 }
