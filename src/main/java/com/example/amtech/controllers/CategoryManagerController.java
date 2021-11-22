@@ -31,7 +31,10 @@ public class CategoryManagerController {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
             System.out.println("There was a error "+bindingResult);
-            return "error";
+//            return "error";
+            System.out.println("Category should not be empty");
+            model.addAttribute("error", "Category should not be empty");
+            return "redirect:/manage-category"; // TODO gérer champs vide (@Valid). Sans redirect: call isEmpty() on null (categories.isEmpty())
         }
 
         if(categoryService.existsByName(category.getName())) {
