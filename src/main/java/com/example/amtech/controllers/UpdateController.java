@@ -1,5 +1,6 @@
 package com.example.amtech.controllers;
 
+import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.Product;
 import com.example.amtech.models.ProductService;
 import lombok.AllArgsConstructor;
@@ -15,15 +16,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class UpdateController {
     ProductService productService;
+    CategoryService categoryService;
 
-    @GetMapping("/update-quantity/{id}")
+    @GetMapping("/update-product/{id}")
     public String updateQuantity(@PathVariable String id, Model model) {
         model.addAttribute("product", productService.getById(id));
         model.addAttribute("id",id);
-        return "update-quantity";
+        model.addAttribute("categories", categoryService.getAllCategories());
+        return "update-product";
     }
 
-    @PostMapping("/update-quantity/{id}")
+    @PostMapping("/update-product/{id}")
     public String updateQuantityPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         model.addAttribute("product", product);
 
@@ -33,7 +36,7 @@ public class UpdateController {
             return "error";
         }
 
-        productService.updateProductQuantity(id, product.getQuantity());
+        productService.updateProduct(id, product);
         return "redirect:/product/" + id;
     }
 }
