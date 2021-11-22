@@ -49,6 +49,10 @@ public class ProductService {
         return customProductRepo.updateProductQuantity(id, newQuantity);
     }
 
+    public boolean updateProduct(String id, Product other) {
+        return customProductRepo.updateProduct(id, other);
+    }
+
     //DELETE
     public void deleteAllProduct() {
         productRepo.deleteAll(); // Doesn't delete the collection

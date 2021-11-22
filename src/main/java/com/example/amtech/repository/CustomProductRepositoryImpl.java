@@ -25,4 +25,20 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 
         return result != null;
     }
+
+    @Override
+    public boolean updateProduct(String id, Product other) {
+        Query query = new Query(Criteria.where("id").is(id));
+        Update update = new Update();
+        update.set("name", other.getName());
+        update.set("description", other.getDescription());
+        update.set("price", other.getPrice());
+        update.set("quantity", other.getQuantity());
+        update.set("rating", other.getRating());
+        update.set("salePercentage", other.getSalePercentage());
+        update.set("category", other.getCategory());
+
+        UpdateResult result = mongoTemplate.updateFirst(query, update, Product.class);
+
+        return result != null;    }
 }

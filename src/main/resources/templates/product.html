@@ -33,6 +33,7 @@
                             <div class="product-details-view-content sp-normal-content pt-60">
                                 <div class="product-info">
                                     <h2 th:text="${product.name}"></h2>
+                                    <div class="review-item"><a th:href="@{'/update-product/'+${product.id}}">Update product</a></div>
                                     <div class="rating-box pt-20">
                                         <ul class="rating rating-with-review-item">
                                             <li th:if="${product.rating != 0}" th:each="i: ${#numbers.sequence(1, product.rating)}" ><i class="fa fa-star-o"></i></li>
@@ -49,9 +50,9 @@
                                         </p>
                                     </div>
                                     <div class="single-add-to-cart">
-                                        <div class="review-item"><a th:href="@{'/update-quantity/'+${product.id}}">Update quantity</a></div>
                                         <p>
-                                            <span>Stock: [[${product.quantity}]]</span>
+                                            <span th:if="${product.quantity > 0}"> Stock: [[${product.quantity}]]</span>
+                                            <span th:unless="${product.quantity > 0}">Product not available</span>
                                         </p>
 
                                         <form class="cart-quantity" th:action="'/product/' + ${product.id}" method="post">
@@ -113,7 +114,7 @@
                         <div class="col-lg-12">
                             <div class="li-section-title">
                                 <h2>
-                                    <span th:text="${products.size}+' other products'"> </span>
+                                    <span th:text="${products_size}+' other products'"> </span>
                                 </h2>
                             </div>
                             <div class="row">
