@@ -41,6 +41,7 @@ public class CategoryController extends SessionController {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         model.addAttribute("products", products);
         model.addAttribute("categoryName", categoryName);
+        model.addAttribute("categories", categoryService.getAllCategories());
 
         return "shop";
     }
