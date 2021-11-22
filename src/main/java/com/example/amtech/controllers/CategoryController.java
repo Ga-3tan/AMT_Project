@@ -1,11 +1,16 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.*;
+import com.example.amtech.models.CategoryService;
+import com.example.amtech.models.Product;
+import com.example.amtech.models.ProductService;
+import com.example.amtech.models.ShoppingCart;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 

@@ -39,7 +39,7 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
         productService.deleteAllProduct(); // Doesn't delete the collection
         categoryService.deleteAllCategories();
 
-        //System.out.println("-------------CREATE CATEGORIES-------------------------------\n");
+        System.out.println("-------------CREATE CATEGORIES-------------------------------\n");
         categoryService.createCategory(new Category("1", "cameras"));
         categoryService.createCategory(new Category("2", "headsets"));
         categoryService.createCategory(new Category("3", "laptops"));
@@ -48,8 +48,9 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
         categoryService.createCategory(new Category("6", "tvs"));
         categoryService.createCategory(new Category("7", "videogames"));
 
+        System.out.println(categoryService.count() + " categories created");
 
-        //System.out.println("-------------CREATE PRODUCT ITEMS-------------------------------\n");
+        System.out.println("-------------CREATE PRODUCT ITEMS-------------------------------\n");
         productService.createProduct("1", "tvs/1.jpeg", "SAMSUNG 75\" Class QLED 4K", "Enjoy ultra-intense 4K vivid color and sharpened clarity with the Q60A / Q60AB. It combines Quantum Dot Technology with the power of 100% Color Volume* to deliver a billion of shades for colorful, razor-sharp visuals. The ultra-smart Quantum Processor 4K Lite automatically upscales and transforms your content into 4K. Dual LED** backlighting adjusts and coordinates with content in real time to enhance contrast and detail. Plus, with the rechargeable SolarCell Remote, you can easily access and control Smart TV and all your connected devices.", 1097.99, 10,3, false, 0, new String[]{"tvs"});
         productService.createProduct("2", "tvs/2.jpeg", "LG 55\" Class 4K UHD 2160P Smart TV", "Real 4K clarity. A full display for fuller entertainment. It's Ultra High Definition in a real 4K display for four times the resolution of Full HD. A powerful processor enhances color, contrast, and clarity, while webOS and LG Channels deliver a huge library of content right to your fingertips. There' more to love about your TV. LG UHD checks off your wishlist of features without the price tag. Ultra High Definition displays detail the 4K resolution you demand. Picture quality delivers on color, contrast and clarity. Smart features open more control to your home and entertainment. The LG 55\" 4K UHD Smart UN6955 TV features beautiful entertainment at a beautiful price.", 448.00, 10,3, false, 0, new String[]{"tvs"});
         productService.createProduct("3", "tvs/3.jpeg", "TCL 65\" Class 6-Series 4K UHD ", "Enjoy ultra-intense 4K vivid color and sharpened clarity with the Q60A / Q60AB. It combines Quantum Dot Technology with the power of 100% Color Volume* to deliver a billion of shades for colorful, razor-sharp visuals. The ultra-smart Quantum Processor 4K Lite automatically upscales and transforms your content into 4K. Dual LED** backlighting adjusts and coordinates with content in real time to enhance contrast and detail. Plus, with the rechargeable SolarCell Remote, you can easily access and control Smart TV and all your connected devices.", 1097.99, 10,3, false, 0, new String[]{"tvs"});
@@ -66,7 +67,9 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
         productService.createProduct("14", "smartphones/4.jpeg", "Huawei P20 Pro", "HUAWEI's P series has always been a pioneer of smartphone photography. Now the HUAWEI P20 Pro is once again leading the way with the revolutionary Leica Triple Camera, where aesthetic vision meets an advanced camera system that shines a light on intelligent photography.", 603.00, 10,4, false, 0, new String[]{"smartphones"});
         productService.createProduct("15", "videogames/1.jpeg", "Elden Ring, Bandai Namco, PlayStation 5", "The Golden Order has been broken. Rise, Tarnished, and be guided by grace ti brandish the power of the Elden Ring and become an Elden Lord in the Lands Between. ELDEN RING, developed by FromSoftware Inc. and produced by BANDAI NAMCO Entertainment Inc., is a fantasy action-RPG and FromSoftware's largest game to date, set withing a world full of mystery and peril.", 59.99, 1,5, false, 0, new String[]{"videogames"});
 
+        System.out.println(productService.count() + " products created");
+
         //System.out.println("\n----------------SHOW ALL PRODUCT ITEMS---------------------------\n");
-        productService.getAllProducts().forEach(System.out::println);
+//        productService.getAllProducts().forEach(System.out::println);
     }
 }

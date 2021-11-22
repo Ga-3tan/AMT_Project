@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -37,10 +38,9 @@ public class ProductManagerController {
             return "error";
         }
 
-        Product p = (Product) bindingResult.getTarget();
-        if(productService.getByName(p.getName()) != null) {
+        if(productService.getByName(product.getName()) != null) {
             model.addAttribute("error", "Product already exists");
-            return "insert-product";
+            return "insert-product";    // TODO categories list est vide au retour
         }
 
         System.out.println(product);//TODO DEBUG

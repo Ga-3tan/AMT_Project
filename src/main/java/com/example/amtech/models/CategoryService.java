@@ -46,14 +46,18 @@ public class CategoryService {
         return categoryRepo.findById(id).orElse(null);
     }
     public Category getByName(String name) {
-        return categoryRepo.findCategoryByName(name);
+        return categoryRepo.findCategoryByName(name).orElse(null);
     }
 
     public boolean existsById(String id) {
         return categoryRepo.existsById(id);
     }
     public boolean existsByName(String name) {
-        return existsById(categoryRepo.findCategoryByName(name).getId());
+        return getByName(name) != null;
+    }
+
+    public long count() {
+        return categoryRepo.count();
     }
 
     //DELETE

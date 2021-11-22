@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @AllArgsConstructor
 @Controller
 public class CategoryManagerController {
@@ -23,13 +25,18 @@ public class CategoryManagerController {
     }
 
     @PostMapping("/insert-category")
-    public String insertCategoryPost(@ModelAttribute Category category, BindingResult bindingResult, Model model) {
+    public String insertCategoryPost(@Valid @ModelAttribute Category category, BindingResult bindingResult, Model model) {
         model.addAttribute("category", category);
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
             System.out.println("There was a error "+bindingResult);
             return "error";
+        }
+
+        if(categoryService.existsByName(category.getName())) {
+            model.addAttribute("error", "Category already exists");
+            return "redirect:/manage-category"; // TODO sans redirect: call isEmpty() on null (categories.isEmpty())
         }
 
         categoryService.createCategory(category);
