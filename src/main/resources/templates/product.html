@@ -206,8 +206,8 @@
                 </div>
             </div>
             <!-- Product Area End Here -->
-            <!-- Begin Li's Laptop Product Area -->
-            <section class="product-area li-laptop-product pt-30 pb-50">
+            <!-- Begin Li's Product Area -->
+            <section class="product-area pt-30 pb-50">
                 <div class="container">
                     <div class="row">
                         <!-- Begin Li's Section Area -->
@@ -223,10 +223,9 @@
                                         <!-- single-product-wrap start -->
                                         <div class="single-product-wrap">
                                             <div class="product-image">
-                                                <a href="/product">
+                                                <a th:href="@{'/product/'+${prod.id}}">
                                                     <img th:src="@{'/images/product/large-size/'+ ${prod.img}}" alt=" Product Image">
                                                 </a>
-                                                <span class="sticker">New</span>
                                             </div>
                                             <div class="product_desc">
                                                 <div class="product_desc_info">
@@ -242,13 +241,6 @@
                                                     <div class="price-box">
                                                         <span class="new-price" th:text="${prod.price}+'.–' "></span>
                                                     </div>
-                                                </div>
-                                                <div class="add-actions">
-                                                    <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Add to cart</a></li>
-                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
-                                                        <li><a class="links-details" href="#"><i class="fa fa-heart-o"></i></a></li>
-                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
