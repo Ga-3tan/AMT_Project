@@ -34,6 +34,8 @@
               <div class="col-md-6 col-12 mb-20">
                 <label>Name</label>
                 <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name">
+                <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+                <div style="color: red" th:if="${error != null}" th:text="${error}"></div>
               </div>
               <div class="col-12">
                 <button type="submit" class="register-button mt-2">Register</button>
