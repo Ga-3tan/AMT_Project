@@ -37,7 +37,6 @@
                                                                 <img th:if="${product.img}" th:src="@{'/images/product/large-size/'+ ${product.img}}" alt="Li's Product Image">
                                                                 <img th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="product image">
                                                             </a>
-                                                            <span class="sticker">New</span>
                                                         </div>
                                                         <div class="product_desc">
                                                             <div class="product_desc_info">
@@ -55,23 +54,6 @@
                                                                         <li th:if="${product.rating != 5}" th:each="i: ${#numbers.sequence(1, 5 - product.rating)}"class="no-star"><i class="fa fa-star-o"></i></li>
                                                                     </ul>
                                                                 </div>
-                                                            </div>
-                                                            <div class="add-actions">
-                                                                <ul class="add-actions-link">
-                                                                    <li class="add-cart active">
-                                                                        <form id="add_to_cart" th:action="'/product/' + ${product.id}" method="post">
-                                                                            <input name="product_quantity" th:value="${cart.getProductQuantity(product) + 1}" hidden>
-                                                                            <input name="add_product" hidden>
-                                                                            <a href="#" onclick="document.getElementById('add_to_cart').submit()">Add to cart</a>
-                                                                        </form>
-                                                                    </li>
-                                                                    <li><a href="#" title="quick view"
-                                                                           class="quick-view-btn" data-toggle="modal"
-                                                                           data-target="#exampleModalCenter"><i
-                                                                            class="fa fa-eye"></i></a></li>
-                                                                    <li><a class="links-details" href="#"><i
-                                                                            class="fa fa-heart-o"></i></a></li>
-                                                                </ul>
                                                             </div>
                                                         </div>
                                                     </div>
