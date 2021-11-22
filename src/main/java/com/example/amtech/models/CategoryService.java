@@ -45,6 +45,9 @@ public class CategoryService {
     public Category getById(String id) {
         return categoryRepo.findById(id).orElse(null);
     }
+    public Category getByName(String name) {
+        return categoryRepo.findCategoryByName(name);
+    }
 
     public boolean existsById(String id) {
         return categoryRepo.existsById(id);

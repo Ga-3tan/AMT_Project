@@ -10,8 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @AllArgsConstructor
 @Controller
@@ -49,17 +50,23 @@ public class InsertController {
     }
 
     @PostMapping("/insert-category")
-    public String insertCategoryPost(@ModelAttribute Category category, BindingResult bindingResult, Model model) {
+    public String insertCategoryPost(@Valid @ModelAttribute Category category, BindingResult bindingResult, Model model) {
         model.addAttribute("category", category);
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
             System.out.println("There was a error "+bindingResult);
-            return "error";
+            return "insert-category";
+        }
+
+        Category c = (Category) bindingResult.getTarget();
+        if(categoryService.getByName(c.getName()) != null) {
+            model.addAttribute("error", "Category already exists");
+            return "insert-category";
         }
 
         System.out.println(category);//TODO DEBUG
         categoryService.createCategory(category);
-        return "insert-category";
+        return "redirect:/";
     }
 }
