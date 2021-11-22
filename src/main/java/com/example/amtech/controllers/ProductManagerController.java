@@ -1,6 +1,5 @@
 package com.example.amtech.controllers;
 
-import com.example.amtech.models.Category;
 import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.Product;
 import com.example.amtech.models.ProductService;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @AllArgsConstructor
 @Controller
-public class InsertController {
+public class ProductManagerController {
 
     CategoryService categoryService;
     ProductService productService;
@@ -42,15 +41,18 @@ public class InsertController {
         return "redirect:/category";
     }
 
-    @GetMapping("/insert-category")
-    public String insertCategory(Model model) {
-        model.addAttribute("category", new Category());
-        return "insert-category";
+
+    @GetMapping("/update-product/{id}")
+    public String updateQuantity(@PathVariable String id, Model model) {
+        model.addAttribute("product", productService.getById(id));
+        model.addAttribute("id",id);
+        model.addAttribute("categories", categoryService.getAllCategories());
+        return "update-product";
     }
 
-    @PostMapping("/insert-category")
-    public String insertCategoryPost(@ModelAttribute Category category, BindingResult bindingResult, Model model) {
-        model.addAttribute("category", category);
+    @PostMapping("/update-product/{id}")
+    public String updateQuantityPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, Model model) {
+        model.addAttribute("product", product);
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
@@ -58,8 +60,7 @@ public class InsertController {
             return "error";
         }
 
-        System.out.println(category);//TODO DEBUG
-        categoryService.createCategory(category);
-        return "insert-category";
+        productService.updateProduct(id, product);
+        return "redirect:/product/" + id;
     }
 }

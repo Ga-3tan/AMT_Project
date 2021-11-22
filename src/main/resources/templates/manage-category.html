@@ -16,7 +16,7 @@
       <div class="breadcrumb-content">
         <ul>
           <li><a href="/">Home</a></li>
-          <li class="active">Insert</li>
+          <li class="active">Manage category</li>
         </ul>
       </div>
     </div>
@@ -25,7 +25,6 @@
   <!-- Begin Insert Content Area -->
   <div class="page-section mb-60">
     <div class="container">
-
       <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
         <form action="#" th:action="@{/insert-category}" th:object="${category}" method="post">
           <div class="login-form">
@@ -42,7 +41,34 @@
           </div>
         </form>
       </div>
-
+    </div>
+    <div class="container mt-40">
+      <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
+        <h4 class="login-title">All categories</h4>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Delete</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:if="${categories.isEmpty()}">
+            <td colspan="3"> No category available </td>
+          </tr>
+          <tr th:each="cat : ${categories}">
+            <td><span th:text="${cat.id}"> Id </span></td>
+            <td><span th:text="${cat.name}"> Name </span></td>
+            <td>
+              <form action="#" th:action="@{'/category/delete/' + ${cat.id}}" th:method="delete">
+                  <button type="submit" class="register-button mt-2">Delete</button>
+              </form>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
