@@ -9,8 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @AllArgsConstructor
 @Controller
@@ -27,13 +28,19 @@ public class ProductManagerController {
     }
 
     @PostMapping("/insert-product")
-    public String insertProductPost(@ModelAttribute Product product, BindingResult bindingResult, Model model) {
+    public String insertProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         model.addAttribute("product", product);
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
             System.out.println("There was a error "+bindingResult);
             return "error";
+        }
+
+        Product p = (Product) bindingResult.getTarget();
+        if(productService.getByName(p.getName()) != null) {
+            model.addAttribute("error", "Product already exists");
+            return "insert-product";
         }
 
         System.out.println(product);//TODO DEBUG
