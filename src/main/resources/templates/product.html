@@ -51,7 +51,8 @@
                                     </div>
                                     <div class="single-add-to-cart">
                                         <p>
-                                            <span>Stock: [[${product.quantity}]]</span>
+                                            <span th:if="${product.quantity > 0}"> Stock: [[${product.quantity}]]</span>
+                                            <span th:unless="${product.quantity > 0}">Product not available</span>
                                         </p>
 
                                         <form class="cart-quantity" th:action="'/product/' + ${product.id}" method="post">
