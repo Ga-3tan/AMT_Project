@@ -1,17 +1,12 @@
 package com.example.amtech.repository;
 
-import com.example.amtech.models.User;
 import com.example.amtech.models.ShoppingCart;
-import com.mongodb.client.result.UpdateResult;
+import com.example.amtech.models.User;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @AllArgsConstructor
 @Component

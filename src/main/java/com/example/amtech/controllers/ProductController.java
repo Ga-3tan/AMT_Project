@@ -5,7 +5,6 @@ import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.Product;
 import com.example.amtech.models.ProductService;
 import com.example.amtech.models.ShoppingCart;
-import org.springframework.beans.factory.annotation.Autowired;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

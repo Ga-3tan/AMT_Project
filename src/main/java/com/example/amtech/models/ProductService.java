@@ -37,7 +37,7 @@ public class ProductService {
     }
 
     public Product getByName(String name) {
-        return productRepo.findProductByName(name);
+        return productRepo.findProductByName(name).orElse(null);
     }
 
     public List<Product> getProductsByCategory(String category) {
