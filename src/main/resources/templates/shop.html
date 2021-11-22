@@ -59,10 +59,10 @@
                                                             <div class="add-actions">
                                                                 <ul class="add-actions-link">
                                                                     <li class="add-cart active">
-                                                                        <form id="add_to_cart" th:action="'/product/' + ${product.id}" method="post">
+                                                                        <form th:with="val='add_to_cart_'+${product.id}" th:id="${val}" th:action="'/product/' + ${product.id}" method="post">
                                                                             <input name="product_quantity" th:value="${cart.getProductQuantity(product) + 1}" hidden>
                                                                             <input name="add_product" hidden>
-                                                                            <a href="#" onclick="document.getElementById('add_to_cart').submit()">Add to cart</a>
+                                                                            <a href="#" th:attr="onclick=|document.getElementById('${val}').submit()|">Add to cart</a>
                                                                         </form>
                                                                     </li>
                                                                     <li><a href="#" title="quick view"
