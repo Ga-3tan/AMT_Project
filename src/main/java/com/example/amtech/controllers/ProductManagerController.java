@@ -7,12 +7,20 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.testcontainers.shaded.org.apache.commons.io.FilenameUtils;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Objects;
 
 @AllArgsConstructor
 @Controller
@@ -29,18 +37,26 @@ public class ProductManagerController {
     }
 
     @PostMapping("/insert-product")
-    public String insertProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, Model model) {
+    public String insertProductPost(@ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
         model.addAttribute("product", product);
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
-            System.out.println("There was a error "+bindingResult);
+            System.out.println("There was a error " + bindingResult);
             return "error";
         }
 
-        if(productService.getByName(product.getName()) != null) {
-            model.addAttribute("error", "Product already exists");
-            return "insert-product";    // TODO categories list est vide au retour
+        // Saves the image file
+        if (!multipartFile.isEmpty()) {
+            String imgDir = "images/product/";
+            String dateName = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+            String fileName = "img_" + dateName + "." + FilenameUtils.getExtension(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+            try {
+                saveFile(imgDir, fileName, multipartFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            product.setImg(fileName);
         }
 
         System.out.println(product);//TODO DEBUG
@@ -69,5 +85,21 @@ public class ProductManagerController {
 
         productService.updateProduct(id, product);
         return "redirect:/product/" + id;
+    }
+
+    private static void saveFile(String uploadDir, String fileName,
+                                 MultipartFile multipartFile) throws IOException {
+        Path uploadPath = Paths.get(uploadDir);
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        try (InputStream inputStream = multipartFile.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ioe) {
+            throw new IOException("Could not save image file: " + fileName, ioe);
+        }
     }
 }

@@ -12,7 +12,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.validation.spi.ConfigurationState;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @SpringBootApplication
 @EnableMongoRepositories
@@ -24,6 +31,14 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
     }
     public static void main(String[] args) {
         SpringApplication.run(ServingWebContentApplication.class, args);
+    }
+
+    @Configuration
+    public static class DirectoryExposer implements WebMvcConfigurer {
+        @Override
+        public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+            registry.addResourceHandler("/images/product/**").addResourceLocations("file:images/product/");
+        }
     }
 
     // TODO remove

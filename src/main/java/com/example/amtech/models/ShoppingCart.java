@@ -23,6 +23,10 @@ public class ShoppingCart {
         return qty == null ? 0 : qty;
     }
 
+    public double getProductTotal(Product p) {
+        return Math.round(getProductQuantity(p) * p.getPrice() * 100d) / 100d;
+    }
+
     public void remove(Product p) {
         products.remove(p);
     }
@@ -32,10 +36,10 @@ public class ShoppingCart {
     }
 
     public double getTotal() {
-        return getProducts()
+        return Math.round(getProducts()
                 .keySet()
                 .stream()
                 .map(p -> p.getPrice() * getProducts().get(p))
-                .reduce(0., Double::sum);
+                .reduce(0., Double::sum) * 100d) / 100d;
     }
 }
