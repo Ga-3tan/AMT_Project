@@ -33,29 +33,29 @@
               <div class="row">
                 <div class="col-md-6 col-12 mb-20">
                   <label>Name</label>
-                  <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name">
+                  <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name" required>
                   <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
                   <div style="color: red" th:if="${error != null}" th:text="${error}"></div>
                 </div>
                 <div class="col-md-6 col-12 mb-20">
                   <label>Price</label>
-                  <input  th:field="*{price}" class="mb-0" type="text" placeholder="Enter The Price">
+                  <input  th:field="*{price}" class="mb-0" type="number" step="0.01" min="0" placeholder="Enter The Price">
                 </div>
                 <div class="col-md-12 mb-20">
                   <label for="exampleFormControlTextarea1" class="form-label">description</label>
-                  <textarea th:field="*{description}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <textarea th:field="*{description}" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
                 </div>
                 <div class="col-md-6 col-12 mb-20">
                   <label>Quantity</label>
-                  <input th:field="*{quantity}" class="mb-0" type="text" placeholder="Enter The Quantity">
+                  <input th:field="*{quantity}" class="mb-0" type="number" min="0" value="1" placeholder="Enter The Quantity">
                 </div>
                 <div class="col-md-6 col-12 mb-20">
                   <label>Rating</label>
-                  <input th:field="*{rating}" class="mb-0" type="text" placeholder="Enter The Rating">
+                  <input th:field="*{rating}" class="mb-0" type="number" min="0" max="5" placeholder="Enter The Rating">
                 </div>
                 <div class="col-md-6 mb-20">
                   <label>Sale Percentage</label>
-                  <input th:field="*{salePercentage}" class="mb-0" type="text" placeholder="Enter The Sale Percentage">
+                  <input th:field="*{salePercentage}" class="mb-0" type="number" min="0" max="100" placeholder="Enter The Sale Percentage">
                 </div>
                 <div class="col-md-12 mb-30">
                   <label>Category</label>

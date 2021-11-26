@@ -55,9 +55,9 @@
                                             <span th:unless="${product.quantity > 0}">Product not available</span>
                                         </p>
 
-                                        <form class="cart-quantity" th:action="'/product/' + ${product.id}" method="post">
+                                        <form th:if="${product.quantity > 0 && product.price > 0}" class="cart-quantity" th:action="'/product/' + ${product.id}" method="post">
 
-                                            <div class="quantity">
+                                            <div>
                                                 <label>Quantity</label>
                                                 <div class="cart-plus-minus">
                                                     <input class="cart-plus-minus-box" name="product_quantity" value="1" type="text">
