@@ -47,6 +47,12 @@ public class ProductManagerController extends SessionController {
             return "insert-product";
         }
 
+        Product p = (Product) bindingResult.getTarget();
+        if(productService.getByName(p.getName()) != null) {
+            model.addAttribute("error", "Product already exists");
+            return "insert-product";
+        }
+
         // Saves the image file
         if (!multipartFile.isEmpty()) {
             String imgDir = "images/product/";
