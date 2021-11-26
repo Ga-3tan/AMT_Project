@@ -41,7 +41,7 @@
                                         </ul>
                                     </div>
                                     <div class="price-box pt-20">
-                                        <span class="new-price new-price-2" th:text="${product.price}+'.-'"></span>
+                                        <span class="new-price new-price-2" th:text="${product.price > 0} ? ${product.price} + '.-' : 'Coming soon'"></span>
                                     </div>
                                     <div class="product-desc">
                                         <p>
