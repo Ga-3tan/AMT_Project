@@ -24,22 +24,20 @@ public class CategoryManagerController {
         return "manage-category";
     }
 
-    @PostMapping("/insert-category")
+    @PostMapping("/manage-category")
     public String insertCategoryPost(@Valid @ModelAttribute Category category, BindingResult bindingResult, Model model) {
         model.addAttribute("category", category);
+        model.addAttribute("categories", categoryService.getAllCategories());
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
             System.out.println("There was a error "+bindingResult);
-//            return "error";
-            System.out.println("Category should not be empty");
-            model.addAttribute("error", "Category should not be empty");
-            return "redirect:/manage-category"; // TODO gérer champs vide (@Valid). Sans redirect: call isEmpty() on null (categories.isEmpty())
+            return "error";
         }
 
         if(categoryService.existsByName(category.getName())) {
             model.addAttribute("error", "Category already exists");
-            return "redirect:/manage-category"; // TODO sans redirect: call isEmpty() on null (categories.isEmpty())
+            return "manage-category";
         }
 
         categoryService.createCategory(category);
