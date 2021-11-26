@@ -79,7 +79,7 @@
     </dependencies>
 
     <build>
-        <finalName>amtech</finalName>
+        <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

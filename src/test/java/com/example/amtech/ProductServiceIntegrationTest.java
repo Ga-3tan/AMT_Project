@@ -30,6 +30,7 @@ public class ProductServiceIntegrationTest {
     @Test
     @Order(1)
     public void it_should_create_Data() {
+        prodServ.deleteAllProduct();
         String id = prodServ.createProduct("1", "/img.png", "testProd1", "Try to create product 1", 5.5, 10,1, false, 0, new String[]{"high-tech", "cpu"});
         assertThat(id).isEqualTo("1");
         prodServ.createProduct("2", "/img.png", "testProd2", "Try to create product 1", 2.5, 1,2, false, 0, new String[]{"cpu", "composant"});
