@@ -27,19 +27,19 @@
     <div class="container">
 
         <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
-          <form action="#" th:action="@{/insert-product}" th:object="${product}" method="post">
+          <form action="#" th:action="@{/insert-product}" th:object="${product}" method="post" enctype="multipart/form-data">
             <div class="login-form">
               <h4 class="login-title">Insert new product</h4>
               <div class="row">
                 <div class="col-md-6 col-12 mb-20">
                   <label>Name</label>
-                  <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name">
+                  <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name" required>
                   <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
                   <div style="color: red" th:if="${error != null}" th:text="${error}"></div>
                 </div>
                 <div class="col-md-6 col-12 mb-20">
                   <label>Price</label>
-                  <input  th:field="*{price}" class="mb-0" type="text" placeholder="Enter The Price">
+                  <input  th:field="*{price}" class="mb-0" type="number" step="0.01" min="0" placeholder="Enter The Price">
                   <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
                 </div>
                 <div class="col-md-12 mb-20">
@@ -48,17 +48,17 @@
                 </div>
                 <div class="col-md-6 col-12 mb-20">
                   <label>Quantity</label>
-                  <input th:field="*{quantity}" class="mb-0" type="text" placeholder="Enter The Quantity" required>
+                    <input th:field="*{quantity}" class="mb-0" type="number" min="0" value="1" placeholder="Enter The Quantity">
                   <div style="color: red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity Error</div>
                 </div>
                 <div class="col-md-6 col-12 mb-20">
                   <label>Rating</label>
-                  <input th:field="*{rating}" class="mb-0" type="text" placeholder="Enter The Rating">
+                    <input th:field="*{rating}" class="mb-0" type="number" min="0" max="5" placeholder="Enter The Rating">
                   <div style="color: red" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">Rating Error</div>
                 </div>
                 <div class="col-md-6 mb-20">
                   <label>Sale Percentage</label>
-                  <input th:field="*{salePercentage}" class="mb-0" type="text" placeholder="Enter The Sale Percentage">
+                    <input th:field="*{salePercentage}" class="mb-0" type="number" min="0" max="100" placeholder="Enter The Sale Percentage">
                   <div style="color: red" th:if="${#fields.hasErrors('salePercentage')}" th:errors="*{salePercentage}">Sale Error</div>
                 </div>
                 <div class="col-md-12 mb-30">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="col-md-12 mb-20">
                   <label for="formFile" class="form-label">Image Upload</label>
-                  <input class="form-control" type="file" id="formFile" onchange="preview()">
+                  <input name="image" class="form-control" type="file" id="formFile" onchange="preview()" accept="image/png, image/jpeg">
                   <button style="float: right;" onclick="clearImage()" class="register-button mt-0">Remove image</button>
                 </div>
                 <div class="col-12">

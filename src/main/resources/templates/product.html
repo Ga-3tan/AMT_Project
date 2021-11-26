@@ -21,7 +21,7 @@
                             <div class="product-details-left">
                                 <div class="product-details-images slider-navigation-1">
                                     <div class="lg-image">
-                                        <img th:if="${product.img}" th:src="@{'/images/product/large-size/' + ${product.img}}" alt="product image">
+                                        <img th:if="${product.img}" th:src="@{'/images/product/' + ${product.img}}" alt="product image">
                                         <img th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="product image">
                                     </div>
                                 </div>
@@ -54,13 +54,11 @@
                                             <span th:if="${product.quantity > 0}"> Stock: [[${product.quantity}]]</span>
                                             <h2 th:unless="${product.quantity > 0}" style="color:red">Product not available</h2>
                                         </p>
-
-                                        <form th:if="${product.quantity > 0}" class="cart-quantity" th:action="'/product/' + ${product.id}" method="post">
-
-                                            <div class="quantity">
+                                        <form th:if="${product.quantity > 0 && product.price > 0}" class="cart-quantity" th:action="'/product/' + ${product.id}" method="post">
+                                            <div>
                                                 <label>Quantity</label>
                                                 <div class="cart-plus-minus">
-                                                    <input class="cart-plus-minus-box" name="product_quantity" th:value="${shoppingCart.getProductQuantity(product) > 0} ? ${shoppingCart.getProductQuantity(product)} : 1" type="text">
+                                                    <input class="cart-plus-minus-box" name="product_quantity" value="1" type="text">
                                                     <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                     <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                 </div>
@@ -124,7 +122,7 @@
                                         <div class="single-product-wrap">
                                             <div class="product-image">
                                                 <a th:href="@{'/product/'+${prod.id}}">
-                                                    <img th:src="@{'/images/product/large-size/'+ ${prod.img}}" alt=" Product Image">
+                                                    <img th:src="@{'/images/product/'+ ${prod.img}}" alt=" Product Image">
                                                 </a>
                                             </div>
                                             <div class="product_desc">

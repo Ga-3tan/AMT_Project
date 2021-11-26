@@ -42,8 +42,9 @@ public class ProductController extends SessionController {
         Product concernedProduct = productService.getById(id);
 
         if (formData.get("add_product") != null) {
+            int qty = shoppingCart.getProductQuantity(concernedProduct);
             int newQty = Integer.parseInt(formData.get("product_quantity").get(0));
-            shoppingCart.setProduct(concernedProduct, newQty);
+            shoppingCart.setProduct(concernedProduct, qty + newQty);
         }
 
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);

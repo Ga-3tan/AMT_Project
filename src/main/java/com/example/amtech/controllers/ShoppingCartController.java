@@ -39,15 +39,19 @@ public class ShoppingCartController extends SessionController {
 
     private void updateShoppingCart(ShoppingCart shoppingCart, MultiValueMap<String, String> formData) {
         // Updates all products values
-        Iterator<String> prodIds = formData.get("form_product_id").iterator();
-        Iterator<String> prodQty = formData.get("form_product_quantity").iterator();
+        try {
+            Iterator<String> prodIds = formData.get("form_product_id").iterator();
+            Iterator<String> prodQty = formData.get("form_product_quantity").iterator();
 
-        while (prodIds.hasNext()) {
-            Product p = productService.getById(prodIds.next());
-            if (p != null) {
-                int newQty = Integer.parseInt(prodQty.next());
-                shoppingCart.setProduct(p, newQty);
+            while (prodIds.hasNext()) {
+                Product p = productService.getById(prodIds.next());
+                if (p != null) {
+                    int newQty = Integer.parseInt(prodQty.next());
+                    shoppingCart.setProduct(p, newQty);
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

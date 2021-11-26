@@ -61,7 +61,7 @@
                                     <ul class="minicart-product-list">
                                         <li th:each="product: ${cart.getProducts().keySet()}">
                                             <a th:href="@{'/product/' + ${product.id}}" class="minicart-product-image">
-                                                <img style="width: 50px" th:src="@{/images/product/large-size/{img}(img=${product.img})}" alt="cart products">
+                                                <img style="width: 50px" th:src="@{/images/product/{img}(img=${product.img})}" alt="cart products">
                                             </a>
                                             <div class="minicart-product-details">
                                                 <h6><a th:href="@{'/product/' + ${product.id}}" th:text="${product.name}"></a></h6>
