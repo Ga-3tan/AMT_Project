@@ -73,7 +73,7 @@ public class ProductManagerController extends SessionController {
 
 
     @GetMapping("/update-product/{id}")
-    public String updateQuantity(@PathVariable String id, Model model) {
+    public String updateProduct(@PathVariable String id, Model model) {
         model.addAttribute("product", productService.getById(id));
         model.addAttribute("id",id);
         model.addAttribute("categories", categoryService.getAllCategories());
@@ -81,7 +81,7 @@ public class ProductManagerController extends SessionController {
     }
 
     @PostMapping("/update-product/{id}")
-    public String updateQuantityPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, Model model) {
+    public String updateProductPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         model.addAttribute("product", product);
 
         // If an error occurs when parsing from post method
