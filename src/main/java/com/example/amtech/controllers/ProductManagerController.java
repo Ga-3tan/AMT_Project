@@ -35,7 +35,7 @@ public class ProductManagerController {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
             System.out.println("There was a error "+bindingResult);
-            return "error";
+            return "insert-product";
         }
 
         if(productService.getByName(product.getName()) != null) {
