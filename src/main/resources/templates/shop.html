@@ -43,7 +43,7 @@
                                                                 <h4><a class="product_name" th:href="@{'/product/'+ ${product.id}}"
                                                                        th:text="${product.name}"></a></h4>
                                                                 <div class="price-box">
-                                                                    <span th:text="${product.price}+'.–' " class="new-price"></span>
+                                                                    <span th:text="${product.price > 0} ? ${product.price} + '.-' : 'Coming soon'" class="new-price"></span>
                                                                 </div>
                                                                 <div class="rating-box">
                                                                     <ul class="rating" style="margin-top: 5px">
