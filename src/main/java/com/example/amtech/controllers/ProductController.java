@@ -38,6 +38,8 @@ public class ProductController extends SessionController {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         model.addAttribute("products_size" ,products.size());
+        model.addAttribute("categories", categoryService.getAllCategories());
+
 
         Product concernedProduct = productService.getById(id);
 
