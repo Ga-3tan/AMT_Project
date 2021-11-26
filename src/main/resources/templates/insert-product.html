@@ -40,6 +40,7 @@
                 <div class="col-md-6 col-12 mb-20">
                   <label>Price</label>
                   <input  th:field="*{price}" class="mb-0" type="number" step="0.01" min="0" placeholder="Enter The Price">
+                  <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</div>
                 </div>
                 <div class="col-md-12 mb-20">
                   <label for="exampleFormControlTextarea1" class="form-label">description</label>
@@ -47,15 +48,18 @@
                 </div>
                 <div class="col-md-6 col-12 mb-20">
                   <label>Quantity</label>
-                  <input th:field="*{quantity}" class="mb-0" type="number" min="0" value="1" placeholder="Enter The Quantity">
+                    <input th:field="*{quantity}" class="mb-0" type="number" min="0" value="1" placeholder="Enter The Quantity">
+                  <div style="color: red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">Quantity Error</div>
                 </div>
                 <div class="col-md-6 col-12 mb-20">
                   <label>Rating</label>
-                  <input th:field="*{rating}" class="mb-0" type="number" min="0" max="5" placeholder="Enter The Rating">
+                    <input th:field="*{rating}" class="mb-0" type="number" min="0" max="5" placeholder="Enter The Rating">
+                  <div style="color: red" th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">Rating Error</div>
                 </div>
                 <div class="col-md-6 mb-20">
                   <label>Sale Percentage</label>
-                  <input th:field="*{salePercentage}" class="mb-0" type="number" min="0" max="100" placeholder="Enter The Sale Percentage">
+                    <input th:field="*{salePercentage}" class="mb-0" type="number" min="0" max="100" placeholder="Enter The Sale Percentage">
+                  <div style="color: red" th:if="${#fields.hasErrors('salePercentage')}" th:errors="*{salePercentage}">Sale Error</div>
                 </div>
                 <div class="col-md-12 mb-30">
                   <label>Category</label>

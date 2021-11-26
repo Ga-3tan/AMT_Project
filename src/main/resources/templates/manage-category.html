@@ -26,14 +26,13 @@
   <div class="page-section mb-60">
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
-        <form action="#" th:action="@{/insert-category}" th:object="${category}" method="post">
+        <form action="#" th:action="@{/manage-category}" th:object="${category}" method="post">
           <div class="login-form">
             <h4 class="login-title">Insert new category</h4>
             <div class="row">
               <div class="col-md-6 col-12 mb-20">
                 <label>Name</label>
-                <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name">
-                <div style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
+                <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name" required>
                 <div style="color: red" th:if="${error != null}" th:text="${error}"></div>
               </div>
               <div class="col-12">

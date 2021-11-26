@@ -42,8 +42,8 @@ public class ProductManagerController {
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
-            System.out.println("There was a error " + bindingResult);
-            return "error";
+            System.out.println("There was a error "+bindingResult);
+            return "insert-product";
         }
 
         // Saves the image file
