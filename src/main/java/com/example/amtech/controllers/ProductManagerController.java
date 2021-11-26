@@ -1,5 +1,6 @@
 package com.example.amtech.controllers;
 
+import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.Product;
 import com.example.amtech.models.ProductService;
@@ -24,7 +25,7 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @Controller
-public class ProductManagerController {
+public class ProductManagerController extends SessionController {
 
     CategoryService categoryService;
     ProductService productService;

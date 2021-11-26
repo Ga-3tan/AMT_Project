@@ -1,5 +1,6 @@
 package com.example.amtech.controllers;
 
+import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
 import com.example.amtech.models.CategoryService;
 import lombok.AllArgsConstructor;
@@ -12,7 +13,7 @@ import javax.validation.Valid;
 
 @AllArgsConstructor
 @Controller
-public class CategoryManagerController {
+public class CategoryManagerController extends SessionController {
 
     private CategoryService categoryService;
 
