@@ -1,6 +1,7 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
+import com.example.amtech.models.Category;
 import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.Product;
 import com.example.amtech.models.ProductService;
@@ -21,6 +22,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @AllArgsConstructor
@@ -30,15 +32,19 @@ public class ProductManagerController extends SessionController {
     CategoryService categoryService;
     ProductService productService;
 
+    @ModelAttribute("categories")
+    public List<Category> categories() {
+        return categoryService.getAllCategories();
+    }
+
     @GetMapping("/insert-product")
     public String insertProduct(Model model) {
         model.addAttribute("product", new Product());
-        model.addAttribute("categories", categoryService.getAllCategories());
         return "insert-product";
     }
 
     @PostMapping("/insert-product")
-    public String insertProductPost(@ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
+    public String insertProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
         model.addAttribute("product", product);
         model.addAttribute("categories", categoryService.getAllCategories());
 
@@ -77,7 +83,6 @@ public class ProductManagerController extends SessionController {
     public String updateProduct(@PathVariable String id, Model model) {
         model.addAttribute("product", productService.getById(id));
         model.addAttribute("id",id);
-        model.addAttribute("categories", categoryService.getAllCategories());
         return "update-product";
     }
 

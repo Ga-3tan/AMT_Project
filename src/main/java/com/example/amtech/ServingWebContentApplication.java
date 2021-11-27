@@ -62,8 +62,8 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
         categoryService.createCategory(new Category("5", "tablets"));
         categoryService.createCategory(new Category("6", "tvs"));
         categoryService.createCategory(new Category("7", "videogames"));
-        categoryService.createCategory(new Category("7", "drones"));
-        categoryService.createCategory(new Category("8", "printers"));
+        categoryService.createCategory(new Category("8", "drones"));
+        categoryService.createCategory(new Category("9", "printers"));
 
         System.out.println(categoryService.count() + " categories created");
 

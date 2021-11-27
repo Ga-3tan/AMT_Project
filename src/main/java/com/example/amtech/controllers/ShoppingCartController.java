@@ -1,10 +1,7 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.CategoryService;
-import com.example.amtech.models.Product;
-import com.example.amtech.models.ProductService;
-import com.example.amtech.models.ShoppingCart;
+import com.example.amtech.models.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -13,6 +10,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Iterator;
+import java.util.List;
 
 @AllArgsConstructor
 @Controller
@@ -21,10 +19,14 @@ public class ShoppingCartController extends SessionController {
     private ProductService productService;
     private CategoryService categoryService;
 
+    @ModelAttribute("categories")
+    public List<Category> categories() {
+        return categoryService.getAllCategories();
+    }
+
     @GetMapping("/shopping-cart")
     public String shoppingCart(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-        model.addAttribute("categories", categoryService.getAllCategories());
 
         return "shopping-cart";
     }

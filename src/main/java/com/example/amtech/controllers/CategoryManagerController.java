@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.testcontainers.shaded.org.apache.commons.lang.ArrayUtils;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor
 @Controller
@@ -24,43 +22,24 @@ public class CategoryManagerController extends SessionController {
     private ProductService productService;
     private CategoryService categoryService;
 
+    @ModelAttribute("prodService")
+    public ProductService productService() {
+        return productService;
+    }
+
+    @ModelAttribute("categories")
+    public List<Category> categories() {
+        return categoryService.getAllCategories();
+    }
+
     @GetMapping("/manage-category")
     public String insertCategory(Model model) {
-        List<Category> categories = categoryService.getAllCategories();
-        List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
         model.addAttribute("category", new Category());
-        model.addAttribute("categories", categories);
-
-        HashMap<String, Integer> categoriesCounter = new HashMap<>();
-        for (Category cat : categories){
-            List<Product> filteredProducts = productService.getProductsByCategory(cat.getName());
-            categoriesCounter.put(cat.getId(), filteredProducts.size());
-        }
-        model.addAttribute("counter", categoriesCounter);
-
-
-
         return "manage-category";
     }
 
     @PostMapping("/manage-category")
     public String insertCategoryPost(@Valid @ModelAttribute Category category, BindingResult bindingResult, Model model) {
-        model.addAttribute("category", category);
-        List<Category> categories = categoryService.getAllCategories();
-        List<Product> products = productService.getAllProducts();
-        model.addAttribute("products", products);
-        model.addAttribute("category", new Category());
-        model.addAttribute("categories", categories);
-
-        HashMap<String, Integer> categoriesCounter = new HashMap<>();
-
-        for (Category cat : categories){
-            List<Product> filteredProducts = productService.getProductsByCategory(cat.getName());
-            categoriesCounter.put(cat.getId(), filteredProducts.size());
-        }
-        model.addAttribute("counter", categoriesCounter);
-
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
             System.out.println("There was a error "+bindingResult);
@@ -78,13 +57,12 @@ public class CategoryManagerController extends SessionController {
 
     @DeleteMapping("/category/delete/{id}")
     public String deleteCategory(@PathVariable String id) {
-        Category category = categoryService.getById(id);
-        List<Product> products = productService.getProductsByCategory(category.getName());
+        String catName = categoryService.getById(id).getName();
+        List<Product> products = productService.getProductsByCategory(catName);
         for (Product p : products){
             String[] cat = p.getCategory();
-            cat = (String[]) ArrayUtils.removeElement(cat, category.getName());
-            p.setCategory(cat);
-            productService.updateProduct(p.getId(),p);
+            cat = (String[]) ArrayUtils.removeElement(cat, catName);
+            productService.updateProductCategories(p.getId(), cat);
         }
         categoryService.deleteById(id);
         return "redirect:/manage-category";

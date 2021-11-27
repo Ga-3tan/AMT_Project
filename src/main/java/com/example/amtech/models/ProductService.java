@@ -53,6 +53,10 @@ public class ProductService {
         return customProductRepo.updateProductQuantity(id, newQuantity);
     }
 
+    public boolean updateProductCategories(String id, String[] newCategories) {
+        return customProductRepo.updateProductCategories(id, newCategories);
+    }
+
     public boolean updateProduct(String id, Product other) {
         return customProductRepo.updateProduct(id, other);
     }
