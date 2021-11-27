@@ -40,6 +40,7 @@ public class ProductManagerController extends SessionController {
     @PostMapping("/insert-product")
     public String insertProductPost(@ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
         model.addAttribute("product", product);
+        model.addAttribute("categories", categoryService.getAllCategories());
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
@@ -83,6 +84,8 @@ public class ProductManagerController extends SessionController {
     @PostMapping("/update-product/{id}")
     public String updateProductPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         model.addAttribute("product", product);
+        model.addAttribute("id",id);
+        model.addAttribute("categories", categoryService.getAllCategories());
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){

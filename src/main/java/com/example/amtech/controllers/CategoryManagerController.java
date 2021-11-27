@@ -31,7 +31,6 @@ public class CategoryManagerController extends SessionController {
         model.addAttribute("products", products);
         model.addAttribute("category", new Category());
         model.addAttribute("categories", categories);
-        model.addAttribute("catService", categoryService);
 
         HashMap<String, Integer> categoriesCounter = new HashMap<>();
         for (Category cat : categories){
@@ -48,7 +47,19 @@ public class CategoryManagerController extends SessionController {
     @PostMapping("/manage-category")
     public String insertCategoryPost(@Valid @ModelAttribute Category category, BindingResult bindingResult, Model model) {
         model.addAttribute("category", category);
-        model.addAttribute("categories", categoryService.getAllCategories());
+        List<Category> categories = categoryService.getAllCategories();
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        model.addAttribute("category", new Category());
+        model.addAttribute("categories", categories);
+
+        HashMap<String, Integer> categoriesCounter = new HashMap<>();
+
+        for (Category cat : categories){
+            List<Product> filteredProducts = productService.getProductsByCategory(cat.getName());
+            categoriesCounter.put(cat.getId(), filteredProducts.size());
+        }
+        model.addAttribute("counter", categoriesCounter);
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
@@ -73,6 +84,7 @@ public class CategoryManagerController extends SessionController {
             String[] cat = p.getCategory();
             cat = (String[]) ArrayUtils.removeElement(cat, category.getName());
             p.setCategory(cat);
+            productService.updateProduct(p.getId(),p);
         }
         categoryService.deleteById(id);
         return "redirect:/manage-category";

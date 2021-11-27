@@ -27,6 +27,7 @@
                                 <div class="tab-content">
                                     <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
                                         <div class="product-area shop-product-area">
+                                            <h5 style="margin-top: 20px;text-transform: capitalize;">[[${categoryName}]] : Found [[${products.size()}]] articles</h5>
                                             <div class="row">
                                             <!-- TEMPLATE -->
                                                 <div th:each="product : ${products}"
@@ -64,21 +65,25 @@
                             <!-- shop-products-wrapper end -->
                         </div>
                         <div class="col-lg-3 order-2 order-lg-1">
-                            <!--sidebar-categories-box start  -->
-                            <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
-                                <div class="sidebar-title">
-                                    <h2 th:text="${categoryName}"></h2>
+                            <!--Category Menu Start-->
+                            <div class="category-menu">
+                                <div class="category-heading">
+                                    <h2 class="categories-toggle"><span>categories</span></h2>
                                 </div>
-                                <!-- category-sub-menu start -->
-                                <div class="category-sub-menu">
+                                <div id="cate-toggle" class="category-menu-list">
                                     <ul>
-                                        <li th:each="category : ${categories}"><a style="text-transform: capitalize" th:href="@{'/category/'+ ${category.name}}">[[${category.name}]]</a></li>
+                                        <li ><a href="/category">All Categories</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} < 7"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} > 6" class="rx-child"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li class="rx-parent">
+                                            <a class="rx-default">More Categories</a>
+                                            <a class="rx-show">Less Categories</a>
+                                        </li>
                                     </ul>
                                 </div>
-                                <!-- category-sub-menu end -->
                             </div>
-                            <!--sidebar-categories-box end  -->
-                            </div>
+                            <!--Category Menu End-->
+                        </div>
                         </div>
                     </div>
                 </div>

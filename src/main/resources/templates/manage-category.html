@@ -59,6 +59,7 @@
             <td colspan="3"> No category available </td>
           </tr>
           <tr th:each="cat : ${categories}">
+            <div>
             <td><span th:text="${cat.id}"> Id </span></td>
             <td><span th:text="${cat.name}"> Name </span></td>
             <td>

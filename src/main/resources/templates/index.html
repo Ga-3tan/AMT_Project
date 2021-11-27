@@ -26,7 +26,12 @@
                                 <div id="cate-toggle" class="category-menu-list">
                                     <ul>
                                         <li ><a href="/category">All Categories</a></li>
-                                        <li th:each="category : ${categories}"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} < 7"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} > 6" class="rx-child"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li class="rx-parent">
+                                            <a class="rx-default">More Categories</a>
+                                            <a class="rx-show">Less Categories</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -42,10 +47,10 @@
                                         <div class="slider-progress"></div>
                                         <div class="slider-content">
                                             <h5>Sale Offer <span>-20% Off</span> This Week</h5>
-                                            <h2>Chamcham Galaxy S9 | S9+</h2>
+                                            <h2>Nikon 1 V2</h2>
                                             <h3>Starting at <span>$589.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="/category">Shopping Now</a>
+                                                <a class="links" href="/product/16">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -55,10 +60,10 @@
                                         <div class="slider-progress"></div>
                                         <div class="slider-content">
                                             <h5>Sale Offer <span>Black Friday</span> This Week</h5>
-                                            <h2>Work Desk Surface Studio 2018</h2>
+                                            <h2>DJI Phantom 3</h2>
                                             <h3>Starting at <span>$1599.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="/category">Shopping Now</a>
+                                                <a class="links" href="/product/17">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>
@@ -68,10 +73,10 @@
                                         <div class="slider-progress"></div>
                                         <div class="slider-content">
                                             <h5>Sale Offer <span>-10% Off</span> This Week</h5>
-                                            <h2>Phantom 4 Pro+ Obsidian</h2>
-                                            <h3>Starting at <span>$809.00</span></h3>
+                                            <h2>Sony WH1000XM4</h2>
+                                            <h3>Starting at <span>$309.00</span></h3>
                                             <div class="default-btn slide-btn">
-                                                <a class="links" href="/category">Shopping Now</a>
+                                                <a class="links" href="/product/18">Shopping Now</a>
                                             </div>
                                         </div>
                                     </div>

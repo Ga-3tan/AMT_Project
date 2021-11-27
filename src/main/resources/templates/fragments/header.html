@@ -104,7 +104,7 @@
                                     <ul class="megamenu hb-megamenu">
                                         <li><a href="/category">Categories</a>
                                             <ul>
-                                                <li th:each="category : ${categories}"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                                <li th:each="category : ${categories}"><a style="text-transform: capitalize;" th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
                                             </ul>
                                         </li>
                                     </ul>
