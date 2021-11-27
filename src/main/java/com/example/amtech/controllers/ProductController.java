@@ -1,10 +1,7 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.CategoryService;
-import com.example.amtech.models.Product;
-import com.example.amtech.models.ProductService;
-import com.example.amtech.models.ShoppingCart;
+import com.example.amtech.models.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -19,14 +16,17 @@ import java.util.List;
 public class ProductController extends SessionController {
 
     private ProductService productService;
-
     private CategoryService categoryService;
+
+    @ModelAttribute("categories")
+    public List<Category> categories() {
+        return categoryService.getAllCategories();
+    }
 
     @GetMapping("/product/{id}")
     public String product(@PathVariable String id, Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         model.addAttribute("product", productService.getById(id));
-        model.addAttribute("categories", categoryService.getAllCategories());
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         model.addAttribute("products_size" ,products.size());
@@ -38,7 +38,6 @@ public class ProductController extends SessionController {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         model.addAttribute("products_size" ,products.size());
-        model.addAttribute("categories", categoryService.getAllCategories());
 
 
         Product concernedProduct = productService.getById(id);

@@ -63,9 +63,9 @@
             <td><span th:text="${cat.id}"> Id </span></td>
             <td><span th:text="${cat.name}"> Name </span></td>
             <td>
-            <button type="button" class="register-button mt-2" data-toggle="modal" th:attr="data-target='#myModal'+${cat.id}">
-              Delete
-            </button>
+              <button type="button" class="register-button mt-2" data-toggle="modal" th:attr="data-target='#myModal'+${cat.id}">
+                Delete
+              </button>
             </td>
             <!-- The Modal -->
             <div class="modal" th:id="'myModal'+${cat.id}">
@@ -79,11 +79,11 @@
                   </div>
 
                   <!-- Modal body -->
-                  <div class="modal-body">
-                    <p th:if="${counter.get(cat.id) > 0}" >The following products will be modified: </p>
+                  <div class="modal-body" th:if="${!prodService.getProductsByCategory(cat.name).isEmpty()}">
+                    <p>The following products will be modified:</p>
                     <ul class="minicart-product-list">
-                      <div th:each="product : ${products}">
-                        <li th:if="${#lists.contains(product.category, ''+ cat.name)}">
+                      <div th:each="product : ${prodService.getProductsByCategory(cat.name)}">
+                        <li>
                           <div class="minicart-product-details">
                             <h6 th:text="${product.name}"></h6>
                           </div>
@@ -112,15 +112,7 @@
   </div>
 </div>
 <!-- Insert Content Area End Here -->
-<script>
-  function preview() {
-    frame.src = URL.createObjectURL(event.target.files[0]);
-  }
-  function clearImage() {
-    document.getElementById('formFile').value = null;
-    frame.src = "";
-  }
-</script>
+<script></script>
 <!-- Body Wrapper End Here -->
 <div th:replace="fragments/scripts :: scripts"></div>
 </body>

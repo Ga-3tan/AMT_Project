@@ -27,6 +27,17 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
     }
 
     @Override
+    public boolean updateProductCategories(String id, String[] newCategories) {
+        Query query = new Query(Criteria.where("id").is(id));
+        Update update = new Update();
+        update.set("category", newCategories);
+
+        UpdateResult result = mongoTemplate.updateFirst(query, update, Product.class);
+
+        return result != null;
+    }
+
+    @Override
     public boolean updateProduct(String id, Product other) {
         Query query = new Query(Criteria.where("id").is(id));
         Update update = new Update();
