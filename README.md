@@ -67,7 +67,7 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 * [Spring](https://spring.io/)
-* [Couchease](https://couchbase.com/)
+* [MongoDB](https://www.mongodb.com/)
 * [AWS](https://https://aws.amazon.com/)
 * [Thymeleaf](https://www.thymeleaf.org/)
 
