@@ -20,21 +20,9 @@ public class CategoryService {
     public void createCategory(String id, String name) {
         categoryRepo.save(new Category(id, name));
     }
-    public void createCategory(Category category) {categoryRepo.save(category);}
 
-    // TODO for testing only, remove after
-    public void createAllCategories() {
-        List<Category> categoryList = new ArrayList<Category>(Arrays.asList(
-            new Category("1", "audio"),
-            new Category("2", "photo"),
-            new Category("3", "jeux vidéo"),
-            new Category("4", "téléphone portable"),
-            new Category("5", "composant PC"),
-            new Category("6", "ordinateur"),
-            new Category("7", "logiciel"),
-            new Category("8", "TV")
-        ));
-        categoryRepo.saveAll(categoryList);
+    public void createCategory(Category category) {
+        categoryRepo.save(category);
     }
 
     // READ
@@ -52,6 +40,7 @@ public class CategoryService {
     public boolean existsById(String id) {
         return categoryRepo.existsById(id);
     }
+
     public boolean existsByName(String name) {
         return getByName(name) != null;
     }

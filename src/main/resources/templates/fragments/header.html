@@ -100,9 +100,9 @@
                         <nav>
                             <ul>
                                 <li class="dropdown-holder"><a href="/">Home</a></li>
-                                <li class="megamenu-static-holder"><a href="/category">Category</a>
+                                <li class="megamenu-static-holder"><a href="/category">All products</a>
                                     <ul class="megamenu hb-megamenu">
-                                        <li><a href="/category">Categories</a>
+                                        <li><a href="/category">All categories</a>
                                             <ul>
                                                 <li th:each="category : ${categories}"><a style="text-transform: capitalize;" th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
                                             </ul>

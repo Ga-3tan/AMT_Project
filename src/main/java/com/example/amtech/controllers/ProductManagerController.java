@@ -46,7 +46,6 @@ public class ProductManagerController extends SessionController {
     @PostMapping("/insert-product")
     public String insertProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
         model.addAttribute("product", product);
-        model.addAttribute("categories", categoryService.getAllCategories());
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
@@ -54,8 +53,7 @@ public class ProductManagerController extends SessionController {
             return "insert-product";
         }
 
-        Product p = (Product) bindingResult.getTarget();
-        if(productService.getByName(p.getName()) != null) {
+        if(productService.existsByName(product.getName())) {
             model.addAttribute("error", "Product already exists");
             return "insert-product";
         }
@@ -90,7 +88,6 @@ public class ProductManagerController extends SessionController {
     public String updateProductPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, Model model) {
         model.addAttribute("product", product);
         model.addAttribute("id",id);
-        model.addAttribute("categories", categoryService.getAllCategories());
 
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){

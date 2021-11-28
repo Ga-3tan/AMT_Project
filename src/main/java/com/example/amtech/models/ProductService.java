@@ -48,6 +48,10 @@ public class ProductService {
         return productRepo.count();
     }
 
+    public boolean existsByName(String name) {
+        return getByName(name) != null;
+    }
+
     //UPDATE
     public boolean updateProductQuantity(String id, int newQuantity) {
         return customProductRepo.updateProductQuantity(id, newQuantity);
