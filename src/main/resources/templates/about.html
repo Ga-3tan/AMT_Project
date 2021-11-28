@@ -1,656 +1,122 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="zxx">
 
-<head>
-    <meta charset="utf-8">
-
-    <!--====== Title ======-->
-    <title>DigiMark - Digital Marketing and SEO Agency Template | About</title>
-
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-
-    <!--====== Magnific Popup CSS ======-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        
-    <!--====== Slick CSS ======-->
-    <link rel="stylesheet" href="assets/css/slick.css">
-        
-    <!--====== Font Awesome CSS ======-->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        
-    <!--====== Line Icons CSS ======-->
-    <link rel="stylesheet" href="assets/css/LineIcons.css">
-        
-    <!--====== Animate CSS ======-->
-    <link rel="stylesheet" href="assets/css/animate.css">
-        
-    <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    
-    <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="assets/css/default.css">
-    
-    <!--====== Style CSS ======-->
-    <link rel="stylesheet" href="assets/css/style.css">
-
-</head>
-
-<body>
-    <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-
-
-    <!--====== PRELOADER PART START ======-->
-
-    <div class="preloader">
-        <div class="loader">
-            <div class="ytp-spinner">
-                <div class="ytp-spinner-container">
-                    <div class="ytp-spinner-rotator">
-                        <div class="ytp-spinner-left">
-                            <div class="ytp-spinner-circle"></div>
+<!-- about-us32:04-->
+<head th:replace="fragments/head :: head"></head>
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+            <header th:replace="fragments/header :: header"></header>
+            <!-- Header Area End Here -->
+            <!-- about wrapper start -->
+            <div class="about-us-wrapper pt-60 pb-40">
+                <div class="container">
+                    <div class="row">
+                        <!-- About Text Start -->
+                        <div class="col-lg-6 order-last order-lg-first">
+                            <div class="about-text-wrap">
+                                <h2><span>Provide Best</span>Product For You</h2>
+                                <p>What started small, with a single discount store and the simple idea of selling more for less, has grown over the last 50 years into the largest retailer in the world. Each week, approximately 220 million customers and members visit approximately 10,500 stores and clubs under 48 banners in 24 countries and eCommerce websites. With fiscal year 2021 revenue of $559 billion, Walmart employs over 2.3 million associates worldwide. Walmart continues to be a leader in sustainability, corporate philanthropy and employment opportunity. It’s all part of our unwavering commitment to creating opportunities and bringing value to customers and communities around the world.</p>
+                            </div>
                         </div>
-                        <div class="ytp-spinner-right">
-                            <div class="ytp-spinner-circle"></div>
+                        <!-- About Text End -->
+                        <!-- About Image Start -->
+                        <div class="col-lg-5 col-md-10">
+                            <div class="about-image-wrap">
+                                <img class="img-full" th:src="@{/images/about-us.jpg}" alt="About Us" />
+                            </div>
                         </div>
+                        <!-- About Image End -->
                     </div>
                 </div>
             </div>
+            <!-- about wrapper end -->
+            <!-- team area wrapper start -->
+            <div class="team-area pt-60 pt-sm-44">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="li-section-title capitalize mb-25">
+                                <h2><span>our team</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- section title end -->
+                    <div class="row justify-content-md-center">
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="team-member mb-60 mb-sm-30 mb-xs-30">
+                                <div class="team-thumb">
+                                    <img th:src="@{/images/team/1.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Alessandro Parrino</h3>
+                                    <p>Lord of MVC</p>
+                                    <a href="#">mvc@amtech.com</a>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="team-member mb-60 mb-sm-30 mb-xs-30">
+                                <div class="team-thumb">
+                                    <img th:src="@{/images/team/2.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Marco Maziero</h3>
+                                    <p>Janitor</p>
+                                    <a href="#">broom@amtech.com</a>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="team-member mb-30 mb-sm-60">
+                                <div class="team-thumb">
+                                    <img th:src="@{/images/team/3.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Daniel Sciarra</h3>
+                                    <p>Master of data</p>
+                                    <a href="#">couchbase@amtech.com</a>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="team-member mb-30 mb-sm-60 mb-xs-60">
+                                <div class="team-thumb">
+                                    <img th:src="@{/images/team/4.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Anh Mai Hoang</h3>
+                                    <p>Guardian of servlets</p>
+                                    <a href="#">tomcat@amtech.com</a>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
+                        <div class="col-lg-2 col-md-6 col-sm-6">
+                            <div class="team-member mb-30 mb-sm-60 mb-xs-60">
+                                <div class="team-thumb">
+                                    <img style="width: 92%;" th:src="@{/images/team/5.png}" alt="Our Team Member">
+                                </div>
+                                <div class="team-content text-center">
+                                    <h3>Gaétan Zwick</h3>
+                                    <p>CEO of CSS</p>
+                                    <a href="#">displayflex@amtech.com</a>
+                                </div>
+                            </div>
+                        </div> <!-- end single team member -->
+                    </div>
+            </div>
+            <!-- team area wrapper end -->
+            <!-- Begin Footer Area -->
+            <div class="footer" th:replace="fragments/footer :: footer"></div>
+            <!-- Footer Area End Here -->
         </div>
-    </div>
+        <!-- Body Wrapper End Here -->
+    <div th:replace="fragments/scripts :: scripts"></div>
+    </body>
 
-    <!--====== PRELOADER PART ENDS ======-->
-
-    <!--====== HEADER PART START ======-->
-
-    <header class="header-area">
-        <div class="navbar-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="/index">
-                                <img src="assets/images/logo.png" alt="Logo">
-                            </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
-
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul class="navbar-nav m-auto">
-                                    <li class="nav-item active">
-                                        <a href="/">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/about">About </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/services">Services</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#">Page</a>
-
-                                        <ul class="sub-menu">
-                                            <li><a href="/about">About</a></li>
-                                            <li><a href="/services">Services</a></li>
-                                            <li><a href="/pricing">Pricing</a></li>
-                                            <li><a href="/team">Team</a></li>
-                                            <li><a href="/sign-in">Sing In</a></li>
-                                            <li><a href="/sign-up">Sing Up</a></li>
-                                            <li><a href="/404-error">404 Error</a></li>
-                                        </ul> <!-- sub menu -->
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/contact">Contact</a>
-                                    </li>
-                                </ul>
-                            </div> <!-- navbar collapse -->
-
-                            <div class="navbar-user">
-                                <ul>
-                                    <li><a class="login" href="/sign-in">Login</a></li>
-                                    <li><a href="/sign-up">Sign Up</a></li>
-                                </ul>
-                            </div>
-                        </nav> <!-- navbar -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- navbar area -->
-
-        <div class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-1.jpg)">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <h3 class="page-title"><b>A Digital</b> Generative Our <span>About.</span></h3>
-                        </div> <!-- page banner content -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- page banner -->
-    </header>
-
-    <!--====== HEADER PART ENDS ======-->
-
-    <!--====== ABOUT PART START ======-->
-
-    <section class="about-area-2 pt-70 pb-100">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about-image-2 text-center mt-50 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="assets/images/about-2.jpg" alt="about">
-                    </div> <!-- about image -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="about-content-2 mt-45 wow fadeInRightBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <div class="section-title">
-                            <h6 class="sub-title">About</h6>
-                            <h4 class="title">Hire us <br> let us <span>make it <br> happen.</span></h4>
-                        </div> <!-- section title -->
-                        <ul class="about-line">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <p class="text">
-                            Duis et metus et massa tempus lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ultricies, orci molestie blandit interdum. <br> <br> ipsum ante pellentesque nisl, eget mollis turpis quam nec eros. ultricies, orci molestie blandit interdum.
-                        </p>
-                        <div class="about-counter pt-60">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="single-counter counter-color-4 mt-30 d-flex">
-                                        <div class="counter-shape">
-                                            <span class="shape-1"></span>
-                                            <span class="shape-2"></span>
-                                        </div>
-                                        <div class="counter-content media-body">
-                                            <span class="counter-count"><span class="counter">35</span>%</span>
-                                            <p class="text">Conversion Increase</p>
-                                        </div>
-                                    </div> <!-- single counter -->
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="single-counter counter-color-5 mt-30 d-flex">
-                                        <div class="counter-shape">
-                                            <span class="shape-1"></span>
-                                            <span class="shape-2"></span>
-                                        </div>
-                                        <div class="counter-content media-body">
-                                            <span class="counter-count"><span class="counter">100</span>%</span>
-                                            <p class="text">Satisfaction</p>
-                                        </div>
-                                    </div> <!-- single counter -->
-                                </div>
-                            </div> <!-- row -->
-                        </div> <!-- about counter -->
-                    </div> <!-- about content -->
-                </div> <!-- about image -->
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== ABOUT PART ENDS ======-->
-
-<section class="gallery-area pt-115">
-<div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <div class="about-title text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <h2 class="welcome">You are using free lite version of DigiMark</h2>
-                        <h3 class="title">Please purchase full version to get all pages and features</h3></br>
-                        <a class="main-btn" href="http://rebrand.ly/digimark-gg" rel="nofollow">Purchase Now</a>
-                    </div>
-
-                </div>
-            </div>
-    </section>
-
-    <!--====== PRICING PART START ======-->
-
-    <section class="pricing-area-2 pt-115">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-8 col-sm-9">
-                    <div class="section-title text-center pb-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h6 class="sub-title">Pricing Table</h6>
-                        <h4 class="title">We Giving Best Pricing <span>For Your Business.</span></h4>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing-2 text-center mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <div class="pricing-price">
-                            <span class="price"><b>50</b>/m.<span class="symbol">$</span></span>
-                        </div>
-                        <div class="pricing-title mt-20">
-                            <span class="btn">20% Off</span>
-                            <h4 class="title">Basic</h4>
-                        </div>
-                        <div class="pricing-list pt-20">
-                            <ul>
-                                <li>Full Access</li>
-                                <li>Unlimited Bandwidth</li>
-                                <li>50 gb Space</li>
-                                <li>1 Month Support</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn pt-70">
-                            <a class="main-btn main-btn-2" href="#">Sign Up Now !</a>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing-2 text-center pricing-active mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <div class="pricing-price">
-                            <span class="price"><b>69</b>/m.<span class="symbol">$</span></span>
-                        </div>
-                        <div class="pricing-title mt-20">
-                            <span class="btn">Special</span>
-                            <h4 class="title">Standard</h4>
-                        </div>
-                        <div class="pricing-list pt-20">
-                            <ul>
-                                <li>Full Access</li>
-                                <li>Unlimited Bandwidth</li>
-                                <li>50 gb Space</li>
-                                <li>1 Month Support</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn pt-70">
-                            <a class="main-btn" href="#">Sign Up Now !</a>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-                <div class="col-lg-4 col-md-7 col-sm-9">
-                    <div class="single-pricing-2 text-center mt-30 wow fadeInLeftBig" data-wow-duration="1s" data-wow-delay="1.1s">
-                        <div class="pricing-price">
-                            <span class="price"><b>99</b>/m.<span class="symbol">$</span></span>
-                        </div>
-                        <div class="pricing-title mt-20">
-                            <span class="btn">New</span>
-                            <h4 class="title">Premium</h4>
-                        </div>
-                        <div class="pricing-list pt-20">
-                            <ul>
-                                <li>Full Access</li>
-                                <li>Unlimited Bandwidth</li>
-                                <li>50 gb Space</li>
-                                <li>1 Month Support</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn pt-70">
-                            <a class="main-btn main-btn-2" href="#">Sign Up Now !</a>
-                        </div>
-                    </div> <!-- single pricing -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== PRICING PART ENDS ======-->
-
-    <!--====== FAQ PART START ======-->
-
-    <section class="faq-area pt-70">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="faq-content mt-45 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                        <div class="section-title">
-                            <h6 class="sub-title">Pricing Table</h6>
-                            <h4 class="title">Frequently Asked <span>Question <br> Our Fema Website?</span></h4>
-                        </div> <!-- section title -->
-                        <div class="faq-accordion">
-                            <div class="accordion" id="accordionExample">
-                                <div class="card">
-                                    <div class="card-header" id="headingOne">
-                                        <a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Efficient Blood Test Management</a>
-                                    </div>
-
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
-                                        </div>
-                                    </div> 
-                                </div> <!-- card -->
-                                <div class="card">
-                                    <div class="card-header" id="headingTwo">
-                                        <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">what hidden charge choose your pricing plan?</a>
-                                    </div>
-                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- card -->
-                                <div class="card">
-                                    <div class="card-header" id="headingThree">
-                                        <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">What Working With Application Core Features?</a>
-                                    </div>
-                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- card -->
-                                <div class="card">
-                                    <div class="card-header" id="headingFore">
-                                        <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFore" aria-expanded="false" aria-controls="collapseFore">Watch intro the video how to use it?</a>
-                                    </div>
-                                    <div id="collapseFore" class="collapse" aria-labelledby="headingFore" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- card -->
-                                <div class="card">
-                                    <div class="card-header" id="headingFive">
-                                        <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">What industries do you specialize in?</a>
-                                    </div>
-                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                                        <div class="card-body">
-                                            <p class="text">Morbi vehicula arcu et pellentesque tincidunt. Nunc ligula nulla, lobortis a elementum non, vulputate ut arcu. Aliquam erat volutpat. Nullam lacinia felis.</p>
-                                        </div>
-                                    </div>
-                                </div> <!-- card -->
-                            </div>
-                        </div> <!-- faq accordion -->
-                    </div> <!-- faq content -->
-                </div>
-                <div class="col-lg-7">
-                    <div class="faq-image mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <img src="assets/images/faq.jpg" alt="faq">
-                    </div> <!-- faq image -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== FAQ PART ENDS ======-->
-
-    <!--====== TESTIMONIAL PART START ======-->
-
-    <section class="testimonial-area pt-70 pb-120">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-xl-5 col-lg-6">
-                    <div class="testimonial-left-content mt-45 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                        <div class="section-title">
-                            <h6 class="sub-title">Testimonials</h6>
-                            <h4 class="title">What Client Says, About Us</h4>
-                        </div> <!-- section title -->
-                        <ul class="testimonial-line">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <p class="text">Duis et metus et massa tempus lacinia. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas ultricies, orci molestie blandit interdum. <br> <br> ipsum ante pellentesque nisl, eget mollis turpis quam nec eros. ultricies, orci molestie blandit interdum.</p>
-                    </div> <!-- testimonial left content -->
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-right-content mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.8s">
-                        <div class="quota">
-                            <i class="lni-quotation"></i>
-                        </div>
-                        <div class="testimonial-content-wrapper testimonial-active">
-                            <div class="single-testimonial">
-                                <div class="testimonial-text">
-                                    <p class="text">“Praesent scelerisque, odio eu fermentum malesuada, nisi arcu volutpat nisl, sit amet convallis nunc turp.”</p>
-                                </div>
-                                <div class="testimonial-author d-sm-flex justify-content-between">
-                                    <div class="author-info d-flex align-items-center">
-                                        <div class="author-image">
-                                            <img src="assets/images/author-1.jpg" alt="author">
-                                        </div>
-                                        <div class="author-name media-body">
-                                            <h5 class="name">Mr. Jems Bond</h5>
-                                            <span class="sub-title">CEO Mbuild Firm</span>
-                                        </div>
-                                    </div>
-                                    <div class="author-review">
-                                        <ul class="star">
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                        </ul>
-                                        <span class="review">( 7 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div> <!-- single testimonial -->
-                            <div class="single-testimonial">
-                                <div class="testimonial-text">
-                                    <p class="text">“Praesent scelerisque, odio eu fermentum malesuada, nisi arcu volutpat nisl, sit amet convallis nunc turp.”</p>
-                                </div>
-                                <div class="testimonial-author d-sm-flex justify-content-between">
-                                    <div class="author-info d-flex align-items-center">
-                                        <div class="author-image">
-                                            <img src="assets/images/author-2.jpg" alt="author">
-                                        </div>
-                                        <div class="author-name media-body">
-                                            <h5 class="name">Mr. Jems Bond</h5>
-                                            <span class="sub-title">CEO Mbuild Firm</span>
-                                        </div>
-                                    </div>
-                                    <div class="author-review">
-                                        <ul class="star">
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                        </ul>
-                                        <span class="review">( 7 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div> <!-- single testimonial -->
-                            <div class="single-testimonial">
-                                <div class="testimonial-text">
-                                    <p class="text">“Praesent scelerisque, odio eu fermentum malesuada, nisi arcu volutpat nisl, sit amet convallis nunc turp.”</p>
-                                </div>
-                                <div class="testimonial-author d-sm-flex justify-content-between">
-                                    <div class="author-info d-flex align-items-center">
-                                        <div class="author-image">
-                                            <img src="assets/images/author-3.jpg" alt="author">
-                                        </div>
-                                        <div class="author-name media-body">
-                                            <h5 class="name">Mr. Jems Bond</h5>
-                                            <span class="sub-title">CEO Mbuild Firm</span>
-                                        </div>
-                                    </div>
-                                    <div class="author-review">
-                                        <ul class="star">
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                            <li><i class="lni-star"></i></li>
-                                        </ul>
-                                        <span class="review">( 7 Reviews )</span>
-                                    </div>
-                                </div>
-                            </div> <!-- single testimonial -->
-                        </div> <!-- testimonial content wrapper -->
-                    </div> <!-- testimonial right content -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== TESTIMONIAL PART ENDS ======-->
-    
-    <!--====== NEWSLATTER PART START ======-->
-    
-    <section class="newsletter-area bg_cover pt-115 pb-120" style="background-image: url(assets/images/newsletter-bg.jpg)">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="newsletter-wrapper">
-                        <div class="section-title text-center wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
-                            <h6 class="sub-title">NEWSLETTER</h6>
-                            <h4 class="title">Get only new and unique <span>update from this newsletter.</span></h4>
-                        </div> <!-- section title -->
-                        <div class="newsletter-form wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                            <form action="#">
-                                <input type="text" placeholder="Enter your Email .......">
-                                <button class="main-btn">Subscribe</button>
-                            </form>
-                        </div> <!-- newsletter form -->
-                    </div> <!-- newsletter wrapper -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-    
-    <!--====== NEWSLATTER PART ENDS ======-->
-
-    <!--====== FOOTER PART START ======-->
-
-    <footer class="footer-area bg_cover" style="background-image: url(assets/images/footer-bg.jpg)">
-        <div class="container">
-            <div class="footer-widget pt-30 pb-70">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 order-sm-1 order-lg-1">
-                        <div class="footer-about pt-40">
-                            <a href="#">
-                                <img src="assets/images/logo.png" alt="Logo">
-                            </a>
-                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, repudiandae! Totam, nemo sed? Provident.</p>
-                        </div> <!-- footer about -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-3 order-lg-2">
-                        <div class="footer-link pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">Services</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Seo Services</a></li>
-                                <li><a href="#">Virtual Marketing</a></li>
-                                <li><a href="#">Web Analytics</a></li>
-                                <li><a href="#">Web Development</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-4 order-lg-3">
-                        <div class="footer-link pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">About Us</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Overview</a></li>
-                                <li><a href="#">Why us</a></li>
-                                <li><a href="#">Awards & Recognitions</a></li>
-                                <li><a href="#">Team</a></li>
-                                <li><a href="#">Client Reviews</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-2 order-lg-4">
-                        <div class="footer-contact pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">Client Reviews</h5>
-                            </div>
-                            <div class="contact pt-10">
-                                <p class="text">Dumbo dika, Mirpur-12 <br> R-9/A B-C Dhaka.</p>
-                                <p class="text">clinexmex0011@gmail.com</p>
-                                <p class="text">+99 000 555 66 22</p>
-
-                                <ul class="social mt-40">
-                                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-twitter"></i></a></li>
-                                    <li><a href="#"><i class="lni-instagram-original"></i></a></li>
-                                    <li><a href="#"><i class="lni-linkedin"></i></a></li>
-                                </ul>
-                            </div> <!-- contact -->
-                        </div> <!-- footer contact -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- footer widget -->
-            <div class="footer-copyright text-center">
-                <p class="text">© 2022 Crafted by <a href="https://uideck.com" rel="nofollow">UIdeck</a> All Rights Reserved.</p>
-            </div>
-        </div> <!-- container -->
-    </footer>
-
-    <!--====== FOOTER PART ENDS ======-->
-
-    <!--====== BACK TOP TOP PART START ======-->
-
-    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
-
-    <!--====== BACK TOP TOP PART ENDS ======-->
-
-    <!--====== PART START ======-->
-
-    <!--
-    <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
--->
-
-    <!--====== PART ENDS ======-->
-
-    <!-- row -->
-
-
-    <!--====== Jquery js ======-->
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    
-    <!--====== Bootstrap js ======-->
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    
-    <!--====== Plugins js ======-->
-    <script src="assets/js/plugins.js"></script>
-    
-    <!--====== Slick js ======-->
-    <script src="assets/js/slick.min.js"></script>
-    
-    <!--====== Ajax Contact js ======-->
-    <script src="assets/js/ajax-contact.js"></script>
-    
-    <!--====== Isotope js ======-->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    
-    <!--====== Magnific Popup js ======-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    
-    <!--====== Counter Up js ======-->
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    
-    <!--====== Circles js ======-->
-    <script src="assets/js/circles.min.js"></script>
-    
-    <!--====== Appear js ======-->
-    <script src="assets/js/jquery.appear.min.js"></script>
-    
-    <!--====== WOW js ======-->
-    <script src="assets/js/wow.min.js"></script>
-    
-    <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
+<!-- about-us32:14-->
 </html>

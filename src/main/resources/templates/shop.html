@@ -1,0 +1,100 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<!-- shop-left-sidebar31:47-->
+<head th:replace="fragments/head :: head"></head>
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+            <header th:replace="fragments/header :: header"></header>
+            <!-- Header Area End Here -->
+            <!-- Begin Li's Content Wraper Area -->
+            <div class="content-wraper pt-60 pb-60 pt-sm-30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 order-1 order-lg-2">
+                            <!-- Begin Li's Banner Area -->
+                            <div class="single-banner shop-page-banner">
+                                <img th:src="@{/images/bg-banner/2.jpg}" alt="Li's Static Banner">
+                            </div>
+                            <!-- Li's Banner Area End Here -->
+                            <!-- shop-products-wrapper start -->
+                            <div class="shop-products-wrapper">
+                                <div class="tab-content">
+                                    <div id="grid-view" class="tab-pane fade active show" role="tabpanel">
+                                        <div class="product-area shop-product-area">
+                                            <h5 style="margin-top: 20px;text-transform: capitalize;">[[${categoryName}]] : Found [[${products.size()}]] articles</h5>
+                                            <div class="row">
+                                            <!-- TEMPLATE -->
+                                                <div th:each="product : ${products}"
+                                                     class="col-lg-4 col-md-4 col-sm-6 mt-40">
+                                                    <div class="single-product-wrap">
+                                                        <div class="product-image">
+                                                            <a th:href="@{'/product/'+ ${product.id}}">
+                                                                <img th:if="${product.img}" th:src="@{'/images/product/'+ ${product.img}}" alt="Li's Product Image">
+                                                                <img th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="product image">
+                                                            </a>
+                                                        </div>
+                                                        <div class="product_desc">
+                                                            <div class="product_desc_info">
+                                                                <h4><a class="product_name" th:href="@{'/product/'+ ${product.id}}"
+                                                                       th:text="${product.name}"></a></h4>
+                                                                <div class="price-box">
+                                                                    <span th:text="${product.price > 0} ? ${product.price} + '.-' : 'Coming soon'" class="new-price"></span>
+                                                                </div>
+                                                                <div class="rating-box">
+                                                                    <ul class="rating" style="margin-top: 5px">
+                                                                        <li th:if="${product.rating != 0}" th:each="i: ${#numbers.sequence(1, product.rating)}" ><i class="fa fa-star-o"></i></li>
+                                                                        <li th:if="${product.rating != 5}" th:each="i: ${#numbers.sequence(1, 5 - product.rating)}"class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <h1 th:if="${products.size() == 0}" style="margin-left: 20px;margin-top: 20px">No Products avalaible</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- shop-products-wrapper end -->
+                        </div>
+                        <div class="col-lg-3 order-2 order-lg-1">
+                            <!--Category Menu Start-->
+                            <div class="category-menu">
+                                <div class="category-heading">
+                                    <h2 class="categories-toggle"><span>categories</span></h2>
+                                </div>
+                                <div id="cate-toggle" class="category-menu-list">
+                                    <ul>
+                                        <li ><a href="/category">All Categories</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} < 7"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} > 6" class="rx-child"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li class="rx-parent">
+                                            <a class="rx-default">More Categories</a>
+                                            <a class="rx-show">Less Categories</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--Category Menu End-->
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Content Wraper Area End Here -->
+            <!-- Begin Footer Area -->
+            <div class="footer" th:replace="fragments/footer :: footer"></div>
+            <!-- Footer Area End Here -->
+        <!-- Body Wrapper End Here -->
+    <div th:replace="fragments/scripts :: scripts"></div>
+    </body>
+
+<!-- shop-left-sidebar31:48-->
+</html>

@@ -1,406 +1,249 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="zxx">
 
-<head>
-    <meta charset="utf-8">
-
-    <!--====== Title ======-->
-    <title>DigiMark - Digital Marketing and SEO Agency Template | Contact</title>
-
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/png">
-
-    <!--====== Magnific Popup CSS ======-->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-        
-    <!--====== Slick CSS ======-->
-    <link rel="stylesheet" href="assets/css/slick.css">
-        
-    <!--====== Font Awesome CSS ======-->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-        
-    <!--====== Line Icons CSS ======-->
-    <link rel="stylesheet" href="assets/css/LineIcons.css">
-        
-    <!--====== Animate CSS ======-->
-    <link rel="stylesheet" href="assets/css/animate.css">
-        
-    <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    
-    <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="assets/css/default.css">
-    
-    <!--====== Style CSS ======-->
-    <link rel="stylesheet" href="assets/css/style.css">
-
-</head>
-
-<body>
-    <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-
-
-    <!--====== PRELOADER PART START ======-->
-
-    <div class="preloader">
-        <div class="loader">
-            <div class="ytp-spinner">
-                <div class="ytp-spinner-container">
-                    <div class="ytp-spinner-rotator">
-                        <div class="ytp-spinner-left">
-                            <div class="ytp-spinner-circle"></div>
-                        </div>
-                        <div class="ytp-spinner-right">
-                            <div class="ytp-spinner-circle"></div>
+<!-- contact32:04-->
+<head th:replace="fragments/head :: head"></head>
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+            <!-- Begin Header Area -->
+            <header th:replace="fragments/header :: header"></header>
+            <!-- Header Area End Here -->
+            <!-- Begin Contact Main Page Area -->
+            <div class="contact-main-page mt-60 mb-40 mb-md-40 mb-sm-40 mb-xs-40">
+                <div class="container mb-60">
+                    <div id="google-map"></div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 offset-lg-1 col-md-12 order-1 order-lg-2">
+                            <div class="contact-page-side-content">
+                                <h3 class="contact-page-title">Contact Us</h3>
+                                <p class="contact-page-message mb-25">Contact us to provide a comment or ask a question about your local store or our corporate headquarters. If you have a question about item pricing, please contact customer service below</p>
+                                <div class="single-contact-block">
+                                    <h4><i class="fa fa-fax"></i> Address</h4>
+                                    <p>Rte de Cheseaux 1, 1400 Yverdon-les-Bains</p>
+                                </div>
+                                <div class="single-contact-block">
+                                    <h4><i class="fa fa-phone"></i> Phone</h4>
+                                    <p>Mobile: (08) 123 456 789</p>
+                                    <p>Hotline: 1009 678 456</p>
+                                </div>
+                                <div class="single-contact-block last-child">
+                                    <h4><i class="fa fa-envelope-o"></i> Email</h4>
+                                    <p>yourmail@domain.com</p>
+                                    <p>support@hastech.company</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- Contact Main Page Area End Here -->
+            <!-- Begin Footer Area -->
+            <div class="footer" th:replace="fragments/footer :: footer"></div>
+            <!-- Footer Area End Here -->
         </div>
-    </div>
+        <!-- Body Wrapper End Here -->
+        <div th:replace="fragments/scripts :: scripts"></div>
+            <!-- Google Map -->
+            <script src="https://maps.google.com/maps/api/js?sensor=false&amp;libraries=geometry&amp;v=3.22&amp;key=AIzaSyChs2QWiAhnzz0a4OEhzqCXwx_qA9ST_lE"></script>
 
-    <!--====== PRELOADER PART ENDS ======-->
+            <script>
+                // When the window has finished loading create our google map below
+                google.maps.event.addDomListener(window, 'load', init);
+                function init() {
+                    // Basic options for a simple Google Map
+                    // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+                    var mapOptions = {
+                        // How zoomed in you want the map to start at (always required)
+                        zoom: 12,
+                        scrollwheel: false,
+                        // The latitude and longitude to center the map (always required)
+                        center: new google.maps.LatLng(46.779490744074316, 6.659304116991651), // New York
+                        // How you would like to style the map.
+                        // This is where you would paste any style found on
+                        styles: [{
+                                "featureType": "water",
+                                "elementType": "geometry",
+                                "stylers": [{
+                                        "color": "#e9e9e9"
+                                    },
+                                    {
+                                        "lightness": 17
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "landscape",
+                                "elementType": "geometry",
+                                "stylers": [{
+                                        "color": "#f5f5f5"
+                                    },
+                                    {
+                                        "lightness": 20
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.highway",
+                                "elementType": "geometry.fill",
+                                "stylers": [{
+                                        "color": "#ffffff"
+                                    },
+                                    {
+                                        "lightness": 17
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.highway",
+                                "elementType": "geometry.stroke",
+                                "stylers": [{
+                                        "color": "#ffffff"
+                                    },
+                                    {
+                                        "lightness": 29
+                                    },
+                                    {
+                                        "weight": 0.2
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.arterial",
+                                "elementType": "geometry",
+                                "stylers": [{
+                                        "color": "#ffffff"
+                                    },
+                                    {
+                                        "lightness": 18
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "road.local",
+                                "elementType": "geometry",
+                                "stylers": [{
+                                        "color": "#ffffff"
+                                    },
+                                    {
+                                        "lightness": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "poi",
+                                "elementType": "geometry",
+                                "stylers": [{
+                                        "color": "#f5f5f5"
+                                    },
+                                    {
+                                        "lightness": 21
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "poi.park",
+                                "elementType": "geometry",
+                                "stylers": [{
+                                        "color": "#dedede"
+                                    },
+                                    {
+                                        "lightness": 21
+                                    }
+                                ]
+                            },
+                            {
+                                "elementType": "labels.text.stroke",
+                                "stylers": [{
+                                        "visibility": "on"
+                                    },
+                                    {
+                                        "color": "#ffffff"
+                                    },
+                                    {
+                                        "lightness": 16
+                                    }
+                                ]
+                            },
+                            {
+                                "elementType": "labels.text.fill",
+                                "stylers": [{
+                                        "saturation": 36
+                                    },
+                                    {
+                                        "color": "#333333"
+                                    },
+                                    {
+                                        "lightness": 40
+                                    }
+                                ]
+                            },
+                            {
+                                "elementType": "labels.icon",
+                                "stylers": [{
+                                    "visibility": "off"
+                                }]
+                            },
+                            {
+                                "featureType": "transit",
+                                "elementType": "geometry",
+                                "stylers": [{
+                                        "color": "#f2f2f2"
+                                    },
+                                    {
+                                        "lightness": 19
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "administrative",
+                                "elementType": "geometry.fill",
+                                "stylers": [{
+                                        "color": "#fefefe"
+                                    },
+                                    {
+                                        "lightness": 20
+                                    }
+                                ]
+                            },
+                            {
+                                "featureType": "administrative",
+                                "elementType": "geometry.stroke",
+                                "stylers": [{
+                                        "color": "#fefefe"
+                                    },
+                                    {
+                                        "lightness": 17
+                                    },
+                                    {
+                                        "weight": 1.2
+                                    }
+                                ]
+                            }
+                        ]
+                    };
 
-    <!--====== HEADER PART START ======-->
+                    // Get the HTML DOM element that will contain your map
+                    // We are using a div with id="map" seen below in the <body>
+                    var mapElement = document.getElementById('google-map');
 
-    <header class="header-area">
-        <div class="navbar-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="/index">
-                                <img src="assets/images/logo.png" alt="Logo">
-                            </a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
+                    // Create the Google Map using our element and options defined above
+                    var map = new google.maps.Map(mapElement, mapOptions);
 
-                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
-                                <ul class="navbar-nav m-auto">
-                                    <li class="nav-item active">
-                                        <a href="/">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/about">About </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/services">Services</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#">Page</a>
+                    // Let's also add a marker while we're at it
+                    var marker = new google.maps.Marker({
+                        position: new google.maps.LatLng(46.779490744074316, 6.659304116991651),
+                        map: map,
+                        title: 'Amtech',
+                    });
+                }
+            </script>
+    </body>
 
-                                        <ul class="sub-menu">
-                                            <li><a href="/about">About</a></li>
-                                            <li><a href="/services">Services</a></li>
-                                            <li><a href="/pricing">Pricing</a></li>
-                                            <li><a href="/team">Team</a></li>
-                                            <li><a href="/sign-in">Sing In</a></li>
-                                            <li><a href="/sign-up">Sing Up</a></li>
-                                            <li><a href="/404-error">404 Error</a></li>
-                                        </ul> <!-- sub menu -->
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/contact">Contact</a>
-                                    </li>
-                                </ul>
-                            </div> <!-- navbar collapse -->
-
-                            <div class="navbar-user">
-                                <ul>
-                                    <li><a class="login" href="/sign-in">Login</a></li>
-                                    <li><a href="/sign-up">Sign Up</a></li>
-                                </ul>
-                            </div>
-                        </nav> <!-- navbar -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- navbar area -->
-
-        <div class="page-banner bg_cover" style="background-image: url(assets/images/page-banner-1.jpg)">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-7">
-                        <div class="page-banner-content wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <h3 class="page-title"><b>A Digital</b> Generative Our <span>Contact Us.</span></h3>
-                        </div> <!-- page banner content -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- page banner -->
-    </header>
-
-    <!--====== HEADER PART ENDS ======-->
-    
-    <!--====== CONTACT PART START ======-->
-
-    <section class="contact-area pt-120 pb-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact-map  wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=Mission%20District%2C%20San%20Francisco%2C%20CA%2C%20USA&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                    </div> <!-- row -->
-                </div>
-            </div> <!-- row -->
-            <div class="contact-info pt-30">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-contact-info contact-color-1 mt-30 d-flex  wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                            <div class="contact-info-icon">
-                                <i class="lni-map-marker"></i>
-                            </div>
-                            <div class="contact-info-content media-body">
-                                <p class="text">21 King Street, Melbourne <br> Victoria, 1202 Australia.</p>
-                            </div>
-                        </div> <!-- single contact info -->
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-contact-info contact-color-2 mt-30 d-flex  wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-                            <div class="contact-info-icon">
-                                <i class="lni-envelope"></i>
-                            </div>
-                            <div class="contact-info-content media-body">
-                                <p class="text">abet.hololo@gmail.com</p>
-                                <p class="text">hololo.abet@gmail.com</p>
-                            </div>
-                        </div> <!-- single contact info -->
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-contact-info contact-color-3 mt-30 d-flex  wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.9s">
-                            <div class="contact-info-icon">
-                                <i class="lni-phone"></i>
-                            </div>
-                            <div class="contact-info-content media-body">
-                                <p class="text">+99 000 1111 555</p>
-                                <p class="text">+88 999 5555 444</p>
-                            </div>
-                        </div> <!-- single contact info -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- contact info -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact-wrapper-form pt-115  wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <h4 class="contact-title pb-10"><i class="lni-envelope"></i> Leave <span>A Message.</span></h4>
-                        
-                        <form id="contact-form" action="assets/contact.php" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="contact-form mt-45">
-                                        <label>Full Name</label>
-                                        <input type="text" name="name" placeholder="Full Name :">
-                                    </div> <!-- contact-form -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="contact-form mt-45">
-                                        <label>Email</label>
-                                        <input type="email" name="email" placeholder="Email :">
-                                    </div> <!-- contact-form -->
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="contact-form mt-45">
-                                        <label>Message</label>
-                                        <textarea name="message" placeholder="Enter your message..."></textarea>
-                                    </div> <!-- contact-form -->
-                                </div>
-                                <p class="form-message"></p>
-                                <div class="col-md-12">
-                                    <div class="contact-form mt-45">
-                                        <button type="submit" class="main-btn">Send Message</button>
-                                    </div> <!-- contact-form -->
-                                </div>
-                            </div> <!-- row -->
-                        </form>
-                    </div> <!-- contact wrapper form -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== CONTACT PART ENDS ======-->
-    
-    <!--====== NEWSLATTER PART START ======-->
-    
-    <section class="newsletter-area bg_cover pt-115 pb-120" style="background-image: url(assets/images/newsletter-bg.jpg)">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="newsletter-wrapper">
-                        <div class="section-title text-center wow fadeInUpBig" data-wow-duration="1s" data-wow-delay="0.3s">
-                            <h6 class="sub-title">NEWSLETTER</h6>
-                            <h4 class="title">Get only new and unique <span>update from this newsletter.</span></h4>
-                        </div> <!-- section title -->
-                        <div class="newsletter-form wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                            <form action="#">
-                                <input type="text" placeholder="Enter your Email .......">
-                                <button class="main-btn">Subscribe</button>
-                            </form>
-                        </div> <!-- newsletter form -->
-                    </div> <!-- newsletter wrapper -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-    
-    <!--====== NEWSLATTER PART ENDS ======-->
-
-    <section class="gallery-area pt-115">
-<div class="row justify-content-center">
-                <div class="col-lg-9">
-                    <div class="about-title text-center wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <h2 class="welcome">You are using free lite version of DigiMark</h2>
-                        <h3 class="title">Please purchase full version to get all pages and features</h3></br>
-                        <a class="main-btn" href="http://rebrand.ly/digimark-gg" rel="nofollow">Purchase Now</a>
-                    </div>
-
-                </div>
-            </div>
-    </section>
-
-    <!--====== FOOTER PART START ======-->
-
-    <footer class="footer-area bg_cover" style="background-image: url(assets/images/footer-bg.jpg)">
-        <div class="container">
-            <div class="footer-widget pt-30 pb-70">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 order-sm-1 order-lg-1">
-                        <div class="footer-about pt-40">
-                            <a href="#">
-                                <img src="assets/images/logo.png" alt="Logo">
-                            </a>
-                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus, repudiandae! Totam, nemo sed? Provident.</p>
-                        </div> <!-- footer about -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-3 order-lg-2">
-                        <div class="footer-link pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">Services</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Seo Services</a></li>
-                                <li><a href="#">Virtual Marketing</a></li>
-                                <li><a href="#">Web Analytics</a></li>
-                                <li><a href="#">Web Development</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-4 order-lg-3">
-                        <div class="footer-link pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">About Us</h5>
-                            </div>
-                            <ul>
-                                <li><a href="#">Overview</a></li>
-                                <li><a href="#">Why us</a></li>
-                                <li><a href="#">Awards & Recognitions</a></li>
-                                <li><a href="#">Team</a></li>
-                                <li><a href="#">Client Reviews</a></li>
-                            </ul>
-                        </div> <!-- footer link -->
-                    </div>
-                    <div class="col-lg-3 col-sm-6 order-sm-2 order-lg-4">
-                        <div class="footer-contact pt-40">
-                            <div class="footer-title">
-                                <h5 class="title">Client Reviews</h5>
-                            </div>
-                            <div class="contact pt-10">
-                                <p class="text">Dumbo dika, Mirpur-12 <br> R-9/A B-C Dhaka.</p>
-                                <p class="text">clinexmex0011@gmail.com</p>
-                                <p class="text">+99 000 555 66 22</p>
-
-                                <ul class="social mt-40">
-                                    <li><a href="#"><i class="lni-facebook-filled"></i></a></li>
-                                    <li><a href="#"><i class="lni-twitter"></i></a></li>
-                                    <li><a href="#"><i class="lni-instagram-original"></i></a></li>
-                                    <li><a href="#"><i class="lni-linkedin"></i></a></li>
-                                </ul>
-                            </div> <!-- contact -->
-                        </div> <!-- footer contact -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- footer widget -->
-            <div class="footer-copyright text-center">
-                <p class="text">© 2022 Crafted by <a href="https://uideck.com" rel="nofollow">UIdeck</a> All Rights Reserved.</p>
-            </div>
-        </div> <!-- container -->
-    </footer>
-
-    <!--====== FOOTER PART ENDS ======-->
-
-    <!--====== BACK TOP TOP PART START ======-->
-
-    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
-
-    <!--====== BACK TOP TOP PART ENDS ======-->
-
-    <!--====== PART START ======-->
-
-<!--
-    <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-">
-                    
-                </div>
-            </div>
-        </div>
-    </section>
--->
-
-    <!--====== PART ENDS ======-->
-
-    <!-- row -->
-
-
-    <!--====== Jquery js ======-->
-    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
-    
-    <!--====== Bootstrap js ======-->
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    
-    <!--====== Plugins js ======-->
-    <script src="assets/js/plugins.js"></script>
-    
-    <!--====== Slick js ======-->
-    <script src="assets/js/slick.min.js"></script>
-    
-    <!--====== Ajax Contact js ======-->
-    <script src="assets/js/ajax-contact.js"></script>
-    
-    <!--====== Isotope js ======-->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    
-    <!--====== Magnific Popup js ======-->
-    <script src="assets/js/jquery.magnific-popup.min.js"></script>
-    
-    <!--====== Counter Up js ======-->
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    
-    <!--====== Circles js ======-->
-    <script src="assets/js/circles.min.js"></script>
-    
-    <!--====== Appear js ======-->
-    <script src="assets/js/jquery.appear.min.js"></script>
-    
-    <!--====== WOW js ======-->
-    <script src="assets/js/wow.min.js"></script>
-    
-    <!--====== Main js ======-->
-    <script src="assets/js/main.js"></script>
-
-</body>
-
+<!-- contact32:04-->
 </html>

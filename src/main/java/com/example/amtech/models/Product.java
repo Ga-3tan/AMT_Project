@@ -1,24 +1,40 @@
 package com.example.amtech.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.couchbase.core.mapping.Document;
-import org.springframework.data.couchbase.core.mapping.Field;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 
 @Data
-@Builder
 @AllArgsConstructor
-@Document
+@NoArgsConstructor
+@Document(collection = "products")
 public class Product {
-
     @Id
-    final String id;
+    private String id;
+    private String img;
 
-    @Field
-    String name;
+    @NotBlank(message = "Name is required")
+    private String name;
+    private String description;
 
-    @Field
-    String description;
+    @DecimalMin(value = "0.0", message = "Price cannot be negative")
+    private double price;
+
+    @Min(value = 0, message = "Quantity cannot be negative")
+    private int quantity;
+
+    @Min(value = 0, message = "Rating cannot be negative")
+    private int rating;
+    private boolean sale;
+
+    @DecimalMin(value = "0.0", message = "Sale cannot be negative")
+    private double salePercentage;
+
+    private String[] category;
 }

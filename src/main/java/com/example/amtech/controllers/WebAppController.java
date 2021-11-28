@@ -1,64 +1,60 @@
 package com.example.amtech.controllers;
 
+import com.example.amtech.controllers.utils.SessionController;
+import com.example.amtech.models.Category;
+import com.example.amtech.models.CategoryService;
+import com.example.amtech.models.ShoppingCart;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import java.util.List;
 
 @Controller
-public class WebAppController {
+public class WebAppController extends SessionController {
+    @Autowired
+    CategoryService categoryService;
+
+    @ModelAttribute("categories")
+    public List<Category> categories() {
+        return categoryService.getAllCategories();
+    }
 
     @GetMapping("/")
-    public String homepage(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String homepage(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "index";
     }
 
     @GetMapping("/about")
-    public String about(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String about(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "about";
     }
 
     @GetMapping("/contact")
-    public String contact(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
+    public String contact(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "contact";
     }
 
-    @GetMapping("/pricing")
-    public String pricing(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "pricing";
+    @GetMapping("/checkout")
+    public String checkout(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        return "checkout";
     }
 
-    @GetMapping("/services")
-    public String services(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "services";
+    @GetMapping("/login")
+    public String login(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        return "login";
     }
 
-    @GetMapping("/sign-in")
-    public String signIn(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "sign-in";
-    }
-
-    @GetMapping("/sign-up")
-    public String signUp(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "sign-up";
-    }
-
-    @GetMapping("/team")
-    public String team(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "team";
-    }
-
-    @GetMapping("/404-error")
-    public String error(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "404-error";
+    @GetMapping("/error")
+    public String error(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        return "error";
     }
 }

@@ -67,9 +67,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 ### Built With
 
 * [Spring](https://spring.io/)
-* [Couchease](https://couchbase.com/)
+* [MongoDB](https://www.mongodb.com/)
 * [AWS](https://https://aws.amazon.com/)
-* [FreeMarker](https://https://freemarker.apache.org/)
+* [Thymeleaf](https://www.thymeleaf.org/)
 
 <!-- GETTING STARTED -->
 
@@ -96,12 +96,12 @@ Gitflow is an alternative Git branching model that involves the use of feature b
 
 The flow is composed by one main branch and one developpment (sprint) branch. The sprint branch is merged to the main at every end of sprint. During developpment you should create some feature branch from the developpment branch to add new features.
 
-![Gitflow Model](./images/git-flow-model.svg)
+![Gitflow Model](readme_images/git-flow-model.svg)
 
 #### Initialization
 After installing GitFlow (you should already have it with Git by default), you can use ```git flow init``` to set the sprint branch as the develop branch in Gitflow model.
 
-![Gitflow init](./images/git-flow-init.png)
+![Gitflow init](readme_images/git-flow-init.png)
 
 _Note: As mentioned above, this branch is used for the history of the project. Also, one can set freely a different branch name._
 
@@ -123,7 +123,7 @@ _Reminder: Each new feature should reside in its own branch. feature branches us
 #### Release branch
 Once a feature is ready for a release, a release branch is forked off of the develop branch by using the following command:
 
-![Gitflow init](./images/git-flow-release.png)
+![Gitflow init](readme_images/git-flow-release.png)
 Once the release is ready to ship, it will get merged it into main and develop, then the release branch will be deleted.
 
 _Note: It’s important to merge back into develop because critical updates may have been added to the release branch and they need to be accessible to new features._
@@ -184,7 +184,7 @@ Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3ta
 [issues-url]: https://github.com/Ga-3tan/AMT_Project/issues
 [license-shield]: https://img.shields.io/github/license/Ga-3tan/AMT_Project.svg?style=for-the-badge
 [license-url]: https://github.com/Ga-3tan/AMT_Project/blob/master/LICENSE
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: readme_images/screenshot.png
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
