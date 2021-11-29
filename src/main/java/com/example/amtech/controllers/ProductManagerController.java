@@ -67,6 +67,7 @@ public class ProductManagerController extends SessionController {
                 saveFile(imgDir, fileName, multipartFile);
             } catch (IOException e) {
                 e.printStackTrace();
+                fileName = "no-product-image.png";
             }
             product.setImg(fileName);
         }
@@ -107,11 +108,8 @@ public class ProductManagerController extends SessionController {
             Files.createDirectories(uploadPath);
         }
 
-        try (InputStream inputStream = multipartFile.getInputStream()) {
-            Path filePath = uploadPath.resolve(fileName);
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException ioe) {
-            throw new IOException("Could not save image file: " + fileName, ioe);
-        }
+        InputStream inputStream = multipartFile.getInputStream();
+        Path filePath = uploadPath.resolve(fileName);
+        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
     }
 }
