@@ -79,6 +79,9 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 * Java 11
 * Maven 3.6.0
+* Docker
+
+Before executing the code you must install the database mongoDB in a docker container, to do this you must open a terminal go to the folder `/src/main/resources/db-local/` and execute the command `docker-compose up`.
 
 <!-- CONTRIBUTING -->
 
