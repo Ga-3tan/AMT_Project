@@ -57,6 +57,7 @@ public class ShoppingCartController extends SessionController {
                 }
             }
         } catch (Exception e) {
+            // DPE - Si tu as une erreur le client sera heureux sera ravi de venir voir la stacktrace pour savoir
             e.printStackTrace();
         }
     }

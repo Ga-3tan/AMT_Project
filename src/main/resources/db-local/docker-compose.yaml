@@ -1,3 +1,5 @@
+# DPE - Le dossier de ressource est packagé dans le .jar, je ne vois pas l'intérêt de mettre le fichier de docker à cet endroit-là
+# De-même que votre volume
 version: '3.1'
 services:
   mongo:

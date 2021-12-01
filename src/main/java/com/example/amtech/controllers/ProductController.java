@@ -33,6 +33,7 @@ public class ProductController extends SessionController {
         return "product";
     }
 
+    // DPE - Soyez consistant dans les annotations aussi, des fois vous avez @ResquestMapping avec le param ou des fois @PostMapping
     @RequestMapping(value="/product/{id}", method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String postShoppingCart(@PathVariable String id, Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
         List<Product> products = productService.getAllProducts();

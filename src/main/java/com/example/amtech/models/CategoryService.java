@@ -10,6 +10,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
+
+// DPE - Les services dans le package model ?
 public class CategoryService {
 
     private CategoryRepository categoryRepo;

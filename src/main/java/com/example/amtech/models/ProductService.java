@@ -9,6 +9,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
+// DPE - Votre service devrais avoir plus de responsabilités niveau logique, que juste wrapper le repository
 public class ProductService {
 
     private ProductRepository productRepo;

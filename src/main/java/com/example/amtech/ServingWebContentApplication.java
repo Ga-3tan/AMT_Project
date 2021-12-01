@@ -17,10 +17,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import javax.validation.spi.ConfigurationState;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 @SpringBootApplication
 @EnableMongoRepositories
 public class ServingWebContentApplication extends SpringBootServletInitializer implements CommandLineRunner {

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomUserRepositoryImpl implements CustomUserRepository {
 
+    // DPE - Il peut être private et final
     MongoTemplate mongoTemplate;
 
     @Override
