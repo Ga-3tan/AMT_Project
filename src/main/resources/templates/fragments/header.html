@@ -48,7 +48,7 @@
                     <div class="header-middle-right">
                         <ul class="hm-menu">
                             <!-- Begin Header Mini Cart Area -->
-                            <li class="hm-minicart">
+                            <li class="hm-minicart" th:if="${cart != null}">
                                 <div class="hm-minicart-trigger">
                                     <span class="item-icon"></span>
                                     <span class="item-text" th:inline="text">

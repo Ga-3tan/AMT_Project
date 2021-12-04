@@ -4,7 +4,7 @@ import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
 import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.ShoppingCart;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Controller
 public class WebAppController extends SessionController {
-    @Autowired
+
     CategoryService categoryService;
 
     @ModelAttribute("categories")
@@ -46,15 +47,9 @@ public class WebAppController extends SessionController {
         return "checkout";
     }
 
-    @GetMapping("/login")
-    public String login(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-        return "login";
-    }
-
     @GetMapping("/error")
     public String error(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute("cart", shoppingCart);
         return "error";
     }
 }
