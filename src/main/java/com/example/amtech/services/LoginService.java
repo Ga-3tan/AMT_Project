@@ -17,6 +17,10 @@ public class LoginService {
     public static final String CONFLICT = "The username already exist";
     public static final String INVALID = "The data you entered are not valid";
     public static final String FORBIDDEN = "The credentials are incorrect";
+    private final WebClient client = WebClient.builder()
+            .baseUrl(loginServiceIP)
+            .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+            .build();
 
 //    public ResponseEntity<String> registerUser(JSONObject data) {
 //        WebClient client = WebClient.create(loginServiceIP);
@@ -34,11 +38,9 @@ public class LoginService {
 //    }
 
     public String registerUser(JSONObject data) {
-        WebClient client = WebClient.create(loginServiceIP);
         return client.post()
                 .uri("/accounts/register")
                 .bodyValue(data)
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON)
                 .acceptCharset(StandardCharsets.UTF_8)
                 .exchangeToMono(res -> {
@@ -54,11 +56,9 @@ public class LoginService {
     }
 
     public String signIn(JSONObject data) {
-        WebClient client = WebClient.create(loginServiceIP);
         return client.post()
-                .uri("/accounts/register")
+                .uri("/auth/login")
                 .bodyValue(data)
-                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .accept(MediaType.APPLICATION_JSON)
                 .acceptCharset(StandardCharsets.UTF_8)
                 .exchangeToMono(res -> {
