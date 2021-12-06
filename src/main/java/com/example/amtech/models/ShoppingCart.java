@@ -8,6 +8,8 @@ import java.util.Map;
 
 @Data
 @Component
+
+//DPE - C'est un model votre ShoppingCart ?
 public class ShoppingCart {
     public static final String ATTR_NAME = "cart";
     private Map<Product, Integer> products = new HashMap<>();

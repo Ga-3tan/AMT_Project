@@ -68,10 +68,12 @@ public class ProductManagerController extends SessionController {
                 saveFile(imgDir, fileName, multipartFile);
             } catch (IOException e) {
                 e.printStackTrace();
+                fileName = "no-product-image.png";
             }
             product.setImg(fileName);
         }
 
+        // DPE - Laissez pas les trucs de debug, ou utilisez les types de logs
         System.out.println(product);//TODO DEBUG
         productService.createProduct(product);
         return "redirect:/category";
@@ -108,11 +110,8 @@ public class ProductManagerController extends SessionController {
             Files.createDirectories(uploadPath);
         }
 
-        try (InputStream inputStream = multipartFile.getInputStream()) {
-            Path filePath = uploadPath.resolve(fileName);
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException ioe) {
-            throw new IOException("Could not save image file: " + fileName, ioe);
-        }
+        InputStream inputStream = multipartFile.getInputStream();
+        Path filePath = uploadPath.resolve(fileName);
+        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
     }
 }

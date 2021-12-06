@@ -16,6 +16,8 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
     private MongoTemplate mongoTemplate;
 
     @Override
+
+    // DPE - Intellij le dit mais votre resultat sera toujours true (result != null)
     public boolean updateProductQuantity(String id, int newQuantity) {
         Query query = new Query(Criteria.where("id").is(id));
         Update update = new Update();

@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
@@ -29,7 +30,8 @@ public class Product {
     @Min(value = 0, message = "Quantity cannot be negative")
     private int quantity;
 
-    @Min(value = 0, message = "Rating cannot be negative")
+    @Min(value = 0, message = "Rating must be over 0")
+    @Max(value = 5, message = "Rating must be below 5")
     private int rating;
     private boolean sale;
 

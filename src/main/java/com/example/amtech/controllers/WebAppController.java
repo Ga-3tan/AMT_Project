@@ -23,6 +23,8 @@ public class WebAppController extends SessionController {
         return categoryService.getAllCategories();
     }
 
+    // DPE - La comme ça je vois de la duplication, est-ce qu'il y aurait un moyen de mieux faire ?
+    // Sinon je suis preneur de l'explication de pourquoi pas (En commentaire)
     @GetMapping("/")
     public String homepage(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
