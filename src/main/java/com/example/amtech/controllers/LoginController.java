@@ -16,7 +16,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("/login")
+@RequestMapping("/auth")
 public class LoginController extends SessionController {
 
     CategoryService categoryService;
@@ -34,7 +34,7 @@ public class LoginController extends SessionController {
         return "login";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public String registerUser(@RequestParam("username") String username,
                                @RequestParam("password") String password,
                                @ModelAttribute ShoppingCart shoppingCart,
@@ -49,8 +49,21 @@ public class LoginController extends SessionController {
         String response = loginService.registerUser(body);
         if (response.equals(LoginService.CONFLICT)) {
             // TODO rester sur la page et afficher message
+            /* Response body
+            {
+              "error": "The username already exists"
+            }*/
         } else if (response.equals(LoginService.INVALID)) {
             // TODO rester sur la page et afficher message
+            /*
+            {
+              "errors": [
+                {
+                  "property": "string",
+                  "message": "string"
+                }
+              ]
+            }*/
         } else {
             JSONObject user = new JSONObject(response);
             userService.createUser(user.getString("id"),
@@ -62,7 +75,7 @@ public class LoginController extends SessionController {
         return "redirect:/home";
     }
 
-    @PostMapping("/auth")
+    @PostMapping("/signin")
     public String logInUser(@RequestParam("username") String username,
                             @RequestParam("password") String password,
                             @ModelAttribute ShoppingCart shoppingCart,
