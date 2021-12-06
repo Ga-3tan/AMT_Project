@@ -17,6 +17,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Controller
+@RequestMapping("/admin")
 public class CategoryManagerController extends SessionController {
 
     private ProductService productService;
@@ -52,10 +53,10 @@ public class CategoryManagerController extends SessionController {
         }
 
         categoryService.createCategory(category);
-        return "redirect:/manage-category";
+        return "redirect:/admin/manage-category";
     }
 
-    @DeleteMapping("/category/delete/{id}")
+    @DeleteMapping("/manage-category/delete/{id}")
     public String deleteCategory(@PathVariable String id) {
         String catName = categoryService.getById(id).getName();
         List<Product> products = productService.getProductsByCategory(catName);
@@ -65,6 +66,6 @@ public class CategoryManagerController extends SessionController {
             productService.updateProductCategories(p.getId(), cat);
         }
         categoryService.deleteById(id);
-        return "redirect:/manage-category";
+        return "redirect:/admin/manage-category";
     }
 }

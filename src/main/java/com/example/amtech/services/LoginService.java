@@ -13,7 +13,7 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class LoginService {
 
-    private final String loginServiceIP = "localhost:8083";
+    private final String loginServiceIP = "localhost:8083"; //TODO change for deploy
     public static final String CONFLICT = "The username already exist";
     public static final String INVALID = "The data you entered are not valid";
     public static final String FORBIDDEN = "The credentials are incorrect";
