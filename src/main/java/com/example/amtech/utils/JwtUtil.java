@@ -1,12 +1,15 @@
 package com.example.amtech.utils;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.security.SignatureException;
 import java.util.Date;
 import java.util.function.Function;
 
+@Slf4j
 @Service
 public class JwtUtil {
 
@@ -29,11 +32,20 @@ public class JwtUtil {
         return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
-    private Boolean isTokenExpired(String token) {
-        return extractExpiration(token).before(new Date());
-    }
+    public Boolean validateJwtToken(String authToken) {
+        try {
+            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(authToken);
+            return true;
+        } catch (MalformedJwtException e) {
+            log.error("Invalid JWT token: {}", e.getMessage());
+        } catch (ExpiredJwtException e) {
+            log.error("JWT token is expired: {}", e.getMessage());
+        } catch (UnsupportedJwtException e) {
+            log.error("JWT token is unsupported: {}", e.getMessage());
+        } catch (IllegalArgumentException e) {
+            log.error("JWT claims string is empty: {}", e.getMessage());
+        }
 
-    public Boolean validateToken(String token) {
-        return !isTokenExpired(token);
+        return false;
     }
 }

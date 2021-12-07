@@ -23,7 +23,6 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-
         final String authorizationHeader = request.getHeader("Authorization");
 
         String username = null;
@@ -36,7 +35,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         //If we don't have already à authentication //TODO setAuthentification null for logout
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            if (jwtUtil.validateToken(jwt)) {
+            if (jwtUtil.validateJwtToken(jwt)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(jwtUtil.extractUsername(jwt),null);
                 usernamePasswordAuthenticationToken
                         .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

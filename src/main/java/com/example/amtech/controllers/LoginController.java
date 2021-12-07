@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+
 
 @AllArgsConstructor
 @Controller
@@ -45,15 +47,16 @@ public class LoginController extends SessionController {
                 .put("username", username)
                 .put("password", password);
 
-//        ResponseEntity<String> response = loginService.registerUser(body);
-        String response = loginService.registerUser(body);
+        String response = loginService.postRequest("/accounts/register", body).toString();
         if (response.equals(LoginService.CONFLICT)) {
+            System.out.println("Enter to: "+LoginService.CONFLICT);
             // TODO rester sur la page et afficher message
             /* Response body
             {
               "error": "The username already exists"
             }*/
         } else if (response.equals(LoginService.INVALID)) {
+            System.out.println("Enter to: "+LoginService.INVALID);
             // TODO rester sur la page et afficher message
             /*
             {
@@ -65,14 +68,10 @@ public class LoginController extends SessionController {
               ]
             }*/
         } else {
-            JSONObject user = new JSONObject(response);
-            userService.createUser(user.getString("id"),
-                    user.getString("username"),
-                    user.getString("role"));
+            System.out.println("USER correctly registered");
+            //TODO popUp/modal/alert user correctly registered
         }
-        // TODO créer cookie
-
-        return "redirect:/home";
+        return "redirect:/";
     }
 
     @PostMapping("/signin")
@@ -81,18 +80,13 @@ public class LoginController extends SessionController {
                             @ModelAttribute ShoppingCart shoppingCart,
                             Model model) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+
         JSONObject body = new JSONObject()
                 .put("username", username)
                 .put("password", password);
 
-        String response = loginService.signIn(body);
-        if (response.equals(LoginService.FORBIDDEN)) {
-            // TODO rester sur la page et afficher message
-        } else {
-            JSONObject user = new JSONObject(response);
-            // TODO
-        }
-
-        return "redirect:/home";
+        JSONObject response = loginService.postRequest("/auth/login", body);
+        System.out.println("body" + response.toString());
+        return "redirect:/";
     }
 }
