@@ -4,6 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.amtech.utils.JwtUtil;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,27 +32,34 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         Optional<Cookie> jwtCookie = null;
 
+        //Find cookie
         if (request.getCookies() != null) {
             jwtCookie = Arrays.stream(request.getCookies()).filter(cookie ->
                     cookie.getName().equals("token")).findFirst();
         }
 
-        if(jwtCookie.isPresent()) {
+        //Extract jwt from cookie
+        if(jwtCookie != null && jwtCookie.isPresent()) {
             System.out.println("JWTCookie: " + jwtCookie.get().getValue());
         }else{
             System.out.println("No JWTCookie ");
         }
 
+        //Extraction data from jwt Token
+        String payload  = null;
         String username = null;
-        DecodedJWT jwt = null;
-
-        if (jwtCookie != null && jwtCookie.isPresent() && !jwtCookie.get().getValue().isEmpty()) {
+        DecodedJWT jwt  = null;
+        if (jwtCookie != null && jwtCookie.isPresent()) {
             try {
                  jwt = JWT.decode(jwtCookie.get().getValue());
             } catch (JWTDecodeException exception){
                 //Invalid token
             }
-            //username = jwt.getSubject();
+            //username = jwt.getSubject(); //Trigger /login ??
+            payload = jwtUtil.decode(jwt.getPayload());
+            System.out.println("Payload: " + payload);
+            username = new JSONObject(payload).getString("sub");
+            System.out.println("Username: " + username);
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

@@ -96,8 +96,9 @@ public class LoginController extends SessionController {
         System.out.println("body: " + token);
 
         if(  token != null    &&
-            !token.equals("") &&
-            jwtUtil.validateJwtToken(token)) {
+            !token.equals("") /*&&
+                (jwtUtil.validateJwtToken(token)) ||
+                jwtUtil.verify(token)*/){
             System.out.println("Creating token");
                 Cookie cookie = new Cookie("token", result.getString("token"));
                 cookie.setPath("/");
