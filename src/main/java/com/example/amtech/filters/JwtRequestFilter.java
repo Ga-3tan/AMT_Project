@@ -7,7 +7,6 @@ import com.example.amtech.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -29,24 +28,30 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-        Optional<Cookie> accessCookie = null;
-        Cookie[] requestCookies = request.getCookies();
 
-        if (requestCookies != null) {
-            accessCookie = Arrays.stream(request.getCookies()).filter(cookie ->
+        Optional<Cookie> jwtCookie = null;
+
+        if (request.getCookies() != null) {
+            jwtCookie = Arrays.stream(request.getCookies()).filter(cookie ->
                     cookie.getName().equals("token")).findFirst();
+        }
+
+        if(jwtCookie.isPresent()) {
+            System.out.println("JWTCookie: " + jwtCookie.get().getValue());
+        }else{
+            System.out.println("No JWTCookie ");
         }
 
         String username = null;
         DecodedJWT jwt = null;
 
-        if (accessCookie != null && accessCookie.isPresent() && !accessCookie.get().getValue().isEmpty()) {
+        if (jwtCookie != null && jwtCookie.isPresent() && !jwtCookie.get().getValue().isEmpty()) {
             try {
-                 jwt = JWT.decode(accessCookie.get().getValue());
+                 jwt = JWT.decode(jwtCookie.get().getValue());
             } catch (JWTDecodeException exception){
                 //Invalid token
             }
-            username = jwt.getSubject();
+            //username = jwt.getSubject();
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {

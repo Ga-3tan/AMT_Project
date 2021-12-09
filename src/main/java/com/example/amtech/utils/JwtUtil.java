@@ -27,13 +27,25 @@ public class JwtUtil {
 
     public Boolean validateJwtToken(String token) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256("secret");
-            JWTVerifier verifier = JWT.require(algorithm)
-                    .withIssuer("auth0")
-                    .build(); //Reusable verifier instance
+            Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
+            JWTVerifier verifier = JWT.require(algorithm).build(); //Reusable verifier instance
             DecodedJWT jwt = verifier.verify(token);
             return true;
         } catch (JWTVerificationException exception){
+            System.out.println("Invalid signature/claims");
+            //Invalid signature/claims
+            return false;
+        }
+    }
+
+    public Boolean getSubject(String token) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
+            JWTVerifier verifier = JWT.require(algorithm).build(); //Reusable verifier instance
+            DecodedJWT jwt = verifier.verify(token);
+            return true;
+        } catch (JWTVerificationException exception){
+            System.out.println("Invalid signature/claims");
             //Invalid signature/claims
             return false;
         }
