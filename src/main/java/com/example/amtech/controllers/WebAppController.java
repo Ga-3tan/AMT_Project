@@ -4,7 +4,7 @@ import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
 import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.ShoppingCart;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Controller
 public class WebAppController extends SessionController {
-    @Autowired
+
     CategoryService categoryService;
 
     @ModelAttribute("categories")
@@ -22,29 +23,28 @@ public class WebAppController extends SessionController {
         return categoryService.getAllCategories();
     }
 
-    // DPE - La comme ça je vois de la duplication, est-ce qu'il y aurait un moyen de mieux faire ?
-    // Sinon je suis preneur de l'explication de pourquoi pas (En commentaire)
+    @ModelAttribute(ShoppingCart.ATTR_NAME)
+    public ShoppingCart cart(@ModelAttribute ShoppingCart shoppingCart) {
+        return shoppingCart;
+    }
+
     @GetMapping("/")
-    public String homepage(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+    public String homepage() {
         return "index";
     }
 
     @GetMapping("/about")
-    public String about(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+    public String about() {
         return "about";
     }
 
     @GetMapping("/contact")
-    public String contact(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+    public String contact() {
         return "contact";
     }
 
     @GetMapping("/checkout")
-    public String checkout(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+    public String checkout() {
         return "checkout";
     }
 
@@ -55,8 +55,7 @@ public class WebAppController extends SessionController {
     }
 
     @GetMapping("/error")
-    public String error(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+    public String error() {
         return "error";
     }
 }

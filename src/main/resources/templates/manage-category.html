@@ -49,7 +49,6 @@
         <table class="table table-striped">
           <thead>
           <tr>
-            <th scope="col">#ID</th>
             <th scope="col">Name</th>
             <th scope="col">Delete</th>
           </tr>
@@ -60,47 +59,47 @@
           </tr>
           <tr th:each="cat : ${categories}">
             <div>
-            <td><span th:text="${cat.id}"> Id </span></td>
-            <td><span th:text="${cat.name}"> Name </span></td>
-            <td>
-              <button type="button" class="register-button mt-2" data-toggle="modal" th:attr="data-target='#myModal'+${cat.id}">
-                Delete
-              </button>
-            </td>
-            <!-- The Modal -->
-            <div class="modal" th:id="'myModal'+${cat.id}">
-              <div class="modal-dialog">
-                <div class="modal-content">
+              <td><span th:text="${cat.name}"> Name </span></td>
+              <td>
+                <button type="button" class="register-button mt-2" data-toggle="modal" th:attr="data-target='#myModal'+${cat.id}">
+                  Delete
+                </button>
+              </td>
+              <!-- The Modal -->
+              <div class="modal" th:id="'myModal'+${cat.id}">
+                <div class="modal-dialog">
+                  <div class="modal-content">
 
-                  <!-- Modal Header -->
-                  <div class="modal-header">
-                    <h4  class="modal-title">Are you sure you want to delete the category?</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4  class="modal-title">Are you sure you want to delete the category?</h4>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body" th:if="${!prodService.getProductsByCategory(cat.name).isEmpty()}">
+                      <p>The following products will be modified:</p>
+                      <ul class="minicart-product-list">
+                        <div th:each="product : ${prodService.getProductsByCategory(cat.name)}">
+                          <li>
+                            <div class="minicart-product-details">
+                              <h6 th:text="${product.name}"></h6>
+                            </div>
+                          </li>
+                        </div>
+
+                      </ul>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <form action="#" th:action="@{'/category/delete/' + ${cat.id}}" th:method="delete">
+                        <button type="submit" class="btn btn-danger">Confirm</button>
+                      </form>
+                    </div>
+
                   </div>
-
-                  <!-- Modal body -->
-                  <div class="modal-body" th:if="${!prodService.getProductsByCategory(cat.name).isEmpty()}">
-                    <p>The following products will be modified:</p>
-                    <ul class="minicart-product-list">
-                      <div th:each="product : ${prodService.getProductsByCategory(cat.name)}">
-                        <li>
-                          <div class="minicart-product-details">
-                            <h6 th:text="${product.name}"></h6>
-                          </div>
-                        </li>
-                      </div>
-
-                    </ul>
-                  </div>
-
-                  <!-- Modal footer -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <form action="#" th:action="@{'/category/delete/' + ${cat.id}}" th:method="delete">
-                      <button type="submit" class="btn btn-danger">Confirm</button>
-                    </form>
-                  </div>
-
                 </div>
               </div>
             </div>
