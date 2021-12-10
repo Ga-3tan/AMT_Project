@@ -72,8 +72,6 @@ public class ProductManagerController extends SessionController {
             product.setImg(fileName);
         }
 
-        // DPE - Laissez pas les trucs de debug, ou utilisez les types de logs
-        System.out.println(product);//TODO DEBUG
         productService.createProduct(product);
         return "redirect:/category";
     }

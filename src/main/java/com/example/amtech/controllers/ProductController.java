@@ -3,7 +3,6 @@ package com.example.amtech.controllers;
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.*;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
@@ -33,8 +32,7 @@ public class ProductController extends SessionController {
         return "product";
     }
 
-    // DPE - Soyez consistant dans les annotations aussi, des fois vous avez @ResquestMapping avec le param ou des fois @PostMapping
-    @RequestMapping(value="/product/{id}", method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(value="/product/{id}")
     public String postShoppingCart(@PathVariable String id, Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
