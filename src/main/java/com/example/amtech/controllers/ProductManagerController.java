@@ -53,11 +53,6 @@ public class ProductManagerController extends SessionController {
             return "insert-product";
         }
 
-        if(productService.existsByName(product.getName())) {
-            model.addAttribute("error", "Product already exists");
-            return "insert-product";
-        }
-
         // Saves the image file
         if (!multipartFile.isEmpty()) {
             String imgDir = "images/product/";
@@ -72,7 +67,12 @@ public class ProductManagerController extends SessionController {
             product.setImg(fileName);
         }
 
-        productService.createProduct(product);
+        try {
+            productService.createProduct(product);
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "insert-product";
+        }
         return "redirect:/category";
     }
 
