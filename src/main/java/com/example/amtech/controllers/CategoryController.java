@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-// DPE - Premier groupe que je vois utiliser lombok ! GG !
 @AllArgsConstructor
 @Controller
 public class CategoryController extends SessionController {
@@ -24,7 +23,7 @@ public class CategoryController extends SessionController {
         return categoryService.getAllCategories();
     }
 
-    // DPE - Par principe, on met les ressources au pluriel
+    // DPE - Par principe, on met les ressources au pluriel // TODO after all merges
     @GetMapping("/category")
     public String shop(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);

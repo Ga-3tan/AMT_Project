@@ -47,13 +47,13 @@ public class CategoryManagerController extends SessionController {
             return "error";
         }
 
-        // DPE - Le test de voir si la catégorie existe se ferais plutôt dans le service, et si ça fail tu crées une exception que tu catch ici
-        if(categoryService.existsByName(category.getName())) {
-            model.addAttribute("error", "Category already exists");
+        try {
+            categoryService.createCategory(category);
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
             return "manage-category";
         }
 
-        categoryService.createCategory(category);
         return "redirect:/admin/manage-category";
     }
 

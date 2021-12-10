@@ -23,7 +23,10 @@ public class ProductService {
         Product p = productRepo.save(new Product(id, img, name, description, price, quantity, rating, sale, salePercentage, category));
         return p.getId();
     }
-    public String createProduct(Product product) {
+    public String createProduct(Product product) throws Exception {
+        if (existsByName(product.getName())) {
+            throw new Exception("Product already exists");
+        }
         Product p = productRepo.save(product);
         return p.getId();
     }

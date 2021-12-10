@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Service
 
-// DPE - Les services dans le package model ?
+// DPE - Les services dans le package model ? // TODO
 public class CategoryService {
 
     private CategoryRepository categoryRepo;
@@ -23,7 +23,10 @@ public class CategoryService {
         categoryRepo.save(new Category(id, name));
     }
 
-    public void createCategory(Category category) {
+    public void createCategory(Category category) throws Exception {
+        if (existsByName(category.getName())) {
+            throw new Exception("Category already exists");
+        }
         categoryRepo.save(category);
     }
 

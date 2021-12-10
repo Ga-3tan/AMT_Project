@@ -51,16 +51,19 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
         categoryService.deleteAllCategories();
 
         System.out.println("-------------CREATE CATEGORIES-------------------------------\n");
-        categoryService.createCategory(new Category("1", "cameras"));
-        categoryService.createCategory(new Category("2", "headsets"));
-        categoryService.createCategory(new Category("3", "laptops"));
-        categoryService.createCategory(new Category("4", "smartphones"));
-        categoryService.createCategory(new Category("5", "tablets"));
-        categoryService.createCategory(new Category("6", "tvs"));
-        categoryService.createCategory(new Category("7", "videogames"));
-        categoryService.createCategory(new Category("8", "drones"));
-        categoryService.createCategory(new Category("9", "printers"));
-
+        try {
+            categoryService.createCategory(new Category("1", "cameras"));
+            categoryService.createCategory(new Category("2", "headsets"));
+            categoryService.createCategory(new Category("3", "laptops"));
+            categoryService.createCategory(new Category("4", "smartphones"));
+            categoryService.createCategory(new Category("5", "tablets"));
+            categoryService.createCategory(new Category("6", "tvs"));
+            categoryService.createCategory(new Category("7", "videogames"));
+            categoryService.createCategory(new Category("8", "drones"));
+            categoryService.createCategory(new Category("9", "printers"));
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+        }
         System.out.println(categoryService.count() + " categories created");
 
         System.out.println("-------------CREATE PRODUCT ITEMS-------------------------------\n");

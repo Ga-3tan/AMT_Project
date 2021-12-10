@@ -13,11 +13,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomProductRepositoryImpl implements CustomProductRepository {
 
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
     @Override
-
-    // DPE - Intellij le dit mais votre resultat sera toujours true (result != null)
     public boolean updateProductQuantity(String id, int newQuantity) {
         Query query = new Query(Criteria.where("id").is(id));
         Update update = new Update();
@@ -25,7 +23,7 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 
         UpdateResult result = mongoTemplate.updateFirst(query, update, Product.class);
 
-        return result != null;
+        return result.wasAcknowledged();
     }
 
     @Override
@@ -36,7 +34,7 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 
         UpdateResult result = mongoTemplate.updateFirst(query, update, Product.class);
 
-        return result != null;
+        return result.wasAcknowledged();
     }
 
     @Override
@@ -53,5 +51,6 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 
         UpdateResult result = mongoTemplate.updateFirst(query, update, Product.class);
 
-        return result != null;    }
+        return result.wasAcknowledged();
+    }
 }
