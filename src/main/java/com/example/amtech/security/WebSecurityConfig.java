@@ -1,54 +1,72 @@
 package com.example.amtech.security;
 
-import com.example.amtech.filters.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private JwtRequestFilter jwtRequestFilter;
 
-    /*
-    public WebSecurityConfig() {
-        super(true); // disable default
-    }*/
+    @Autowired
+    AuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    /*
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("amtech").password("Xkxtxyglu@z9Afacb-k1").authorities("USER", "ADMIN");
-    }*/
+    @Bean
+    public AuthenticationProvider authenticationProvider(){
+        return new CustomAuthenticationProvider();
+    }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        /* *  matches zero or more characters
-           ** matches zero or more directories in a path*/
-        httpSecurity.csrf().disable()
+        httpSecurity
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
+                .and()
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**").permitAll()
-                .antMatchers("/admin/*").authenticated();//.hasAuthority("ADMIN");
-                //.and().securityContext() // store the user after logging in
-                //.and().exceptionHandling()// exception translation for security-related exceptions
-                //.and().servletApi();// enable the Servlet API integration so that you can use the methods on HttpServletRequest to do checks in your view
-        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+                .antMatchers("/",
+                        "/about",
+                        "/contact",
+                        "/checkout",
+                        "/error",
+                        "/shopping-cart",
+                        "/auth/**",
+                        "/category/**",
+                        "/product/**",
 
+                        "/images/**",
+                        "/fonts/**",
+                        "/css/**",
+                        "/js/**").permitAll()
+                .and()
+                .authorizeRequests()
+                .antMatchers("/admin/**")
+                .hasRole("ADMIN")
+                .anyRequest().authenticated()
+                .and().formLogin().loginPage("/auth").permitAll()
+                .successHandler(authenticationSuccessHandler) //
+                .and()
+                .logout()
+                .invalidateHttpSession(true) // Obj Auth / Http session
+                .clearAuthentication(true)
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/about").permitAll();
     }
-
 }

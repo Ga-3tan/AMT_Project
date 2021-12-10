@@ -86,7 +86,7 @@ public class LoginController extends SessionController {
                             @ModelAttribute ShoppingCart shoppingCart,
                             Model model,HttpServletResponse response) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-
+        /*
         JSONObject body = new JSONObject()
                 .put("username", username)
                 .put("password", password);
@@ -98,7 +98,7 @@ public class LoginController extends SessionController {
         if(  token != null    &&
             !token.equals("") /*&&
                 (jwtUtil.validateJwtToken(token)) ||
-                jwtUtil.verify(token)*/){
+                jwtUtil.verify(token)*//*){
             System.out.println("Creating token");
                 Cookie cookie = new Cookie("token", result.getString("token"));
                 cookie.setPath("/");
@@ -107,6 +107,8 @@ public class LoginController extends SessionController {
                 response.setHeader("Access-Control-Allow-Credentials", "true");
                 response.addCookie(cookie);
         }
-        return "redirect:/";
+        return "redirect:/";*/
+        System.out.println("JE SUIS HERE");
+        return "login";
     }
 }
