@@ -22,7 +22,6 @@ import java.util.List;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("/auth")
 public class LoginController extends SessionController {
 
     CategoryService categoryService;
@@ -36,10 +35,16 @@ public class LoginController extends SessionController {
         return categoryService.getAllCategories();
     }
 
-    @GetMapping()
+    @GetMapping("/login")
     public String login(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
         return "login";
+    }
+
+    @GetMapping("/signup")
+    public String signup(Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        return "signup";
     }
 
     @PostMapping("/signup")
@@ -78,37 +83,5 @@ public class LoginController extends SessionController {
             //TODO popUp/modal/alert user correctly registered
         }
         return "redirect:/";
-    }
-
-    @PostMapping("/signin")
-    public String logInUser(@RequestParam("username") String username,
-                            @RequestParam("password") String password,
-                            @ModelAttribute ShoppingCart shoppingCart,
-                            Model model,HttpServletResponse response) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-        /*
-        JSONObject body = new JSONObject()
-                .put("username", username)
-                .put("password", password);
-
-        JSONObject result = loginService.postRequest("/auth/login", body);
-        String token = result.getString("token");
-        System.out.println("body: " + token);
-
-        if(  token != null    &&
-            !token.equals("") /*&&
-                (jwtUtil.validateJwtToken(token)) ||
-                jwtUtil.verify(token)*//*){
-            System.out.println("Creating token");
-                Cookie cookie = new Cookie("token", result.getString("token"));
-                cookie.setPath("/");
-                cookie.setSecure(true);
-                cookie.setHttpOnly(true);
-                response.setHeader("Access-Control-Allow-Credentials", "true");
-                response.addCookie(cookie);
-        }
-        return "redirect:/";*/
-        System.out.println("JE SUIS HERE");
-        return "login";
     }
 }

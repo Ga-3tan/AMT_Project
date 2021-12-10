@@ -11,13 +11,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
 import java.util.List;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
+    @Autowired
     LoginService loginService;
 
     @Autowired
@@ -40,7 +40,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         JSONObject account = result.getJSONObject("account");
 
         //Set Session
-        httpSession.setAttribute("UserID", account.getString("id"));
+        httpSession.setAttribute("UserID", account.getInt("id"));
+        httpSession.setAttribute("jwt_token", token);
 
         //Set Authentification
         authorities.add(new SimpleGrantedAuthority("ROLE_" + account.getString("role").toUpperCase()));
