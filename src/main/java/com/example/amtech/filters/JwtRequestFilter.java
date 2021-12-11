@@ -33,7 +33,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             System.out.println(jwt_token);
             if (jwt_token != null) {
                 if (!jwtUtil.validateJwtToken(jwt_token) || jwtUtil.isTokenExpired(jwt_token)) { // Check JWT
-                    System.out.println("INVALID TOKEN");
+                    System.out.println("INVALID TOKEN OR EXPIRED");
                     // Logout
                     session.invalidate();
                     SecurityContextHolder.clearContext();
