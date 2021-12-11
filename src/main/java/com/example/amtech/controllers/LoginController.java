@@ -66,14 +66,11 @@ public class LoginController extends SessionController {
         } else if (response.getStatusCode().equals(HttpStatus.CONFLICT)) {
             JSONObject res = new JSONObject(response.getBody());
             model.addAttribute("alreadyExist", res.get("error").toString());
-//            model.addAttribute("alreadyExist", LoginService.CONFLICT);
-        } else { // INVALID : normalement on ne tombe pas là grâce à la validation du pwd
+        } else { // INVALID
             JSONObject res = new JSONObject(response.getBody());
             JSONArray err = res.getJSONArray("errors");
             String msg = ((JSONObject) err.get(0)).get("message").toString();
             model.addAttribute("error", msg);
-//            System.out.println(LoginService.INVALID);
-//            model.addAttribute("error", LoginService.INVALID);
         }
         return "signup";
     }
