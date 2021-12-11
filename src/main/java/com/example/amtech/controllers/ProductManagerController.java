@@ -27,6 +27,7 @@ import java.util.Objects;
 
 @AllArgsConstructor
 @Controller
+@RequestMapping("/admin")
 public class ProductManagerController extends SessionController {
 
     CategoryService categoryService;

@@ -26,7 +26,7 @@
   <div class="page-section mb-60">
     <div class="container">
       <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-        <form action="#" th:action="@{/manage-category}" th:object="${category}" method="post">
+        <form action="#" th:action="@{/admin/manage-category}" th:object="${category}" method="post">
           <div class="login-form">
             <h4 class="login-title">Insert new category</h4>
             <div class="row">
@@ -76,30 +76,29 @@
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
-                    <!-- Modal body -->
-                    <div class="modal-body" th:if="${!prodService.getProductsByCategory(cat.name).isEmpty()}">
-                      <p>The following products will be modified:</p>
-                      <ul class="minicart-product-list">
-                        <div th:each="product : ${prodService.getProductsByCategory(cat.name)}">
-                          <li>
-                            <div class="minicart-product-details">
-                              <h6 th:text="${product.name}"></h6>
-                            </div>
-                          </li>
-                        </div>
+                  <!-- Modal body -->
+                  <div class="modal-body" th:if="${!prodService.getProductsByCategory(cat.name).isEmpty()}">
+                    <p>The following products will be modified:</p>
+                    <ul class="minicart-product-list">
+                      <div th:each="product : ${prodService.getProductsByCategory(cat.name)}">
+                        <li>
+                          <div class="minicart-product-details">
+                            <h6 th:text="${product.name}"></h6>
+                          </div>
+                        </li>
+                      </div>
 
-                      </ul>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <form action="#" th:action="@{'/category/delete/' + ${cat.id}}" th:method="delete">
-                        <button type="submit" class="btn btn-danger">Confirm</button>
-                      </form>
-                    </div>
-
+                    </ul>
                   </div>
+
+                  <!-- Modal footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <form action="#" th:action="@{'/admin/manage-category/delete/' + ${cat.id}}" th:method="delete">
+                      <button type="submit" class="btn btn-danger">Confirm</button>
+                    </form>
+                  </div>
+
                 </div>
               </div>
             </div>

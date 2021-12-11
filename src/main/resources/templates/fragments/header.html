@@ -1,4 +1,4 @@
-<header th:fragment="header">
+<header th:fragment="header" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <!-- Begin Header Top Area -->
     <div class="header-top">
         <div class="container">
@@ -16,10 +16,14 @@
                 <div class="col-lg-9 col-md-8">
                     <div class="header-top-right">
                         <ul class="ht-menu">
+                            <style>#user_name:after { content: none;}</style>
                             <!-- Begin Login Area -->
-                            <li><a href="/login" class="login language-selector-wrapper">Login</a></li>
-                            <li><a href="/insert-product" class="login language-selector-wrapper">Add new product</a></li>
-                            <li><a href="/manage-category" class="login language-selector-wrapper">Category management</a></li>
+                            <li sec:authorize="isAnonymous()"><a href="/login" class="login language-selector-wrapper">Login</a></li>
+                            <li sec:authorize="isAnonymous()"><a href="/signup" class="login language-selector-wrapper">Sign up</a></li>
+                            <li sec:authorize="isAuthenticated()"><a id="user_name" class="login language-selector-wrapper">Hello [[${session.username}]]</a></li>
+                            <li sec:authorize="isAuthenticated()"><a href="/logout" class="login language-selector-wrapper">Logout</a></li>
+                            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin/insert-product" class="login language-selector-wrapper">Add new product</a></li>
+                            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin/manage-category" class="login language-selector-wrapper">Category management</a></li>
                             <!-- Login Area End Here -->
                         </ul>
                     </div>
@@ -48,7 +52,7 @@
                     <div class="header-middle-right">
                         <ul class="hm-menu">
                             <!-- Begin Header Mini Cart Area -->
-                            <li class="hm-minicart">
+                            <li class="hm-minicart" th:if="${cart != null}">
                                 <div class="hm-minicart-trigger">
                                     <span class="item-icon"></span>
                                     <span class="item-text" th:inline="text">

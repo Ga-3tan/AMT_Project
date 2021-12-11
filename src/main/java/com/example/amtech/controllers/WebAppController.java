@@ -6,7 +6,6 @@ import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.ShoppingCart;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -46,12 +45,6 @@ public class WebAppController extends SessionController {
     @GetMapping("/checkout")
     public String checkout() {
         return "checkout";
-    }
-
-    @GetMapping("/login")
-    public String login(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-        return "login";
     }
 
     @GetMapping("/error")
