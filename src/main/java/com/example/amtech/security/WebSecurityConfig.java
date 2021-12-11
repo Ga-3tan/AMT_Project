@@ -1,5 +1,6 @@
 package com.example.amtech.security;
 
+import com.example.amtech.filters.JwtRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,11 +12,15 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
 
     @Autowired
     AuthenticationSuccessHandler authenticationSuccessHandler;
@@ -52,19 +57,19 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/fonts/**",
                         "/css/**",
                         "/js/**").permitAll()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/admin/**")
-                .hasRole("ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().formLogin().loginPage("/login").permitAll()
-                .successHandler(authenticationSuccessHandler) //
+                .successHandler(authenticationSuccessHandler)
                 .and()
                 .logout()
-                .invalidateHttpSession(true) // Obj Auth / Http session
+                .invalidateHttpSession(true)// Obj Auth / Http session
+                .deleteCookies("JSESSIONID")
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").permitAll();
+
+        httpSecurity.addFilterAfter(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.example.amtech.services.LoginService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -35,17 +36,22 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                 .put("password", password);
 
         JSONObject result = loginService.postRequest("/auth/login", body);
+        if(!result.isNull("error")){
+            throw new BadCredentialsException(result.getString("error"));
+        }
         String token = result.getString("token");
         System.out.println("body: " + token);
         JSONObject account = result.getJSONObject("account");
 
         //Set Session
-        httpSession.setAttribute("UserID", account.getInt("id"));
+        httpSession.setAttribute("user_id", account.getInt("id"));
+        httpSession.setAttribute("username", account.getString("username"));
+        httpSession.setAttribute("role", account.getString("role"));
         httpSession.setAttribute("jwt_token", token);
 
         //Set Authentification
         authorities.add(new SimpleGrantedAuthority("ROLE_" + account.getString("role").toUpperCase()));
-        return new UsernamePasswordAuthenticationToken(account.getString("username"), null,authorities);
+        return new UsernamePasswordAuthenticationToken(account.getString("username"), null, authorities);
     }
 
     //Support cette classe

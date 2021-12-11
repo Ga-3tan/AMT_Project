@@ -33,7 +33,7 @@
                             <div class="product-details-view-content sp-normal-content pt-60">
                                 <div class="product-info">
                                     <h2 th:text="${product.name}"></h2>
-                                    <div class="review-item"><a th:href="@{'/admin/update-product/'+${product.id}}">Update product</a></div>
+                                    <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="review-item"><a th:href="@{'/admin/update-product/'+${product.id}}">Update product</a></div>
                                     <div class="rating-box pt-20">
                                         <ul class="rating rating-with-review-item">
                                             <li th:if="${product.rating != 0}" th:each="i: ${#numbers.sequence(1, product.rating)}" ><i class="fa fa-star-o"></i></li>
