@@ -54,9 +54,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return new UsernamePasswordAuthenticationToken(account.getString("username"), null, authorities);
     }
 
-    //Support cette classe
+    // Define if this AuthenticationProvider supports the indicated AuthenticationMethod object
     @Override
-    public boolean supports(Class<?> aClass) {
-        return aClass.equals(UsernamePasswordAuthenticationToken.class);
+    public boolean supports(Class<?> authenticationMethod) {
+        return authenticationMethod.equals(UsernamePasswordAuthenticationToken.class);
     }
 }

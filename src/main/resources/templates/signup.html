@@ -24,10 +24,12 @@
                                 <div class="col-md-12 col-12 mb-20">
                                     <label>User Name</label>
                                     <input class="mb-0" type="text" name="username" placeholder="User Name">
+                                    <div style="color: red" th:if="${alreadyExist != null}" th:text="${alreadyExist}"></div>
                                 </div>
                                 <div class="col-12 mb-20">
                                     <label>Password</label>
                                     <input class="mb-0" type="password" name="password" placeholder="Password">
+                                    <div style="color: red" th:if="${error != null}" th:text="${error}"></div>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="register-button mt-0">Register</button>
