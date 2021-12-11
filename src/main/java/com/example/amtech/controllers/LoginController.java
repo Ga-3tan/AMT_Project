@@ -62,7 +62,7 @@ public class LoginController extends SessionController {
         ResponseEntity<String> response = loginService.registerUser(body);
         if (response.getStatusCode().equals(HttpStatus.CREATED)) {
             System.out.println("USER correctly registered");
-            return "redirect:/";
+            return "redirect:/login";
         } else if (response.getStatusCode().equals(HttpStatus.CONFLICT)) {
             JSONObject res = new JSONObject(response.getBody());
             model.addAttribute("alreadyExist", res.get("error").toString());
