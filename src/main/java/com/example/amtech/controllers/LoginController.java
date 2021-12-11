@@ -8,14 +8,14 @@ import com.example.amtech.models.UserService;
 import com.example.amtech.services.LoginService;
 import com.example.amtech.utils.JwtUtil;
 import lombok.AllArgsConstructor;
+import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -35,53 +35,46 @@ public class LoginController extends SessionController {
         return categoryService.getAllCategories();
     }
 
+    @ModelAttribute(ShoppingCart.ATTR_NAME)
+    public ShoppingCart cart(@ModelAttribute ShoppingCart shoppingCart) {
+        return shoppingCart;
+    }
+
     @GetMapping("/login")
-    public String login(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+    public String login() {
         return "login";
     }
 
     @GetMapping("/signup")
-    public String signup(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+    public String signup() {
         return "signup";
     }
 
     @PostMapping("/signup")
     public String registerUser(@RequestParam("username") String username,
                                @RequestParam("password") String password,
-                               @ModelAttribute ShoppingCart shoppingCart,
-                               Model model) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-
+                               Model model)
+    {
         JSONObject body = new JSONObject()
                 .put("username", username)
                 .put("password", password);
 
-        String response = loginService.postRequest("/accounts/register", body).toString();
-        if (response.equals(LoginService.CONFLICT)) {
-            System.out.println("Enter to: " + LoginService.CONFLICT);
-            // TODO rester sur la page et afficher message
-            /* Response body
-            {
-              "error": "The username already exists"
-            }*/
-        } else if (response.equals(LoginService.INVALID)) {
-            System.out.println("Enter to: " + LoginService.INVALID);
-            // TODO rester sur la page et afficher message
-            /*
-            {
-              "errors": [
-                {
-                  "property": "string",
-                  "message": "string"
-                }
-              ]
-            }*/
-        } else {
+        ResponseEntity<String> response = loginService.registerUser(body);
+        if (response.getStatusCode().equals(HttpStatus.CREATED)) {
             System.out.println("USER correctly registered");
-            //TODO popUp/modal/alert user correctly registered
+            return "redirect:/";
+        } else if (response.getStatusCode().equals(HttpStatus.CONFLICT)) {
+            JSONObject res = new JSONObject(response.getBody());
+            model.addAttribute("alreadyExist", res.get("error").toString());
+//            model.addAttribute("alreadyExist", LoginService.CONFLICT);
+        } else { // INVALID : normalement on ne tombe pas là grâce à la validation du pwd
+            JSONObject res = new JSONObject(response.getBody());
+            JSONArray err = res.getJSONArray("errors");
+            String msg = ((JSONObject) err.get(0)).get("message").toString();
+            model.addAttribute("error", msg);
+//            System.out.println(LoginService.INVALID);
+//            model.addAttribute("error", LoginService.INVALID);
         }
-        return "redirect:/";
+        return "signup";
     }
 }
