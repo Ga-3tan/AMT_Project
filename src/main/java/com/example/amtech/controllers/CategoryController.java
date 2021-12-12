@@ -2,6 +2,7 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.*;
+import com.example.amtech.services.ShoppingCartService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ public class CategoryController extends SessionController {
 
     private ProductService productService;
     private CategoryService categoryService;
+    private ShoppingCartService shoppingCartService;
 
     @ModelAttribute("categories")
     public List<Category> categories() {
@@ -26,7 +28,7 @@ public class CategoryController extends SessionController {
     // DPE - Par principe, on met les ressources au pluriel // TODO after all merges
     @GetMapping("/category")
     public String shop(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("products", productService.getAllProducts());
         model.addAttribute("categoryName", "All categories");
 
@@ -35,7 +37,7 @@ public class CategoryController extends SessionController {
 
     @GetMapping("/category/{categoryName}")
     public String shop(@PathVariable String categoryName, Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("products", productService.getProductsByCategory(categoryName));
         model.addAttribute("categoryName", categoryName);
 

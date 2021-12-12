@@ -6,6 +6,7 @@ import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.ShoppingCart;
 import com.example.amtech.models.UserService;
 import com.example.amtech.services.LoginService;
+import com.example.amtech.services.ShoppingCartService;
 import com.example.amtech.utils.JwtUtil;
 import lombok.AllArgsConstructor;
 import org.json.JSONArray;
@@ -30,6 +31,8 @@ public class LoginController extends SessionController {
     HttpServletResponse response;
     JwtUtil jwtUtil;
 
+    private ShoppingCartService shoppingCartService;
+
     @ModelAttribute("categories")
     public List<Category> categories() {
         return categoryService.getAllCategories();
@@ -37,7 +40,7 @@ public class LoginController extends SessionController {
 
     @ModelAttribute(ShoppingCart.ATTR_NAME)
     public ShoppingCart cart(@ModelAttribute ShoppingCart shoppingCart) {
-        return shoppingCart;
+        return shoppingCartService.checkCartIntegrity(shoppingCart);
     }
 
     @GetMapping("/login")

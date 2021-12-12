@@ -2,6 +2,7 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.*;
+import com.example.amtech.services.ShoppingCartService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -16,8 +17,8 @@ import java.util.List;
 @Controller
 public class ShoppingCartController extends SessionController {
 
-    private ProductService productService;
     private CategoryService categoryService;
+    private ShoppingCartService shoppingCartService;
 
     @ModelAttribute("categories")
     public List<Category> categories() {
@@ -26,7 +27,7 @@ public class ShoppingCartController extends SessionController {
 
     @GetMapping("/shopping-cart")
     public String shoppingCart(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
 
         return "shopping-cart";
     }
@@ -34,31 +35,12 @@ public class ShoppingCartController extends SessionController {
     @RequestMapping(value="/shopping-cart", method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String postShoppingCart(Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
         if (formData.get("update_cart") != null) {
-            updateShoppingCart(shoppingCart, formData);
+            shoppingCartService.updateSessionShoppingCartFromForm(shoppingCart, formData);
         } else if (formData.get("empty_cart") != null) {
             shoppingCart.emptyCart();
         }
 
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         return "shopping-cart";
-    }
-
-    private void updateShoppingCart(ShoppingCart shoppingCart, MultiValueMap<String, String> formData) {
-        // Updates all products values
-        try {
-            Iterator<String> prodIds = formData.get("form_product_id").iterator();
-            Iterator<String> prodQty = formData.get("form_product_quantity").iterator();
-
-            while (prodIds.hasNext()) {
-                Product p = productService.getById(prodIds.next());
-                if (p != null) {
-                    int newQty = Integer.parseInt(prodQty.next());
-                    shoppingCart.setProduct(p, newQty);
-                }
-            }
-        } catch (Exception e) {
-            // DPE - Si tu as une erreur le client sera heureux sera ravi de venir voir la stacktrace pour savoir
-            e.printStackTrace();
-        }
     }
 }
