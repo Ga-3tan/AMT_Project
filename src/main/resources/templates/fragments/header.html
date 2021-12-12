@@ -63,18 +63,18 @@
                                 <span></span>
                                 <div class="minicart">
                                     <ul class="minicart-product-list">
-                                        <li th:each="product: ${cart.getProducts().keySet()}">
-                                            <a th:href="@{'/product/' + ${product.id}}" class="minicart-product-image">
-                                                <img style="width: 50px" th:if="${product.img}" th:src="@{'/images/product/'+ ${product.img}}" alt="cart products">
-                                                <img style="width: 50px" th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="cart products">
+                                        <li th:each="record: ${cart.getProducts().values()}">
+                                            <a th:href="@{'/product/' + ${record.product.id}}" class="minicart-product-image">
+                                                <img style="width: 50px" th:if="${record.product.img}" th:src="@{'/images/product/'+ ${record.product.img}}" alt="cart products">
+                                                <img style="width: 50px" th:unless="${record.product.img}" th:src="@{/images/product/no-product-image.png}" alt="cart products">
                                             </a>
                                             <div class="minicart-product-details">
-                                                <h6><a th:href="@{'/product/' + ${product.id}}" th:text="${product.name}"></a></h6>
-                                                <span th:text="${product.price} + ' x ' + ${cart.getProductQuantity(product)}"></span>
+                                                <h6><a th:href="@{'/product/' + ${record.product.id}}" th:text="${record.product.name}"></a></h6>
+                                                <span th:text="'CHF ' + ${record.product.price} + ' x ' + ${cart.getProductQuantity(record.product)}"></span>
                                             </div>
                                         </li>
                                     </ul>
-                                    <p class="minicart-total">SUBTOTAL: <span th:text="${cart.getTotal()}"></span></p>
+                                    <p class="minicart-total">SUBTOTAL: <span th:text="'CHF ' + ${cart.getTotal()}"></span></p>
                                     <div class="minicart-button">
                                         <a href="/shopping-cart" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                             <span>Shopping Cart</span>

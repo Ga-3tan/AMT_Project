@@ -4,11 +4,13 @@ import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
 import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.ShoppingCart;
+import com.example.amtech.services.ShoppingCartService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @AllArgsConstructor
@@ -16,6 +18,8 @@ import java.util.List;
 public class WebAppController extends SessionController {
 
     CategoryService categoryService;
+    private ShoppingCartService shoppingCartService;
+    private HttpSession httpSession;
 
     @ModelAttribute("categories")
     public List<Category> categories() {
@@ -24,7 +28,12 @@ public class WebAppController extends SessionController {
 
     @ModelAttribute(ShoppingCart.ATTR_NAME)
     public ShoppingCart cart(@ModelAttribute ShoppingCart shoppingCart) {
-        return shoppingCart;
+        Object userId = httpSession.getAttribute("user_id");
+        if (userId != null) { // True when logged
+            ShoppingCart dbCart = shoppingCartService.retrieveUserShoppingCart(String.valueOf(userId));
+            shoppingCart.setAll(dbCart);
+        }
+        return shoppingCartService.checkCartIntegrity(shoppingCart);
     }
 
     @GetMapping("/")

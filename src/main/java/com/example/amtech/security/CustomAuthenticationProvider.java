@@ -1,6 +1,8 @@
 package com.example.amtech.security;
 
+import com.example.amtech.models.ShoppingCart;
 import com.example.amtech.services.LoginService;
+import com.example.amtech.services.ShoppingCartService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -20,6 +22,9 @@ import java.util.List;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     LoginService loginService;
+
+    @Autowired
+    ShoppingCartService shoppingCartService;
 
     @Autowired
     HttpSession httpSession;

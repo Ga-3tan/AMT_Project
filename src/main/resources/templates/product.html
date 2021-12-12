@@ -41,7 +41,7 @@
                                         </ul>
                                     </div>
                                     <div class="price-box pt-20">
-                                        <span class="new-price new-price-2" th:text="${product.price > 0} ? ${product.price} + '.-' : 'Coming soon'"></span>
+                                        <span class="new-price new-price-2" th:text="${product.price > 0} ? 'CHF ' + ${product.price} : 'Coming soon'"></span>
                                     </div>
                                     <div class="product-desc">
                                         <p>
@@ -137,7 +137,7 @@
                                                     </div>
                                                     <h4><a class="product_name" th:href="@{'/product/'+ ${prod.id}}" th:text="${prod.name}"></a></h4>
                                                     <div class="price-box">
-                                                        <span class="new-price" th:text="${prod.price}+'.–' "></span>
+                                                        <span class="new-price" th:text="'CHF ' + ${prod.price}"></span>
                                                     </div>
                                                 </div>
                                             </div>
