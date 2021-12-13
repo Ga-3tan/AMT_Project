@@ -1,6 +1,6 @@
 package com.example.amtech;
 
-import com.example.amtech.models.ProductService;
+import com.example.amtech.services.ProductService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

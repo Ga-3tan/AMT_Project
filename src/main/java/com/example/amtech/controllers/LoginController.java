@@ -2,9 +2,8 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
-import com.example.amtech.models.CategoryService;
+import com.example.amtech.services.CategoryService;
 import com.example.amtech.models.ShoppingCart;
-import com.example.amtech.models.UserService;
 import com.example.amtech.services.LoginService;
 import com.example.amtech.services.ShoppingCartService;
 import com.example.amtech.utils.JwtUtil;
@@ -26,7 +25,6 @@ import java.util.List;
 public class LoginController extends SessionController {
 
     CategoryService categoryService;
-    UserService userService;
     LoginService loginService;
     HttpServletResponse response;
     JwtUtil jwtUtil;

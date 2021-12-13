@@ -8,8 +8,6 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @NoArgsConstructor
-@Getter
-@Setter
 @Document(collection = "shoppingCartRecords")
 public class ShoppingCartRecord {
     @Id

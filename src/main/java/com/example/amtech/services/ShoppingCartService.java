@@ -1,20 +1,14 @@
 package com.example.amtech.services;
 
 import com.example.amtech.models.Product;
-import com.example.amtech.models.ProductService;
 import com.example.amtech.models.ShoppingCart;
 import com.example.amtech.models.ShoppingCartRecord;
 import com.example.amtech.repository.*;
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.expression.SecurityExpressionOperations;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.util.MultiValueMap;
 
 import javax.servlet.http.HttpSession;
-import java.util.Map.*;
 import java.util.Iterator;
 
 @AllArgsConstructor

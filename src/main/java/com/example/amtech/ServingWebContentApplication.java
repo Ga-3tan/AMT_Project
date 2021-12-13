@@ -1,8 +1,8 @@
 package com.example.amtech;
 
 import com.example.amtech.models.Category;
-import com.example.amtech.models.CategoryService;
-import com.example.amtech.models.ProductService;
+import com.example.amtech.services.CategoryService;
+import com.example.amtech.services.ProductService;
 import com.example.amtech.repository.CategoryRepository;
 import com.example.amtech.repository.CustomProductRepository;
 import com.example.amtech.repository.ProductRepository;

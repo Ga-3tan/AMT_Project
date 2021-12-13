@@ -1,5 +1,6 @@
-package com.example.amtech.models;
+package com.example.amtech.services;
 
+import com.example.amtech.models.Product;
 import com.example.amtech.repository.CustomProductRepository;
 import com.example.amtech.repository.ProductRepository;
 import lombok.AllArgsConstructor;
@@ -9,7 +10,6 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
-// DPE - Votre service devrais avoir plus de responsabilités niveau logique, que juste wrapper le repository
 public class ProductService {
 
     private ProductRepository productRepo;

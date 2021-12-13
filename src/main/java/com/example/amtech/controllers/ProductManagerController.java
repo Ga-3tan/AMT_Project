@@ -2,9 +2,9 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
-import com.example.amtech.models.CategoryService;
+import com.example.amtech.services.CategoryService;
 import com.example.amtech.models.Product;
-import com.example.amtech.models.ProductService;
+import com.example.amtech.services.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,17 +1,15 @@
-package com.example.amtech.models;
+package com.example.amtech.services;
 
+import com.example.amtech.models.Category;
 import com.example.amtech.repository.CategoryRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @AllArgsConstructor
 @Service
 
-// DPE - Les services dans le package model ? // TODO
 public class CategoryService {
 
     private CategoryRepository categoryRepo;

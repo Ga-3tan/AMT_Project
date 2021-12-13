@@ -2,6 +2,7 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.*;
+import com.example.amtech.services.CategoryService;
 import com.example.amtech.services.ShoppingCartService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
@@ -10,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Iterator;
 import java.util.List;
 
 @AllArgsConstructor
