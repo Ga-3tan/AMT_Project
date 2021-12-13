@@ -56,7 +56,7 @@
                                 <div class="hm-minicart-trigger">
                                     <span class="item-icon"></span>
                                     <span class="item-text" th:inline="text">
-                                                    [[${cart.getTotal()} + ' .-']]
+                                                    [['CHF ' +  ${cart.getTotal()}]]
                                                     <span class="cart-item-count" th:text="${cart.getProducts().size()}"></span>
                                                 </span>
                                 </div>
