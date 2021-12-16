@@ -54,6 +54,7 @@ public class ProductManagerController extends SessionController {
             return "insert-product";
         }
 
+        // DPE - Je vous propose de faire un FileService au même titre que productService. Pour cacher un peu la logique de gestion de fichier quand on lit le controller
         // Saves the image file
         if (!multipartFile.isEmpty()) {
             String imgDir = "images/product/";
@@ -100,6 +101,7 @@ public class ProductManagerController extends SessionController {
         return "redirect:/product/" + id;
     }
 
+    // DPE - Cette fonction irait donc dans le FileService
     private static void saveFile(String uploadDir, String fileName,
                                  MultipartFile multipartFile) throws IOException {
         Path uploadPath = Paths.get(uploadDir);

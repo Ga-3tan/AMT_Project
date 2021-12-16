@@ -24,6 +24,7 @@ import java.util.List;
 @Controller
 public class LoginController extends SessionController {
 
+    // DPE - C'est une details, mais on peut mettre ces champs enn privé pour une meilleure encapsulation
     CategoryService categoryService;
     LoginService loginService;
     HttpServletResponse response;

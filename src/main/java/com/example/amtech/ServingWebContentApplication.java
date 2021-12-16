@@ -37,6 +37,10 @@ public class ServingWebContentApplication extends SpringBootServletInitializer i
         }
     }
 
+    // DPE - ALORS ... Comment dire xD
+    // https://imgur.com/gallery/MwaaqCl
+
+    // Une piste à explorer : https://flywaydb.org/documentation/
     // TODO remove when project is finished
     @Autowired ProductRepository productRepo;
     @Autowired CategoryRepository categoryRepository;

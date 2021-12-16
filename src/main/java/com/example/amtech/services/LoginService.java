@@ -34,6 +34,7 @@ public class LoginService {
                 .block();
     }
 
+    // DPE - Pour la fonction d'en dessus vous ne passez pas l'URI. Choisissez une manière. Je vote pour ne pas passer l'URI.
     public JSONObject postRequest(String uri, JSONObject body) {
         ResponseEntity<String> response = webClient
                 .post()
