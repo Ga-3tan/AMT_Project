@@ -72,9 +72,9 @@
                                 </div>
                                 <div id="cate-toggle" class="category-menu-list">
                                     <ul>
-                                        <li ><a href="/category">All Categories</a></li>
-                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} < 7"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
-                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} > 6" class="rx-child"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li ><a href="/categories">All Categories</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} < 7"><a th:href="@{'/categories/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} > 6" class="rx-child"><a th:href="@{'/categories/' + ${category.name}}">[[${category.name}]]</a></li>
                                         <li class="rx-parent">
                                             <a class="rx-default">More Categories</a>
                                             <a class="rx-show">Less Categories</a>

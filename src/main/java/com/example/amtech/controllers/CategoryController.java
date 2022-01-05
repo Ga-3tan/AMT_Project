@@ -23,8 +23,7 @@ public class CategoryController extends SessionController {
         this.shoppingCartService = shoppingCartService;
     }
 
-    // DPE - Par principe, on met les ressources au pluriel // TODO after all merges
-    @GetMapping("/category")
+    @GetMapping("/categories")
     public String shop(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("products", productService.getAllProducts());
@@ -33,7 +32,7 @@ public class CategoryController extends SessionController {
         return "shop";
     }
 
-    @GetMapping("/category/{categoryName}")
+    @GetMapping("/categories/{categoryName}")
     public String shop(@PathVariable String categoryName, Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("products", productService.getProductsByCategory(categoryName));

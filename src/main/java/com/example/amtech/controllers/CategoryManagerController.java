@@ -30,13 +30,13 @@ public class CategoryManagerController extends SessionController {
         return productService;
     }
 
-    @GetMapping("/manage-category")
+    @GetMapping("/manage-categories")
     public String insertCategory(Model model) {
         model.addAttribute("category", new Category());
-        return "manage-category";
+        return "manage-categories";
     }
 
-    @PostMapping("/manage-category")
+    @PostMapping("/manage-categories")
     public String insertCategoryPost(@Valid @ModelAttribute Category category, BindingResult bindingResult, Model model) {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
@@ -48,13 +48,13 @@ public class CategoryManagerController extends SessionController {
             categoryService.createCategory(category);
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "manage-category";
+            return "manage-categories";
         }
 
-        return "redirect:/admin/manage-category";
+        return "redirect:/admin/manage-categories";
     }
 
-    @DeleteMapping("/manage-category/delete/{id}")
+    @DeleteMapping("/manage-categories/delete/{id}")
     public String deleteCategory(@PathVariable String id) {
         String catName = categoryService.getById(id).getName();
         List<Product> products = productService.getProductsByCategory(catName);
@@ -64,6 +64,6 @@ public class CategoryManagerController extends SessionController {
             productService.updateProductCategories(p.getId(), cat);
         }
         categoryService.deleteById(id);
-        return "redirect:/admin/manage-category";
+        return "redirect:/admin/manage-categories";
     }
 }

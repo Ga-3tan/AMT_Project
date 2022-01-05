@@ -50,7 +50,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/error",
                         "/shopping-cart",
                         "/signup",
-                        "/category/**",
+                        "/categories/**",
                         "/product/**",
 
                         "/images/**",
