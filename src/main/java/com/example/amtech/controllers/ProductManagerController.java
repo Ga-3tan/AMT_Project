@@ -1,12 +1,10 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.Category;
 import com.example.amtech.models.Product;
 import com.example.amtech.services.CategoryService;
 import com.example.amtech.services.FileService;
 import com.example.amtech.services.ProductService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,20 +12,18 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import java.util.List;
 
-@AllArgsConstructor
 @Controller
 @RequestMapping("/admin")
 public class ProductManagerController extends SessionController {
 
-    private CategoryService categoryService;
-    private ProductService productService;
-    private FileService fileService;
+    private final ProductService productService;
+    private final FileService fileService;
 
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return categoryService.getAllCategories();
+    public ProductManagerController(CategoryService categoryService, ProductService productService, FileService fileService) {
+        super(categoryService);
+        this.productService = productService;
+        this.fileService = fileService;
     }
 
     @GetMapping("/insert-product")

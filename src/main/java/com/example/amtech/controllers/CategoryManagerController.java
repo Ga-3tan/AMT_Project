@@ -2,10 +2,9 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
-import com.example.amtech.services.CategoryService;
 import com.example.amtech.models.Product;
+import com.example.amtech.services.CategoryService;
 import com.example.amtech.services.ProductService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,22 +14,20 @@ import org.testcontainers.shaded.org.apache.commons.lang.ArrayUtils;
 import javax.validation.Valid;
 import java.util.List;
 
-@AllArgsConstructor
 @Controller
 @RequestMapping("/admin")
 public class CategoryManagerController extends SessionController {
 
-    private ProductService productService;
-    private CategoryService categoryService;
+    private final ProductService productService;
+
+    public CategoryManagerController(CategoryService categoryService, ProductService productService) {
+        super(categoryService);
+        this.productService = productService;
+    }
 
     @ModelAttribute("prodService")
     public ProductService productService() {
         return productService;
-    }
-
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return categoryService.getAllCategories();
     }
 
     @GetMapping("/manage-category")

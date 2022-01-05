@@ -1,29 +1,25 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.Category;
-import com.example.amtech.services.CategoryService;
 import com.example.amtech.models.ShoppingCart;
+import com.example.amtech.services.CategoryService;
 import com.example.amtech.services.ShoppingCartService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
-@AllArgsConstructor
 @Controller
 public class WebAppController extends SessionController {
 
-    CategoryService categoryService;
-    private ShoppingCartService shoppingCartService;
-    private HttpSession httpSession;
+    private final ShoppingCartService shoppingCartService;
+    private final HttpSession httpSession;
 
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return categoryService.getAllCategories();
+    public WebAppController(CategoryService categoryService, ShoppingCartService shoppingCartService, HttpSession httpSession) {
+        super(categoryService);
+        this.shoppingCartService = shoppingCartService;
+        this.httpSession = httpSession;
     }
 
     @ModelAttribute(ShoppingCart.ATTR_NAME)
