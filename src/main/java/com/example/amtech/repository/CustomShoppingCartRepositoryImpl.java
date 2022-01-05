@@ -1,18 +1,14 @@
 package com.example.amtech.repository;
 
-import com.example.amtech.models.Product;
 import com.example.amtech.models.ShoppingCart;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.result.UpdateResult;
 import lombok.AllArgsConstructor;
-import org.bson.BSONObject;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
-
-import java.util.Map;
 
 @AllArgsConstructor
 @Component

@@ -1,40 +1,31 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.Category;
-import com.example.amtech.services.CategoryService;
 import com.example.amtech.models.ShoppingCart;
+import com.example.amtech.services.CategoryService;
 import com.example.amtech.services.LoginService;
 import com.example.amtech.services.ShoppingCartService;
-import com.example.amtech.utils.JwtUtil;
-import lombok.AllArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
-
-
-@AllArgsConstructor
 @Controller
 public class LoginController extends SessionController {
 
-    // DPE - C'est une details, mais on peut mettre ces champs enn privé pour une meilleure encapsulation
-    CategoryService categoryService;
-    LoginService loginService;
-    HttpServletResponse response;
-    JwtUtil jwtUtil;
+    private final LoginService loginService;
+    private final ShoppingCartService shoppingCartService;
 
-    private ShoppingCartService shoppingCartService;
-
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return categoryService.getAllCategories();
+    public LoginController(CategoryService categoryService, LoginService loginService, ShoppingCartService shoppingCartService) {
+        super(categoryService);
+        this.loginService = loginService;
+        this.shoppingCartService = shoppingCartService;
     }
 
     @ModelAttribute(ShoppingCart.ATTR_NAME)
@@ -55,8 +46,7 @@ public class LoginController extends SessionController {
     @PostMapping("/signup")
     public String registerUser(@RequestParam("username") String username,
                                @RequestParam("password") String password,
-                               Model model)
-    {
+                               Model model) {
         JSONObject body = new JSONObject()
                 .put("username", username)
                 .put("password", password);

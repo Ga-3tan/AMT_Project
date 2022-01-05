@@ -2,10 +2,9 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
-import com.example.amtech.services.CategoryService;
 import com.example.amtech.models.Product;
+import com.example.amtech.services.CategoryService;
 import com.example.amtech.services.ProductService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,31 +14,29 @@ import org.testcontainers.shaded.org.apache.commons.lang.ArrayUtils;
 import javax.validation.Valid;
 import java.util.List;
 
-@AllArgsConstructor
 @Controller
 @RequestMapping("/admin")
 public class CategoryManagerController extends SessionController {
 
-    private ProductService productService;
-    private CategoryService categoryService;
+    private final ProductService productService;
+
+    public CategoryManagerController(CategoryService categoryService, ProductService productService) {
+        super(categoryService);
+        this.productService = productService;
+    }
 
     @ModelAttribute("prodService")
     public ProductService productService() {
         return productService;
     }
 
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return categoryService.getAllCategories();
-    }
-
-    @GetMapping("/manage-category")
+    @GetMapping("/manage-categories")
     public String insertCategory(Model model) {
         model.addAttribute("category", new Category());
-        return "manage-category";
+        return "manage-categories";
     }
 
-    @PostMapping("/manage-category")
+    @PostMapping("/manage-categories")
     public String insertCategoryPost(@Valid @ModelAttribute Category category, BindingResult bindingResult, Model model) {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
@@ -51,13 +48,13 @@ public class CategoryManagerController extends SessionController {
             categoryService.createCategory(category);
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
-            return "manage-category";
+            return "manage-categories";
         }
 
-        return "redirect:/admin/manage-category";
+        return "redirect:/admin/manage-categories";
     }
 
-    @DeleteMapping("/manage-category/delete/{id}")
+    @DeleteMapping("/manage-categories/delete/{id}")
     public String deleteCategory(@PathVariable String id) {
         String catName = categoryService.getById(id).getName();
         List<Product> products = productService.getProductsByCategory(catName);
@@ -67,6 +64,6 @@ public class CategoryManagerController extends SessionController {
             productService.updateProductCategories(p.getId(), cat);
         }
         categoryService.deleteById(id);
-        return "redirect:/admin/manage-category";
+        return "redirect:/admin/manage-categories";
     }
 }

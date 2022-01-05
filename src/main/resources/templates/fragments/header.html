@@ -23,7 +23,7 @@
                             <li sec:authorize="isAuthenticated()"><a id="user_name" class="login language-selector-wrapper">Hello [[${session.username}]]</a></li>
                             <li sec:authorize="isAuthenticated()"><a href="/logout" class="login language-selector-wrapper">Logout</a></li>
                             <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin/insert-product" class="login language-selector-wrapper">Add new product</a></li>
-                            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin/manage-category" class="login language-selector-wrapper">Category management</a></li>
+                            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin/manage-categories" class="login language-selector-wrapper">Categories management</a></li>
                             <!-- Login Area End Here -->
                         </ul>
                     </div>
@@ -105,11 +105,11 @@
                         <nav>
                             <ul>
                                 <li class="dropdown-holder"><a href="/">Home</a></li>
-                                <li class="megamenu-static-holder"><a href="/category">All products</a>
+                                <li class="megamenu-static-holder"><a href="/categories">All products</a>
                                     <ul class="megamenu hb-megamenu">
-                                        <li><a href="/category">All categories</a>
+                                        <li><a href="/categories">All categories</a>
                                             <ul>
-                                                <li th:each="category : ${categories}"><a style="text-transform: capitalize;" th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                                <li th:each="category : ${categories}"><a style="text-transform: capitalize;" th:href="@{'/categories/' + ${category.name}}">[[${category.name}]]</a></li>
                                             </ul>
                                         </li>
                                     </ul>

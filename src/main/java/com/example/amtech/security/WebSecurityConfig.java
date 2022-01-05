@@ -1,7 +1,7 @@
 package com.example.amtech.security;
 
 import com.example.amtech.filters.JwtRequestFilter;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,15 +15,13 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+@AllArgsConstructor
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
     private JwtRequestFilter jwtRequestFilter;
-
-    @Autowired
-    AuthenticationSuccessHandler authenticationSuccessHandler;
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -50,7 +48,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/error",
                         "/shopping-cart",
                         "/signup",
-                        "/category/**",
+                        "/categories/**",
                         "/product/**",
 
                         "/images/**",

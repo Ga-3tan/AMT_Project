@@ -34,11 +34,10 @@ public class LoginService {
                 .block();
     }
 
-    // DPE - Pour la fonction d'en dessus vous ne passez pas l'URI. Choisissez une manière. Je vote pour ne pas passer l'URI.
-    public JSONObject postRequest(String uri, JSONObject body) {
+    public JSONObject postRequest(JSONObject body) {
         ResponseEntity<String> response = webClient
                 .post()
-                .uri(uri)
+                .uri("/auth/login")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(BodyInserters.fromValue(body.toString()))
                 .retrieve()
