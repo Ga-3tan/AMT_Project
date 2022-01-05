@@ -1,8 +1,6 @@
 package com.example.amtech.security;
 
-import com.example.amtech.models.ShoppingCart;
 import com.example.amtech.services.LoginService;
-import com.example.amtech.services.ShoppingCartService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -20,14 +18,11 @@ import java.util.List;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
-    @Autowired
-    LoginService loginService;
 
     @Autowired
-    ShoppingCartService shoppingCartService;
-
+    private LoginService loginService;
     @Autowired
-    HttpSession httpSession;
+    private HttpSession httpSession;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
@@ -45,7 +40,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             throw new BadCredentialsException(result.getString("error"));
         }
         String token = result.getString("token");
-        System.out.println("body: " + token);
         JSONObject account = result.getJSONObject("account");
 
         //Set Session

@@ -1,15 +1,13 @@
 package com.example.amtech.models;
 
 import lombok.Data;
-import org.bson.codecs.pojo.annotations.BsonRepresentation;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 @Data
 @Component

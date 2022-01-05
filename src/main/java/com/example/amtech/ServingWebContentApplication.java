@@ -1,11 +1,11 @@
 package com.example.amtech;
 
 import com.example.amtech.models.Category;
-import com.example.amtech.services.CategoryService;
-import com.example.amtech.services.ProductService;
 import com.example.amtech.repository.CategoryRepository;
 import com.example.amtech.repository.CustomProductRepository;
 import com.example.amtech.repository.ProductRepository;
+import com.example.amtech.services.CategoryService;
+import com.example.amtech.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
