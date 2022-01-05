@@ -40,7 +40,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                 .put("username", username)
                 .put("password", password);
 
-        JSONObject result = loginService.postRequest("/auth/login", body);
+        JSONObject result = loginService.postRequest(body);
         if(!result.isNull("error")){
             throw new BadCredentialsException(result.getString("error"));
         }

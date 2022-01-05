@@ -2,8 +2,9 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
-import com.example.amtech.services.CategoryService;
 import com.example.amtech.models.Product;
+import com.example.amtech.services.CategoryService;
+import com.example.amtech.services.FileService;
 import com.example.amtech.services.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -11,27 +12,18 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.testcontainers.shaded.org.apache.commons.io.FilenameUtils;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 
 @AllArgsConstructor
 @Controller
 @RequestMapping("/admin")
 public class ProductManagerController extends SessionController {
 
-    CategoryService categoryService;
-    ProductService productService;
+    private CategoryService categoryService;
+    private ProductService productService;
+    private FileService fileService;
 
     @ModelAttribute("categories")
     public List<Category> categories() {
@@ -54,19 +46,9 @@ public class ProductManagerController extends SessionController {
             return "insert-product";
         }
 
-        // DPE - Je vous propose de faire un FileService au même titre que productService. Pour cacher un peu la logique de gestion de fichier quand on lit le controller
         // Saves the image file
         if (!multipartFile.isEmpty()) {
-            String imgDir = "images/product/";
-            String dateName = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
-            String fileName = "img_" + dateName + "." + FilenameUtils.getExtension(Objects.requireNonNull(multipartFile.getOriginalFilename()));
-            try {
-                saveFile(imgDir, fileName, multipartFile);
-            } catch (IOException e) {
-                e.printStackTrace();
-                fileName = "no-product-image.png";
-            }
-            product.setImg(fileName);
+            fileService.saveImgFile(multipartFile, product);
         }
 
         try {
@@ -99,19 +81,5 @@ public class ProductManagerController extends SessionController {
 
         productService.updateProduct(id, product);
         return "redirect:/product/" + id;
-    }
-
-    // DPE - Cette fonction irait donc dans le FileService
-    private static void saveFile(String uploadDir, String fileName,
-                                 MultipartFile multipartFile) throws IOException {
-        Path uploadPath = Paths.get(uploadDir);
-
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
-        }
-
-        InputStream inputStream = multipartFile.getInputStream();
-        Path filePath = uploadPath.resolve(fileName);
-        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
     }
 }
