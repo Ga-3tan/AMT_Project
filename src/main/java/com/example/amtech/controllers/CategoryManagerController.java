@@ -9,9 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.testcontainers.shaded.org.apache.commons.lang.ArrayUtils;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -58,9 +58,8 @@ public class CategoryManagerController extends SessionController {
     public String deleteCategory(@PathVariable String id) {
         String catName = categoryService.getById(id).getName();
         List<Product> products = productService.getProductsByCategory(catName);
-        for (Product p : products){
-            String[] cat = p.getCategory();
-            cat = (String[]) ArrayUtils.removeElement(cat, catName);
+        for (Product p : products) {
+            String[] cat = Arrays.stream(p.getCategory()).filter(s -> !s.equals(catName)).toArray(String[]::new);
             productService.updateProductCategories(p.getId(), cat);
         }
         categoryService.deleteById(id);

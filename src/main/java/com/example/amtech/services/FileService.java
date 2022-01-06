@@ -4,7 +4,7 @@ import com.example.amtech.models.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import org.testcontainers.shaded.org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.FilenameUtils;
 
 import java.io.IOException;
 import java.io.InputStream;

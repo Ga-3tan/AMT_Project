@@ -9,7 +9,6 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
-
 public class CategoryService {
 
     private CategoryRepository categoryRepo;
