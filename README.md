@@ -60,9 +60,7 @@
 
 ## About The Project
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email`, `email_client`, `project_title`, `project_description`
+![image-20220106152531769](readme_images/image-20220106152531769.png)
 
 ### Built With
 
@@ -81,82 +79,90 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 * Maven 3.6.0
 * Docker
 
-Before executing the code you must install the database mongoDB in a docker container, to do this you must open a terminal, go to the folder `/src/main/resources/db-local/` and execute the command `docker-compose up`.
-
 <!-- CONTRIBUTING -->
 
 ## Contributing
 
 1. Clone the repo
 
-   ```sh
-   git clone https://github.com/Ga-3tan/AMT_Project.git
-   ```
+```sh
+git clone https://github.com/Ga-3tan/AMT_Project.git
+```
 
-### Please use Git Flow :
+2. Start the local mongoDB database in a docker container
 
-Gitflow is an alternative Git branching model that involves the use of feature branches and multiple primary branches.
+```sh
+#/src/main/resources/db-local/
+docker-compose up
+```
 
-The flow is composed by one main branch and one developpment (sprint) branch. The sprint branch is merged to the main at every end of sprint. During developpment you should create some feature branch from the developpment branch to add new features.
+3. In the project root, enable git flow
 
-![Gitflow Model](readme_images/git-flow-model.svg)
+```sh
+git flow init
+```
 
-#### Initialization
-After installing GitFlow (you should already have it with Git by default), you can use ```git flow init``` to set the sprint branch as the develop branch in Gitflow model.
+#### New Feature
 
-![Gitflow init](readme_images/git-flow-init.png)
+1. Use **git flow** to create features
 
-_Note: As mentioned above, this branch is used for the history of the project. Also, one can set freely a different branch name._
+```sh
+git flow feature start feature_branch
+```
 
-#### New feature
-_Reminder: Each new feature should reside in its own branch. feature branches use develop as their parent branch. When a feature is complete, it gets merged back into develop branch. Features should never interact directly with main._
+2. To end a feature and merge it in the develop branch
 
-* Create a new feature branch
-   ```sh
-   git flow feature start feature_branch
-   ```
-  The developer can now continue to work (with Git) normally.
-
-* Finish a feature branch
-   ```sh
-   git flow feature finish feature_branch
-   ```
-  The ```feature_branch``` is now merged to develop branch.
+```sh
+git flow feature finish feature_branch
+```
 
 #### Release branch
+
+##### **Create a release branch**
+
 Once a feature is ready for a release, a release branch is forked off of the develop branch by using the following command:
 
-![Gitflow init](readme_images/git-flow-release.png)
+```sh
+git flow release start '[version tag]'
+```
+##### **Finish a release branch**
+
 Once the release is ready to ship, it will get merged it into main and develop, then the release branch will be deleted.
+
+```sh
+git flow release finish '[version tag]'
+```
 
 _Note: It’s important to merge back into develop because critical updates may have been added to the release branch and they need to be accessible to new features._
 
-To finish a release branch, use the following methods:
-   ```sh
-   git flow release finish '0.1.0'
-   ```
-
 #### Hot fix branch
+
 Hotfix branches are a lot like release branches and feature branches except they're based on main instead of develop. __This is the only branch that should fork directly off of main.__
 
 As soon as the fix is complete, it should be merged into both main and develop (or the current release branch), and main should be tagged with an updated version number.
 
 A hotfix branch can be created using the following methods:
+
    ```sh
-   git flow hotfix start hotfix_branch
+git flow hotfix start hotfix_branch
    ```
+
 Then merge the branch to main and develop branch as usual:
+
    ```sh
-    git checkout main
-    git merge hotfix_branch
-    git checkout develop
-    git merge hotfix_branch
-    git branch -D hotfix_branch
+git checkout main
+git merge hotfix_branch
+git checkout develop
+git merge hotfix_branch
+git branch -D hotfix_branch
    ```
+
 Once done, use the following command to finish the hot fix branch:
+
    ```sh
-   git flow hotfix finish hotfix_branch
+git flow hotfix finish hotfix_branch
    ```
+
 
 <p align="right">(<a href="#top">back to top</a>)</p><br />
 
