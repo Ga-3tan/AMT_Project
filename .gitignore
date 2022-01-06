@@ -70,7 +70,7 @@ bin
 target
 src/main/webapp/META-INF
 /src/main/resources/db-local/
-/db-dev/
+/db-dev/dockervolume
 
 # Product images
 images/product/img_*
