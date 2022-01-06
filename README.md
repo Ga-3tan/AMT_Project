@@ -92,13 +92,14 @@ git clone https://github.com/Ga-3tan/AMT_Project.git
 2. Start the local mongoDB database in a docker container
 
 ```sh
-#/src/main/resources/db-local/
+#AMTech_Project/db-local/
 docker-compose up
 ```
 
 3. In the project root, enable git flow
 
 ```sh
+#AMTech_Project/
 git flow init
 ```
 
