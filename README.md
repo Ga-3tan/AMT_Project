@@ -96,12 +96,14 @@ git clone https://github.com/Ga-3tan/AMT_Project.git
 docker-compose up
 ```
 
-3. In the project root, enable git flow
+3. In the project root, enable git flow (use default configuration)
 
 ```sh
 #AMT_Project/
 git flow init
 ```
+
+4. Ask the team for AWS SSH connection instructions (secrets) and the JWT secret.
 
 #### New Feature
 
