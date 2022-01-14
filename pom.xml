@@ -89,13 +89,6 @@
         </dependency>
         <dependency>
             <groupId>io.mongock</groupId>
-            <artifactId>mongock-bom</artifactId>
-            <version>5.0.34</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.mongock</groupId>
             <artifactId>mongock-springboot</artifactId>
             <version>5.0.34</version>
         </dependency>
@@ -105,6 +98,18 @@
             <version>5.0.34</version>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+			<dependency>
+                <groupId>io.mongock</groupId>
+                <artifactId>mongock-bom</artifactId>
+                <version>5.0.34</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <finalName>ROOT</finalName>

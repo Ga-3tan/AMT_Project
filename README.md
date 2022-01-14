@@ -1,31 +1,18 @@
-<div id="top"></div>
-
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-<!-- PROJECT LOGO -->
-<br />
-
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
-  </a>
-
-
-<h3 align="center">AMTech Project</h3>
-
-  <p align="center">
-    The AMTech Project is a school practical project that aims to extend our skills on web app developpment and team work.
+  <h2>AMTech Project</h2>
+  <p>
+    The AMTech Project is a school practical project that aims to extend our skills on web app development and team work.
     <br />
     <a href="https://github.com/Ga-3tan/AMT_Project/wiki"><strong>Explore the wiki »</strong></a>
     <br />
   </p>
-
 </div>
-
 
 
 <!-- TABLE OF CONTENTS -->
@@ -54,11 +41,11 @@
 </details>
 
 
-
-
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
+
+We developed an e-commerce website, selling high-tech consumer products. Here is our home page :
 
 ![image-20220106152531769](readme_images/image-20220106152531769.png)
 
@@ -75,9 +62,52 @@
 
 ### Prerequisites
 
-* Java 11
-* Maven 3.6.0
-* Docker
+You need the following components to use the projet, please make sure you have installed them :
+
+* [Java 11](https://jdk.java.net/11/)
+* [Maven 3.6.0](https://maven.apache.org/install.html)
+* [Docker](https://docs.docker.com/get-docker/)
+* IDE of your choice (we used [IntelliJ IDEA](https://www.jetbrains.com/fr-fr/idea/))
+
+### Installation
+
+#### Production version
+
+Ask the team for AWS SSH connection instructions.
+
+No installation needed, see [usage](#Usage) to use the app in production version.
+
+#### Development version (local)
+
+1. Clone the repo.
+
+```sh
+git clone https://github.com/Ga-3tan/AMT_Project.git
+```
+
+2. Start the local mongoDB database in a docker container.
+
+```sh
+#Run this command in AMT_Project/db-dev/
+docker-compose up
+```
+
+3. Ask the team for AWS SSH connection instructions and the JWT secret.
+
+## Usage
+
+### Production version
+
+1. Follow the team's instructions to establish a SSH connection with the application, then you can connect to it with the following address : http://localhost:8082.
+
+### Development version (local)
+
+1. Follow the team's instructions to establish a SSH connection with the AWS service.
+2. Open the project in your favorite IDE, add the JWT secret (given by the team) to the environment variable and run the Application.
+3. Connect to the application with the following address : http://localhost:8080.
+4. Play with the app (to try the app in admin privileges, please contact the team).
+
+------
 
 <!-- CONTRIBUTING -->
 
