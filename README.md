@@ -107,6 +107,10 @@ docker-compose up
 3. Connect to the application with the following address : http://localhost:8080.
 4. Play with the app (to try the app in admin privileges, please contact the team).
 
+#### Warning
+The authentication works in combination with another service, If you want to try these features you will have to install the project: https://github.com/Alessandro-AP/JWTAuthentication
+
+
 ------
 
 <!-- CONTRIBUTING -->
