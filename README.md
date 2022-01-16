@@ -89,7 +89,7 @@ git clone https://github.com/Ga-3tan/AMT_Project.git
 
 ```sh
 #Run this command in AMT_Project/db-dev/
-docker-compose up
+docker-compose up -d
 ```
 
 3. Ask the team for AWS SSH connection instructions and the JWT secret.
@@ -127,7 +127,7 @@ git clone https://github.com/Ga-3tan/AMT_Project.git
 
 ```sh
 #Run this command in AMT_Project/db-dev/
-docker-compose up
+docker-compose up -d
 ```
 
 3. In the project root, enable git flow (use default configuration)
@@ -204,16 +204,14 @@ git flow hotfix finish hotfix_branch
 <p align="right">(<a href="#top">back to top</a>)</p><br />
 
 ---
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
 <!-- CONTACT -->
 
 ## Contact
+[Alessandro Parrino](https://github.com/Alessandro-AP) <br>
+[Daniel Sciarra](https://github.com/DS-Daniel) <br>
+[Marco Maziero](https://github.com/MazieroMarco) <br>
+[Gaétan Zwick](https://github.com/Ga-3tan) <br>
+[Anh Mai Hoang](https://github.com/MaIT-HgA) <br>
 
 Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3tan/AMT_Project)
 
@@ -231,8 +229,12 @@ Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3ta
 [license-shield]: https://img.shields.io/github/license/Ga-3tan/AMT_Project.svg?style=for-the-badge
 [license-url]: https://github.com/Ga-3tan/AMT_Project/blob/master/LICENSE
 [product-screenshot]: readme_images/screenshot.png
+
+<!-- LICENSE -->
+
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
