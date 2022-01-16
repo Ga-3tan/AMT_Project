@@ -92,13 +92,16 @@ git clone https://github.com/Ga-3tan/AMT_Project.git
 docker-compose up -d
 ```
 
-3. Ask the team for AWS SSH connection instructions and the JWT secret.
+3. The app authentication procedures works in combination with another service. If you want to try these features you will also have to install the following project: https://github.com/Alessandro-AP/JWTAuthentication
+
+4. Ask the team for AWS SSH connection instructions and the JWT secret.
 
 ## Usage
 
 ### Production version
 
 1. Follow the team's instructions to establish a SSH connection with the application, then you can connect to it with the following address : http://localhost:8082.
+2. Play with the app (to try the app in admin privileges, please contact the team).
 
 ### Development version (local)
 
@@ -106,10 +109,7 @@ docker-compose up -d
 2. Open the project in your favorite IDE, add the JWT secret (given by the team) to the environment variable and run the Application.
 3. Connect to the application with the following address : http://localhost:8080.
 4. Play with the app (to try the app in admin privileges, please contact the team).
-
-#### Warning
-The authentication works in combination with another service, If you want to try these features you will have to install the project: https://github.com/Alessandro-AP/JWTAuthentication
-
+<br>
 
 ------
 
