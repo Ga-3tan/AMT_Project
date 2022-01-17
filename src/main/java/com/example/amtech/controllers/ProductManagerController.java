@@ -3,8 +3,8 @@ package com.example.amtech.controllers;
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Product;
 import com.example.amtech.services.CategoryService;
-import com.example.amtech.services.FileService;
 import com.example.amtech.services.ProductService;
+import com.example.amtech.services.S3ImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,12 +18,12 @@ import javax.validation.Valid;
 public class ProductManagerController extends SessionController {
 
     private final ProductService productService;
-    private final FileService fileService;
+    private final S3ImageService s3ImageService;
 
-    public ProductManagerController(CategoryService categoryService, ProductService productService, FileService fileService) {
+    public ProductManagerController(CategoryService categoryService, ProductService productService, S3ImageService s3ImageService) {
         super(categoryService);
         this.productService = productService;
-        this.fileService = fileService;
+        this.s3ImageService = s3ImageService;
     }
 
     @GetMapping("/insert-product")
@@ -44,7 +44,8 @@ public class ProductManagerController extends SessionController {
 
         // Saves the image file
         if (!multipartFile.isEmpty()) {
-            fileService.saveImgFile(multipartFile, product);
+            s3ImageService.uploadFile(multipartFile, product.getName());
+            product.setImg(s3ImageService.getFileUrl(product.getName(), multipartFile.getOriginalFilename()));
         }
 
         try {
@@ -53,7 +54,8 @@ public class ProductManagerController extends SessionController {
             model.addAttribute("error", e.getMessage());
             return "insert-product";
         }
-        return "redirect:/category";
+
+        return "redirect:/categories";
     }
 
 
@@ -75,7 +77,7 @@ public class ProductManagerController extends SessionController {
             return "error";
         }
 
-        productService.updateProduct(id, product);
+        productService.updateProduct(id, product); // TODO manage img update with s3
         return "redirect:/product/" + id;
     }
 }

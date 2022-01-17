@@ -32,7 +32,7 @@
                                         <tbody>
                                             <tr th:each="record: ${cart.getProducts().values()}">
                                                 <input name="form_product_id" type="hidden" th:value="${record.product.id}" >
-                                                <td class="li-product-thumbnail"><a th:href="'product/' + ${record.product.id}"><img style="width: 90px" th:src="@{/images/product/{img}(img=${record.product.img})}" alt="Product Image"></a></td>
+                                                <td class="li-product-thumbnail"><a th:href="'product/' + ${record.product.id}"><img style="width: 90px" th:src="@{${record.product.img}}" alt="Product Image"></a></td>
                                                 <td class="li-product-name"><a href="#" th:text="${record.product.name}"></a></td>
                                                 <td class="li-product-price"><span class="amount" th:text="'CHF ' + ${record.product.price}"></span></td>
                                                 <td class="quantity">

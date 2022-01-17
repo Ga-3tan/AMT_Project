@@ -21,7 +21,7 @@
                             <div class="product-details-left">
                                 <div class="product-details-images slider-navigation-1">
                                     <div class="lg-image">
-                                        <img th:if="${product.img}" th:src="@{'/images/product/' + ${product.img}}" alt="product image">
+                                        <img th:if="${product.img}" th:src="@{${product.img}}" alt="product image">
                                         <img th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="product image">
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                                         <div class="single-product-wrap">
                                             <div class="product-image">
                                                 <a th:href="@{'/product/'+${prod.id}}">
-                                                    <img th:src="@{'/images/product/'+ ${prod.img}}" alt=" Product Image">
+                                                    <img th:src="@{${prod.img}}" alt=" Product Image">
                                                 </a>
                                             </div>
                                             <div class="product_desc">
