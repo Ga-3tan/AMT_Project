@@ -5,6 +5,7 @@ import com.example.amtech.models.ShoppingCart;
 import com.example.amtech.services.CategoryService;
 import com.example.amtech.services.LoginService;
 import com.example.amtech.services.ShoppingCartService;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * Controller managing the login/sign up pages of the application.
+ * It provides endpoints to access login/sign up pages and an endpoint
+ * to register users through the login service.
+ */
+@Slf4j
 @Controller
 public class LoginController extends SessionController {
 
@@ -47,13 +54,14 @@ public class LoginController extends SessionController {
     public String registerUser(@RequestParam("username") String username,
                                @RequestParam("password") String password,
                                Model model) {
+
         JSONObject body = new JSONObject()
                 .put("username", username)
                 .put("password", password);
 
         ResponseEntity<String> response = loginService.registerUser(body);
         if (response.getStatusCode().equals(HttpStatus.CREATED)) {
-            System.out.println("USER correctly registered");
+            log.info("USER correctly registered");
             return "redirect:/login";
         } else if (response.getStatusCode().equals(HttpStatus.CONFLICT)) {
             JSONObject res = new JSONObject(response.getBody());

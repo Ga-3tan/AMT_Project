@@ -9,6 +9,9 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the CustomProductRepository.
+ */
 @AllArgsConstructor
 @Component
 public class CustomProductRepositoryImpl implements CustomProductRepository {

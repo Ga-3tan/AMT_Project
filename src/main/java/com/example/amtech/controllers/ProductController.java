@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller managing the application page showing product details.
+ * It provides an endpoint to get a product details and an endpoint
+ * to add the product to the shopping cart.
+ */
 @Controller
 public class ProductController extends SessionController {
 
@@ -31,12 +36,16 @@ public class ProductController extends SessionController {
         model.addAttribute("product", productService.getById(productId));
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
-        model.addAttribute("products_size" ,products.size());
+        model.addAttribute("products_size", products.size());
         return "product";
     }
 
     @PostMapping(value="/product/{productId}")
-    public String postShoppingCart(@PathVariable String productId, Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
+    public String postShoppingCart(@PathVariable String productId,
+                                   Model model,
+                                   @RequestBody MultiValueMap<String, String> formData,
+                                   @ModelAttribute ShoppingCart shoppingCart) {
+
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         model.addAttribute("products_size" ,products.size());

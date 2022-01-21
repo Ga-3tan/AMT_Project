@@ -10,6 +10,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * Controller managing the classic pages of the application.
+ * It provides an endpoint to :
+ * - home page
+ * - about page
+ * - contact page
+ * - checkout page
+ * - error page
+ */
 @Controller
 public class WebAppController extends SessionController {
 

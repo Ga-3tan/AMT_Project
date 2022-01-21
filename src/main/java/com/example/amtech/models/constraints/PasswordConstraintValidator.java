@@ -8,6 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Custom constraintValidator class to validate password requirements.
+ */
 public class PasswordConstraintValidator implements ConstraintValidator<PasswordConstraint, String> {
 
     @Override

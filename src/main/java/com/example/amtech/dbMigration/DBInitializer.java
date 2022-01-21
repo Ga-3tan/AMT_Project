@@ -11,6 +11,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.List;
 
+/**
+ * Class to initialize the database initial datas.
+ * It uses Mongock migration service to populate the database on its first start-up.
+ */
 @AllArgsConstructor
 @ChangeUnit(id="init", order = "1", author = "amtech")
 public class DBInitializer {

@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+/**
+ * Controller managing the shopping cart page.
+ * It provides an endpoint to access the shopping cart page and an endpoint
+ * to update the shopping cart items.
+ */
 @Controller
 public class ShoppingCartController extends SessionController {
 
@@ -25,7 +30,6 @@ public class ShoppingCartController extends SessionController {
     @GetMapping("/shopping-cart")
     public String shoppingCart(Model model, @ModelAttribute ShoppingCart shoppingCart) {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
-
         return "shopping-cart";
     }
 

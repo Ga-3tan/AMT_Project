@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+/**
+ * Controller managing the application pages showing products according to category.
+ * It provides an endpoint to get all products and an endpoint to get products
+ * from a specific category.
+ */
 @Controller
 public class CategoryController extends SessionController {
 
@@ -28,7 +33,6 @@ public class CategoryController extends SessionController {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("products", productService.getAllProducts());
         model.addAttribute("categoryName", "All categories");
-
         return "shop";
     }
 
@@ -37,7 +41,6 @@ public class CategoryController extends SessionController {
         model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("products", productService.getProductsByCategory(categoryName));
         model.addAttribute("categoryName", categoryName);
-
         return "shop";
     }
 }

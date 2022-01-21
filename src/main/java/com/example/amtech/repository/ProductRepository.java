@@ -7,6 +7,9 @@ import org.springframework.data.mongodb.repository.Query;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Repository implementing data access layers for products in database.
+ */
 public interface ProductRepository extends MongoRepository<Product, String> {
 
     @Query("{name:'?0'}")

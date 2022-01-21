@@ -6,6 +6,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
+/**
+ * Domain object model class representing a shopping cart record.
+ */
 @Data
 @Component
 @NoArgsConstructor

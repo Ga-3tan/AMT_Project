@@ -12,6 +12,11 @@ import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Service providing methods to interact with the authentication service
+ * to authenticate users. It provides methods to register and to sign in users
+ * by posting a request to the authentication service.
+ */
 @Service
 public class LoginService {
 
@@ -34,7 +39,7 @@ public class LoginService {
                 .block();
     }
 
-    public JSONObject postRequest(JSONObject body) {
+    public JSONObject signInUser(JSONObject body) {
         ResponseEntity<String> response = webClient
                 .post()
                 .uri("/auth/login")
