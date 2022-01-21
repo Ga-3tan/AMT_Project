@@ -100,7 +100,7 @@ docker-compose up -d
 
 ### Production version
 
-1. Follow the team's instructions to establish a SSH connection with the application, then you can connect to it with the following address : http://localhost:8082.
+1. Follow the team's instructions to establish a SSH connection with the application, then you can connect to it with the following address : http://localhost:8081.
 2. Play with the app (to try the app in admin privileges, please contact the team).
 
 ### Development version (local)
