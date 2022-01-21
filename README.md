@@ -92,9 +92,7 @@ git clone https://github.com/Ga-3tan/AMT_Project.git
 docker-compose up -d
 ```
 
-3. The app authentication procedures works in combination with another service. If you want to try these features you will also have to install the following project: https://github.com/Alessandro-AP/JWTAuthentication
-
-4. Ask the team for AWS SSH connection instructions and the JWT secret.
+3. The app authentication procedures works in combination with another service. If you want to try the webapp with the authentication feature you will also have to install the following project: [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication) (follow instructions on the project README for installation)
 
 ## Usage
 
@@ -103,12 +101,13 @@ docker-compose up -d
 1. Follow the team's instructions to establish a SSH connection with the application, then you can connect to it with the following address : http://localhost:8081.
 2. Play with the app (to try the app in admin privileges, please contact the team).
 
-### Development version (local)
+### Development version
 
-1. Follow the team's instructions to establish a SSH connection with the AWS service.
-2. Open the project in your favorite IDE, add the JWT secret (given by the team) to the environment variable and run the Application.
-3. Connect to the application with the following address : http://localhost:8080.
-4. Play with the app (to try the app in admin privileges, please contact the team).
+1. Open the project in your favorite IDE. and run the Application.
+2. If you use the authentication service, you will need to add the JWT secret to the environment variable of your IDE (or in the application.properties) and adapt ligne 17 of the `JwtUtil.java` file accordingly (set it to the defined environment variable or property in the application.properties). The JWT secret can be found in the `application.properties` of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication).
+3. Run the Application with your IDE.
+4. Connect to the application with the following address : http://localhost:8080.
+5. Play with the app (to try the app in admin privileges, see the README of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication)).
 <br>
 
 ------
@@ -137,7 +136,15 @@ docker-compose up -d
 git flow init
 ```
 
-4. Ask the team for AWS SSH connection instructions (secrets) and the JWT secret.
+4. Create a branch (see below), open your favorites IDE and start coding
+
+5. If needed, clone the Authentication service
+
+```sh
+git clone https://github.com/Alessandro-AP/JWTAuthentication.git
+```
+
+6. See [here (point 2)](#development-version) to setup the JWT secret.
 
 #### New Feature
 
