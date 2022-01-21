@@ -23,24 +23,6 @@
     <!-- Li's Breadcrumb Area End Here -->
     <!-- Begin Insert Content Area -->
     <div class="page-section mb-60">
-        <div class="container">
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-                <form action="#" th:action="@{/admin/manage-images}" method="post" enctype="multipart/form-data">
-                    <div class="login-form">
-                        <h4 class="login-title">Insert new image</h4>
-                        <div class="row">
-                            <div class="col-md-8 col-12 mb-20">
-                                <input name="image" class="form-control" type="file" id="formFile" accept="image/png, image/jpeg">
-                                <div style="color: red" th:if="${uploadError != null}" th:text="${uploadError}"></div>
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="register-button mt-2">Upload</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
         <div class="container mt-40">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
                 <h4 class="login-title">All images</h4>

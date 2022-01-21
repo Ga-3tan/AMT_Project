@@ -71,6 +71,7 @@
                 <div class="col-md-12 mb-20">
                   <label for="formFile" class="form-label">Image Upload</label>
                   <input name="image" class="form-control" type="file" id="formFile" onchange="preview()" accept="image/png, image/jpeg">
+                  <div style="color: red" th:if="${uploadImgError != null}" th:text="${uploadImgError}"></div>
                   <button style="float: right;" onclick="clearImage()" class="register-button mt-0">Remove image</button>
                 </div>
                 <div class="col-12">

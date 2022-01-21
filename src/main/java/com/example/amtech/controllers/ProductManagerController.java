@@ -1,5 +1,6 @@
 package com.example.amtech.controllers;
 
+import com.amazonaws.AmazonServiceException;
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Product;
 import com.example.amtech.services.CategoryService;
@@ -13,6 +14,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
+/**
+ * Controller managing the admin page managing products update and creation.
+ * It provides an endpoint to create a new product and an endpoint to update a product.
+ */
 @Controller
 @RequestMapping("/admin")
 public class ProductManagerController extends SessionController {
@@ -42,13 +47,14 @@ public class ProductManagerController extends SessionController {
             return "insert-product";
         }
 
-        // Saves the image file
+        // Saves the product image file
         if (!multipartFile.isEmpty()) {
-            String fileKey = s3ImageService.uploadImg(multipartFile, product.getName()); // productName is unique
-            if (fileKey.equals(S3ImageService.S3_ERROR)) {
-                model.addAttribute("error", "Error uploading image");
-            } else {
+            try {
+                String fileKey = s3ImageService.uploadImg(multipartFile, product.getName()); // productName is unique
                 product.setImg(s3ImageService.getImgUrl(fileKey));
+            } catch (AmazonServiceException e) {
+                model.addAttribute("uploadImgError", "Error uploading image");
+                return "insert-product";
             }
         }
 
@@ -81,13 +87,14 @@ public class ProductManagerController extends SessionController {
             return "error";
         }
 
-        // Update image file
+        // Update the product image file
         if (!multipartFile.isEmpty()) {
-            String fileKey = s3ImageService.updateImg(multipartFile, product.getName()); // productName is unique
-            if (fileKey.equals(S3ImageService.S3_ERROR)) {
-                model.addAttribute("error", "Error updating image");
-            } else {
+            try {
+                String fileKey = s3ImageService.updateImg(multipartFile, product.getName()); // productName is unique
                 product.setImg(s3ImageService.getImgUrl(fileKey));
+            } catch (AmazonServiceException e) {
+                model.addAttribute("updateImgError", "Error updating image");
+                return "update-product";
             }
         }
 

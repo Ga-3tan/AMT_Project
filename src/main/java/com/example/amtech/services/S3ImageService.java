@@ -15,6 +15,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Service offering image management through the S3 bucket service of AWS.
+ * It provides methods to upload, update and delete images.
+ * It also provides the images list and image url retrieval.
+ */
 @Slf4j
 @Service
 public class S3ImageService {
@@ -24,16 +29,11 @@ public class S3ImageService {
     @Value("${cloud.aws.bucket-name}")
     private String bucketName;
 
-    public static String S3_ERROR = "error";
-
     public S3ImageService(AmazonS3 s3Client) {
         this.s3Client = s3Client;
     }
 
     public String getImgUrl(String fileKey) {
-//        String key = productName.replaceAll(" ", "_").toLowerCase();
-//        String fileExtension = FilenameUtils.getExtension(fileName);
-//        return "https://s3.eu-north-1.amazonaws.com/amt.tech.diduno.education/" + key + "." + fileExtension;
         return "https://s3.eu-north-1.amazonaws.com/amt.tech.diduno.education/" + fileKey;
     }
 
@@ -47,35 +47,23 @@ public class S3ImageService {
         return fileKey;
     }
 
-    public String uploadImg(MultipartFile file, String productName) {
+    public String uploadImg(MultipartFile file, String productName) throws AmazonServiceException {
         File fileObj = convertMultiPartFileToFile(file);
         String fileKey = generateFileKey(file.getOriginalFilename(), productName);
         log.info(fileKey);
-        try {
-            s3Client.putObject(bucketName, fileKey, fileObj);
-        } catch (AmazonServiceException e) {
-            log.error(e.getErrorMessage());
-            return S3_ERROR;
-        }
+        s3Client.putObject(bucketName, fileKey, fileObj);
         fileObj.delete();
         return fileKey;
     }
 
-    public String updateImg(MultipartFile file, String productName) {
+    public String updateImg(MultipartFile file, String productName) throws AmazonServiceException {
         String fileKey = generateFileKey(file.getOriginalFilename(), productName);
-        String res = deleteImg(fileKey);
-        String key = uploadImg(file, productName);
-        return key;
+        deleteImg(fileKey);
+        return uploadImg(file, productName);
     }
 
-    public String deleteImg(String fileKey) {
-        try {
-            s3Client.deleteObject(bucketName, fileKey);
-        } catch (AmazonServiceException e) {
-            log.error(e.getErrorMessage());
-            return S3_ERROR;
-        }
-        return fileKey;
+    public void deleteImg(String fileKey) throws AmazonServiceException {
+        s3Client.deleteObject(bucketName, fileKey);
     }
 
     private File convertMultiPartFileToFile(MultipartFile file) {
