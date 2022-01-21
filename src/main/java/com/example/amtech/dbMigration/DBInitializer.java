@@ -61,7 +61,9 @@ public class DBInitializer {
                 new Product("18", "headsets/1.jpeg", "Sony WH1000XM4", "Sony’s intelligent industry-leading noise cancelling headphones with premium sound elevate your listening experience with the ability to personalize and control everything you hear. Get up to 30 hours of battery life with quick charging capabilities, enjoy an enhanced Smart Listening feature set, and carry conversations hands-free with speak-to-chat. Industry-leading noise cancellation technology means you hear every word, note, and tune with incredible clarity, no matter your environment. These noise cancelling headphones feature additional microphones that assist in isolating sound for a reduction of even more high and mid frequency sounds. The WH-1000XM4 headphones use an array of smart technologies to create a seamless, hands-free listening experience.", 59.99, 1, 5, false, 0, new String[]{"headsets"})
         );
         for (Product p : products) {
-            p.setImg(s3ImageService.getFileUrl(p.getName(), p.getImg()));
+            String key = p.getName().replaceAll(" ", "_").toLowerCase();
+            p.setImg(s3ImageService.getImgUrl(key + ".jpeg"));
+//            p.setImg(s3ImageService.getImgUrl(p.getId() + ".jpeg"));
         }
         mongoTemplate.insert(products, "products");
         System.out.println(mongoTemplate.estimatedCount("products") + " products created\n");

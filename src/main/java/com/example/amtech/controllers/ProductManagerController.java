@@ -44,8 +44,12 @@ public class ProductManagerController extends SessionController {
 
         // Saves the image file
         if (!multipartFile.isEmpty()) {
-            s3ImageService.uploadFile(multipartFile, product.getName());
-            product.setImg(s3ImageService.getFileUrl(product.getName(), multipartFile.getOriginalFilename()));
+            String fileKey = s3ImageService.uploadImg(multipartFile, product.getName()); // productName is unique
+            if (fileKey.equals(S3ImageService.S3_ERROR)) {
+                model.addAttribute("error", "Error uploading image");
+            } else {
+                product.setImg(s3ImageService.getImgUrl(fileKey));
+            }
         }
 
         try {

@@ -1,6 +1,10 @@
 package com.example.amtech.services;
 
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.amazonaws.services.s3.model.PutObjectResult;
+import com.amazonaws.services.s3.model.S3ObjectSummary;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -21,27 +26,39 @@ public class S3ImageService {
     @Value("${cloud.aws.bucket-name}")
     private String bucketName;
 
+    public static String S3_ERROR = "error";
+
     public S3ImageService(AmazonS3 s3Client) {
         this.s3Client = s3Client;
     }
 
-    public String getFileUrl(String productName, String fileName) {
-//        return s3Client.getUrl(bucketName, key).toExternalForm();
-        String key = productName.replaceAll(" ", "_").toLowerCase();
-        String fileExtension = FilenameUtils.getExtension(fileName);
-        return "https://s3.eu-north-1.amazonaws.com/amt.tech.diduno.education/" + key + "." + fileExtension;
+    public String getImgUrl(String fileKey) {
+//        String key = productName.replaceAll(" ", "_").toLowerCase();
+//        String fileExtension = FilenameUtils.getExtension(fileName);
+//        return "https://s3.eu-north-1.amazonaws.com/amt.tech.diduno.education/" + key + "." + fileExtension;
+        return "https://s3.eu-north-1.amazonaws.com/amt.tech.diduno.education/" + fileKey;
     }
 
-    public void uploadFile(MultipartFile file, String productName) {
+    public List<S3ObjectSummary> getImgList() {
+        return s3Client.listObjectsV2(bucketName).getObjectSummaries();
+    }
+
+    public String uploadImg(MultipartFile file, String productName) {
         File fileObj = convertMultiPartFileToFile(file);
-        String fileName = productName.replaceAll(" ", "_").toLowerCase();
-        fileName += "." + FilenameUtils.getExtension(Objects.requireNonNull(file.getOriginalFilename()));
-        log.info("Nom fichier: " + fileName);
-        s3Client.putObject(bucketName, fileName, fileObj);
+        String fileKey = productName.replaceAll(" ", "_").toLowerCase();
+        fileKey += "." + FilenameUtils.getExtension(Objects.requireNonNull(file.getOriginalFilename()));
+        log.info(fileKey);
+        try {
+            s3Client.putObject(bucketName, fileKey, fileObj);
+        } catch (AmazonServiceException e) {
+            log.error(e.getErrorMessage());
+            return S3_ERROR;
+        }
         fileObj.delete();
-        log.info("File uploaded !");
+        return fileKey;
     }
 
+    // TODO to remove
     public void upload(File file, String productName) {
         String fileName = productName.replaceAll(" ", "_").toLowerCase();
         fileName += "." + FilenameUtils.getExtension(file.getName());
@@ -49,9 +66,14 @@ public class S3ImageService {
         log.info("File uploaded !");
     }
 
-    public String deleteFile(String fileName) {
-        s3Client.deleteObject(bucketName, fileName);
-        return fileName + " removed ...";
+    public String deleteImg(String fileKey) {
+        try {
+            s3Client.deleteObject(bucketName, fileKey);
+        } catch (AmazonServiceException e) {
+            log.error(e.getErrorMessage());
+            return S3_ERROR;
+        }
+        return fileKey;
     }
 
     private File convertMultiPartFileToFile(MultipartFile file) {

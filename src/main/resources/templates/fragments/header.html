@@ -24,6 +24,7 @@
                             <li sec:authorize="isAuthenticated()"><a href="/logout" class="login language-selector-wrapper">Logout</a></li>
                             <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin/insert-product" class="login language-selector-wrapper">Add new product</a></li>
                             <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin/manage-categories" class="login language-selector-wrapper">Categories management</a></li>
+                            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin/manage-images" class="login language-selector-wrapper">Images management</a></li>
                             <!-- Login Area End Here -->
                         </ul>
                     </div>

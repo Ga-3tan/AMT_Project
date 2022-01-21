@@ -35,7 +35,7 @@
                                                     <div class="single-product-wrap">
                                                         <div class="product-image">
                                                             <a th:href="@{'/product/'+ ${product.id}}">
-                                                                <img th:if="${product.img}" th:src="@{${product.img}}" alt="Li's Product Image">
+                                                                <img th:if="${product.img}" th:src="@{${product.img}}" alt="Product Image">
                                                                 <img th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="product image">
                                                             </a>
                                                         </div>
