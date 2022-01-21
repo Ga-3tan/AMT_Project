@@ -41,6 +41,7 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
     public boolean updateProduct(String id, Product other) {
         Query query = new Query(Criteria.where("id").is(id));
         Update update = new Update();
+        update.set("img", other.getImg());
         update.set("name", other.getName());
         update.set("description", other.getDescription());
         update.set("price", other.getPrice());

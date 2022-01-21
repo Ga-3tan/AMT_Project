@@ -71,7 +71,7 @@ public class ProductManagerController extends SessionController {
     }
 
     @PostMapping("/update-product/{id}")
-    public String updateProductPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, Model model) {
+    public String updateProductPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
         model.addAttribute("product", product);
         model.addAttribute("id",id);
 
@@ -81,7 +81,17 @@ public class ProductManagerController extends SessionController {
             return "error";
         }
 
-        productService.updateProduct(id, product); // TODO manage img update with s3
+        // Update image file
+        if (!multipartFile.isEmpty()) {
+            String fileKey = s3ImageService.updateImg(multipartFile, product.getName()); // productName is unique
+            if (fileKey.equals(S3ImageService.S3_ERROR)) {
+                model.addAttribute("error", "Error updating image");
+            } else {
+                product.setImg(s3ImageService.getImgUrl(fileKey));
+            }
+        }
+
+        productService.updateProduct(id, product);
         return "redirect:/product/" + id;
     }
 }

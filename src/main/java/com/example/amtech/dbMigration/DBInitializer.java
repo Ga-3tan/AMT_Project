@@ -63,7 +63,6 @@ public class DBInitializer {
         for (Product p : products) {
             String key = p.getName().replaceAll(" ", "_").toLowerCase();
             p.setImg(s3ImageService.getImgUrl(key + ".jpeg"));
-//            p.setImg(s3ImageService.getImgUrl(p.getId() + ".jpeg"));
         }
         mongoTemplate.insert(products, "products");
         System.out.println(mongoTemplate.estimatedCount("products") + " products created\n");

@@ -66,7 +66,7 @@
                                     <ul class="minicart-product-list">
                                         <li th:each="record: ${cart.getProducts().values()}">
                                             <a th:href="@{'/product/' + ${record.product.id}}" class="minicart-product-image">
-                                                <img style="width: 50px" th:if="${record.product.img}" th:src="@{${record.product.img}}" alt="cart products">
+                                                <img style="width: 50px" th:if="${record.product.img}" th:src="@{${record.product.img}}" alt="cart products" onerror="this.onerror=null;this.src='/images/product/no-product-image.png';">
                                                 <img style="width: 50px" th:unless="${record.product.img}" th:src="@{/images/product/no-product-image.png}" alt="cart products">
                                             </a>
                                             <div class="minicart-product-details">

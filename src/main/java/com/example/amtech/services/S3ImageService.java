@@ -2,8 +2,6 @@ package com.example.amtech.services;
 
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
@@ -43,10 +41,15 @@ public class S3ImageService {
         return s3Client.listObjectsV2(bucketName).getObjectSummaries();
     }
 
+    private String generateFileKey(String fileName, String productName) {
+        String fileKey = productName.replaceAll(" ", "_").toLowerCase();
+        fileKey += "." + FilenameUtils.getExtension(Objects.requireNonNull(fileName));
+        return fileKey;
+    }
+
     public String uploadImg(MultipartFile file, String productName) {
         File fileObj = convertMultiPartFileToFile(file);
-        String fileKey = productName.replaceAll(" ", "_").toLowerCase();
-        fileKey += "." + FilenameUtils.getExtension(Objects.requireNonNull(file.getOriginalFilename()));
+        String fileKey = generateFileKey(file.getOriginalFilename(), productName);
         log.info(fileKey);
         try {
             s3Client.putObject(bucketName, fileKey, fileObj);
@@ -58,12 +61,11 @@ public class S3ImageService {
         return fileKey;
     }
 
-    // TODO to remove
-    public void upload(File file, String productName) {
-        String fileName = productName.replaceAll(" ", "_").toLowerCase();
-        fileName += "." + FilenameUtils.getExtension(file.getName());
-        s3Client.putObject(bucketName, fileName, file);
-        log.info("File uploaded !");
+    public String updateImg(MultipartFile file, String productName) {
+        String fileKey = generateFileKey(file.getOriginalFilename(), productName);
+        String res = deleteImg(fileKey);
+        String key = uploadImg(file, productName);
+        return key;
     }
 
     public String deleteImg(String fileKey) {
