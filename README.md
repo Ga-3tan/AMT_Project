@@ -89,27 +89,26 @@ git clone https://github.com/Ga-3tan/AMT_Project.git
 
 ```sh
 #Run this command in AMT_Project/db-dev/
-docker-compose up
+docker-compose up -d
 ```
 
-3. Ask the team for AWS SSH connection instructions and the JWT secret.
+3. The app authentication procedures works in combination with another service. If you want to try the webapp with the authentication feature you will also have to install the following project: [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication) (follow instructions on the project README for installation)
 
 ## Usage
 
 ### Production version
 
-1. Follow the team's instructions to establish a SSH connection with the application, then you can connect to it with the following address : http://localhost:8082.
+1. Follow the team's instructions to establish a SSH connection with the application, then you can connect to it with the following address : http://localhost:8081.
+2. Play with the app (to try the app in admin privileges, please contact the team).
 
-### Development version (local)
+### Development version
 
-1. Follow the team's instructions to establish a SSH connection with the AWS service.
-2. Open the project in your favorite IDE, add the JWT secret (given by the team) to the environment variable and run the Application.
-3. Connect to the application with the following address : http://localhost:8080.
-4. Play with the app (to try the app in admin privileges, please contact the team).
-
-#### Warning
-The authentication works in combination with another service, If you want to try these features you will have to install the project: https://github.com/Alessandro-AP/JWTAuthentication
-
+1. Open the project in your favorite IDE. and run the Application.
+2. If you use the authentication service, you will need to add the JWT secret to the environment variable of your IDE (or in the application.properties) and adapt ligne 17 of the `JwtUtil.java` file accordingly (set it to the defined environment variable or property in the application.properties). The JWT secret can be found in the `application.properties` of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication).
+3. Run the Application with your IDE.
+4. Connect to the application with the following address : http://localhost:8080.
+5. Play with the app (to try the app in admin privileges, see the README of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication)).
+<br>
 
 ------
 
@@ -127,7 +126,7 @@ git clone https://github.com/Ga-3tan/AMT_Project.git
 
 ```sh
 #Run this command in AMT_Project/db-dev/
-docker-compose up
+docker-compose up -d
 ```
 
 3. In the project root, enable git flow (use default configuration)
@@ -137,7 +136,15 @@ docker-compose up
 git flow init
 ```
 
-4. Ask the team for AWS SSH connection instructions (secrets) and the JWT secret.
+4. Create a branch (see below), open your favorites IDE and start coding
+
+5. If needed, clone the Authentication service
+
+```sh
+git clone https://github.com/Alessandro-AP/JWTAuthentication.git
+```
+
+6. See [here (point 2)](#development-version) to setup the JWT secret.
 
 #### New Feature
 
@@ -204,16 +211,14 @@ git flow hotfix finish hotfix_branch
 <p align="right">(<a href="#top">back to top</a>)</p><br />
 
 ---
-
-<!-- LICENSE -->
-
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
 <!-- CONTACT -->
 
 ## Contact
+[Alessandro Parrino](https://github.com/Alessandro-AP) <br>
+[Daniel Sciarra](https://github.com/DS-Daniel) <br>
+[Marco Maziero](https://github.com/MazieroMarco) <br>
+[Gaétan Zwick](https://github.com/Ga-3tan) <br>
+[Anh Mai Hoang](https://github.com/MaIT-HgA) <br>
 
 Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3tan/AMT_Project)
 
@@ -231,8 +236,12 @@ Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3ta
 [license-shield]: https://img.shields.io/github/license/Ga-3tan/AMT_Project.svg?style=for-the-badge
 [license-url]: https://github.com/Ga-3tan/AMT_Project/blob/master/LICENSE
 [product-screenshot]: readme_images/screenshot.png
+
+<!-- LICENSE -->
+
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
