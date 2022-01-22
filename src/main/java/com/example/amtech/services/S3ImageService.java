@@ -74,6 +74,7 @@ public class S3ImageService {
 
     private File convertMultiPartFileToFile(MultipartFile file) {
         File convertedFile = new File(Objects.requireNonNull(file.getOriginalFilename()));
+        //File convertedFile = new File("/tmp/" + Objects.requireNonNull(file.getOriginalFilename())); // For deploy
         try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
             fos.write(file.getBytes());
         } catch (IOException e) {
