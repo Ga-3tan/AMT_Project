@@ -10,4 +10,4 @@ services:
     volumes:
       - './dockervolume/mongodb:/data/db'
     ports:
-      - 27017:27017
+      - "27017:27017"

@@ -70,6 +70,11 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.addFilterAfter(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
+    /**
+     * Authentication manager which will be invoked by Spring security filter chain.
+     * This authentication manager will delegate the work to the Authentication provider
+     * to authenticate the user.
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider()).eraseCredentials(false);

@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * This filter is executed once for each executed HTTP request.
+ * It verifies that the authenticated user's JWT token is valid and has not expired,
+ * otherwise the session is invalidated.
+ */
 @AllArgsConstructor
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {

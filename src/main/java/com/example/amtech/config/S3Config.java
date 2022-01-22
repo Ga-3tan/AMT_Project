@@ -17,7 +17,7 @@ public class S3Config {
 //    @Value("${cloud.aws.credentials.access-key}")
     private String accessKey = System.getenv("s3.access-key");
 //    @Value("${cloud.aws.credentials.secret-key}")
-    private String accessSecret = System.getenv("s3.secret-key");;
+    private String accessSecret = System.getenv("s3.secret-key");
     @Value("${cloud.aws.region.static}")
     private String region;
 

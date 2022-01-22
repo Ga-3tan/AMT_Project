@@ -16,6 +16,10 @@ import javax.servlet.http.HttpSession;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This CustomAuthenticationProvider is used to handle authentications and
+ * provides a POST endpoint to the "/login" route.
+ */
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 
@@ -24,6 +28,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private HttpSession httpSession;
 
+    /**
+     * This method is called when the client makes an authentication attempt at the "/login" route.
+     * It will get the username and password from the Authentication object and will send a login request
+     * to the authentication microservice, if the authentication is successful it will create
+     * an authentication session for the user.
+     */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
@@ -35,6 +45,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                 .put("username", username)
                 .put("password", password);
 
+        // Send username and password to authentication microservice
         JSONObject result = loginService.signInUser(body);
         if(!result.isNull("error")){
             throw new BadCredentialsException(result.getString("error"));
@@ -42,18 +53,20 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String token = result.getString("token");
         JSONObject account = result.getJSONObject("account");
 
-        //Set Session
+        // Set Session
         httpSession.setAttribute("user_id", account.getInt("id"));
         httpSession.setAttribute("username", account.getString("username"));
         httpSession.setAttribute("role", account.getString("role"));
         httpSession.setAttribute("jwt_token", token);
 
-        //Set Authentification
+        // Set Authentication
         authorities.add(new SimpleGrantedAuthority("ROLE_" + account.getString("role").toUpperCase()));
         return new UsernamePasswordAuthenticationToken(account.getString("username"), null, authorities);
     }
 
-    // Define if this AuthenticationProvider supports the indicated AuthenticationMethod object
+    /**
+     * Define if this AuthenticationProvider supports the indicated AuthenticationMethod object
+     */
     @Override
     public boolean supports(Class<?> authenticationMethod) {
         return authenticationMethod.equals(UsernamePasswordAuthenticationToken.class);

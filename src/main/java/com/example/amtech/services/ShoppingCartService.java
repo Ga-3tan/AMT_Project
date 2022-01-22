@@ -84,7 +84,6 @@ public class ShoppingCartService {
     private ShoppingCart createShoppingCartInDb(String userId) {
         ShoppingCart cart = new ShoppingCart();
         cart.setUserId(userId);
-        ShoppingCart tmp = shoppingCartRepo.save(cart);
-        return tmp;
+        return shoppingCartRepo.save(cart);
     }
 }

@@ -10,7 +10,11 @@ import java.util.Base64;
 import java.util.Date;
 import java.util.function.Function;
 
-
+/**
+ * This Service allows you to perform operations on JWT tokens.
+ * Tt is possible to validate a token, check for expiration,
+ * and extract the different parts of the JWT token.
+ */
 @Service
 public class JwtUtil {
 
@@ -18,7 +22,7 @@ public class JwtUtil {
 
     public Boolean validateJwtToken(String token) {
         try {
-            Claims jws = extractAllClaims(token);
+            extractAllClaims(token);
             // we can safely trust the JWT
             return true;
         } catch (JwtException e) {

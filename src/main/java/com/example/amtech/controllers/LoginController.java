@@ -19,8 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Controller managing the login/sign up pages of the application.
- * It provides endpoints to access login/sign up pages and an endpoint
- * to register users through the login service.
+ * It provides a /signup endpoint for registration
+ *
+ * (Attention: the login is handled via AuthenticationProvider)
  */
 @Slf4j
 @Controller
