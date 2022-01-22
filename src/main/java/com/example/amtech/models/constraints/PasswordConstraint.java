@@ -4,6 +4,9 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
 
+/**
+ * Custom password constraint interface.
+ */
 @Documented
 @Constraint(validatedBy = PasswordConstraintValidator.class)
 @Target( { ElementType.METHOD, ElementType.FIELD })

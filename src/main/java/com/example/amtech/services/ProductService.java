@@ -8,15 +8,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service offering products management.
+ * It provides principal methods for CRUD operations on products.
+ */
 @AllArgsConstructor
 @Service
 public class ProductService {
 
     private ProductRepository productRepo;
-
     private CustomProductRepository customProductRepo;
-
-    // CRUD operations
 
     //CREATE
     public String createProduct(String id, String img, String name, String description, double price, int quantity, int rating, boolean sale, double salePercentage, String[] category) {
@@ -46,10 +47,6 @@ public class ProductService {
 
     public List<Product> getProductsByCategory(String category) {
         return productRepo.allProductsFromCategory(category);
-    }
-
-    public long count() {
-        return productRepo.count();
     }
 
     public boolean existsByName(String name) {

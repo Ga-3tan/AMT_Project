@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.List;
 
+/**
+ * Controller defining model attributes of templates that are found
+ * on every page of the application.
+ */
 @AllArgsConstructor
 @Controller
 @SessionAttributes("shoppingCart")

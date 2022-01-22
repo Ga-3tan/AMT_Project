@@ -21,7 +21,7 @@
                             <div class="product-details-left">
                                 <div class="product-details-images slider-navigation-1">
                                     <div class="lg-image">
-                                        <img th:if="${product.img}" th:src="@{'/images/product/' + ${product.img}}" alt="product image">
+                                        <img th:if="${product.img}" th:src="@{${product.img}}" alt="product image" onerror="this.onerror=null;this.src='/images/product/no-product-image.png';">
                                         <img th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="product image">
                                     </div>
                                 </div>
@@ -33,7 +33,14 @@
                             <div class="product-details-view-content sp-normal-content pt-60">
                                 <div class="product-info">
                                     <h2 th:text="${product.name}"></h2>
-                                    <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}" class="review-item"><a th:href="@{'/admin/update-product/'+${product.id}}">Update product</a></div>
+                                    <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+                                        <div class="review-item"><a th:href="@{'/admin/update-product/'+${product.id}}">Update product</a></div>
+                                        <div class="review-item">
+                                            <form action="#" th:action="@{'/admin/delete-product/'+${product.id}}" th:method="delete">
+                                                <button type="submit" style="all:unset;cursor:pointer;color:red;">Delete product</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     <div class="rating-box pt-20">
                                         <ul class="rating rating-with-review-item">
                                             <li th:if="${product.rating != 0}" th:each="i: ${#numbers.sequence(1, product.rating)}" ><i class="fa fa-star-o"></i></li>
@@ -122,7 +129,7 @@
                                         <div class="single-product-wrap">
                                             <div class="product-image">
                                                 <a th:href="@{'/product/'+${prod.id}}">
-                                                    <img th:src="@{'/images/product/'+ ${prod.img}}" alt=" Product Image">
+                                                    <img th:src="@{${prod.img}}" alt="Product Image" onerror="this.onerror=null;this.src='/images/product/no-product-image.png';">
                                                 </a>
                                             </div>
                                             <div class="product_desc">

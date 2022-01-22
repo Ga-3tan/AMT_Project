@@ -14,6 +14,11 @@ import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Controller managing the admin page managing products categories.
+ * It provides an endpoint to get all categories, to add a new category and
+ * an endpoint to delete a category.
+ */
 @Controller
 @RequestMapping("/admin")
 public class CategoryManagerController extends SessionController {

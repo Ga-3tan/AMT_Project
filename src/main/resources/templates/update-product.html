@@ -67,7 +67,7 @@
     <div class="container">
 
       <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
-        <form action="#" th:action="@{'/admin/update-product/' + ${id}}" th:object="${product}" method="post">
+        <form action="#" th:action="@{'/admin/update-product/' + ${id}}" th:object="${product}" method="post" enctype="multipart/form-data">
           <div class="login-form">
             <h4 class="login-title">Update product</h4>
             <div class="row">
@@ -100,6 +100,12 @@
                 <select th:field="*{category}" style="height: 85%;" class="form-select" multiple aria-label="multiple select example">
                   <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"> </option>
                 </select>
+              </div>
+              <div class="col-md-12 mb-20">
+                <label for="formFile" class="form-label">Image Upload</label>
+                <input name="image" class="form-control" type="file" id="formFile" onchange="preview()" accept="image/png, image/jpeg">
+                <div style="color: red" th:if="${updateImgError != null}" th:text="${updateImgError}"></div>
+                <button style="float: right;" onclick="clearImage()" class="register-button mt-0">Remove image</button>
               </div>
               <div class="col-12">
                 <button type="submit" class="register-button mt-2">Update</button>

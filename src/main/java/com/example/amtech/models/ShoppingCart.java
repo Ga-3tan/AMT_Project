@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Domain object model class representing a shopping cart.
+ */
 @Data
 @Component
 @Document(collection = "shoppingCarts")

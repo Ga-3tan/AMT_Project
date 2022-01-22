@@ -10,9 +10,12 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the CustomShoppingCartRepository.
+ */
 @AllArgsConstructor
 @Component
-public class CustomShoppingCartRepositoryImpl implements CustomShoppingCartRespository{
+public class CustomShoppingCartRepositoryImpl implements CustomShoppingCartRepository {
 
     private MongoTemplate mongoTemplate;
 

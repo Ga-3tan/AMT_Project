@@ -7,19 +7,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service offering categories management.
+ * It provides principal methods for CRUD operations on categories.
+ */
 @AllArgsConstructor
 @Service
 public class CategoryService {
 
     private CategoryRepository categoryRepo;
 
-    // CRUD operations
-
-    //CREATE
-    public void createCategory(String id, String name) {
-        categoryRepo.save(new Category(id, name));
-    }
-
+    // CREATE
     public void createCategory(Category category) throws Exception {
         if (existsByName(category.getName())) {
             throw new Exception("Category already exists");
@@ -39,23 +37,11 @@ public class CategoryService {
         return categoryRepo.findCategoryByName(name).orElse(null);
     }
 
-    public boolean existsById(String id) {
-        return categoryRepo.existsById(id);
-    }
-
     public boolean existsByName(String name) {
         return getByName(name) != null;
     }
 
-    public long count() {
-        return categoryRepo.count();
-    }
-
     //DELETE
-    public void deleteAllCategories() {
-        categoryRepo.deleteAll(); // Doesn't delete the collection
-    }
-
     public void deleteById(String id) {
         categoryRepo.deleteById(id);
     }

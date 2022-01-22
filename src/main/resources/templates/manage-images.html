@@ -1,0 +1,60 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head th:replace="fragments/head :: head"></head>
+<body>
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Begin Body Wrapper -->
+<div class="body-wrapper">
+
+    <!-- Begin Li's Breadcrumb Area -->
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-content">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li class="active">Manage images</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Li's Breadcrumb Area End Here -->
+    <!-- Begin Insert Content Area -->
+    <div class="page-section mb-60">
+        <div class="container mt-40">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+                <h4 class="login-title">All images</h4>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${imagesList.isEmpty()}">
+                        <td colspan="3"> No image available </td>
+                    </tr>
+                    <tr th:each="img : ${imagesList}">
+                        <td>[[${img.key}]]</td>
+                        <td>
+                            <form action="#" th:action="@{'/admin/manage-images/delete/' + ${img.key}}" th:method="delete">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <div style="color: red" th:if="${deleteError != null}" th:text="${deleteError}"></div>
+                            </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Insert Content Area End Here -->
+<script></script>
+<!-- Body Wrapper End Here -->
+<div th:replace="fragments/scripts :: scripts"></div>
+</body>
+</html>
