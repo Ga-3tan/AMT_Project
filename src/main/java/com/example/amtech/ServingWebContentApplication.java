@@ -23,11 +23,4 @@ public class ServingWebContentApplication extends SpringBootServletInitializer {
         SpringApplication.run(ServingWebContentApplication.class, args);
     }
 
-    @Configuration
-    public static class DirectoryExposer implements WebMvcConfigurer {
-        @Override
-        public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-            registry.addResourceHandler("/images/product/**").addResourceLocations("file:images/product/");
-        }
-    }
 }
