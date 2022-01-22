@@ -75,7 +75,7 @@ You need the following components to use the projet, please make sure you have i
 
 Ask the team for AWS SSH connection instructions.
 
-No installation needed, see [usage](#Usage) to use the app in production version.
+No installation needed, see [usage](#Usage) to use the web app in production version.
 
 #### Development version (local)
 
@@ -103,7 +103,7 @@ docker-compose up -d
 
 ### Development version
 
-1. Open the project in your favorite IDE. and run the Application.
+1. Open the project in your favorite IDE.
 2. If you use the authentication service, you will need to add the JWT secret to the environment variable of your IDE (or in the application.properties) and adapt ligne 17 of the `JwtUtil.java` file accordingly (set it to the defined environment variable or property in the application.properties). The JWT secret can be found in the `application.properties` of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication).
 3. Run the Application with your IDE.
 4. Connect to the application with the following address : http://localhost:8080.
