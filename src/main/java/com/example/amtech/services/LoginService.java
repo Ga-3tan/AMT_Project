@@ -20,12 +20,12 @@ import java.nio.charset.StandardCharsets;
 @Service
 public class LoginService {
 
-    private final String loginServiceIP = "http://localhost:8083"; //TODO change for deploy
+    private final String loginServiceIP = "http://localhost:8084";
     private final WebClient webClient = WebClient.create(loginServiceIP);
 
     public ResponseEntity<String> registerUser(JSONObject data) {
         return webClient.post()
-                .uri("/accounts/register")
+                .uri("/register")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(BodyInserters.fromValue(data.toString()))
                 .accept(MediaType.APPLICATION_JSON)
@@ -42,7 +42,7 @@ public class LoginService {
     public JSONObject signInUser(JSONObject body) {
         ResponseEntity<String> response = webClient
                 .post()
-                .uri("/auth/login")
+                .uri("/login")
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .body(BodyInserters.fromValue(body.toString()))
                 .retrieve()
