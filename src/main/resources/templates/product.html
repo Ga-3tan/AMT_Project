@@ -35,8 +35,8 @@
                                     <h2 th:text="${product.name}"></h2>
                                     <div th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
                                         <div class="review-item"><a th:href="@{'/admin/update-product/'+${product.id}}">Update product</a></div>
-                                        <form id="deleteForm1" class="delete-product1" action="#" th:action="@{'/admin/delete-product/'+${product.id}}" th:method="delete">
-                                            <i onclick="document.getElementById('deleteForm1').submit();">Delete product</i>
+                                        <form id="deleteForm1"  action="#" th:action="@{'/admin/delete-product/'+${product.id}}" th:method="delete">
+                                            <div class="delete-product1"><a href="#" onclick="document.getElementById('deleteForm1').submit();">Delete product</a></div>
                                         </form>
                                     </div>
                                     <div class="rating-box pt-20">

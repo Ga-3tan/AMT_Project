@@ -106,7 +106,9 @@ public class ProductManagerController extends SessionController {
     @DeleteMapping("/delete-product/{id}")
     public String deleteProduct(@PathVariable String id) {
         Product p = productService.getById(id);
-        s3ImageService.deleteImgByName(p.getName(), p.getImg());
+        if(p.getImg() != null) {
+            s3ImageService.deleteImgByName(p.getName(), p.getImg());
+        }
         productService.deleteById(id);
         return "redirect:/categories";
     }
