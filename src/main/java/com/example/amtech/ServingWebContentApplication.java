@@ -23,7 +23,6 @@ public class ServingWebContentApplication extends SpringBootServletInitializer {
         SpringApplication.run(ServingWebContentApplication.class, args);
     }
 
-    // TODO useful ?
     @Configuration
     public static class DirectoryExposer implements WebMvcConfigurer {
         @Override

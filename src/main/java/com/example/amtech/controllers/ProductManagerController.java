@@ -101,4 +101,13 @@ public class ProductManagerController extends SessionController {
         productService.updateProduct(id, product);
         return "redirect:/product/" + id;
     }
+
+    @DeleteMapping("/delete-product/{id}")
+    public String deleteProduct(@PathVariable String id) {
+        Product p = productService.getById(id);
+        s3ImageService.deleteImgByName(p.getName(), p.getImg());
+        productService.deleteById(id);
+        return "redirect:/categories";
+    }
+
 }

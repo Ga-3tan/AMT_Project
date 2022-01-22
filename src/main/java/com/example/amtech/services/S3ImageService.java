@@ -43,26 +43,29 @@ public class S3ImageService {
 
     private String generateFileKey(String fileName, String productName) {
         String fileKey = productName.replaceAll(" ", "_").toLowerCase();
-        fileKey += "." + FilenameUtils.getExtension(Objects.requireNonNull(fileName));
+        fileKey += "." + FilenameUtils.getExtension(fileName);
         return fileKey;
     }
 
     public String uploadImg(MultipartFile file, String productName) throws AmazonServiceException {
         File fileObj = convertMultiPartFileToFile(file);
         String fileKey = generateFileKey(file.getOriginalFilename(), productName);
-        log.info(fileKey);
         s3Client.putObject(bucketName, fileKey, fileObj);
         fileObj.delete();
         return fileKey;
     }
 
     public String updateImg(MultipartFile file, String productName) throws AmazonServiceException {
-        String fileKey = generateFileKey(file.getOriginalFilename(), productName);
-        deleteImg(fileKey);
+        deleteImgByName(productName, file.getOriginalFilename());
         return uploadImg(file, productName);
     }
 
-    public void deleteImg(String fileKey) throws AmazonServiceException {
+    public void deleteImgByKey(String fileKey) throws AmazonServiceException {
+        s3Client.deleteObject(bucketName, fileKey);
+    }
+
+    public void deleteImgByName(String productName, String imgName) throws AmazonServiceException {
+        String fileKey = generateFileKey(imgName, productName);
         s3Client.deleteObject(bucketName, fileKey);
     }
 

@@ -28,7 +28,7 @@ public class ImageController {
     @DeleteMapping("/manage-images/delete/{id}")
     public String deleteImage(@PathVariable String id, Model model) {
         try {
-            s3ImageService.deleteImg(id);
+            s3ImageService.deleteImgByKey(id);
         } catch (AmazonServiceException e) {
             model.addAttribute("deleteError", "No image associated with this id");
             return "manage-images";
