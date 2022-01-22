@@ -34,7 +34,7 @@ public class S3ImageService {
     }
 
     public String getImgUrl(String fileKey) {
-        return "https://s3.eu-north-1.amazonaws.com/amt.tech.diduno.education/" + fileKey;
+        return "https://s3." + s3Client.getRegionName() + ".amazonaws.com/" + bucketName + "/" + fileKey;
     }
 
     public List<S3ObjectSummary> getImgList() {
@@ -43,20 +43,23 @@ public class S3ImageService {
 
     private String generateFileKey(String fileName, String productName) {
         String fileKey = productName.replaceAll(" ", "_").toLowerCase();
-        fileKey += "." + FilenameUtils.getExtension(fileName);
+        fileKey += "." + FilenameUtils.getExtension(fileName).toLowerCase();
         return fileKey;
     }
 
     public String uploadImg(MultipartFile file, String productName) throws AmazonServiceException {
         File fileObj = convertMultiPartFileToFile(file);
         String fileKey = generateFileKey(file.getOriginalFilename(), productName);
+        if (s3Client.doesObjectExist(bucketName, fileKey)) {
+            throw new AmazonServiceException("Image already exists");
+        }
         s3Client.putObject(bucketName, fileKey, fileObj);
         fileObj.delete();
         return fileKey;
     }
 
-    public String updateImg(MultipartFile file, String productName) throws AmazonServiceException {
-        deleteImgByName(productName, file.getOriginalFilename());
+    public String updateImg(MultipartFile file, String productName, String imgName) throws AmazonServiceException {
+        deleteImgByName(productName, imgName);
         return uploadImg(file, productName);
     }
 

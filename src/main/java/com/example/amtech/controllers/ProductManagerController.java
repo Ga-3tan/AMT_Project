@@ -53,7 +53,7 @@ public class ProductManagerController extends SessionController {
                 String fileKey = s3ImageService.uploadImg(multipartFile, product.getName()); // productName is unique
                 product.setImg(s3ImageService.getImgUrl(fileKey));
             } catch (AmazonServiceException e) {
-                model.addAttribute("uploadImgError", "Error uploading image");
+                model.addAttribute("error", "Product already exists");
                 return "insert-product";
             }
         }
@@ -90,7 +90,8 @@ public class ProductManagerController extends SessionController {
         // Update the product image file
         if (!multipartFile.isEmpty()) {
             try {
-                String fileKey = s3ImageService.updateImg(multipartFile, product.getName()); // productName is unique
+                Product p = productService.getById(id);
+                String fileKey = s3ImageService.updateImg(multipartFile, p.getName(), p.getImg()); // productName is unique
                 product.setImg(s3ImageService.getImgUrl(fileKey));
             } catch (AmazonServiceException e) {
                 model.addAttribute("updateImgError", "Error updating image");
