@@ -38,19 +38,16 @@ public class ProductManagerController extends SessionController {
     }
 
     @PostMapping("/insert-product")
-    public String insertProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
-        model.addAttribute("product", product);
-
+    public String insertProductPost(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
-            System.out.println("There was a error "+bindingResult);
             return "insert-product";
         }
 
         // Saves the product image file
         if (!multipartFile.isEmpty()) {
             try {
-                String fileKey = s3ImageService.uploadImg(multipartFile, product.getName()); // productName is unique
+                String fileKey = s3ImageService.uploadImg(multipartFile, product.getName()); // product's name is unique
                 product.setImg(s3ImageService.getImgUrl(fileKey));
             } catch (AmazonServiceException e) {
                 model.addAttribute("error", "Product already exists");
@@ -77,13 +74,13 @@ public class ProductManagerController extends SessionController {
     }
 
     @PostMapping("/update-product/{id}")
-    public String updateProductPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
-        model.addAttribute("product", product);
-        model.addAttribute("id",id);
-
+    public String updateProductPost(@PathVariable String id,
+                                    @ModelAttribute("product") Product product,
+                                    BindingResult bindingResult,
+                                    @RequestParam("image") MultipartFile multipartFile,
+                                    Model model) {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
-            System.out.println("There was a error "+bindingResult);
             return "error";
         }
 
@@ -91,7 +88,7 @@ public class ProductManagerController extends SessionController {
         if (!multipartFile.isEmpty()) {
             try {
                 Product p = productService.getById(id);
-                String fileKey = s3ImageService.updateImg(multipartFile, p.getName(), p.getImg()); // productName is unique
+                String fileKey = s3ImageService.updateImg(multipartFile, p.getName(), p.getImg()); // product's name is unique
                 product.setImg(s3ImageService.getImgUrl(fileKey));
             } catch (AmazonServiceException e) {
                 model.addAttribute("updateImgError", "Error updating image");

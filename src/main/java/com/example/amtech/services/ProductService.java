@@ -6,6 +6,7 @@ import com.example.amtech.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -41,16 +42,12 @@ public class ProductService {
         return productRepo.findById(id).orElse(null);
     }
 
-    public Product getByName(String name) {
-        return productRepo.findProductByName(name).orElse(null);
-    }
-
     public List<Product> getProductsByCategory(String category) {
         return productRepo.allProductsFromCategory(category);
     }
 
     public boolean existsByName(String name) {
-        return getByName(name) != null;
+        return productRepo.findProductByName(name).orElse(null) != null;
     }
 
     //UPDATE
@@ -58,12 +55,20 @@ public class ProductService {
         return customProductRepo.updateProductQuantity(id, newQuantity);
     }
 
-    public boolean updateProductCategories(String id, String[] newCategories) {
-        return customProductRepo.updateProductCategories(id, newCategories);
+    public void updateProductCategories(String id, String[] newCategories) {
+        customProductRepo.updateProductCategories(id, newCategories);
     }
 
-    public boolean updateProduct(String id, Product other) {
-        return customProductRepo.updateProduct(id, other);
+    public void removeCategoryFromProduct(String categoryName) {
+        List<Product> products = getProductsByCategory(categoryName);
+        for (Product p : products) {
+            String[] cat = Arrays.stream(p.getCategory()).filter(s -> !s.equals(categoryName)).toArray(String[]::new);
+            updateProductCategories(p.getId(), cat);
+        }
+    }
+
+    public void updateProduct(String id, Product other) {
+        customProductRepo.updateProduct(id, other);
     }
 
     //DELETE

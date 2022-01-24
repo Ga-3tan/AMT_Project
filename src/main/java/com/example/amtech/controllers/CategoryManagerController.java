@@ -2,7 +2,6 @@ package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
 import com.example.amtech.models.Category;
-import com.example.amtech.models.Product;
 import com.example.amtech.services.CategoryService;
 import com.example.amtech.services.ProductService;
 import org.springframework.stereotype.Controller;
@@ -11,8 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Controller managing the admin page managing products categories.
@@ -45,7 +42,6 @@ public class CategoryManagerController extends SessionController {
     public String insertCategoryPost(@Valid @ModelAttribute Category category, BindingResult bindingResult, Model model) {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
-            System.out.println("There was a error "+bindingResult);
             return "error";
         }
 
@@ -62,11 +58,7 @@ public class CategoryManagerController extends SessionController {
     @DeleteMapping("/manage-categories/delete/{id}")
     public String deleteCategory(@PathVariable String id) {
         String catName = categoryService.getById(id).getName();
-        List<Product> products = productService.getProductsByCategory(catName);
-        for (Product p : products) {
-            String[] cat = Arrays.stream(p.getCategory()).filter(s -> !s.equals(catName)).toArray(String[]::new);
-            productService.updateProductCategories(p.getId(), cat);
-        }
+        productService.removeCategoryFromProduct(catName);
         categoryService.deleteById(id);
         return "redirect:/admin/manage-categories";
     }
