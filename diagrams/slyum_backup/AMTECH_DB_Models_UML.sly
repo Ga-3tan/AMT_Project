@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
+<classDiagram>
+  <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="MODEL CLASS DIAGRAM">
+    <association aggregation="COMPOSE" direction="FIRST_TO_SECOND" id="424" name="contains">
+      <role componentId="4" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="1" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="332" name="belongs to">
+      <role componentId="1" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2147483647</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+      <role componentId="3" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2147483647</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+    </association>
+    <association aggregation="COMPOSE" direction="FIRST_TO_SECOND" id="1750" name="consists of">
+      <role componentId="2" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2147483647</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+      <role componentId="4" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>2147483647</min>
+          <max>2147483647</max>
+        </multiplicity>
+      </role>
+    </association>
+    <entity entityType="CLASS" id="4" isAbstract="false" name="ShoppingCartRecord" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="quantity" type="Integer" visibility="PRIVATE"/>
+    </entity>
+    <entity entityType="CLASS" id="3" isAbstract="false" name="Category" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="name" type="String" visibility="PRIVATE"/>
+    </entity>
+    <entity entityType="CLASS" id="2" isAbstract="false" name="ShoppingCart" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="userId" type="String" visibility="PRIVATE"/>
+    </entity>
+    <entity entityType="CLASS" id="1" isAbstract="false" name="Product" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="id" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="img" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="name" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="description" type="String" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="price" type="double" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="quantity" type="int" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="rating" type="int" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="sale" type="boolean" visibility="PRIVATE"/>
+    </entity>
+  </diagramElements>
+  <umlView grid="10" name="Main view" open="true">
+    <relationView color="-12566464" relationId="1750">
+      <line>
+        <point>
+          <x>391</x>
+          <y>161</y>
+        </point>
+        <point>
+          <x>241</x>
+          <y>161</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>278</x>
+        <y>165</y>
+        <w>68</w>
+        <h>16</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>355</x>
+        <y>165</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>245</x>
+        <y>165</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>377</x>
+        <y>139</y>
+        <w>7</w>
+        <h>16</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>245</x>
+        <y>139</y>
+        <w>7</w>
+        <h>16</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="332">
+      <line>
+        <point>
+          <x>241</x>
+          <y>391</y>
+        </point>
+        <point>
+          <x>451</x>
+          <y>391</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>308</x>
+        <y>368</y>
+        <w>68</w>
+        <h>16</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>245</x>
+        <y>395</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>415</x>
+        <y>395</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>245</x>
+        <y>369</y>
+        <w>7</w>
+        <h>16</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>438</x>
+        <y>369</y>
+        <w>7</w>
+        <h>16</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="424">
+      <line>
+        <point>
+          <x>171</x>
+          <y>206</y>
+        </point>
+        <point>
+          <x>171</x>
+          <y>341</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>174</x>
+        <y>267</y>
+        <w>54</w>
+        <h>16</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>175</x>
+        <y>210</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>175</x>
+        <y>318</y>
+        <w>0</w>
+        <h>16</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>147</x>
+        <y>210</y>
+        <w>8</w>
+        <h>16</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>150</x>
+        <y>318</y>
+        <w>8</w>
+        <h>16</h>
+      </multipliciteAssociation>
+    </relationView>
+    <componentView color="-2079" componentID="1" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>90</x>
+        <y>340</y>
+        <w>150</w>
+        <h>175</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="2" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>390</x>
+        <y>120</y>
+        <w>270</w>
+        <h>85</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="3" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>450</x>
+        <y>360</y>
+        <w>150</w>
+        <h>85</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="4" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>90</x>
+        <y>120</y>
+        <w>150</w>
+        <h>85</h>
+      </geometry>
+    </componentView>
+    <note color="-2079" content="userId comes from the session when a user is logged in through the authentication microservice">
+      <noteGeometry>
+        <x>460</x>
+        <y>230</y>
+        <w>200</w>
+        <h>60</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="2">
+        <point>
+          <x>491</x>
+          <y>231</y>
+        </point>
+        <point>
+          <x>481</x>
+          <y>206</y>
+        </point>
+      </noteLine>
+    </note>
+    <note color="-2079" content="An empty arrow indicates that the relation is represented as an attribut only in the class from which the arrow starts">
+      <noteGeometry>
+        <x>180</x>
+        <y>40</y>
+        <w>340</w>
+        <h>45</h>
+      </noteGeometry>
+    </note>
+  </umlView>
+</classDiagram>
