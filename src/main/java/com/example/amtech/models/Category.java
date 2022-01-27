@@ -8,6 +8,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 
+/**
+ * Domain object model class representing a category of a product.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

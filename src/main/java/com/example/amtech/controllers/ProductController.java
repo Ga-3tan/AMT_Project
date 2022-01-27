@@ -1,9 +1,11 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.*;
-import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
+import com.example.amtech.models.Product;
+import com.example.amtech.models.ShoppingCart;
+import com.example.amtech.services.CategoryService;
+import com.example.amtech.services.ProductService;
+import com.example.amtech.services.ShoppingCartService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
@@ -11,36 +13,45 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@AllArgsConstructor
+/**
+ * Controller managing the application page showing product details.
+ * It provides an endpoint to get a product details and an endpoint
+ * to add the product to the shopping cart.
+ */
 @Controller
 public class ProductController extends SessionController {
 
-    private ProductService productService;
-    private CategoryService categoryService;
+    private final ProductService productService;
+    private final ShoppingCartService shoppingCartService;
 
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return categoryService.getAllCategories();
+    public ProductController(CategoryService categoryService, ProductService productService, ShoppingCartService shoppingCartService) {
+        super(categoryService);
+        this.productService = productService;
+        this.shoppingCartService = shoppingCartService;
     }
 
-    @GetMapping("/product/{id}")
-    public String product(@PathVariable String id, Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
-        model.addAttribute("product", productService.getById(id));
+    @GetMapping("/product/{productId}")
+    public String product(@PathVariable String productId, Model model, @ModelAttribute ShoppingCart shoppingCart) {
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
+        model.addAttribute("product", productService.getById(productId));
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
-        model.addAttribute("products_size" ,products.size());
+        model.addAttribute("products_size", products.size());
         return "product";
     }
 
-    @RequestMapping(value="/product/{id}", method=RequestMethod.POST,consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String postShoppingCart(@PathVariable String id, Model model, @RequestBody MultiValueMap<String, String> formData, @ModelAttribute ShoppingCart shoppingCart) {
+    @PostMapping(value="/product/{productId}")
+    public String postShoppingCart(@PathVariable String productId,
+                                   Model model,
+                                   @RequestBody MultiValueMap<String, String> formData,
+                                   @ModelAttribute ShoppingCart shoppingCart) {
+
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
         model.addAttribute("products_size" ,products.size());
 
 
-        Product concernedProduct = productService.getById(id);
+        Product concernedProduct = productService.getById(productId);
 
         if (formData.get("add_product") != null) {
             int qty = shoppingCart.getProductQuantity(concernedProduct);
@@ -48,7 +59,7 @@ public class ProductController extends SessionController {
             shoppingCart.setProduct(concernedProduct, qty + newQty);
         }
 
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("product", concernedProduct);
         return "product";
     }

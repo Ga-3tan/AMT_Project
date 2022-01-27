@@ -1,43 +1,46 @@
 package com.example.amtech.controllers;
 
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.*;
-import lombok.AllArgsConstructor;
+import com.example.amtech.models.ShoppingCart;
+import com.example.amtech.services.CategoryService;
+import com.example.amtech.services.ProductService;
+import com.example.amtech.services.ShoppingCartService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.List;
-
-@AllArgsConstructor
+/**
+ * Controller managing the application pages showing products according to category.
+ * It provides an endpoint to get all products and an endpoint to get products
+ * from a specific category.
+ */
 @Controller
 public class CategoryController extends SessionController {
 
-    private ProductService productService;
-    private CategoryService categoryService;
+    private final ProductService productService;
+    private final ShoppingCartService shoppingCartService;
 
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return categoryService.getAllCategories();
+    public CategoryController(CategoryService categoryService, ProductService productService, ShoppingCartService shoppingCartService) {
+        super(categoryService);
+        this.productService = productService;
+        this.shoppingCartService = shoppingCartService;
     }
 
-    @GetMapping("/category")
+    @GetMapping("/categories")
     public String shop(Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("products", productService.getAllProducts());
         model.addAttribute("categoryName", "All categories");
-
         return "shop";
     }
 
-    @GetMapping("/category/{categoryName}")
+    @GetMapping("/categories/{categoryName}")
     public String shop(@PathVariable String categoryName, Model model, @ModelAttribute ShoppingCart shoppingCart) {
-        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCart);
+        model.addAttribute(ShoppingCart.ATTR_NAME, shoppingCartService.checkCartIntegrity(shoppingCart));
         model.addAttribute("products", productService.getProductsByCategory(categoryName));
         model.addAttribute("categoryName", categoryName);
-
         return "shop";
     }
 }

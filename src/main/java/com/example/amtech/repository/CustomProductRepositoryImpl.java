@@ -9,11 +9,14 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the CustomProductRepository.
+ */
 @AllArgsConstructor
 @Component
 public class CustomProductRepositoryImpl implements CustomProductRepository {
 
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
     @Override
     public boolean updateProductQuantity(String id, int newQuantity) {
@@ -23,7 +26,7 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 
         UpdateResult result = mongoTemplate.updateFirst(query, update, Product.class);
 
-        return result != null;
+        return result.wasAcknowledged();
     }
 
     @Override
@@ -34,13 +37,14 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 
         UpdateResult result = mongoTemplate.updateFirst(query, update, Product.class);
 
-        return result != null;
+        return result.wasAcknowledged();
     }
 
     @Override
     public boolean updateProduct(String id, Product other) {
         Query query = new Query(Criteria.where("id").is(id));
         Update update = new Update();
+        update.set("img", other.getImg());
         update.set("name", other.getName());
         update.set("description", other.getDescription());
         update.set("price", other.getPrice());
@@ -51,5 +55,6 @@ public class CustomProductRepositoryImpl implements CustomProductRepository {
 
         UpdateResult result = mongoTemplate.updateFirst(query, update, Product.class);
 
-        return result != null;    }
+        return result.wasAcknowledged();
+    }
 }

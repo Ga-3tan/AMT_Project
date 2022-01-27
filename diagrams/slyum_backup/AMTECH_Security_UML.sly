@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="iso-8859-15" standalone="no"?>
+<classDiagram>
+  <diagramElements defaultViewEntities="ALL" defaultViewEnum="true" defaultViewMethods="TYPE_AND_NAME" defaultVisibleTypes="true" informations="" name="AMTECH">
+    <inheritance id="2494">
+      <child>1838</child>
+      <parent>2478</parent>
+    </inheritance>
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="2485" name="">
+      <role componentId="1915" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="1916" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
+    <inheritance id="2480">
+      <child>2320</child>
+      <parent>2479</parent>
+    </inheritance>
+    <entity entityType="INTERFACE" id="2479" isAbstract="true" name="AuthentificationProvider" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="2478" isAbstract="false" name="WebSecurityConfigurerAdapter" visibility="PUBLIC"/>
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="2469" name="">
+      <role componentId="1838" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="1915" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
+    <entity entityType="CLASS" id="2320" isAbstract="false" name="CustomAuthentificationProvider" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="loginService" type="LoginService" visibility="PRIVATE"/>
+      <attribute const="false" defaultValue="" isStatic="false" name="httpSession" type="HttpSession" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="false" name="authenticate" returnType="Authentication" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="authentication" type="Authentication"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="supports" returnType="boolean" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="authenticationMethod" type="Class&lt;?&gt;"/>
+      </method>
+    </entity>
+    <inheritance id="2216">
+      <child>1915</child>
+      <parent>2207</parent>
+    </inheritance>
+    <entity entityType="CLASS" id="2207" isAbstract="false" name="OncePerRequestFilter" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="1916" isAbstract="false" name="JwtUtils" visibility="PUBLIC">
+      <attribute const="false" defaultValue="" isStatic="false" name="SECRET_KEY" type="String" visibility="PRIVATE"/>
+      <method isAbstract="false" isStatic="false" name="validateJwtToken" returnType="Boolean" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="token" type="String"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="isTokenExpired" returnType="Boolean" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="token" type="String"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="extractAllClaims" returnType="Claims" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="token" type="String"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="extractClaim" returnType="T" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="token" type="String"/>
+        <variable const="false" name="claimsResolver" type="Function&lt;Claims,T&gt;"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="extractExpiration" returnType="Date" view="DEFAULT" visibility="PRIVATE">
+        <variable const="false" name="token" type="String"/>
+      </method>
+    </entity>
+    <entity entityType="CLASS" id="1915" isAbstract="false" name="JwtRequestFilter" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="doFilterInternal" returnType="void" view="DEFAULT" visibility="PROTECTED">
+        <variable const="false" name="request" type="HttpServletRequest"/>
+        <variable const="false" name="response" type="HttpServletResponse"/>
+        <variable const="false" name="chain" type="FilterChain"/>
+      </method>
+    </entity>
+    <entity entityType="CLASS" id="1914" isAbstract="false" name="JwtUtils" visibility="PUBLIC"/>
+    <inheritance id="1837">
+      <child>1749</child>
+      <parent>1748</parent>
+    </inheritance>
+    <association aggregation="NONE" direction="FIRST_TO_SECOND" id="1912" name="">
+      <role componentId="1838" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+      <role componentId="1748" name="" visibility="PRIVATE">
+        <multiplicity>
+          <min>1</min>
+          <max>1</max>
+        </multiplicity>
+      </role>
+    </association>
+    <entity entityType="CLASS" id="1838" isAbstract="false" name="WebSecurityConfig" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="passwordEncoder" returnType="PasswordEncoder" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="authentificationProvider" returnType="CustomAuthentificationProvider" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="configure" returnType="void" view="DEFAULT" visibility="PROTECTED">
+        <variable const="false" name="httpSecurity" type="HttpSecurity"/>
+      </method>
+      <method isAbstract="false" isStatic="false" name="configure" returnType="void" view="DEFAULT" visibility="PROTECTED">
+        <variable const="false" name="auth" type="AuthentificationManagerBuilder"/>
+      </method>
+    </entity>
+    <entity entityType="CLASS" id="1749" isAbstract="false" name="CustomAuthentificationSuccessHandler" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="onAuthentificationSuccess" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="httpServletRequest" type="HttpServletRequest"/>
+        <variable const="false" name="httpServletResponse" type="HttpServletResponse"/>
+        <variable const="false" name="authentification" type="Authentification"/>
+      </method>
+    </entity>
+    <entity entityType="INTERFACE" id="1748" isAbstract="true" name="AuthentificationSuccessHandler" visibility="PUBLIC"/>
+    <entity entityType="CLASS" id="1737" isAbstract="false" name="LeaftConfig" visibility="PUBLIC">
+      <method isAbstract="false" isStatic="false" name="springSecurityDialect" returnType="SpringSecurityDialect" view="DEFAULT" visibility="PUBLIC"/>
+    </entity>
+  </diagramElements>
+  <umlView grid="10" name="Main view" open="true">
+    <relationView color="-12566464" relationId="1912">
+      <line>
+        <point>
+          <x>961</x>
+          <y>291</y>
+        </point>
+        <point>
+          <x>461</x>
+          <y>291</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>715</x>
+        <y>295</y>
+        <w>0</w>
+        <h>17</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>925</x>
+        <y>295</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>465</x>
+        <y>295</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>947</x>
+        <y>268</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>465</x>
+        <y>268</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="1837">
+      <line>
+        <point>
+          <x>331</x>
+          <y>461</y>
+        </point>
+        <point>
+          <x>331</x>
+          <y>320</y>
+        </point>
+      </line>
+    </relationView>
+    <relationView color="-12566464" relationId="2216">
+      <line>
+        <point>
+          <x>1071</x>
+          <y>621</y>
+        </point>
+        <point>
+          <x>1071</x>
+          <y>516</y>
+        </point>
+      </line>
+    </relationView>
+    <relationView color="-12566464" relationId="2469">
+      <line>
+        <point>
+          <x>981</x>
+          <y>366</y>
+        </point>
+        <point>
+          <x>981</x>
+          <y>621</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>937</x>
+        <y>484</y>
+        <w>0</w>
+        <h>17</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>985</x>
+        <y>370</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>985</x>
+        <y>598</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>967</x>
+        <y>370</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>959</x>
+        <y>582</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="2480">
+      <line>
+        <point>
+          <x>281</x>
+          <y>841</y>
+        </point>
+        <point>
+          <x>281</x>
+          <y>750</y>
+        </point>
+      </line>
+    </relationView>
+    <relationView color="-12566464" relationId="2485">
+      <line>
+        <point>
+          <x>1241</x>
+          <y>651</y>
+        </point>
+        <point>
+          <x>1331</x>
+          <y>651</y>
+        </point>
+      </line>
+      <labelAssociation>
+        <x>1290</x>
+        <y>655</y>
+        <w>0</w>
+        <h>17</h>
+      </labelAssociation>
+      <roleAssociation>
+        <x>1245</x>
+        <y>655</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <roleAssociation>
+        <x>1295</x>
+        <y>655</y>
+        <w>0</w>
+        <h>17</h>
+      </roleAssociation>
+      <multipliciteAssociation>
+        <x>1245</x>
+        <y>626</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+      <multipliciteAssociation>
+        <x>1315</x>
+        <y>625</y>
+        <w>8</w>
+        <h>17</h>
+      </multipliciteAssociation>
+    </relationView>
+    <relationView color="-12566464" relationId="2494">
+      <line>
+        <point>
+          <x>1201</x>
+          <y>251</y>
+        </point>
+        <point>
+          <x>1201</x>
+          <y>156</y>
+        </point>
+      </line>
+    </relationView>
+    <componentView color="-2079" componentID="1737" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>790</x>
+        <y>810</y>
+        <w>290</w>
+        <h>70</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="1748" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>190</x>
+        <y>250</y>
+        <w>270</w>
+        <h>69</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="1749" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>0</x>
+        <y>460</y>
+        <w>880</w>
+        <h>70</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="1838" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>960</x>
+        <y>250</y>
+        <w>470</w>
+        <h>115</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="1915" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>640</x>
+        <y>620</y>
+        <w>600</w>
+        <h>70</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="1916" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>1330</x>
+        <y>620</y>
+        <w>400</w>
+        <h>145</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="2207" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>1010</x>
+        <y>460</y>
+        <w>160</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="2320" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>90</x>
+        <y>840</y>
+        <w>380</w>
+        <h>115</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="2478" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>1060</x>
+        <y>100</y>
+        <w>270</w>
+        <h>55</h>
+      </geometry>
+    </componentView>
+    <componentView color="-2079" componentID="2479" displayAttributes="true" displayDefault="true" displayMethods="true">
+      <geometry>
+        <x>180</x>
+        <y>680</y>
+        <w>210</w>
+        <h>69</h>
+      </geometry>
+    </componentView>
+    <note color="-2079" content="org.springframework.security.web.authentication">
+      <noteGeometry>
+        <x>390</x>
+        <y>180</y>
+        <w>298</w>
+        <h>30</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="1748">
+        <point>
+          <x>421</x>
+          <y>211</y>
+        </point>
+        <point>
+          <x>421</x>
+          <y>251</y>
+        </point>
+      </noteLine>
+    </note>
+    <note color="-2079" content="org.springframework.web.filter">
+      <noteGeometry>
+        <x>1070</x>
+        <y>400</y>
+        <w>199</w>
+        <h>30</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="2207">
+        <point>
+          <x>1121</x>
+          <y>461</y>
+        </point>
+        <point>
+          <x>1121</x>
+          <y>431</y>
+        </point>
+      </noteLine>
+    </note>
+    <note color="-2079" content="org.springframework.security.authentication">
+      <noteGeometry>
+        <x>250</x>
+        <y>620</y>
+        <w>272</w>
+        <h>30</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="2479">
+        <point>
+          <x>301</x>
+          <y>681</y>
+        </point>
+        <point>
+          <x>301</x>
+          <y>651</y>
+        </point>
+      </noteLine>
+    </note>
+    <note color="-2079" content="org.springframework.security.config.annotation.web.configuration">
+      <noteGeometry>
+        <x>1020</x>
+        <y>30</y>
+        <w>391</w>
+        <h>30</h>
+      </noteGeometry>
+      <noteLine color="-12566464" relationId="2478">
+        <point>
+          <x>1191</x>
+          <y>101</y>
+        </point>
+        <point>
+          <x>1191</x>
+          <y>61</y>
+        </point>
+      </noteLine>
+    </note>
+  </umlView>
+</classDiagram>

@@ -67,33 +67,33 @@
     <div class="container">
 
       <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12">
-        <form action="#" th:action="@{'/update-product/' + ${id}}" th:object="${product}" method="post">
+        <form action="#" th:action="@{'/admin/update-product/' + ${id}}" th:object="${product}" method="post" enctype="multipart/form-data">
           <div class="login-form">
             <h4 class="login-title">Update product</h4>
             <div class="row">
               <div class="col-md-6 col-12 mb-20">
-                <label>Name</label>
+                <label>Name*</label>
                 <input th:field="*{name}" class="mb-0" type="text" placeholder="Enter The Name" required>
               </div>
               <div class="col-md-6 col-12 mb-20">
-                <label>Price</label>
-                <input  th:field="*{price}" class="mb-0" type="number" step="0.01" placeholder="Enter The Price">
+                <label>Price*</label>
+                <input  th:field="*{price}" class="mb-0" type="number" step="0.01" placeholder="Enter The Price" required>
               </div>
               <div class="col-md-12 mb-20">
                 <label for="exampleFormControlTextarea1" class="form-label">description</label>
                 <textarea th:field="*{description}" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
               </div>
               <div class="col-md-6 col-12 mb-20">
-                <label>Quantity</label>
+                <label>Quantity*</label>
                 <input th:field="*{quantity}" class="mb-0" type="number" placeholder="Enter The Quantity" required>
               </div>
               <div class="col-md-6 col-12 mb-20">
-                <label>Rating</label>
-                <input th:field="*{rating}" class="mb-0" type="number" placeholder="Enter The Rating">
+                <label>Rating*</label>
+                <input th:field="*{rating}" class="mb-0" type="number" placeholder="Enter The Rating" required>
               </div>
               <div class="col-md-6 mb-20">
-                <label>Sale Percentage</label>
-                <input th:field="*{salePercentage}" class="mb-0" type="number" step="0.01" placeholder="Enter The Sale Percentage">
+                <label>Sale Percentage*</label>
+                <input th:field="*{salePercentage}" class="mb-0" type="number" step="0.01" placeholder="Enter The Sale Percentage" required>
               </div>
               <div class="col-md-12 mb-30">
                 <label>Category</label>
@@ -101,9 +101,16 @@
                   <option th:each="category : ${categories}" th:value="${category.name}" th:text="${category.name}"> </option>
                 </select>
               </div>
+              <div class="col-md-12 mb-20">
+                <label for="formFile" class="form-label">Image Upload</label>
+                <input name="image" class="form-control" type="file" id="formFile" onchange="preview()" accept="image/png, image/jpeg">
+                <div style="color: red" th:if="${updateImgError != null}" th:text="${updateImgError}"></div>
+                <button style="float: right;" onclick="clearImage()" class="register-button mt-0">Remove image</button>
+              </div>
               <div class="col-12">
                 <button type="submit" class="register-button mt-2">Update</button>
               </div>
+              <input type="hidden" th:field="*{img}">
             </div>
           </div>
         </form>

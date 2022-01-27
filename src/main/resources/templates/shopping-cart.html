@@ -30,20 +30,20 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="product: ${cart.getProducts().keySet()}">
-                                                <input name="form_product_id" type="hidden" th:value="${product.id}" >
-                                                <td class="li-product-thumbnail"><a th:href="'product/' + ${product.id}"><img style="width: 90px" th:src="@{/images/product/{img}(img=${product.img})}" alt="Product Image"></a></td>
-                                                <td class="li-product-name"><a href="#" th:text="${product.name}"></a></td>
-                                                <td class="li-product-price"><span class="amount" th:text="${product.price}"></span></td>
+                                            <tr th:each="record: ${cart.getProducts().values()}">
+                                                <input name="form_product_id" type="hidden" th:value="${record.product.id}" >
+                                                <td class="li-product-thumbnail"><a th:href="'product/' + ${record.product.id}"><img style="width: 90px" th:src="@{${record.product.img}}" alt="Product Image" onerror="this.onerror=null;this.src='/images/product/no-product-image.png';"></a></td>
+                                                <td class="li-product-name"><a href="#" th:text="${record.product.name}"></a></td>
+                                                <td class="li-product-price"><span class="amount" th:text="'CHF ' + ${record.product.price}"></span></td>
                                                 <td class="quantity">
                                                     <label>Quantity</label>
                                                     <div class="cart-plus-minus">
-                                                        <input name="form_product_quantity" class="cart-plus-minus-box" th:value="${cart.getProductQuantity(product)}" type="text">
+                                                        <input name="form_product_quantity" class="cart-plus-minus-box" th:value="${cart.getProductQuantity(record.product)}" type="text">
                                                         <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
                                                         <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                     </div>
                                                 </td>
-                                                <td id="total_price_box" class="product-subtotal"><span class="amount" th:text="${cart.getProductTotal(product)}"></span></td>
+                                                <td id="total_price_box" class="product-subtotal"><span class="amount" th:text="'CHF ' + ${cart.getProductTotal(record.product)}"></span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -70,7 +70,7 @@
                                         <div class="cart-page-total">
                                             <h2>Cart totals</h2>
                                             <ul>
-                                                <li>Total <span th:text="${cart.getTotal()}"></span></li>
+                                                <li>Total <span th:text="'CHF ' + ${cart.getTotal()}"></span></li>
                                             </ul>
                                             <a href="/checkout">Proceed to checkout</a>
                                         </div>

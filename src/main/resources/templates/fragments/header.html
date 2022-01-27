@@ -1,4 +1,4 @@
-<header th:fragment="header">
+<header th:fragment="header" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <!-- Begin Header Top Area -->
     <div class="header-top">
         <div class="container">
@@ -16,10 +16,15 @@
                 <div class="col-lg-9 col-md-8">
                     <div class="header-top-right">
                         <ul class="ht-menu">
+                            <style>#user_name:after { content: none;}</style>
                             <!-- Begin Login Area -->
-                            <li><a href="/login" class="login language-selector-wrapper">Login</a></li>
-                            <li><a href="/insert-product" class="login language-selector-wrapper">Add new product</a></li>
-                            <li><a href="/manage-category" class="login language-selector-wrapper">Category management</a></li>
+                            <li sec:authorize="isAnonymous()"><a href="/login" class="login language-selector-wrapper">Login</a></li>
+                            <li sec:authorize="isAnonymous()"><a href="/signup" class="login language-selector-wrapper">Sign up</a></li>
+                            <li sec:authorize="isAuthenticated()"><a id="user_name" class="login language-selector-wrapper">Hello [[${session.username}]]</a></li>
+                            <li sec:authorize="isAuthenticated()"><a href="/logout" class="login language-selector-wrapper">Logout</a></li>
+                            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}"><a href="/admin/insert-product" class="login language-selector-wrapper">Add new product</a></li>
+                            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin/manage-categories" class="login language-selector-wrapper">Categories management</a></li>
+                            <li th:if="${#authorization.expression('hasRole(''ADMIN'')')}" ><a href="/admin/manage-images" class="login language-selector-wrapper">Images management</a></li>
                             <!-- Login Area End Here -->
                         </ul>
                     </div>
@@ -48,28 +53,29 @@
                     <div class="header-middle-right">
                         <ul class="hm-menu">
                             <!-- Begin Header Mini Cart Area -->
-                            <li class="hm-minicart">
+                            <li class="hm-minicart" th:if="${cart != null}">
                                 <div class="hm-minicart-trigger">
                                     <span class="item-icon"></span>
                                     <span class="item-text" th:inline="text">
-                                                    [[${cart.getTotal()} + ' .-']]
+                                                    [['CHF ' +  ${cart.getTotal()}]]
                                                     <span class="cart-item-count" th:text="${cart.getProducts().size()}"></span>
                                                 </span>
                                 </div>
                                 <span></span>
                                 <div class="minicart">
                                     <ul class="minicart-product-list">
-                                        <li th:each="product: ${cart.getProducts().keySet()}">
-                                            <a th:href="@{'/product/' + ${product.id}}" class="minicart-product-image">
-                                                <img style="width: 50px" th:src="@{/images/product/{img}(img=${product.img})}" alt="cart products">
+                                        <li th:each="record: ${cart.getProducts().values()}">
+                                            <a th:href="@{'/product/' + ${record.product.id}}" class="minicart-product-image">
+                                                <img style="width: 50px" th:if="${record.product.img}" th:src="@{${record.product.img}}" alt="cart products" onerror="this.onerror=null;this.src='/images/product/no-product-image.png';">
+                                                <img style="width: 50px" th:unless="${record.product.img}" th:src="@{/images/product/no-product-image.png}" alt="cart products">
                                             </a>
                                             <div class="minicart-product-details">
-                                                <h6><a th:href="@{'/product/' + ${product.id}}" th:text="${product.name}"></a></h6>
-                                                <span th:text="${product.price} + ' x ' + ${cart.getProductQuantity(product)}"></span>
+                                                <h6><a th:href="@{'/product/' + ${record.product.id}}" th:text="${record.product.name}"></a></h6>
+                                                <span th:text="'CHF ' + ${record.product.price} + ' x ' + ${cart.getProductQuantity(record.product)}"></span>
                                             </div>
                                         </li>
                                     </ul>
-                                    <p class="minicart-total">SUBTOTAL: <span th:text="${cart.getTotal()}"></span></p>
+                                    <p class="minicart-total">SUBTOTAL: <span th:text="'CHF ' + ${cart.getTotal()}"></span></p>
                                     <div class="minicart-button">
                                         <a href="/shopping-cart" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                             <span>Shopping Cart</span>
@@ -100,11 +106,11 @@
                         <nav>
                             <ul>
                                 <li class="dropdown-holder"><a href="/">Home</a></li>
-                                <li class="megamenu-static-holder"><a href="/category">All products</a>
+                                <li class="megamenu-static-holder"><a href="/categories">All products</a>
                                     <ul class="megamenu hb-megamenu">
-                                        <li><a href="/category">All categories</a>
+                                        <li><a href="/categories">All categories</a>
                                             <ul>
-                                                <li th:each="category : ${categories}"><a style="text-transform: capitalize;" th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                                <li th:each="category : ${categories}"><a style="text-transform: capitalize;" th:href="@{'/categories/' + ${category.name}}">[[${category.name}]]</a></li>
                                             </ul>
                                         </li>
                                     </ul>

@@ -1,40 +1,34 @@
 package com.example.amtech.controllers;
 
+import com.amazonaws.AmazonServiceException;
 import com.example.amtech.controllers.utils.SessionController;
-import com.example.amtech.models.Category;
-import com.example.amtech.models.CategoryService;
 import com.example.amtech.models.Product;
-import com.example.amtech.models.ProductService;
-import lombok.AllArgsConstructor;
+import com.example.amtech.services.CategoryService;
+import com.example.amtech.services.ProductService;
+import com.example.amtech.services.S3ImageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.testcontainers.shaded.org.apache.commons.io.FilenameUtils;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
 
-@AllArgsConstructor
+/**
+ * Controller managing the admin page managing products update and creation.
+ * It provides an endpoint to create a new product and an endpoint to update a product.
+ */
 @Controller
+@RequestMapping("/admin")
 public class ProductManagerController extends SessionController {
 
-    CategoryService categoryService;
-    ProductService productService;
+    private final ProductService productService;
+    private final S3ImageService s3ImageService;
 
-    @ModelAttribute("categories")
-    public List<Category> categories() {
-        return categoryService.getAllCategories();
+    public ProductManagerController(CategoryService categoryService, ProductService productService, S3ImageService s3ImageService) {
+        super(categoryService);
+        this.productService = productService;
+        this.s3ImageService = s3ImageService;
     }
 
     @GetMapping("/insert-product")
@@ -44,36 +38,31 @@ public class ProductManagerController extends SessionController {
     }
 
     @PostMapping("/insert-product")
-    public String insertProductPost(@Valid @ModelAttribute Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
-        model.addAttribute("product", product);
-
+    public String insertProductPost(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult, @RequestParam("image") MultipartFile multipartFile, Model model) {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
-            System.out.println("There was a error "+bindingResult);
             return "insert-product";
         }
 
-        if(productService.existsByName(product.getName())) {
-            model.addAttribute("error", "Product already exists");
-            return "insert-product";
-        }
-
-        // Saves the image file
+        // Saves the product image file
         if (!multipartFile.isEmpty()) {
-            String imgDir = "images/product/";
-            String dateName = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
-            String fileName = "img_" + dateName + "." + FilenameUtils.getExtension(Objects.requireNonNull(multipartFile.getOriginalFilename()));
             try {
-                saveFile(imgDir, fileName, multipartFile);
-            } catch (IOException e) {
-                e.printStackTrace();
+                String fileKey = s3ImageService.uploadImg(multipartFile, product.getName()); // product's name is unique
+                product.setImg(s3ImageService.getImgUrl(fileKey));
+            } catch (AmazonServiceException e) {
+                model.addAttribute("error", "Product already exists");
+                return "insert-product";
             }
-            product.setImg(fileName);
         }
 
-        System.out.println(product);//TODO DEBUG
-        productService.createProduct(product);
-        return "redirect:/category";
+        try {
+            productService.createProduct(product);
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "insert-product";
+        }
+
+        return "redirect:/categories";
     }
 
 
@@ -85,33 +74,40 @@ public class ProductManagerController extends SessionController {
     }
 
     @PostMapping("/update-product/{id}")
-    public String updateProductPost(@PathVariable String id, @ModelAttribute Product product, BindingResult bindingResult, Model model) {
-        model.addAttribute("product", product);
-        model.addAttribute("id",id);
-
+    public String updateProductPost(@PathVariable String id,
+                                    @ModelAttribute("product") Product product,
+                                    BindingResult bindingResult,
+                                    @RequestParam("image") MultipartFile multipartFile,
+                                    Model model) {
         // If an error occurs when parsing from post method
         if(bindingResult.hasErrors()){
-            System.out.println("There was a error "+bindingResult);
             return "error";
+        }
+
+        // Update the product image file
+        if (!multipartFile.isEmpty()) {
+            try {
+                Product p = productService.getById(id);
+                String fileKey = s3ImageService.updateImg(multipartFile, p.getName(), p.getImg()); // product's name is unique
+                product.setImg(s3ImageService.getImgUrl(fileKey));
+            } catch (AmazonServiceException e) {
+                model.addAttribute("updateImgError", "Error updating image");
+                return "update-product";
+            }
         }
 
         productService.updateProduct(id, product);
         return "redirect:/product/" + id;
     }
 
-    private static void saveFile(String uploadDir, String fileName,
-                                 MultipartFile multipartFile) throws IOException {
-        Path uploadPath = Paths.get(uploadDir);
-
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
+    @DeleteMapping("/delete-product/{id}")
+    public String deleteProduct(@PathVariable String id) {
+        Product p = productService.getById(id);
+        if(p.getImg() != null) {
+            s3ImageService.deleteImgByName(p.getName(), p.getImg());
         }
-
-        try (InputStream inputStream = multipartFile.getInputStream()) {
-            Path filePath = uploadPath.resolve(fileName);
-            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException ioe) {
-            throw new IOException("Could not save image file: " + fileName, ioe);
-        }
+        productService.deleteById(id);
+        return "redirect:/categories";
     }
+
 }

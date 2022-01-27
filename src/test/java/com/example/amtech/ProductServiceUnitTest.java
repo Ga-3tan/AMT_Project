@@ -1,7 +1,7 @@
 package com.example.amtech;
 
 import com.example.amtech.models.Product;
-import com.example.amtech.models.ProductService;
+import com.example.amtech.services.ProductService;
 import com.example.amtech.repository.CustomProductRepository;
 import com.example.amtech.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;

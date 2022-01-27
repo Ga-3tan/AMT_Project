@@ -35,7 +35,7 @@
                                                     <div class="single-product-wrap">
                                                         <div class="product-image">
                                                             <a th:href="@{'/product/'+ ${product.id}}">
-                                                                <img th:if="${product.img}" th:src="@{'/images/product/'+ ${product.img}}" alt="Li's Product Image">
+                                                                <img th:if="${product.img}" th:src="@{${product.img}}" alt="Product Image" onerror="this.onerror=null;this.src='/images/product/no-product-image.png';">
                                                                 <img th:unless="${product.img}" th:src="@{/images/product/no-product-image.png}" alt="product image">
                                                             </a>
                                                         </div>
@@ -44,7 +44,7 @@
                                                                 <h4><a class="product_name" th:href="@{'/product/'+ ${product.id}}"
                                                                        th:text="${product.name}"></a></h4>
                                                                 <div class="price-box">
-                                                                    <span th:text="${product.price > 0} ? ${product.price} + '.-' : 'Coming soon'" class="new-price"></span>
+                                                                    <span th:text="${product.price > 0} ? 'CHF ' + ${product.price} : 'Coming soon'" class="new-price"></span>
                                                                 </div>
                                                                 <div class="rating-box">
                                                                     <ul class="rating" style="margin-top: 5px">
@@ -72,9 +72,9 @@
                                 </div>
                                 <div id="cate-toggle" class="category-menu-list">
                                     <ul>
-                                        <li ><a href="/category">All Categories</a></li>
-                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} < 7"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
-                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} > 6" class="rx-child"><a th:href="@{'/category/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li ><a href="/categories">All Categories</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} < 7"><a th:href="@{'/categories/' + ${category.name}}">[[${category.name}]]</a></li>
+                                        <li th:each="category,iterStat : ${categories}" th:if="${iterStat.index} > 6" class="rx-child"><a th:href="@{'/categories/' + ${category.name}}">[[${category.name}]]</a></li>
                                         <li class="rx-parent">
                                             <a class="rx-default">More Categories</a>
                                             <a class="rx-show">Less Categories</a>
