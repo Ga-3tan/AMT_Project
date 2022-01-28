@@ -1,5 +1,4 @@
 [![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
@@ -227,14 +226,10 @@ Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3ta
 
 [contributors-shield]: https://img.shields.io/github/contributors/Ga-3tan/AMT_Project.svg?style=for-the-badge
 [contributors-url]: https://github.com/Ga-3tan/AMT_Project/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Ga-3tan/AMT_Project.svg?style=for-the-badge
-[forks-url]: https://github.com/Ga-3tan/AMT_Project/network/members
 [stars-shield]: https://img.shields.io/github/stars/Ga-3tan/AMT_Project.svg?style=for-the-badge
 [stars-url]: https://github.com/Ga-3tan/AMT_Project/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Ga-3tan/AMT_Project.svg?style=for-the-badge
 [issues-url]: https://github.com/Ga-3tan/AMT_Project/issues
-[license-shield]: https://img.shields.io/github/license/Ga-3tan/AMT_Project.svg?style=for-the-badge
-[license-url]: https://github.com/Ga-3tan/AMT_Project/blob/main/LICENSE
 [product-screenshot]: readme_images/screenshot.png
 
 <!-- LICENSE -->
