@@ -104,10 +104,11 @@ docker-compose up -d
 ### Development version
 
 1. Open the project in your favorite IDE.
-2. If you use the authentication service, you will need to add the JWT secret to the environment variable of your IDE (or in the application.properties) and adapt ligne 17 of the `JwtUtil.java` file accordingly (set it to the defined environment variable or property in the application.properties). The JWT secret can be found in the `application.properties` of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication).
-3. Run the Application with your IDE.
-4. Connect to the application with the following address : http://localhost:8080.
-5. Play with the app (to try the app in admin privileges, see the README of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication)).
+2. You'll need to configure your AWS S3 bucket secret accesses in the [`S3Config.java`](src/main/java/com/example/amtech/config/S3Config.java) file and change the bucket properties in the [`application.properties`](src/main/resources/application.properties) file.
+3. If you use the authentication service, you will need to add the JWT secret to the environment variable of your IDE (or in the application.properties) and adapt ligne 17 of the `JwtUtil.java` file accordingly (set it to the defined environment variable or property in the application.properties). The JWT secret can be found in the [`CustomAuthenticationFilter.java`](https://github.com/Alessandro-AP/JWTAuthentication/blob/master/src/main/java/com/example/springjwt/filter/CustomAuthenticationFilter.java) file of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication) (you can change it if you want).
+4. Run the Application with your IDE.
+5. Connect to the application with the following address : http://localhost:8080.
+6. Play with the app (to try the app in admin privileges, see the README of the [Authentication service project](https://github.com/Alessandro-AP/JWTAuthentication)).
 <br>
 
 ------

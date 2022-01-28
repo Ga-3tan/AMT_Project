@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class S3Config {
-//    @Value("${cloud.aws.credentials.access-key}")
+//    @Value("${cloud.aws.credentials.access-key}") // for deployment
     private String accessKey = System.getenv("s3.access-key");
-//    @Value("${cloud.aws.credentials.secret-key}")
+//    @Value("${cloud.aws.credentials.secret-key}") // for deployment
     private String accessSecret = System.getenv("s3.secret-key");
     @Value("${cloud.aws.region.static}")
     private String region;
