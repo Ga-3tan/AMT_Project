@@ -15,6 +15,10 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+/**
+ * Customised Web Security, it secures HTTP endpoints and use our authentication system.
+ * It overrides the default security configuration.
+ */
 @AllArgsConstructor
 @Configuration
 @EnableWebSecurity
@@ -33,6 +37,9 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new CustomAuthenticationProvider();
     }
 
+    /**
+     * Definition of security rules
+     */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -61,7 +68,7 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(authenticationSuccessHandler)
                 .and()
                 .logout()
-                .invalidateHttpSession(true)// Obj Auth / Http session
+                .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
