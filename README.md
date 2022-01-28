@@ -235,7 +235,7 @@ Project Link: [https://github.com/Ga-3tan/AMT_Project](https://github.com/Ga-3ta
 [issues-shield]: https://img.shields.io/github/issues/Ga-3tan/AMT_Project.svg?style=for-the-badge
 [issues-url]: https://github.com/Ga-3tan/AMT_Project/issues
 [license-shield]: https://img.shields.io/github/license/Ga-3tan/AMT_Project.svg?style=for-the-badge
-[license-url]: https://github.com/Ga-3tan/AMT_Project/blob/master/LICENSE
+[license-url]: https://github.com/Ga-3tan/AMT_Project/blob/main/LICENSE
 [product-screenshot]: readme_images/screenshot.png
 
 <!-- LICENSE -->
